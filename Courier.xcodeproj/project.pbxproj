@@ -15,6 +15,18 @@
 		DB64C497144F4BCD003D766A /* libCourier.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C47F144F4BCD003D766A /* libCourier.a */; };
 		DB64C49D144F4BCD003D766A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB64C49B144F4BCD003D766A /* InfoPlist.strings */; };
 		DB64C4A0144F4BCD003D766A /* CourierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C49F144F4BCD003D766A /* CourierTests.m */; };
+		DB64C4B9144F5C7C003D766A /* CRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */; };
+		DB64C4BA144F5C7C003D766A /* CRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */; };
+		DB83D0EB144F90D100D94890 /* CRRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D0E9144F90D100D94890 /* CRRequest.h */; };
+		DB83D0EC144F90D100D94890 /* CRRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D0EA144F90D100D94890 /* CRRequest.m */; };
+		DB83D0F4144F932D00D94890 /* CRResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D0F2144F932D00D94890 /* CRResponse.h */; };
+		DB83D0F5144F932D00D94890 /* CRResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D0F3144F932D00D94890 /* CRResponse.m */; };
+		DB83D105144F9BC400D94890 /* NSString+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D103144F9BC400D94890 /* NSString+Courier.h */; };
+		DB83D106144F9BC400D94890 /* NSString+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D104144F9BC400D94890 /* NSString+Courier.m */; };
+		DB83D12D1450CC0100D94890 /* NSData+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D12B1450CC0100D94890 /* NSData+Courier.h */; };
+		DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D12C1450CC0100D94890 /* NSData+Courier.m */; };
+		DB83D1311450CF9600D94890 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB83D1301450CF9600D94890 /* libz.dylib */; };
+		DB83D1321450CFA300D94890 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB83D1301450CF9600D94890 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +52,17 @@
 		DB64C49C144F4BCD003D766A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DB64C49E144F4BCD003D766A /* CourierTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourierTests.h; sourceTree = "<group>"; };
 		DB64C49F144F4BCD003D766A /* CourierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourierTests.m; sourceTree = "<group>"; };
+		DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequestOperation.h; sourceTree = "<group>"; };
+		DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestOperation.m; sourceTree = "<group>"; };
+		DB83D0E9144F90D100D94890 /* CRRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequest.h; sourceTree = "<group>"; };
+		DB83D0EA144F90D100D94890 /* CRRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequest.m; sourceTree = "<group>"; };
+		DB83D0F2144F932D00D94890 /* CRResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRResponse.h; sourceTree = "<group>"; };
+		DB83D0F3144F932D00D94890 /* CRResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRResponse.m; sourceTree = "<group>"; };
+		DB83D103144F9BC400D94890 /* NSString+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Courier.h"; sourceTree = "<group>"; };
+		DB83D104144F9BC400D94890 /* NSString+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Courier.m"; sourceTree = "<group>"; };
+		DB83D12B1450CC0100D94890 /* NSData+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Courier.h"; sourceTree = "<group>"; };
+		DB83D12C1450CC0100D94890 /* NSData+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Courier.m"; sourceTree = "<group>"; };
+		DB83D1301450CF9600D94890 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB83D1311450CF9600D94890 /* libz.dylib in Frameworks */,
 				DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB83D1321450CFA300D94890 /* libz.dylib in Frameworks */,
 				DB64C491144F4BCD003D766A /* SenTestingKit.framework in Frameworks */,
 				DB64C493144F4BCD003D766A /* UIKit.framework in Frameworks */,
 				DB64C494144F4BCD003D766A /* Foundation.framework in Frameworks */,
@@ -87,6 +112,7 @@
 		DB64C481144F4BCD003D766A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB83D1301450CF9600D94890 /* libz.dylib */,
 				DB64C482144F4BCD003D766A /* Foundation.framework */,
 				DB64C490144F4BCD003D766A /* SenTestingKit.framework */,
 				DB64C492144F4BCD003D766A /* UIKit.framework */,
@@ -99,7 +125,17 @@
 			children = (
 				DB64C487144F4BCD003D766A /* Courier.h */,
 				DB64C488144F4BCD003D766A /* Courier.m */,
+				DB83D0E9144F90D100D94890 /* CRRequest.h */,
+				DB83D0EA144F90D100D94890 /* CRRequest.m */,
+				DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */,
+				DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */,
+				DB83D0F2144F932D00D94890 /* CRResponse.h */,
+				DB83D0F3144F932D00D94890 /* CRResponse.m */,
 				DB64C485144F4BCD003D766A /* Supporting Files */,
+				DB83D103144F9BC400D94890 /* NSString+Courier.h */,
+				DB83D104144F9BC400D94890 /* NSString+Courier.m */,
+				DB83D12B1450CC0100D94890 /* NSData+Courier.h */,
+				DB83D12C1450CC0100D94890 /* NSData+Courier.m */,
 			);
 			path = Courier;
 			sourceTree = "<group>";
@@ -138,6 +174,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB64C4B9144F5C7C003D766A /* CRRequestOperation.h in Headers */,
+				DB83D0EB144F90D100D94890 /* CRRequest.h in Headers */,
+				DB83D0F4144F932D00D94890 /* CRResponse.h in Headers */,
+				DB83D105144F9BC400D94890 /* NSString+Courier.h in Headers */,
+				DB83D12D1450CC0100D94890 /* NSData+Courier.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +228,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
-				ORGANIZATIONNAME = Posterous;
+				ORGANIZATIONNAME = "Andrew B. Smith";
 			};
 			buildConfigurationList = DB64C477144F4BB0003D766A /* Build configuration list for PBXProject "Courier" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -240,6 +281,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB64C489144F4BCD003D766A /* Courier.m in Sources */,
+				DB64C4BA144F5C7C003D766A /* CRRequestOperation.m in Sources */,
+				DB83D0EC144F90D100D94890 /* CRRequest.m in Sources */,
+				DB83D0F5144F932D00D94890 /* CRResponse.m in Sources */,
+				DB83D106144F9BC400D94890 /* NSString+Courier.m in Sources */,
+				DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +409,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "CourierTests/CourierTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
@@ -388,6 +435,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "CourierTests/CourierTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -414,6 +462,7 @@
 				DB64C4A3144F4BCD003D766A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB64C4A4144F4BCD003D766A /* Build configuration list for PBXNativeTarget "CourierTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +471,7 @@
 				DB64C4A6144F4BCD003D766A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

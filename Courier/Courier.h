@@ -8,6 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Courier : NSObject
+#import "CRRequest.h"
+#import "CRRequestOperation.h"
+
+@interface Courier : NSObject {
+@private
+    NSOperationQueue *operationQueue;
+}
+
++ (id)sharedInstance;
+
+- (void)getPath:(NSString *)path 
+     parameters:(NSDictionary *)parameters
+        success:(CRRequestOperationSuccessBlock)success
+        failure:(CRRequestOperationFailureBlock)failure;
+
+- (NSDictionary *)defaultHeader;
 
 @end
