@@ -10,17 +10,24 @@
 
 @implementation CRResponse
 
-@synthesize response;
+@synthesize response,
+            dataCapacity;
 
 - (void)dealloc {
     [response release];
+    [data release];
     
     [super dealloc];
 }
 
-+ (CRResponse *)responseWithResponse:(NSURLResponse *)response {
++ (CRResponse *)responseWithResponse:(NSURLResponse *)response 
+                         andCapacity:(NSInteger)capacity {
+    
     CRResponse *rep = [[[CRResponse alloc] init] autorelease];
+    
     rep.response = response;
+    rep.dataCapacity = capacity;
+    
     return rep;
 }
 
@@ -67,6 +74,14 @@
             return [NSString stringWithFormat:@"Unknown status code: %d", self.statusCode];
             break;
     }
+}
+
+#pragma mark - Accessors
+
+- (NSMutableData *)data {
+    if (data) return [[data retain] autorelease];
+    data = [[NSMutableData alloc] initWithCapacity:self.dataCapacity];
+    return [[data retain] autorelease];
 }
 
 @end

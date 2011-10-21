@@ -44,11 +44,15 @@ typedef enum {
 @interface CRResponse : NSObject {
 @private
     NSURLResponse *response;
+    NSMutableData *data;
 }
 
 @property (nonatomic, retain) NSURLResponse *response;
+@property (nonatomic, assign) NSInteger dataCapacity;
+@property (nonatomic, readonly) NSMutableData *data;
 
-+ (CRResponse *)responseWithResponse:(NSURLResponse *)response;
++ (CRResponse *)responseWithResponse:(NSURLResponse *)response 
+                         andCapacity:(NSInteger)capacity;
 
 - (NSInteger)statusCode;
 - (NSString *)statusCodeDescription;

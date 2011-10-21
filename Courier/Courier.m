@@ -29,7 +29,7 @@
     if (self) {
         
         NSOperationQueue *queue = [[[NSOperationQueue alloc] init] autorelease];
-        [queue setMaxConcurrentOperationCount:1];
+        [queue setMaxConcurrentOperationCount:2];
         self.operationQueue = queue;
         
     }
@@ -60,10 +60,18 @@
                                                                      failure:failure];
     
     [self.operationQueue addOperation:operation];
-    
+}
+
+#pragma mark - Header
+
+- (void)setBasicAuthUsername:(NSString *)username andPassword:(NSString *)password {
+    NSString *authHeader = [NSString stringWithFormat:@"%@:%@", username, password];
+    NSString *encodedAuthHeader = [[NSData dataWithBytes:[authHeader UTF8String] length:[authHeader length]] base64EncodedString];
+    [self.defaultHeader setValue:[NSString stringWithFormat:@"Basic %@", encodedAuthHeader] forKey:@"Authorization"];
 }
 
 - (NSDictionary *)defaultHeader {
+    if (defaultHeader) return [[defaultHeader retain] autorelease];
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
@@ -80,11 +88,9 @@
 	// User-Agent Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43
 	//[self setDefaultHeader:@"User-Agent" value:[NSString stringWithFormat:@"%@/%@ (%@, %@ %@, %@, Scale/%f)", [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey], [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey], @"unknown", [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion], [[UIDevice currentDevice] model], ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] ? [[UIScreen mainScreen] scale] : 1.0)]];
     
-    NSString *authHeader = [NSString stringWithFormat:@"%@:%@", @"drewsmits@gmail.com", @"dogscreenredchair"];
-    NSString *encodedAuthHeader = [[NSData dataWithBytes:[authHeader UTF8String] length:[authHeader length]] base64EncodedString];
-    [dict setValue:[NSString stringWithFormat:@"Basic %@", encodedAuthHeader] forKey:@"Authorization"];
+    defaultHeader = [dict retain];
     
-    return [NSDictionary dictionaryWithDictionary:dict];
+    return [[defaultHeader retain] autorelease];
 }
 
 

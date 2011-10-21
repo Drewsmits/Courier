@@ -17,9 +17,9 @@ typedef void (^CRRequestOperationFailureBlock)(CRRequest *request, CRResponse *r
 @interface CRRequestOperation : NSOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
 @private    
     
-    NSURLConnection *connection;
-    CRRequest *request;
-    CRResponse *response;
+    NSURLConnection *_connection;
+    CRRequest *_request;
+    CRResponse *_response;
     //UIBackgroundTaskIdentifier backgroundTask;
 }
 

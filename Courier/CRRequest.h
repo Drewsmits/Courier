@@ -40,6 +40,6 @@ typedef enum {
                   withParameters:(NSDictionary *)parameters
                        andHeader:(NSDictionary *)header;
 
-- (NSURLRequest *)URLRequest;
+- (NSMutableURLRequest *)URLRequest;
 
 @end

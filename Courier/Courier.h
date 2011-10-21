@@ -14,7 +14,10 @@
 @interface Courier : NSObject {
 @private
     NSOperationQueue *operationQueue;
+    NSMutableDictionary *defaultHeader;
 }
+
+@property (nonatomic, readonly) NSMutableDictionary *defaultHeader;
 
 + (id)sharedInstance;
 
@@ -23,6 +26,7 @@
         success:(CRRequestOperationSuccessBlock)success
         failure:(CRRequestOperationFailureBlock)failure;
 
-- (NSDictionary *)defaultHeader;
+- (void)setBasicAuthUsername:(NSString *)username 
+                 andPassword:(NSString *)password;
 
 @end

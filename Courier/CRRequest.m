@@ -33,11 +33,11 @@
 	return request;
 }
 
-- (NSURLRequest *)URLRequest {
+- (NSMutableURLRequest *)URLRequest {
     
 	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
     
-    if (self.parameters) {
+    if (self.parameters && self.method != CRRequestMethodGET) {
         [request setHTTPBody:[self.queryString dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
@@ -64,9 +64,16 @@
 }
 
 - (NSURL *)requestURL {
+    
+    NSURL *url = [NSURL URLWithString:self.path relativeToURL:nil];
+    
     if (self.method == CRRequestMethodGET) {
-        NSString *stringToAppend = [self.path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@";
-        return [NSURL URLWithString:[self.path stringByAppendingFormat:stringToAppend, self.queryString]];
+        
+        return [NSURL URLWithString:[[url absoluteString] stringByAppendingFormat:[self.path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@", self.queryString]];
+
+        
+        //NSString *stringToAppend = [self.path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@";
+        //return [NSURL URLWithString:[self.path stringByAppendingFormat:stringToAppend, self.queryString]];
     } else {
         return [NSURL URLWithString:self.path];
     }

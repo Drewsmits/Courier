@@ -73,6 +73,9 @@
     CRRequestOperationSuccessBlock successBlock = ^(CRRequest *request, CRResponse *response){        
         hasCalledBack = YES;
         
+        NSLog(@"response: %@", [response statusCodeDescription]);
+        NSLog(@"response data: %@", [response data]);
+        
         if ([response statusCode] < 300) {
             success = YES;
         }
@@ -83,7 +86,6 @@
         hasCalledBack = YES;
 
         NSLog(@"FAILED! %@", error);
-        
     }; 
     
     NSDictionary *params = [NSDictionary dictionaryWithObject:@"dvuylfkoEfcoiyCBJrndueAnggEolmEz" forKey:@"api_token"];
