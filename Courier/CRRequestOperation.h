@@ -8,19 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+#import "CDOperation.h"
+
 #import "CRRequest.h"
 #import "CRResponse.h"
 
 typedef void (^CRRequestOperationSuccessBlock)(CRRequest *request, CRResponse *response);
 typedef void (^CRRequestOperationFailureBlock)(CRRequest *request, CRResponse *response, NSError *error);
 
-@interface CRRequestOperation : NSOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
+@interface CRRequestOperation : CDOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
 @private    
-    
     NSURLConnection *_connection;
     CRRequest *_request;
     CRResponse *_response;
-    //UIBackgroundTaskIdentifier backgroundTask;
 }
 
 @property (readonly, nonatomic, retain) NSURLConnection *connection;

@@ -67,6 +67,8 @@
     
     NSString *path = @"http://posterous.com/api/2/users/me";
     
+    [[Courier sharedInstance] setBasicAuthUsername:@"drewsmits@gmail.com" andPassword:@"dogscreenredchair"];
+    
     __block BOOL hasCalledBack = NO;
     __block BOOL success = NO;
     
@@ -74,7 +76,6 @@
         hasCalledBack = YES;
         
         NSLog(@"response: %@", [response statusCodeDescription]);
-        NSLog(@"response data: %@", [response data]);
         
         if ([response statusCode] < 300) {
             success = YES;

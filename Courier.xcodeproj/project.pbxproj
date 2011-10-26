@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB24BB651457913700BDAD0A /* libConductor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB24BB621457912800BDAD0A /* libConductor.a */; };
 		DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C482144F4BCD003D766A /* Foundation.framework */; };
 		DB64C489144F4BCD003D766A /* Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C488144F4BCD003D766A /* Courier.m */; };
 		DB64C491144F4BCD003D766A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C490144F4BCD003D766A /* SenTestingKit.framework */; };
@@ -27,9 +28,31 @@
 		DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D12C1450CC0100D94890 /* NSData+Courier.m */; };
 		DB83D1311450CF9600D94890 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB83D1301450CF9600D94890 /* libz.dylib */; };
 		DB83D1321450CFA300D94890 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB83D1301450CF9600D94890 /* libz.dylib */; };
+		DBA5F95714560E4100EBFF68 /* Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C487144F4BCD003D766A /* Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DB24BB611457912800BDAD0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB24BB591457912800BDAD0A /* Conductor.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB83D19A1451F1B200D94890;
+			remoteInfo = Conductor;
+		};
+		DB24BB631457912800BDAD0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB24BB591457912800BDAD0A /* Conductor.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB83D1AA1451F1B200D94890;
+			remoteInfo = ConductorTests;
+		};
+		DB24BB661457914300BDAD0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB24BB591457912800BDAD0A /* Conductor.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DB83D1991451F1B200D94890;
+			remoteInfo = Conductor;
+		};
 		DB64C495144F4BCD003D766A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB64C474144F4BB0003D766A /* Project object */;
@@ -40,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB24BB591457912800BDAD0A /* Conductor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Conductor.xcodeproj; path = ../Conductor/Conductor.xcodeproj; sourceTree = "<group>"; };
 		DB64C47F144F4BCD003D766A /* libCourier.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCourier.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB64C482144F4BCD003D766A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB64C486144F4BCD003D766A /* Courier-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Courier-Prefix.pch"; sourceTree = "<group>"; };
@@ -70,8 +94,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB83D1311450CF9600D94890 /* libz.dylib in Frameworks */,
 				DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */,
+				DB83D1311450CF9600D94890 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB24BB651457913700BDAD0A /* libConductor.a in Frameworks */,
 				DB83D1321450CFA300D94890 /* libz.dylib in Frameworks */,
 				DB64C491144F4BCD003D766A /* SenTestingKit.framework in Frameworks */,
 				DB64C493144F4BCD003D766A /* UIKit.framework in Frameworks */,
@@ -90,6 +115,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB24BB571457910800BDAD0A /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				DB24BB591457912800BDAD0A /* Conductor.xcodeproj */,
+			);
+			name = Vendors;
+			sourceTree = "<group>";
+		};
+		DB24BB5A1457912800BDAD0A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB24BB621457912800BDAD0A /* libConductor.a */,
+				DB24BB641457912800BDAD0A /* ConductorTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		DB64C472144F4BB0003D766A = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +139,7 @@
 				DB64C498144F4BCD003D766A /* CourierTests */,
 				DB64C481144F4BCD003D766A /* Frameworks */,
 				DB64C480144F4BCD003D766A /* Products */,
+				DB24BB571457910800BDAD0A /* Vendors */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,11 +174,11 @@
 				DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */,
 				DB83D0F2144F932D00D94890 /* CRResponse.h */,
 				DB83D0F3144F932D00D94890 /* CRResponse.m */,
-				DB64C485144F4BCD003D766A /* Supporting Files */,
 				DB83D103144F9BC400D94890 /* NSString+Courier.h */,
 				DB83D104144F9BC400D94890 /* NSString+Courier.m */,
 				DB83D12B1450CC0100D94890 /* NSData+Courier.h */,
 				DB83D12C1450CC0100D94890 /* NSData+Courier.m */,
+				DB64C485144F4BCD003D766A /* Supporting Files */,
 			);
 			path = Courier;
 			sourceTree = "<group>";
@@ -179,6 +222,7 @@
 				DB83D0F4144F932D00D94890 /* CRResponse.h in Headers */,
 				DB83D105144F9BC400D94890 /* NSString+Courier.h in Headers */,
 				DB83D12D1450CC0100D94890 /* NSData+Courier.h in Headers */,
+				DBA5F95714560E4100EBFF68 /* Courier.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +240,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DB24BB671457914300BDAD0A /* PBXTargetDependency */,
 			);
 			name = Courier;
 			productName = Courier;
@@ -240,6 +285,12 @@
 			mainGroup = DB64C472144F4BB0003D766A;
 			productRefGroup = DB64C480144F4BCD003D766A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DB24BB5A1457912800BDAD0A /* Products */;
+					ProjectRef = DB24BB591457912800BDAD0A /* Conductor.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DB64C47E144F4BCD003D766A /* Courier */,
@@ -247,6 +298,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		DB24BB621457912800BDAD0A /* libConductor.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libConductor.a;
+			remoteRef = DB24BB611457912800BDAD0A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DB24BB641457912800BDAD0A /* ConductorTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ConductorTests.octest;
+			remoteRef = DB24BB631457912800BDAD0A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DB64C48C144F4BCD003D766A /* Resources */ = {
@@ -300,6 +368,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DB24BB671457914300BDAD0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Conductor;
+			targetProxy = DB24BB661457914300BDAD0A /* PBXContainerItemProxy */;
+		};
 		DB64C496144F4BCD003D766A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DB64C47E144F4BCD003D766A /* Courier */;
@@ -334,7 +407,7 @@
 		DB64C4A2144F4BCD003D766A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/Courier.dst;
@@ -352,6 +425,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = include/Courier/Private;
@@ -359,13 +433,14 @@
 				PUBLIC_HEADERS_FOLDER_PATH = include/Courier;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/include/** $(BUILT_PRODUCTS_DIR)/include/Conductor";
 			};
 			name = Debug;
 		};
 		DB64C4A3144F4BCD003D766A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/Courier.dst;
@@ -376,6 +451,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = include/Courier/Private;
@@ -383,6 +459,7 @@
 				PUBLIC_HEADERS_FOLDER_PATH = include/Courier;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/include/** $(BUILT_PRODUCTS_DIR)/include/Conductor";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -390,7 +467,7 @@
 		DB64C4A5144F4BCD003D766A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -416,6 +493,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/include/** $(BUILT_PRODUCTS_DIR)/include/Conductor";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -423,7 +501,7 @@
 		DB64C4A6144F4BCD003D766A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -442,6 +520,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/include/Conductor $(BUILT_PRODUCTS_DIR)/include/**";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = octest;
 			};

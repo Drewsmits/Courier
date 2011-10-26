@@ -10,38 +10,11 @@
 
 #pragma mark - State
 
-typedef enum {
-    CRRequestOperationStateReady,
-    CRRequestOperationStateExecuting,
-    CRRequestOperationStateFinished,
-    CRRequestOperationStateCancelled,
-} CRRequestOperationState;
-
-static inline NSString * CRStringForOperationState(CRRequestOperationState state) {
-    switch (state) {
-        case CRRequestOperationStateReady:
-            return @"isReady";
-            break;
-        case CRRequestOperationStateExecuting:
-            return @"isExecuting";
-            break;
-        case CRRequestOperationStateFinished:
-            return @"isFinished";
-            break;
-        case CRRequestOperationStateCancelled:
-            return @"isCancelled";
-            break;
-        default:
-            return nil;
-            break;
-    }
-}
 
 #pragma mark - Private
 
 @interface CRRequestOperation ()
 @property (readwrite, nonatomic, retain) NSURLConnection *connection;
-@property (nonatomic, assign) CRRequestOperationState state;
 @property (readwrite, nonatomic, retain) CRRequest *request;
 @property (readwrite, nonatomic, retain) CRResponse *response;
 @property (readwrite, nonatomic, copy) CRRequestOperationSuccessBlock success;
@@ -55,7 +28,6 @@ static inline NSString * CRStringForOperationState(CRRequestOperationState state
 static NSThread *_networkRequestThread = nil;
 
 @synthesize connection = _connection,
-            state = _state,
             request = _request,
             response = _response,
             success,
@@ -69,25 +41,18 @@ static NSThread *_networkRequestThread = nil;
     [super dealloc];
 }
 
-- (id)initWithRequest:(CRRequest *)request {
-    if (self = [super init]) {
-        self.request = request;
-    }
-    return self;
-}
 
 + (id)operationWithRequest:(CRRequest *)request 
                    success:(CRRequestOperationSuccessBlock)successBlock
                    failure:(CRRequestOperationFailureBlock)failureBlock {    
     
-    CRRequestOperation *op = [[[CRRequestOperation alloc] initWithRequest:request] autorelease];
-    
+    CRRequestOperation *op = [CRRequestOperation operation];
+   
+    op.request = request;
     op.request = request;
     op.success = successBlock;
     op.failure = failureBlock;
-    
-    op.state = CRRequestOperationStateReady;
-    
+        
     return op;
 }
 
@@ -123,17 +88,6 @@ static NSThread *_networkRequestThread = nil;
                withObject:nil 
             waitUntilDone:YES 
                     modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
-        
-//    backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                if (backgroundTask != UIBackgroundTaskInvalid) {
-//                    [[UIApplication sharedApplication] endBackgroundTask:backgroundTask];
-//                    backgroundTask = UIBackgroundTaskInvalid;
-//                    [self cancel];
-//                }
-//            });
-//        }];
-    
 }
 
 - (void)startConnection {
@@ -144,30 +98,14 @@ static NSThread *_networkRequestThread = nil;
     [self.connection start];
 }
 
-- (void)done {
+- (void)finish {
     if(self.connection) {
         [self.connection cancel];
         [_connection release];
         _connection = nil;
     }
-    
-    self.state = CRRequestOperationStateFinished;
-}
-
-- (BOOL)isReady {
-    return (self.state == CRRequestOperationStateReady);
-}
-
-- (BOOL)isExecuting {
-    return (self.state == CRRequestOperationStateExecuting);
-}
-
-- (BOOL)isFinished {
-    return (self.state == CRRequestOperationStateFinished);
-}
-
-- (BOOL)isConcurrent {
-    return YES;
+   
+    [super finish];
 }
 
 #pragma mark - NSURLConnection Data
@@ -195,7 +133,7 @@ static NSThread *_networkRequestThread = nil;
         self.failure(self.request, self.response, error);
     });
     
-    [self done];
+    [self finish];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -203,7 +141,7 @@ static NSThread *_networkRequestThread = nil;
         self.success(self.request, self.response);
     });
     
-    [self done];
+    [self finish];
 }
 
 //- (NSInputStream *)connection:(NSURLConnection *)connection 
@@ -242,24 +180,6 @@ static NSThread *_networkRequestThread = nil;
 
 - (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection {
     return NO;
-}
-
-#pragma mark - Accessors
-
-- (void)setState:(CRRequestOperationState)state {
-    if (self.state == state) {
-        return;
-    }
-
-    NSString *oldStateString = CRStringForOperationState(self.state);
-    NSString *newStateString = CRStringForOperationState(state);
-    
-    // Must comply to KVO for NSOperation
-    [self willChangeValueForKey:newStateString];
-    [self willChangeValueForKey:oldStateString];
-    _state = state;
-    [self didChangeValueForKey:oldStateString];
-    [self didChangeValueForKey:newStateString];
 }
 
 @end

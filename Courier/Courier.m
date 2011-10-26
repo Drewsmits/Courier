@@ -7,42 +7,32 @@
 //
 
 #import "Courier.h"
-
 #import "NSData+Courier.h"
 
-@interface Courier ()
-@property (nonatomic, retain) NSOperationQueue *operationQueue;
-@end
 
 @implementation Courier
 
-@synthesize operationQueue;
+//- (void)dealloc {    
+//    [super dealloc];
+//}
 
-- (void)dealloc {
-    [operationQueue release];
+- (void)addOperationForPath:(NSString *)path 
+                 withMethod:(CRRequestMethod)method
+              andParameters:(NSDictionary *)parameters
+                    success:(CRRequestOperationSuccessBlock)success 
+                    failure:(CRRequestOperationFailureBlock)failure {
     
-    [super dealloc];
-}
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        
-        NSOperationQueue *queue = [[[NSOperationQueue alloc] init] autorelease];
-        [queue setMaxConcurrentOperationCount:2];
-        self.operationQueue = queue;
-        
-    }
-    return self;
-}
-
-+ (id)sharedInstance {
-    static dispatch_once_t pred = 0;
-    __strong static id _sharedInstance = nil;
-    dispatch_once(&pred, ^{
-        _sharedInstance = [[self alloc] init];
-    });
-    return _sharedInstance;
+    
+    CRRequest *request = [CRRequest requestWithMethod:method 
+                                              forPath:path 
+                                       withParameters:parameters
+                                            andHeader:[self defaultHeader]];
+    
+    CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request
+                                                                     success:success
+                                                                     failure:failure];
+    
+    [self addOperation:operation];
 }
 
 - (void)getPath:(NSString *)path 
@@ -50,24 +40,58 @@
         success:(CRRequestOperationSuccessBlock)success
         failure:(CRRequestOperationFailureBlock)failure {
     
-    CRRequest *request = [CRRequest requestWithMethod:CRRequestMethodGET 
-                                              forPath:path 
-                                       withParameters:parameters
-                                            andHeader:[self defaultHeader]];
-        
-    CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request
-                                                                     success:success
-                                                                     failure:failure];
+    [self addOperationForPath:path 
+                   withMethod:CRRequestMethodGET
+                andParameters:parameters
+                      success:success 
+                      failure:failure];
+}
+
+- (void)putPath:(NSString *)path 
+     parameters:(NSDictionary *)parameters
+        success:(CRRequestOperationSuccessBlock)success
+        failure:(CRRequestOperationFailureBlock)failure {
     
-    [self.operationQueue addOperation:operation];
+    [self addOperationForPath:path 
+                   withMethod:CRRequestMethodPUT
+                andParameters:parameters
+                      success:success 
+                      failure:failure];
+}
+
+- (void)postPath:(NSString *)path 
+      parameters:(NSDictionary *)parameters
+         success:(CRRequestOperationSuccessBlock)success
+         failure:(CRRequestOperationFailureBlock)failure {
+    
+    [self addOperationForPath:path
+                   withMethod:CRRequestMethodPOST
+                andParameters:parameters
+                      success:success 
+                      failure:failure];
+}
+
+- (void)deletePath:(NSString *)path 
+        parameters:(NSDictionary *)parameters
+           success:(CRRequestOperationSuccessBlock)success
+           failure:(CRRequestOperationFailureBlock)failure {
+    
+    [self addOperationForPath:path 
+                   withMethod:CRRequestMethodDELETE
+                andParameters:parameters
+                      success:success 
+                      failure:failure];
 }
 
 #pragma mark - Header
 
 - (void)setBasicAuthUsername:(NSString *)username andPassword:(NSString *)password {
     NSString *authHeader = [NSString stringWithFormat:@"%@:%@", username, password];
-    NSString *encodedAuthHeader = [[NSData dataWithBytes:[authHeader UTF8String] length:[authHeader length]] base64EncodedString];
-    [self.defaultHeader setValue:[NSString stringWithFormat:@"Basic %@", encodedAuthHeader] forKey:@"Authorization"];
+    NSString *encodedAuthHeader = [[NSData dataWithBytes:[authHeader UTF8String] 
+                                                  length:[authHeader length]] base64EncodedString];
+    
+    [self.defaultHeader setValue:[NSString stringWithFormat:@"Basic %@", encodedAuthHeader] 
+                          forKey:@"Authorization"];
 }
 
 - (NSDictionary *)defaultHeader {
