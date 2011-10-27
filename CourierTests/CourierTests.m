@@ -82,7 +82,7 @@
                                  beforeDate:loopUntil];
     }
 
-    STAssertTrue(success, @"Should properly connect");
+    STAssertTrue(success, @"Response should be 200");
 }
 
 - (void)testGetRequestWithURLThatDoesntExist {
@@ -116,7 +116,7 @@
                                  beforeDate:loopUntil];
     }
     
-    STAssertTrue(expectedResponse, @"Should properly connect");
+    STAssertTrue(expectedResponse, @"Response should be 404");
 }
 
 - (void)testPutRequest {
@@ -151,7 +151,7 @@
                                  beforeDate:loopUntil];
     }
     
-    STAssertTrue(success, @"Should properly connect");
+    STAssertTrue(success, @"Response should be 200");
 }
 
 - (void)testPostRequest {
@@ -186,7 +186,7 @@
                                  beforeDate:loopUntil];
     }
     
-    STAssertTrue(success, @"Should properly connect");
+    STAssertTrue(success, @"Response should be 200");
 }
 
 - (void)testDeleteRequest {
@@ -217,7 +217,7 @@
                                  beforeDate:loopUntil];
     }
     
-    STAssertTrue(success, @"Should properly connect");
+    STAssertTrue(success, @"Response should be 200");
 }
 
 - (void)testGetRequestWithParameters {
@@ -250,7 +250,7 @@
                                  beforeDate:loopUntil];
     }
     
-    STAssertTrue(success, @"Should properly connect");
+    STAssertTrue(success, @"Should properly send parameters");
 }
 
 - (void)testGetRequestWithWrongParameters {
@@ -281,7 +281,7 @@
                                  beforeDate:loopUntil];
     }
     
-    STAssertTrue(success, @"Should properly connect");
+    STAssertTrue(success, @"Response should be 500");
 }
 
 @end
