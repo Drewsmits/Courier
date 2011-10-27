@@ -20,10 +20,10 @@
     [super dealloc];
 }
 
-+ (CRResponse *)responseWithResponse:(NSURLResponse *)response 
-                         andCapacity:(NSInteger)capacity {
++ (id)responseWithResponse:(NSURLResponse *)response 
+               andCapacity:(NSInteger)capacity {
     
-    CRResponse *rep = [[[CRResponse alloc] init] autorelease];
+    CRResponse *rep = [[[self alloc] init] autorelease];
     
     rep.response = response;
     rep.dataCapacity = capacity;
@@ -70,10 +70,22 @@
         case HTTPResponseStatusCodeNotFound:
             return @"404 Not found.  The server can't find the requested resource.";
             break;
+        case HTTPResponseStatusCodeInternalServerError:
+            return @"500 Internal Server Error. The server encountered an unexpected condition which prevented it from fulfilling the request.";
+            break;
         default:
             return [NSString stringWithFormat:@"Unknown status code: %d", self.statusCode];
             break;
     }
+}
+
+- (BOOL)success {
+    
+    if (self.statusCode > 100 && self.statusCode < 300) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 #pragma mark - Accessors

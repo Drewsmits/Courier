@@ -64,16 +64,9 @@
 }
 
 - (NSURL *)requestURL {
-    
-    NSURL *url = [NSURL URLWithString:self.path relativeToURL:nil];
-    
     if (self.method == CRRequestMethodGET) {
-        
-        return [NSURL URLWithString:[[url absoluteString] stringByAppendingFormat:[self.path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@", self.queryString]];
-
-        
-        //NSString *stringToAppend = [self.path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@";
-        //return [NSURL URLWithString:[self.path stringByAppendingFormat:stringToAppend, self.queryString]];
+        NSString *stringToAppend = [self.path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@";
+        return [NSURL URLWithString:[self.path stringByAppendingFormat:stringToAppend, self.queryString]];
     } else {
         return [NSURL URLWithString:self.path];
     }

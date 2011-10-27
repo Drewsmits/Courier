@@ -49,7 +49,6 @@ static NSThread *_networkRequestThread = nil;
     CRRequestOperation *op = [CRRequestOperation operation];
    
     op.request = request;
-    op.request = request;
     op.success = successBlock;
     op.failure = failureBlock;
         
@@ -137,9 +136,22 @@ static NSThread *_networkRequestThread = nil;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    dispatch_async(dispatch_get_main_queue(), ^(void) {
-        self.success(self.request, self.response);
-    });
+    
+    if (self.response.success) {
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            self.success(self.request, self.response);
+        });
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            NSError *error = [NSError errorWithDomain:@"com.courier.cdrequestoperation" 
+                                                 code:self.response.statusCode 
+                                             userInfo:[NSDictionary dictionaryWithObject:self.response.statusCodeDescription 
+                                                                                  forKey:NSLocalizedFailureReasonErrorKey]];
+            
+            self.failure(self.request, self.response, error);
+        });
+    }
     
     [self finish];
 }

@@ -87,6 +87,7 @@
 		DB83D12B1450CC0100D94890 /* NSData+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Courier.h"; sourceTree = "<group>"; };
 		DB83D12C1450CC0100D94890 /* NSData+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Courier.m"; sourceTree = "<group>"; };
 		DB83D1301450CF9600D94890 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
+		DBB524131458EBA9006040C7 /* TestAPI.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = TestAPI.rb; path = Sinatra/TestAPI.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +198,7 @@
 				DB64C49E144F4BCD003D766A /* CourierTests.h */,
 				DB64C49F144F4BCD003D766A /* CourierTests.m */,
 				DB64C499144F4BCD003D766A /* Supporting Files */,
+				DBB524121458E175006040C7 /* Sinatra */,
 			);
 			path = CourierTests;
 			sourceTree = "<group>";
@@ -208,6 +210,14 @@
 				DB64C49B144F4BCD003D766A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DBB524121458E175006040C7 /* Sinatra */ = {
+			isa = PBXGroup;
+			children = (
+				DBB524131458EBA9006040C7 /* TestAPI.rb */,
+			);
+			name = Sinatra;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,12 +405,14 @@
 		DB64C479144F4BB0003D766A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 			};
 			name = Debug;
 		};
 		DB64C47A144F4BB0003D766A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 			};
 			name = Release;
 		};

@@ -50,9 +50,10 @@ typedef enum {
 @property (nonatomic, retain) NSURLResponse *response;
 @property (nonatomic, assign) NSInteger dataCapacity;
 @property (nonatomic, readonly) NSMutableData *data;
+@property (nonatomic, readonly) BOOL success;
 
-+ (CRResponse *)responseWithResponse:(NSURLResponse *)response 
-                         andCapacity:(NSInteger)capacity;
++ (id)responseWithResponse:(NSURLResponse *)response 
+               andCapacity:(NSInteger)capacity;
 
 - (NSInteger)statusCode;
 - (NSString *)statusCodeDescription;
