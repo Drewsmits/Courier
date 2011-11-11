@@ -3,7 +3,7 @@
 //  Courier
 //
 //  Created by Andrew Smith on 10/19/11.
-//  Copyright (c) 2011 Posterous. All rights reserved.
+//  Copyright (c) 2011 Andrew B. Smith. All rights reserved.
 //
 
 #import "CRResponse.h"

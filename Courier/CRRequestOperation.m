@@ -3,7 +3,7 @@
 //  Courier
 //
 //  Created by Andrew Smith on 10/19/11.
-//  Copyright (c) 2011 Posterous. All rights reserved.
+//  Copyright (c) 2011 Andrew B. Smith. All rights reserved.
 //
 
 #import "CRRequestOperation.h"
@@ -148,8 +148,9 @@ static NSThread *_networkRequestThread = nil;
                                                  code:self.response.statusCode 
                                              userInfo:[NSDictionary dictionaryWithObject:self.response.statusCodeDescription 
                                                                                   forKey:NSLocalizedFailureReasonErrorKey]];
-            
-            self.failure(self.request, self.response, error);
+            if (self.failure) {
+                self.failure(self.request, self.response, error);
+            }
         });
     }
     

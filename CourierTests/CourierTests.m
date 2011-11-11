@@ -3,12 +3,13 @@
 //  CourierTests
 //
 //  Created by Andrew Smith on 10/19/11.
-//  Copyright (c) 2011 Posterous. All rights reserved.
+//  Copyright (c) 2011 Andrew B. Smith. All rights reserved.
 //
 
 #import "CourierTests.h"
 
 #import "Courier.h"
+#import "CRRequest.h"
 
 #import "CRRequestOperation.h"
 
@@ -32,15 +33,19 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"one", @"two", @"three", nil]
                                                        forKeys:[NSArray arrayWithObjects:@"A"  , @"B"  , @"C"    , nil]];
     
+    NSData *data = [path dataUsingEncoding:NSASCIIStringEncoding];
+    
     CRRequest *request = [CRRequest requestWithMethod:CRRequestMethodGET
                                               forPath:path
                                        withParameters:params
+                                          andHTTPBody:data
                                             andHeader:nil];
 
     STAssertNotNil(request, @"Should create request");
     STAssertEquals(request.method, CRRequestMethodGET, @"Should have correct method");
     STAssertEqualObjects(request.path, path, @"Should have correct path");
     STAssertEqualObjects(request.parameters, params, @"Should have correct params");
+    STAssertEqualObjects(request.httpBody, data, @"Request should have correct HTTP body");
         
     NSString *expectedPath = [NSString stringWithFormat:@"%@?A=one&B=two&C=three", path];
     NSURL *expectedURL = [NSURL URLWithString:expectedPath];

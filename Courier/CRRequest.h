@@ -3,7 +3,7 @@
 //  Courier
 //
 //  Created by Andrew Smith on 10/19/11.
-//  Copyright (c) 2011 Posterous. All rights reserved.
+//  Copyright (c) 2011 Andrew B. Smith. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -18,9 +18,10 @@ typedef enum {
 @interface CRRequest : NSObject {
 @private
     CRRequestMethod method;
-    NSMutableDictionary *parameters;
-    NSMutableDictionary *defaultHeader;
     NSString *path;
+    NSMutableDictionary *parameters;
+    NSMutableData *httpBody;
+    NSMutableDictionary *defaultHeader;
 }
 
 @property (nonatomic, assign) CRRequestMethod method;
@@ -28,6 +29,7 @@ typedef enum {
 
 @property (readonly, nonatomic, copy) NSString *path;
 @property (readonly, nonatomic, retain) NSDictionary *parameters;
+@property (nonatomic, retain) NSMutableData *httpBody;
 
 @property (nonatomic, readonly) NSDictionary *header;
 @property (nonatomic, retain) NSMutableDictionary *defaultHeader;
@@ -38,6 +40,7 @@ typedef enum {
 + (CRRequest *)requestWithMethod:(CRRequestMethod)method
                          forPath:(NSString *)path
                   withParameters:(NSDictionary *)parameters
+                     andHTTPBody:(NSData *)bodyData
                        andHeader:(NSDictionary *)header;
 
 - (NSMutableURLRequest *)URLRequest;

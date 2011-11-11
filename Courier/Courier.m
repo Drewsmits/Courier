@@ -3,7 +3,7 @@
 //  Courier
 //
 //  Created by Andrew Smith on 10/19/11.
-//  Copyright (c) 2011 Posterous. All rights reserved.
+//  Copyright (c) 2011 Andrew B. Smith. All rights reserved.
 //
 
 #import "Courier.h"
@@ -12,20 +12,43 @@
 
 @implementation Courier
 
-//- (void)dealloc {    
-//    [super dealloc];
-//}
+@synthesize baseAPIPath;
+
++ (id)sharedInstance {
+    static dispatch_once_t pred = 0;
+    __strong static id _sharedInstance = nil;
+    dispatch_once(&pred, ^{
+        _sharedInstance = [[self alloc] init];
+    });
+    return _sharedInstance;
+}
+
+- (void)dealloc {
+    [defaultHeader release], defaultHeader = nil;
+    [baseAPIPath release], baseAPIPath = nil;
+    
+    [super dealloc];
+}
 
 - (void)addOperationForPath:(NSString *)path 
                  withMethod:(CRRequestMethod)method
               andParameters:(NSDictionary *)parameters
+                andHTTPBody:(NSData *)bodyData
                     success:(CRRequestOperationSuccessBlock)success 
                     failure:(CRRequestOperationFailureBlock)failure {
+    
+    
+    if (self.baseAPIPath && [path rangeOfString:@"http"].location == NSNotFound) {
+        NSMutableString *newPath = [self.baseAPIPath mutableCopy];
+        [newPath appendFormat:@"/%@", path];
+        path = newPath;
+    }
     
     
     CRRequest *request = [CRRequest requestWithMethod:method 
                                               forPath:path 
                                        withParameters:parameters
+                                          andHTTPBody:bodyData
                                             andHeader:[self defaultHeader]];
     
     CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request
@@ -43,6 +66,7 @@
     [self addOperationForPath:path 
                    withMethod:CRRequestMethodGET
                 andParameters:parameters
+                  andHTTPBody:nil
                       success:success 
                       failure:failure];
 }
@@ -55,6 +79,7 @@
     [self addOperationForPath:path 
                    withMethod:CRRequestMethodPUT
                 andParameters:parameters
+                  andHTTPBody:nil
                       success:success 
                       failure:failure];
 }
@@ -67,6 +92,21 @@
     [self addOperationForPath:path
                    withMethod:CRRequestMethodPOST
                 andParameters:parameters
+                  andHTTPBody:nil
+                      success:success 
+                      failure:failure];
+}
+
+- (void)postPath:(NSString *)path 
+      parameters:(NSDictionary *)parameters
+        httpBody:(NSData *)bodyData
+         success:(CRRequestOperationSuccessBlock)success
+         failure:(CRRequestOperationFailureBlock)failure {
+    
+    [self addOperationForPath:path
+                   withMethod:CRRequestMethodPOST
+                andParameters:parameters
+                  andHTTPBody:bodyData
                       success:success 
                       failure:failure];
 }
@@ -79,6 +119,7 @@
     [self addOperationForPath:path 
                    withMethod:CRRequestMethodDELETE
                 andParameters:parameters
+                  andHTTPBody:nil
                       success:success 
                       failure:failure];
 }

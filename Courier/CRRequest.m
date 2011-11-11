@@ -3,7 +3,7 @@
 //  Courier
 //
 //  Created by Andrew Smith on 10/19/11.
-//  Copyright (c) 2011 Posterous. All rights reserved.
+//  Copyright (c) 2011 Andrew B. Smith. All rights reserved.
 //
 
 #import "CRRequest.h"
@@ -16,11 +16,12 @@
 
 @implementation CRRequest
 
-@synthesize method, path, parameters, defaultHeader;
+@synthesize method, path, parameters, httpBody, defaultHeader;
 
 + (CRRequest *)requestWithMethod:(CRRequestMethod)method
                          forPath:(NSString *)path
-                  withParameters:(NSDictionary *)parameters 
+                  withParameters:(NSDictionary *)parameters
+                     andHTTPBody:(NSMutableData *)bodyData
                        andHeader:(NSDictionary *)header {
     
 	CRRequest *request = [[[CRRequest alloc] init] autorelease];
@@ -28,6 +29,7 @@
     request.method = method;
     request.path = path;
     request.parameters = parameters;
+    request.httpBody = bodyData;
     request.defaultHeader = [header mutableCopy];
     
 	return request;
@@ -43,6 +45,7 @@
     
 	[request setURL:self.requestURL];
 	[request setHTTPMethod:self.requestMethodString];
+    [request setHTTPBody:[NSData dataWithData:self.httpBody]];
 	[request setHTTPShouldHandleCookies:NO];
 	[request setAllHTTPHeaderFields:self.header];
 

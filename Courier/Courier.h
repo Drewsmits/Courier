@@ -3,7 +3,7 @@
 //  Courier
 //
 //  Created by Andrew Smith on 10/19/11.
-//  Copyright (c) 2011 Posterous. All rights reserved.
+//  Copyright (c) 2011 Andrew B. Smith. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,20 +15,25 @@
 @interface Courier : Conductor {
 @private
     NSMutableDictionary *defaultHeader;
+    NSString *baseAPIPath;
 }
 
 /**
- * Default headers used for every request
+ Default headers used for every request
  */
 @property (nonatomic, readonly) NSMutableDictionary *defaultHeader;
 
 /**
- * Add the username and password to the Basic Auth header in the default header.
- * Username and password are encrypted.
+ Route on which all API requests are relative to
+ */
+@property (nonatomic, retain) NSString *baseAPIPath;
+
+/**
+ Add the username and password to the Basic Auth header in the default header.
+ Username and password are encrypted.
  */
 - (void)setBasicAuthUsername:(NSString *)username 
                  andPassword:(NSString *)password;
-
 
 - (void)getPath:(NSString *)path 
      parameters:(NSDictionary *)parameters
@@ -42,6 +47,12 @@
 
 - (void)postPath:(NSString *)path 
       parameters:(NSDictionary *)parameters
+         success:(CRRequestOperationSuccessBlock)success
+         failure:(CRRequestOperationFailureBlock)failure;
+
+- (void)postPath:(NSString *)path 
+      parameters:(NSDictionary *)parameters
+        httpBody:(NSData *)bodyData
          success:(CRRequestOperationSuccessBlock)success
          failure:(CRRequestOperationFailureBlock)failure;
 
