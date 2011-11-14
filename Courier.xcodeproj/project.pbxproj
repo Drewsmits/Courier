@@ -70,7 +70,6 @@
 		DB64C488144F4BCD003D766A /* Courier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Courier.m; sourceTree = "<group>"; };
 		DB64C48F144F4BCD003D766A /* CourierTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourierTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB64C490144F4BCD003D766A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		DB64C492144F4BCD003D766A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		DB64C49A144F4BCD003D766A /* CourierTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CourierTests-Info.plist"; sourceTree = "<group>"; };
 		DB64C49C144F4BCD003D766A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DB64C49E144F4BCD003D766A /* CourierTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourierTests.h; sourceTree = "<group>"; };
@@ -157,7 +156,6 @@
 				DB83D1301450CF9600D94890 /* libz.dylib */,
 				DB64C482144F4BCD003D766A /* Foundation.framework */,
 				DB64C490144F4BCD003D766A /* SenTestingKit.framework */,
-				DB64C492144F4BCD003D766A /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
