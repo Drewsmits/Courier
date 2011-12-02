@@ -15,17 +15,14 @@ end
 
 post '/posttestwithdata' do
     
-    puts response.headers
+    bodyString = request.body.read
+        
+    if bodyString == 'key2=object2&key1=object1'
+        "OK"
+    else
+        render :text => "I hate ruby"
+    end
     
-    puts request.body.read
-    
-    puts response.headers["Content-Type"]
-    
-    #    if request.body.read == {"key1" => "object1", "key2" => "object2"}
-    #    "OK"
-    #else
-    #    render :text => "I hate ruby"
-    #end
 end
 
 delete '/deletetest' do

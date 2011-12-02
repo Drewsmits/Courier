@@ -49,8 +49,8 @@
 
 - (void)addOperationForPath:(NSString *)path 
                  withMethod:(CRRequestMethod)method
-              andParameters:(NSDictionary *)parameters
-                andHTTPBody:(NSData *)bodyData
+           andURLParameters:(NSDictionary *)parameters
+      andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
                     success:(CRRequestOperationSuccessBlock)success 
                     failure:(CRRequestOperationFailureBlock)failure {
     
@@ -61,11 +61,10 @@
         path = newPath;
     }
     
-    
     CRRequest *request = [CRRequest requestWithMethod:method 
                                               forPath:path 
-                                       withParameters:parameters
-                                          andHTTPBody:bodyData
+                                    withURLParameters:parameters
+                                andHTTPBodyParameters:httpBodyParameters
                                             andHeader:[self defaultHeader]];
     
     CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request
@@ -76,67 +75,67 @@
 }
 
 - (void)getPath:(NSString *)path 
-     parameters:(NSDictionary *)parameters
+  URLParameters:(NSDictionary *)urlParameters
         success:(CRRequestOperationSuccessBlock)success
         failure:(CRRequestOperationFailureBlock)failure {
     
     [self addOperationForPath:path 
                    withMethod:CRRequestMethodGET
-                andParameters:parameters
-                  andHTTPBody:nil
+             andURLParameters:urlParameters
+        andHTTPBodyParameters:nil
                       success:success 
                       failure:failure];
 }
 
 - (void)putPath:(NSString *)path 
-     parameters:(NSDictionary *)parameters
+  URLParameters:(NSDictionary *)urlParameters
         success:(CRRequestOperationSuccessBlock)success
         failure:(CRRequestOperationFailureBlock)failure {
     
     [self addOperationForPath:path 
                    withMethod:CRRequestMethodPUT
-                andParameters:parameters
-                  andHTTPBody:nil
+             andURLParameters:urlParameters
+        andHTTPBodyParameters:nil
                       success:success 
                       failure:failure];
 }
 
 - (void)postPath:(NSString *)path 
-      parameters:(NSDictionary *)parameters
+   URLParameters:(NSDictionary *)urlParameters
          success:(CRRequestOperationSuccessBlock)success
          failure:(CRRequestOperationFailureBlock)failure {
     
     [self addOperationForPath:path
                    withMethod:CRRequestMethodPOST
-                andParameters:parameters
-                  andHTTPBody:nil
+             andURLParameters:urlParameters
+        andHTTPBodyParameters:nil
                       success:success 
                       failure:failure];
 }
 
-- (void)postPath:(NSString *)path 
-      parameters:(NSDictionary *)parameters
-        httpBody:(NSData *)bodyData
-         success:(CRRequestOperationSuccessBlock)success
-         failure:(CRRequestOperationFailureBlock)failure {
+- (void)postPath:(NSString *)path URLParameters:(NSDictionary *)urlParameters
+                             HTTPBodyParameters:(NSDictionary *)httpBodyParameters
+                                        success:(CRRequestOperationSuccessBlock)success
+                                        failure:(CRRequestOperationFailureBlock)failure {
     
     [self addOperationForPath:path
                    withMethod:CRRequestMethodPOST
-                andParameters:parameters
-                  andHTTPBody:bodyData
+             andURLParameters:urlParameters
+        andHTTPBodyParameters:httpBodyParameters
                       success:success 
                       failure:failure];
 }
+
 
 - (void)deletePath:(NSString *)path 
-        parameters:(NSDictionary *)parameters
+        URLParameters:(NSDictionary *)urlParameters
            success:(CRRequestOperationSuccessBlock)success
            failure:(CRRequestOperationFailureBlock)failure {
     
     [self addOperationForPath:path 
                    withMethod:CRRequestMethodDELETE
-                andParameters:parameters
-                  andHTTPBody:nil
+             andURLParameters:urlParameters
+        andHTTPBodyParameters:nil
                       success:success 
                       failure:failure];
 }

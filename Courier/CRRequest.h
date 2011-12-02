@@ -36,34 +36,80 @@ typedef enum {
 @private
     CRRequestMethod method;
     NSString *path;
-    NSMutableDictionary *parameters;
-    NSMutableData *httpBody;
+    NSMutableDictionary *URLParameters;
+    NSMutableDictionary *HTTPBodyParameters;
     NSMutableDictionary *defaultHeader;
 }
 
+/**
+ Enum of the request method
+ */
 @property (nonatomic, assign) CRRequestMethod method;
+
+/**
+ String representation of the request method
+ */
 @property (nonatomic, readonly) NSString *requestMethodString;
 
+/**
+ The path to the network resource
+ */
 @property (readonly, nonatomic, copy) NSString *path;
 
-@property (readonly, nonatomic, retain) NSDictionary *parameters;
+/**
+ Parameters to add to the request URL.
+ */
+@property (readonly, nonatomic, retain) NSDictionary *URLParameters;
 
-@property (nonatomic, retain) NSMutableData *httpBody;
+/**
+ Parameters to insert in into the HTTP body
+ */
+@property (readonly, nonatomic, retain) NSDictionary *HTTPBodyParameters;
 
-@property (nonatomic, readonly) NSDictionary *header;
+/**
+ Default header for the request
+ */
+@property (readonly, nonatomic, retain) NSMutableDictionary *defaultHeader;
 
-@property (nonatomic, retain) NSMutableDictionary *defaultHeader;
-
-@property (nonatomic, readonly) NSString *queryString;
-
-@property (nonatomic, readonly) NSURL *requestURL;
-
+/**
+ Factory method for building the CRRequest
+ 
+ @param
+ @param
+ @param
+ @param
+ @param
+ 
+ */
 + (CRRequest *)requestWithMethod:(CRRequestMethod)method
                          forPath:(NSString *)path
-                  withParameters:(NSDictionary *)parameters
-                     andHTTPBody:(NSData *)bodyData
+               withURLParameters:(NSDictionary *)urlParameters
+           andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
                        andHeader:(NSDictionary *)header;
 
+/**
+ Builds the request header
+ */
+- (NSDictionary *)header;
+
+/**
+ Builds the http body data from the HTTPBodyParameters
+ */
+- (NSData *)HTTPBodyData;
+
+/**
+ Builds the URL query string from the URLParameters
+ */
+- (NSString *)URLQueryString;
+
+/**
+ Builds the request URL from the passed in path
+ */
+- (NSURL *)requestURL;
+
+/**
+ Builds the URL request
+ */
 - (NSMutableURLRequest *)URLRequest;
 
 @end
