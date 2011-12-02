@@ -306,4 +306,44 @@
     STAssertTrue(success, @"Response should be 500");
 }
 
+- (void)testPostPathWithHTTPBody {
+    
+    NSString *path = @"http://localhost:4567/posttestwithdata";
+    
+    __block BOOL hasCalledBack = NO;
+    __block BOOL success = NO;
+    
+    CRRequestOperationSuccessBlock successBlock = ^(CRRequest *request, CRResponse *response){        
+        hasCalledBack = YES;
+        
+        if ([response statusCode] == 200) {            
+            success = YES;
+        }
+        
+    };
+    
+    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error){        
+        hasCalledBack = YES;
+        NSLog(@"FAILED! %@", error);
+    }; 
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"object1", @"key1", @"object2", @"key2", nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
+    
+    [[Courier sharedInstance] postPath:path
+                            parameters:nil
+                              httpBody:data
+                               success:successBlock 
+                               failure:failBlock];
+    
+    NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:1];
+    while (hasCalledBack == NO) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:loopUntil];
+    }
+    
+    STAssertTrue(success, @"Response should be 200");
+    
+}
+
 @end

@@ -69,6 +69,8 @@ typedef enum {
 @property (nonatomic, readonly) NSMutableData *data;
 @property (nonatomic, readonly) BOOL success;
 
+@property (nonatomic, readonly) NSString *responseDescription;
+
 + (id)responseWithResponse:(NSURLResponse *)response 
                andCapacity:(NSInteger)capacity;
 

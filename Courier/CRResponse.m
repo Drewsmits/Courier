@@ -113,4 +113,8 @@
     return [[data retain] autorelease];
 }
 
+- (NSString *)responseDescription {
+    return [NSString stringWithUTF8String:[self.data bytes]];;
+}
+
 @end

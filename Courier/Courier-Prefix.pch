@@ -5,3 +5,17 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
 #endif
+
+// Comment out to silence logs
+#define CONDUCTOR_LOG 1
+
+#if defined(DEBUG) && defined(CONDUCTOR_LOG)
+#define DLog(...) NSLog(@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
+#define WLog(...) NSLog(@"\n!!!!\n%s %@\n!!!!\n", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
+#else
+#define DLog(...) do { } while (0)
+#define WLog(...) do { } while (0)
+#ifndef NS_BLOCK_ASSERTIONS
+#define NS_BLOCK_ASSERTIONS
+#endif
+#endif

@@ -13,6 +13,21 @@ post '/posttest' do
     "OK"
 end
 
+post '/posttestwithdata' do
+    
+    puts response.headers
+    
+    puts request.body.read
+    
+    puts response.headers["Content-Type"]
+    
+    #    if request.body.read == {"key1" => "object1", "key2" => "object2"}
+    #    "OK"
+    #else
+    #    render :text => "I hate ruby"
+    #end
+end
+
 delete '/deletetest' do
     "OK"
 end

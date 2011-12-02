@@ -118,7 +118,7 @@
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:self.defaultHeader];
     
-    if (self.parameters && self.method != CRRequestMethodGET) {
+    if ((self.parameters || self.httpBody) && self.method != CRRequestMethodGET) {
         NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
         [dict setObject:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset] forKey:@"Content-Type"];
     }

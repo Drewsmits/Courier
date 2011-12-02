@@ -45,13 +45,17 @@ typedef enum {
 @property (nonatomic, readonly) NSString *requestMethodString;
 
 @property (readonly, nonatomic, copy) NSString *path;
+
 @property (readonly, nonatomic, retain) NSDictionary *parameters;
+
 @property (nonatomic, retain) NSMutableData *httpBody;
 
 @property (nonatomic, readonly) NSDictionary *header;
+
 @property (nonatomic, retain) NSMutableDictionary *defaultHeader;
 
 @property (nonatomic, readonly) NSString *queryString;
+
 @property (nonatomic, readonly) NSURL *requestURL;
 
 + (CRRequest *)requestWithMethod:(CRRequestMethod)method
