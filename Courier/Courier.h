@@ -53,28 +53,27 @@
                  andPassword:(NSString *)password;
 
 - (void)getPath:(NSString *)path 
-     parameters:(NSDictionary *)parameters
+  URLParameters:(NSDictionary *)urlParameters
         success:(CRRequestOperationSuccessBlock)success
         failure:(CRRequestOperationFailureBlock)failure;
 
 - (void)putPath:(NSString *)path 
-     parameters:(NSDictionary *)parameters
+  URLParameters:(NSDictionary *)urlParameters
         success:(CRRequestOperationSuccessBlock)success
         failure:(CRRequestOperationFailureBlock)failure;
 
 - (void)postPath:(NSString *)path 
-      parameters:(NSDictionary *)parameters
+   URLParameters:(NSDictionary *)urlParameters
          success:(CRRequestOperationSuccessBlock)success
          failure:(CRRequestOperationFailureBlock)failure;
 
-- (void)postPath:(NSString *)path 
-      parameters:(NSDictionary *)parameters
-        httpBody:(NSData *)bodyData
-         success:(CRRequestOperationSuccessBlock)success
-         failure:(CRRequestOperationFailureBlock)failure;
+- (void)postPath:(NSString *)path URLParameters:(NSDictionary *)urlParameters
+                             HTTPBodyParameters:(NSDictionary *)httpBodyParameters
+                                        success:(CRRequestOperationSuccessBlock)success
+                                        failure:(CRRequestOperationFailureBlock)failure;
 
 - (void)deletePath:(NSString *)path 
-        parameters:(NSDictionary *)parameters
+     URLParameters:(NSDictionary *)urlParameters
            success:(CRRequestOperationSuccessBlock)success
            failure:(CRRequestOperationFailureBlock)failure;
 

@@ -47,22 +47,23 @@
 
     NSString *path = @"path/to/some/resource";
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"one", @"two", @"three", nil]
-                                                       forKeys:[NSArray arrayWithObjects:@"A"  , @"B"  , @"C"    , nil]];
-    
-    NSData *data = [path dataUsingEncoding:NSASCIIStringEncoding];
-    
+    NSDictionary *URLParams = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"one", @"two", @"three", nil]
+                                                          forKeys:[NSArray arrayWithObjects:@"A"  , @"B"  , @"C"    , nil]];
+
+    NSDictionary *HTTPBodyParams = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"four", @"five", @"six", nil]
+                                                               forKeys:[NSArray arrayWithObjects:@"D"  , @"E"  , @"F"    , nil]];
+        
     CRRequest *request = [CRRequest requestWithMethod:CRRequestMethodGET
                                               forPath:path
-                                       withParameters:params
-                                          andHTTPBody:data
+                                    withURLParameters:URLParams
+                                andHTTPBodyParameters:HTTPBodyParams
                                             andHeader:nil];
 
     STAssertNotNil(request, @"Should create request");
     STAssertEquals(request.method, CRRequestMethodGET, @"Should have correct method");
     STAssertEqualObjects(request.path, path, @"Should have correct path");
-    STAssertEqualObjects(request.parameters, params, @"Should have correct params");
-    STAssertEqualObjects(request.httpBody, data, @"Request should have correct HTTP body");
+    STAssertEqualObjects(request.URLParameters, URLParams, @"Should have correct params");
+    STAssertEqualObjects(request.HTTPBodyParameters, HTTPBodyParams, @"Request should have correct HTTP body");
         
     NSString *expectedPath = [NSString stringWithFormat:@"%@?A=one&B=two&C=three", path];
     NSURL *expectedURL = [NSURL URLWithString:expectedPath];
@@ -94,7 +95,7 @@
     }; 
         
     [[Courier sharedInstance] getPath:path
-                           parameters:nil
+                        URLParameters:nil
                               success:successBlock 
                               failure:failBlock];
     
@@ -128,7 +129,7 @@
     }; 
     
     [[Courier sharedInstance] getPath:path
-                           parameters:nil
+                        URLParameters:nil
                               success:successBlock 
                               failure:failBlock];
     
@@ -163,7 +164,7 @@
     }; 
     
     [[Courier sharedInstance] putPath:path
-                           parameters:nil
+                        URLParameters:nil
                               success:successBlock 
                               failure:failBlock];
     
@@ -198,7 +199,7 @@
     }; 
     
     [[Courier sharedInstance] postPath:path
-                            parameters:nil
+                         URLParameters:nil
                                success:successBlock 
                                failure:failBlock];
     
@@ -229,7 +230,7 @@
     }; 
     
     [[Courier sharedInstance] deletePath:path
-                              parameters:nil
+                              URLParameters:nil
                                  success:successBlock 
                                  failure:failBlock];
     
@@ -262,7 +263,7 @@
     NSDictionary *params = [NSDictionary dictionaryWithObject:@"myValue" forKey:@"myKey"];
     
     [[Courier sharedInstance] getPath:path
-                           parameters:params
+                        URLParameters:params
                               success:successBlock 
                               failure:failBlock];
     
@@ -293,7 +294,7 @@
     NSDictionary *params = [NSDictionary dictionaryWithObject:@"blarg" forKey:@"gigigts"];
     
     [[Courier sharedInstance] getPath:path
-                           parameters:params
+                        URLParameters:params
                               success:nil 
                               failure:failBlock];
     
@@ -328,11 +329,10 @@
     }; 
     
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"object1", @"key1", @"object2", @"key2", nil];
-    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
     
     [[Courier sharedInstance] postPath:path
-                            parameters:nil
-                              httpBody:data
+                         URLParameters:nil
+                    HTTPBodyParameters:dict
                                success:successBlock 
                                failure:failBlock];
     
@@ -343,7 +343,6 @@
     }
     
     STAssertTrue(success, @"Response should be 200");
-    
 }
 
 @end

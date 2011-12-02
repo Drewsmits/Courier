@@ -28,53 +28,57 @@
 
 @interface CRRequest ()
 @property (readwrite, nonatomic, copy) NSString *path;
-@property (readwrite, nonatomic, retain) NSDictionary *parameters;
+@property (readwrite, nonatomic, retain) NSDictionary *defaultHeader;
+@property (readwrite, nonatomic, retain) NSDictionary *URLParameters;
+@property (readwrite, nonatomic, retain) NSDictionary *HTTPBodyParameters;
 @end
 
 @implementation CRRequest
 
-@synthesize method, path, parameters, httpBody, defaultHeader;
+@synthesize method, path, URLParameters, HTTPBodyParameters, defaultHeader;
 
 + (CRRequest *)requestWithMethod:(CRRequestMethod)method
                          forPath:(NSString *)path
-                  withParameters:(NSDictionary *)parameters
-                     andHTTPBody:(NSMutableData *)bodyData
+               withURLParameters:(NSDictionary *)urlParameters
+           andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
                        andHeader:(NSDictionary *)header {
     
 	CRRequest *request = [[[CRRequest alloc] init] autorelease];
     
     request.method = method;
     request.path = path;
-    request.parameters = parameters;
-    request.httpBody = bodyData;
+    request.URLParameters = urlParameters;
+    request.HTTPBodyParameters = httpBodyParameters;
     request.defaultHeader = [header mutableCopy];
     
 	return request;
 }
 
+#pragma mark - Accessors
+
 - (NSMutableURLRequest *)URLRequest {
     
 	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
     
-    if (self.parameters && self.method != CRRequestMethodGET) {
-        [request setHTTPBody:[self.queryString dataUsingEncoding:NSUTF8StringEncoding]];
-    }
+//    if (self.URLParameters && self.method != CRRequestMethodGET) {
+//        [request setHTTPBody:[[self URLQueryString] dataUsingEncoding:NSUTF8StringEncoding]];
+//    }
     
 	[request setURL:self.requestURL];
 	[request setHTTPMethod:self.requestMethodString];
-    [request setHTTPBody:[NSData dataWithData:self.httpBody]];
+    [request setHTTPBody:[self HTTPBodyData]];
 	[request setHTTPShouldHandleCookies:NO];
-	[request setAllHTTPHeaderFields:self.header];
+	[request setAllHTTPHeaderFields:[self header]];
 
     return  request;
 }
 
-- (NSString *)queryString {
+- (NSString *)URLQueryString {
     NSMutableArray *mutableParameterComponents = [NSMutableArray array];
     
-    for (id parameter in self.parameters) {
+    for (id parameter in self.URLParameters) {
         NSString *component = [NSString stringWithFormat:@"%@=%@", [[parameter description] urlEncodedStringWithEncoding:NSUTF8StringEncoding], 
-                               [[[self.parameters valueForKey:parameter] description] urlEncodedStringWithEncoding:NSUTF8StringEncoding]];
+                               [[[self.URLParameters valueForKey:parameter] description] urlEncodedStringWithEncoding:NSUTF8StringEncoding]];
         
         [mutableParameterComponents addObject:component];
     }
@@ -86,13 +90,11 @@
 - (NSURL *)requestURL {
     if (self.method == CRRequestMethodGET) {
         NSString *stringToAppend = [self.path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@";
-        return [NSURL URLWithString:[self.path stringByAppendingFormat:stringToAppend, self.queryString]];
+        return [NSURL URLWithString:[self.path stringByAppendingFormat:stringToAppend, [self URLQueryString]]];
     } else {
         return [NSURL URLWithString:self.path];
     }
 }
-
-#pragma mark - Accessors
 
 - (NSString *)requestMethodString {
     switch (self.method) {
@@ -118,12 +120,28 @@
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:self.defaultHeader];
     
-    if ((self.parameters || self.httpBody) && self.method != CRRequestMethodGET) {
+    if ((self.URLParameters || self.HTTPBodyParameters) && self.method != CRRequestMethodGET) {
         NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
         [dict setObject:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset] forKey:@"Content-Type"];
     }
 
     return [NSDictionary dictionaryWithDictionary:dict];
+}
+
+- (NSData *)HTTPBodyData {
+    
+    NSMutableArray *mutableParameterComponents = [NSMutableArray array];
+    
+    for (id parameter in self.HTTPBodyParameters) {
+        NSString *component = [NSString stringWithFormat:@"%@=%@", [parameter description], 
+                               [[self.HTTPBodyParameters valueForKey:parameter] description]];
+        
+        [mutableParameterComponents addObject:component];
+    }
+    
+    NSString *andJoinedString = [mutableParameterComponents componentsJoinedByString:@"&"];
+
+    return [andJoinedString dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 @end
