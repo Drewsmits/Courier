@@ -24,7 +24,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Conductor.h"
+#import "Conductor/Conductor.h"
 
 #import "CRRequest.h"
 #import "CRRequestOperation.h"

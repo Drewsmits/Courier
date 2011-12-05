@@ -25,7 +25,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "CDOperation.h"
+#import "Conductor/CDOperation.h"
 
 #import "CRRequest.h"
 #import "CRResponse.h"
