@@ -98,7 +98,7 @@
 
 - (BOOL)success {
     
-    if (self.statusCode > 100 && self.statusCode < 300) {
+    if (self.statusCode > 100 && self.statusCode <= 302) {
         return YES;
     }
     

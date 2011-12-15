@@ -46,6 +46,11 @@
 @property (nonatomic, retain) NSString *baseAPIPath;
 
 /**
+ Returns a new Courier instance
+ */
++ (Courier *)courier;
+
+/**
  Add the username and password to the Basic Auth header in the default header.
  Username and password are encrypted.
  */

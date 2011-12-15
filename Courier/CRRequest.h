@@ -39,6 +39,7 @@ typedef enum {
     NSMutableDictionary *URLParameters;
     NSMutableDictionary *HTTPBodyParameters;
     NSMutableDictionary *defaultHeader;
+    BOOL shouldHandleCookies;
 }
 
 /**
@@ -54,22 +55,27 @@ typedef enum {
 /**
  The path to the network resource
  */
-@property (readonly, nonatomic, copy) NSString *path;
+@property (nonatomic, readonly, copy) NSString *path;
 
 /**
  Parameters to add to the request URL.
  */
-@property (readonly, nonatomic, retain) NSDictionary *URLParameters;
+@property (nonatomic, readonly, retain) NSDictionary *URLParameters;
 
 /**
  Parameters to insert in into the HTTP body
  */
-@property (readonly, nonatomic, retain) NSDictionary *HTTPBodyParameters;
+@property (nonatomic, readonly, retain) NSDictionary *HTTPBodyParameters;
 
 /**
  Default header for the request
  */
-@property (readonly, nonatomic, retain) NSMutableDictionary *defaultHeader;
+@property (nonatomic, readonly, retain) NSMutableDictionary *defaultHeader;
+
+/**
+ Determines if the request should handle cookies
+ */
+@property (nonatomic, readonly, assign) BOOL shouldHandleCookies;
 
 /**
  Factory method for building the CRRequest
@@ -85,7 +91,8 @@ typedef enum {
                          forPath:(NSString *)path
                withURLParameters:(NSDictionary *)urlParameters
            andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                       andHeader:(NSDictionary *)header;
+                       andHeader:(NSDictionary *)header
+             shouldHandleCookies:(BOOL)handleCookies;
 
 /**
  Builds the request header

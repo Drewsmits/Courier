@@ -27,21 +27,23 @@
 #import "NSString+Courier.h"
 
 @interface CRRequest ()
-@property (readwrite, nonatomic, copy) NSString *path;
-@property (readwrite, nonatomic, retain) NSDictionary *defaultHeader;
-@property (readwrite, nonatomic, retain) NSDictionary *URLParameters;
-@property (readwrite, nonatomic, retain) NSDictionary *HTTPBodyParameters;
+@property (nonatomic, readwrite, copy) NSString *path;
+@property (nonatomic, readwrite, retain) NSDictionary *defaultHeader;
+@property (nonatomic, readwrite, retain) NSDictionary *URLParameters;
+@property (nonatomic, readwrite, retain) NSDictionary *HTTPBodyParameters;
+@property (nonatomic, readwrite, assign) BOOL shouldHandleCookies;
 @end
 
 @implementation CRRequest
 
-@synthesize method, path, URLParameters, HTTPBodyParameters, defaultHeader;
+@synthesize method, path, URLParameters, HTTPBodyParameters, defaultHeader, shouldHandleCookies;
 
 + (CRRequest *)requestWithMethod:(CRRequestMethod)method
                          forPath:(NSString *)path
                withURLParameters:(NSDictionary *)urlParameters
            andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                       andHeader:(NSDictionary *)header {
+                       andHeader:(NSDictionary *)header
+             shouldHandleCookies:(BOOL)handleCookies {
     
 	CRRequest *request = [[[CRRequest alloc] init] autorelease];
     
@@ -50,6 +52,7 @@
     request.URLParameters = urlParameters;
     request.HTTPBodyParameters = httpBodyParameters;
     request.defaultHeader = [header mutableCopy];
+    request.shouldHandleCookies = handleCookies;
     
 	return request;
 }
@@ -63,7 +66,7 @@
 	[request setURL:self.requestURL];
 	[request setHTTPMethod:self.requestMethodString];
     [request setHTTPBody:[self HTTPBodyData]];
-	[request setHTTPShouldHandleCookies:NO];
+	[request setHTTPShouldHandleCookies:self.shouldHandleCookies];
 	[request setAllHTTPHeaderFields:[self header]];
 
     return  request;
@@ -119,9 +122,6 @@
     if ((self.URLParameters || self.HTTPBodyParameters) && self.method != CRRequestMethodGET) {
         NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
         [dict setObject:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset] forKey:@"Content-Type"];
-       
-//        NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSASCIIStringEncoding));
-//        [dict setObject:[NSString stringWithFormat:@"audio/x-wav; charset=%@", charset] forKey:@"Content-Type"];
     }
 
     return [NSDictionary dictionaryWithDictionary:dict];
@@ -132,8 +132,11 @@
     NSMutableArray *mutableParameterComponents = [NSMutableArray array];
     
     for (id parameter in self.HTTPBodyParameters) {
-        NSString *component = [NSString stringWithFormat:@"%@=%@", [parameter description], 
-                               [[self.HTTPBodyParameters valueForKey:parameter] description]];
+        
+        NSString *encodedKey = [[parameter description] urlEncodedStringWithEncoding:NSUTF8StringEncoding];
+        NSString *encodedValue = [[[self.HTTPBodyParameters valueForKey:parameter] description] urlEncodedStringWithEncoding:NSUTF8StringEncoding];
+        
+        NSString *component = [NSString stringWithFormat:@"%@=%@", encodedKey, encodedValue];
         
         [mutableParameterComponents addObject:component];
     }

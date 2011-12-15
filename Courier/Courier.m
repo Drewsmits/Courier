@@ -47,6 +47,12 @@
     [super dealloc];
 }
 
++ (Courier *)courier {
+    return [[[self alloc] init] autorelease];
+}
+
+#pragma mark - API
+
 - (void)addOperationForPath:(NSString *)path 
                  withMethod:(CRRequestMethod)method
            andURLParameters:(NSDictionary *)parameters
@@ -65,7 +71,8 @@
                                               forPath:path 
                                     withURLParameters:parameters
                                 andHTTPBodyParameters:httpBodyParameters
-                                            andHeader:[self defaultHeader]];
+                                            andHeader:[self defaultHeader]
+                                  shouldHandleCookies:NO];
     
     CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request
                                                                      success:success

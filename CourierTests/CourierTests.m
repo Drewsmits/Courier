@@ -57,7 +57,8 @@
                                               forPath:path
                                     withURLParameters:URLParams
                                 andHTTPBodyParameters:HTTPBodyParams
-                                            andHeader:nil];
+                                            andHeader:nil
+                                  shouldHandleCookies:NO];
 
     STAssertNotNil(request, @"Should create request");
     STAssertEquals(request.method, CRRequestMethodGET, @"Request should have correct method");
@@ -76,7 +77,8 @@
                                               forPath:path
                                     withURLParameters:URLParams
                                 andHTTPBodyParameters:nil
-                                            andHeader:nil];
+                                            andHeader:nil
+                                  shouldHandleCookies:NO];
     
     NSString *expectedPath = [NSString stringWithFormat:@"%@?A=one&B=two&C=three", path];
     NSURL *expectedURL = [NSURL URLWithString:expectedPath];
@@ -94,7 +96,8 @@
                                               forPath:path
                                     withURLParameters:nil
                                 andHTTPBodyParameters:HTTPBodyParams
-                                            andHeader:nil];
+                                            andHeader:nil
+                                  shouldHandleCookies:NO];
     
     NSString *expectedString = [NSString stringWithString:@"D=four&E=five&F=six"];
         
@@ -113,7 +116,8 @@
                                               forPath:nil
                                     withURLParameters:nil
                                 andHTTPBodyParameters:nil
-                                            andHeader:header];
+                                            andHeader:header
+                                  shouldHandleCookies:NO];
     
     STAssertEqualObjects(header, [request header], @"Request should have correct header");
 }
