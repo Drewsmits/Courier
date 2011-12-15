@@ -534,6 +534,80 @@
 			};
 			name = Release;
 		};
+		DBD03A9B14996EF400AD00FC /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+			};
+			name = "Ad Hoc";
+		};
+		DBD03A9C14996EF400AD00FC /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/Courier.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Courier/Courier-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRIVATE_HEADERS_FOLDER_PATH = include/Courier/Private;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = include/Courier;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/include/Conductor/";
+			};
+			name = "Ad Hoc";
+		};
+		DBD03A9D14996EF400AD00FC /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Courier/Courier-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "CourierTests/CourierTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/include/** $(BUILT_PRODUCTS_DIR)/include/Courier $(BUILT_PRODUCTS_DIR)/include/Conductor";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = "Ad Hoc";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -541,6 +615,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DB64C479144F4BB0003D766A /* Debug */,
+				DBD03A9B14996EF400AD00FC /* Ad Hoc */,
 				DB64C47A144F4BB0003D766A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -550,6 +625,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DB64C4A2144F4BCD003D766A /* Debug */,
+				DBD03A9C14996EF400AD00FC /* Ad Hoc */,
 				DB64C4A3144F4BCD003D766A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -559,6 +635,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DB64C4A5144F4BCD003D766A /* Debug */,
+				DBD03A9D14996EF400AD00FC /* Ad Hoc */,
 				DB64C4A6144F4BCD003D766A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

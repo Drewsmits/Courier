@@ -33,6 +33,9 @@
 @interface NSData (Courier)
 
 - (NSString *)base64EncodedString;
++ (id)dataWithBase64EncodedString:(NSString *)string;
+
+
 - (NSData *)dataByGZipCompressingWithError:(NSError **)error;
 - (NSData *)dataByGZipDecompressingDataWithError:(NSError **)error;
 

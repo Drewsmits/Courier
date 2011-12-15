@@ -60,10 +60,6 @@
     
 	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
     
-//    if (self.URLParameters && self.method != CRRequestMethodGET) {
-//        [request setHTTPBody:[[self URLQueryString] dataUsingEncoding:NSUTF8StringEncoding]];
-//    }
-    
 	[request setURL:self.requestURL];
 	[request setHTTPMethod:self.requestMethodString];
     [request setHTTPBody:[self HTTPBodyData]];
@@ -123,6 +119,9 @@
     if ((self.URLParameters || self.HTTPBodyParameters) && self.method != CRRequestMethodGET) {
         NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
         [dict setObject:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset] forKey:@"Content-Type"];
+       
+//        NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSASCIIStringEncoding));
+//        [dict setObject:[NSString stringWithFormat:@"audio/x-wav; charset=%@", charset] forKey:@"Content-Type"];
     }
 
     return [NSDictionary dictionaryWithDictionary:dict];
