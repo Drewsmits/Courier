@@ -46,6 +46,12 @@
 @property (nonatomic, retain) NSString *baseAPIPath;
 
 /**
+ Determines whether or not the Courier instance should handle cookies using the
+ default NSHTTPCookieStorage
+ */
+@property (nonatomic, assign) BOOL shouldHandleCookies;
+
+/**
  Returns a new Courier instance
  */
 + (Courier *)courier;
@@ -81,5 +87,7 @@
      URLParameters:(NSDictionary *)urlParameters
            success:(CRRequestOperationSuccessBlock)success
            failure:(CRRequestOperationFailureBlock)failure;
+
+- (void)deleteCookies;
 
 @end

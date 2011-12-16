@@ -29,13 +29,13 @@
 
 @implementation Courier
 
-@synthesize baseAPIPath;
+@synthesize baseAPIPath, shouldHandleCookies;
 
 + (id)sharedInstance {
     static dispatch_once_t pred = 0;
     __strong static id _sharedInstance = nil;
     dispatch_once(&pred, ^{
-        _sharedInstance = [[self alloc] init];
+        _sharedInstance = [[self courier] retain];
     });
     return _sharedInstance;
 }
@@ -48,7 +48,9 @@
 }
 
 + (Courier *)courier {
-    return [[[self alloc] init] autorelease];
+    Courier *courier = [[[self alloc] init] autorelease];
+    courier.shouldHandleCookies = NO;
+    return courier;
 }
 
 #pragma mark - API
@@ -72,7 +74,7 @@
                                     withURLParameters:parameters
                                 andHTTPBodyParameters:httpBodyParameters
                                             andHeader:[self defaultHeader]
-                                  shouldHandleCookies:NO];
+                                  shouldHandleCookies:self.shouldHandleCookies];
     
     CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request
                                                                      success:success
@@ -179,6 +181,15 @@
     defaultHeader = [dict retain];
     
     return [[defaultHeader retain] autorelease];
+}
+
+#pragma mark - Cookies
+
+- (void)deleteCookies {
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [cookieStorage cookies]) {
+        [cookieStorage deleteCookie:cookie];
+    }
 }
 
 
