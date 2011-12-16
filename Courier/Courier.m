@@ -31,24 +31,17 @@
 
 @synthesize baseAPIPath, shouldHandleCookies;
 
-- (void)dealloc {
-    [defaultHeader release], defaultHeader = nil;
-    [baseAPIPath release], baseAPIPath = nil;
-    
-    [super dealloc];
-}
-
 + (id)sharedInstance {
     static dispatch_once_t pred = 0;
     __strong static id _sharedInstance = nil;
     dispatch_once(&pred, ^{
-        _sharedInstance = [[self courier] retain];
+        _sharedInstance = [self courier];
     });
     return _sharedInstance;
 }
 
 + (Courier *)courier {
-    Courier *courier = [[[self alloc] init] autorelease];
+    Courier *courier = [[self alloc] init];
     courier.shouldHandleCookies = NO;
     return courier;
 }
@@ -64,7 +57,7 @@
     
     
     if (self.baseAPIPath && [path rangeOfString:@"http"].location == NSNotFound) {
-        NSMutableString *newPath = [[self.baseAPIPath mutableCopy] autorelease];
+        NSMutableString *newPath = [self.baseAPIPath mutableCopy];
         [newPath appendFormat:@"/%@", path];
         path = newPath;
     }
@@ -161,7 +154,7 @@
 }
 
 - (NSMutableDictionary *)defaultHeader {
-    if (defaultHeader) return [[defaultHeader retain] autorelease];
+    if (defaultHeader) return defaultHeader;
     
     defaultHeader = [[NSMutableDictionary alloc] init];
     
@@ -178,7 +171,7 @@
 	// User-Agent Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43
 	//[self setDefaultHeader:@"User-Agent" value:[NSString stringWithFormat:@"%@/%@ (%@, %@ %@, %@, Scale/%f)", [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey], [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey], @"unknown", [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion], [[UIDevice currentDevice] model], ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] ? [[UIScreen mainScreen] scale] : 1.0)]];
         
-    return [[defaultHeader retain] autorelease];
+    return defaultHeader;
 }
 
 #pragma mark - Cookies

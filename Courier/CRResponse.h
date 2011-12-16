@@ -64,12 +64,12 @@ typedef enum {
     NSMutableData *data;
 }
 
-@property (nonatomic, retain) NSURLResponse *response;
+@property (nonatomic, strong) NSURLResponse *response;
 @property (nonatomic, assign) NSInteger dataCapacity;
-@property (nonatomic, readonly) NSMutableData *data;
+@property (weak, nonatomic, readonly) NSMutableData *data;
 @property (nonatomic, readonly) BOOL success;
 
-@property (nonatomic, readonly) NSString *responseDescription;
+@property (weak, nonatomic, readonly) NSString *responseDescription;
 
 + (id)responseWithResponse:(NSURLResponse *)response 
                andCapacity:(NSInteger)capacity;

@@ -31,16 +31,15 @@
             dataCapacity;
 
 - (void)dealloc {
-    [response release], response = nil;
-    [data release], data = nil;
+    response = nil;
+    data = nil;
     
-    [super dealloc];
 }
 
 + (id)responseWithResponse:(NSURLResponse *)response 
                andCapacity:(NSInteger)capacity {
     
-    CRResponse *rep = [[[self alloc] init] autorelease];
+    CRResponse *rep = [[self alloc] init];
     
     rep.response = response;
     rep.dataCapacity = capacity;
@@ -108,9 +107,9 @@
 #pragma mark - Accessors
 
 - (NSMutableData *)data {
-    if (data) return [[data retain] autorelease];
+    if (data) return data;
     data = [[NSMutableData alloc] initWithCapacity:self.dataCapacity];
-    return [[data retain] autorelease];
+    return data;
 }
 
 - (NSString *)responseDescription {

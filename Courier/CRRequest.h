@@ -50,32 +50,32 @@ typedef enum {
 /**
  String representation of the request method
  */
-@property (nonatomic, readonly) NSString *requestMethodString;
+@property (nonatomic, readonly, strong) NSString *requestMethodString;
 
 /**
  The path to the network resource
  */
-@property (nonatomic, readonly, copy) NSString *path;
+@property (nonatomic, readonly, strong) NSString *path;
 
 /**
  Parameters to add to the request URL.
  */
-@property (nonatomic, readonly, retain) NSDictionary *URLParameters;
+@property (nonatomic, readonly, strong) NSDictionary *URLParameters;
 
 /**
  Parameters to insert in into the HTTP body
  */
-@property (nonatomic, readonly, retain) NSDictionary *HTTPBodyParameters;
+@property (nonatomic, readonly, strong) NSDictionary *HTTPBodyParameters;
 
 /**
  Default header for the request
  */
-@property (nonatomic, readonly, retain) NSMutableDictionary *defaultHeader;
+@property (nonatomic, readonly, strong) NSMutableDictionary *defaultHeader;
 
 /**
  Determines if the request should handle cookies
  */
-@property (nonatomic, readonly, assign) BOOL shouldHandleCookies;
+@property (nonatomic, readonly) BOOL shouldHandleCookies;
 
 /**
  Factory method for building the CRRequest

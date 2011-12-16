@@ -27,11 +27,11 @@
 #import "NSString+Courier.h"
 
 @interface CRRequest ()
-@property (nonatomic, readwrite, copy) NSString *path;
-@property (nonatomic, readwrite, retain) NSDictionary *defaultHeader;
-@property (nonatomic, readwrite, retain) NSDictionary *URLParameters;
-@property (nonatomic, readwrite, retain) NSDictionary *HTTPBodyParameters;
-@property (nonatomic, readwrite, assign) BOOL shouldHandleCookies;
+@property (nonatomic, readwrite, strong) NSString *path;
+@property (nonatomic, readwrite, strong) NSDictionary *defaultHeader;
+@property (nonatomic, readwrite, strong) NSDictionary *URLParameters;
+@property (nonatomic, readwrite, strong) NSDictionary *HTTPBodyParameters;
+@property (nonatomic, readwrite, weak) BOOL shouldHandleCookies;
 @end
 
 @implementation CRRequest
@@ -39,12 +39,11 @@
 @synthesize method, path, URLParameters, HTTPBodyParameters, defaultHeader, shouldHandleCookies;
 
 - (void)dealloc {
-    [path release], path = nil;
-    [defaultHeader release], defaultHeader = nil;
-    [URLParameters release], URLParameters = nil;
-    [HTTPBodyParameters release], HTTPBodyParameters = nil;
+    path = nil;
+    defaultHeader = nil;
+    URLParameters = nil;
+    HTTPBodyParameters = nil;
     
-    [super dealloc];
 }
 
 + (CRRequest *)requestWithMethod:(CRRequestMethod)method
@@ -54,13 +53,13 @@
                        andHeader:(NSDictionary *)header
              shouldHandleCookies:(BOOL)handleCookies {
     
-	CRRequest *request = [[[CRRequest alloc] init] autorelease];
+	CRRequest *request = [[CRRequest alloc] init];
     
     request.method = method;
     request.path = path;
     request.URLParameters = urlParameters;
     request.HTTPBodyParameters = httpBodyParameters;
-    request.defaultHeader = [[header mutableCopy] autorelease];
+    request.defaultHeader = [header mutableCopy];
     request.shouldHandleCookies = handleCookies;
     
 	return request;
@@ -70,7 +69,7 @@
 
 - (NSMutableURLRequest *)URLRequest {
     
-	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     
 	[request setURL:self.requestURL];
 	[request setHTTPMethod:self.requestMethodString];
@@ -129,7 +128,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:self.defaultHeader];
     
     if ((self.URLParameters || self.HTTPBodyParameters) && self.method != CRRequestMethodGET) {
-        NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+        NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
         [dict setObject:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset] forKey:@"Content-Type"];
     }
 

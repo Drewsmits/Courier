@@ -31,9 +31,9 @@
 #pragma mark - Private
 
 @interface CRRequestOperation ()
-@property (readwrite, nonatomic, retain) NSURLConnection *connection;
-@property (readwrite, nonatomic, retain) CRRequest *request;
-@property (readwrite, nonatomic, retain) CRResponse *response;
+@property (readwrite, nonatomic, strong) NSURLConnection *connection;
+@property (readwrite, nonatomic, strong) CRRequest *request;
+@property (readwrite, nonatomic, strong) CRResponse *response;
 @property (readwrite, nonatomic, copy) CRRequestOperationSuccessBlock success;
 @property (readwrite, nonatomic, copy) CRRequestOperationFailureBlock failure;
 @end
@@ -50,15 +50,6 @@ static NSThread *_networkRequestThread = nil;
             success,
             failure;
 
-- (void)dealloc {
-    [_connection release], _connection = nil;
-    [_request release], _request = nil;
-    [_response release], _response = nil;
-    [success release], success = nil;
-    [failure release], failure = nil;
-    
-    [super dealloc];
-}
 
 
 + (id)operationWithRequest:(CRRequest *)request 
@@ -78,9 +69,9 @@ static NSThread *_networkRequestThread = nil;
 
 + (void)networkRequestThreadEntryPoint:(id)object {
     do {
-        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-        [[NSRunLoop currentRunLoop] run];
-        [pool drain];
+        @autoreleasepool {
+            [[NSRunLoop currentRunLoop] run];
+        }
     } while (YES);
 }
 
@@ -109,9 +100,9 @@ static NSThread *_networkRequestThread = nil;
 }
 
 - (void)startConnection {
-    self.connection = [[[NSURLConnection alloc] initWithRequest:[self.request URLRequest]
+    self.connection = [[NSURLConnection alloc] initWithRequest:[self.request URLRequest]
                                                        delegate:self 
-                                               startImmediately:NO] autorelease];
+                                               startImmediately:NO];
     
     [self.connection start];
 }
@@ -119,7 +110,6 @@ static NSThread *_networkRequestThread = nil;
 - (void)finish {
     if(self.connection) {
         [self.connection cancel];
-        [_connection release];
         _connection = nil;
     }
    

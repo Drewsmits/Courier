@@ -40,9 +40,9 @@ typedef void (^CRRequestOperationFailureBlock)(CRRequest *request, CRResponse *r
     CRResponse *_response;
 }
 
-@property (readonly, nonatomic, retain) NSURLConnection *connection;
-@property (readonly, nonatomic, retain) CRRequest *request;
-@property (readonly, nonatomic, retain) CRResponse *response;
+@property (readonly, nonatomic, strong) NSURLConnection *connection;
+@property (readonly, nonatomic, strong) CRRequest *request;
+@property (readonly, nonatomic, strong) CRResponse *response;
 
 + (id)operationWithRequest:(CRRequest *)aRequest 
                    success:(CRRequestOperationSuccessBlock)successBlock

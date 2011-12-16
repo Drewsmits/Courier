@@ -38,7 +38,7 @@
 
 // See http://github.com/pokeb/asi-http-request/raw/master/Classes/ASIFormDataRequest.m
 - (NSString *)urlEncodedStringWithEncoding:(NSStringEncoding)encoding { 
-	NSString *urlEncodedString = [(NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, NULL, (CFStringRef)@":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`", CFStringConvertNSStringEncodingToEncoding(encoding)) autorelease];
+	NSString *urlEncodedString = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)self, NULL, (CFStringRef)@":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`", CFStringConvertNSStringEncodingToEncoding(encoding));
 	
     return urlEncodedString ? urlEncodedString : @"";
 }

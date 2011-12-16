@@ -38,12 +38,12 @@
 /**
  Default headers used for every request
  */
-@property (nonatomic, readonly) NSMutableDictionary *defaultHeader;
+@property (weak, nonatomic, readonly) NSMutableDictionary *defaultHeader;
 
 /**
  Route on which all API requests are relative to
  */
-@property (nonatomic, retain) NSString *baseAPIPath;
+@property (nonatomic, strong) NSString *baseAPIPath;
 
 /**
  Determines whether or not the Courier instance should handle cookies using the
