@@ -31,8 +31,8 @@
             dataCapacity;
 
 - (void)dealloc {
-    [response release];
-    [data release];
+    [response release], response = nil;
+    [data release], data = nil;
     
     [super dealloc];
 }

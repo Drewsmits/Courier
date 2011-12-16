@@ -51,9 +51,11 @@ static NSThread *_networkRequestThread = nil;
             failure;
 
 - (void)dealloc {
-    [_connection release];
-    [_request release];
-    [_response release];
+    [_connection release], _connection = nil;
+    [_request release], _request = nil;
+    [_response release], _response = nil;
+    [success release], success = nil;
+    [failure release], failure = nil;
     
     [super dealloc];
 }

@@ -38,6 +38,15 @@
 
 @synthesize method, path, URLParameters, HTTPBodyParameters, defaultHeader, shouldHandleCookies;
 
+- (void)dealloc {
+    [path release], path = nil;
+    [defaultHeader release], defaultHeader = nil;
+    [URLParameters release], URLParameters = nil;
+    [HTTPBodyParameters release], HTTPBodyParameters = nil;
+    
+    [super dealloc];
+}
+
 + (CRRequest *)requestWithMethod:(CRRequestMethod)method
                          forPath:(NSString *)path
                withURLParameters:(NSDictionary *)urlParameters
@@ -51,7 +60,7 @@
     request.path = path;
     request.URLParameters = urlParameters;
     request.HTTPBodyParameters = httpBodyParameters;
-    request.defaultHeader = [header mutableCopy];
+    request.defaultHeader = [[header mutableCopy] autorelease];
     request.shouldHandleCookies = handleCookies;
     
 	return request;

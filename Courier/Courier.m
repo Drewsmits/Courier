@@ -31,6 +31,13 @@
 
 @synthesize baseAPIPath, shouldHandleCookies;
 
+- (void)dealloc {
+    [defaultHeader release], defaultHeader = nil;
+    [baseAPIPath release], baseAPIPath = nil;
+    
+    [super dealloc];
+}
+
 + (id)sharedInstance {
     static dispatch_once_t pred = 0;
     __strong static id _sharedInstance = nil;
@@ -38,13 +45,6 @@
         _sharedInstance = [[self courier] retain];
     });
     return _sharedInstance;
-}
-
-- (void)dealloc {
-    [defaultHeader release], defaultHeader = nil;
-    [baseAPIPath release], baseAPIPath = nil;
-    
-    [super dealloc];
 }
 
 + (Courier *)courier {
@@ -64,7 +64,7 @@
     
     
     if (self.baseAPIPath && [path rangeOfString:@"http"].location == NSNotFound) {
-        NSMutableString *newPath = [self.baseAPIPath mutableCopy];
+        NSMutableString *newPath = [[self.baseAPIPath mutableCopy] autorelease];
         [newPath appendFormat:@"/%@", path];
         path = newPath;
     }
@@ -160,26 +160,24 @@
                           forKey:@"Authorization"];
 }
 
-- (NSDictionary *)defaultHeader {
+- (NSMutableDictionary *)defaultHeader {
     if (defaultHeader) return [[defaultHeader retain] autorelease];
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    defaultHeader = [[NSMutableDictionary alloc] init];
     
     // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
-	[dict setValue:@"application/json" forKey:@"Accept"];
+	[defaultHeader setValue:@"application/json" forKey:@"Accept"];
     
 	// Accept-Encoding HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3
-    [dict setValue:@"gzip" forKey:@"Accept-Encoding"];
+    [defaultHeader setValue:@"gzip" forKey:@"Accept-Encoding"];
     
 	// Accept-Language HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4
 	NSString *preferredLanguageCodes = [[NSLocale preferredLanguages] componentsJoinedByString:@", "];
-    [dict setValue:[NSString stringWithFormat:@"%@, en-us;q=0.8", preferredLanguageCodes] forKey:@"Accept-Language"];
+    [defaultHeader setValue:[NSString stringWithFormat:@"%@, en-us;q=0.8", preferredLanguageCodes] forKey:@"Accept-Language"];
 	
 	// User-Agent Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43
 	//[self setDefaultHeader:@"User-Agent" value:[NSString stringWithFormat:@"%@/%@ (%@, %@ %@, %@, Scale/%f)", [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey], [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey], @"unknown", [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion], [[UIDevice currentDevice] model], ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] ? [[UIScreen mainScreen] scale] : 1.0)]];
-    
-    defaultHeader = [dict retain];
-    
+        
     return [[defaultHeader retain] autorelease];
 }
 
