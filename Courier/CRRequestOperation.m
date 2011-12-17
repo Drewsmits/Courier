@@ -139,9 +139,12 @@ static NSThread *_networkRequestThread = nil;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         self.failure(self.request, self.response, error);
+        [self finish];
     });
     
-    [self finish];
+    DLog(@"Connection failed");
+    
+    //[self finish];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
