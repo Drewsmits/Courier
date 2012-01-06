@@ -143,8 +143,6 @@ static NSThread *_networkRequestThread = nil;
     });
     
     DLog(@"Connection failed");
-    
-    //[self finish];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
