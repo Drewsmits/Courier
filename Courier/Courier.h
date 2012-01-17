@@ -68,6 +68,12 @@
         success:(CRRequestOperationSuccessBlock)success
         failure:(CRRequestOperationFailureBlock)failure;
 
+- (void)getPath:(NSString *)path
+     withHeader:(NSDictionary *)header
+  URLParameters:(NSDictionary *)urlParameters
+        success:(CRRequestOperationSuccessBlock)success
+        failure:(CRRequestOperationFailureBlock)failure;
+
 - (void)putPath:(NSString *)path 
   URLParameters:(NSDictionary *)urlParameters
         success:(CRRequestOperationSuccessBlock)success

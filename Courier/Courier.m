@@ -50,6 +50,7 @@
 
 - (void)addOperationForPath:(NSString *)path 
                  withMethod:(CRRequestMethod)method
+                     header:(NSDictionary *)header
            andURLParameters:(NSDictionary *)parameters
       andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
                     success:(CRRequestOperationSuccessBlock)success 
@@ -66,7 +67,7 @@
                                               forPath:path 
                                     withURLParameters:parameters
                                 andHTTPBodyParameters:httpBodyParameters
-                                            andHeader:[self defaultHeader]
+                                            andHeader:header
                                   shouldHandleCookies:self.shouldHandleCookies];
     
     CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request
@@ -83,6 +84,22 @@
     
     [self addOperationForPath:path 
                    withMethod:CRRequestMethodGET
+                       header:[self defaultHeader]
+             andURLParameters:urlParameters
+        andHTTPBodyParameters:nil
+                      success:success 
+                      failure:failure];
+}
+
+- (void)getPath:(NSString *)path
+     withHeader:(NSDictionary *)header
+  URLParameters:(NSDictionary *)urlParameters
+        success:(CRRequestOperationSuccessBlock)success
+        failure:(CRRequestOperationFailureBlock)failure {
+    
+    [self addOperationForPath:path 
+                   withMethod:CRRequestMethodGET
+                       header:header
              andURLParameters:urlParameters
         andHTTPBodyParameters:nil
                       success:success 
@@ -96,6 +113,7 @@
     
     [self addOperationForPath:path 
                    withMethod:CRRequestMethodPUT
+                       header:[self defaultHeader]
              andURLParameters:urlParameters
         andHTTPBodyParameters:nil
                       success:success 
@@ -109,6 +127,7 @@
     
     [self addOperationForPath:path
                    withMethod:CRRequestMethodPOST
+                       header:[self defaultHeader]
              andURLParameters:urlParameters
         andHTTPBodyParameters:nil
                       success:success 
@@ -122,6 +141,7 @@
     
     [self addOperationForPath:path
                    withMethod:CRRequestMethodPOST
+                       header:[self defaultHeader]
              andURLParameters:urlParameters
         andHTTPBodyParameters:httpBodyParameters
                       success:success 
@@ -136,10 +156,20 @@
     
     [self addOperationForPath:path 
                    withMethod:CRRequestMethodDELETE
+                       header:[self defaultHeader]
              andURLParameters:urlParameters
         andHTTPBodyParameters:nil
                       success:success 
                       failure:failure];
+}
+
+#pragma mark - Image
+
+- (void)loadImageAtURL:(NSURL *)imageURL 
+             cacheName:(NSString *)cacheName 
+               success:(CRRequestOperationSuccessBlock)success 
+               failure:(CRRequestOperationFailureBlock)failure {
+    
 }
 
 #pragma mark - Header

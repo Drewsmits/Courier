@@ -138,11 +138,12 @@ static NSThread *_networkRequestThread = nil;
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     dispatch_async(dispatch_get_main_queue(), ^(void) {
+        
+        DLog(@"Connection failed!  URL: %@  Response: %@", self.request.path, self.response.responseDescription);
+        
         self.failure(self.request, self.response, error);
         [self finish];
     });
-    
-    DLog(@"Connection failed");
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -158,6 +159,11 @@ static NSThread *_networkRequestThread = nil;
                                                  code:self.response.statusCode 
                                              userInfo:[NSDictionary dictionaryWithObject:self.response.statusCodeDescription 
                                                                                   forKey:NSLocalizedFailureReasonErrorKey]];
+            
+            DLog(@"ERROR: %@", error);
+            DLog(@"URL: %@", self.request.path);
+            DLog(@"Description: %@", self.response.responseDescription);
+            
             if (self.failure) {
                 self.failure(self.request, self.response, error);
             }
