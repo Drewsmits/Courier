@@ -26,8 +26,10 @@
 #import "CourierTests.h"
 
 #import "Courier.h"
-#import "CRRequest.h"
+#import "Courier+Get.h"
+#import "Courier+Post.h"
 
+#import "CRRequest.h"
 #import "CRRequestOperation.h"
 
 @implementation CourierTests
