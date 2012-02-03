@@ -63,31 +63,19 @@
 - (void)setBasicAuthUsername:(NSString *)username 
                  andPassword:(NSString *)password;
 
-- (void)getPath:(NSString *)path 
-  URLParameters:(NSDictionary *)urlParameters
-        success:(CRRequestOperationSuccessBlock)success
-        failure:(CRRequestOperationFailureBlock)failure;
-
-- (void)getPath:(NSString *)path
-     withHeader:(NSDictionary *)header
-  URLParameters:(NSDictionary *)urlParameters
-        success:(CRRequestOperationSuccessBlock)success
-        failure:(CRRequestOperationFailureBlock)failure;
+- (void)addOperationForPath:(NSString *)path 
+                 withMethod:(CRRequestMethod)method
+                     header:(NSDictionary *)header
+           andURLParameters:(NSDictionary *)parameters
+      andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
+               toQueueNamed:(NSString *)queueName
+                    success:(CRRequestOperationSuccessBlock)success 
+                    failure:(CRRequestOperationFailureBlock)failure;
 
 - (void)putPath:(NSString *)path 
   URLParameters:(NSDictionary *)urlParameters
         success:(CRRequestOperationSuccessBlock)success
         failure:(CRRequestOperationFailureBlock)failure;
-
-- (void)postPath:(NSString *)path 
-   URLParameters:(NSDictionary *)urlParameters
-         success:(CRRequestOperationSuccessBlock)success
-         failure:(CRRequestOperationFailureBlock)failure;
-
-- (void)postPath:(NSString *)path URLParameters:(NSDictionary *)urlParameters
-                             HTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                                        success:(CRRequestOperationSuccessBlock)success
-                                        failure:(CRRequestOperationFailureBlock)failure;
 
 - (void)deletePath:(NSString *)path 
      URLParameters:(NSDictionary *)urlParameters

@@ -24,6 +24,9 @@
 //
 
 #import "Courier.h"
+#import "Courier+Get.h"
+#import "Courier+Post.h"
+
 #import "NSData+Courier.h"
 
 
@@ -53,10 +56,13 @@
                      header:(NSDictionary *)header
            andURLParameters:(NSDictionary *)parameters
       andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
+               toQueueNamed:(NSString *)queueName
                     success:(CRRequestOperationSuccessBlock)success 
                     failure:(CRRequestOperationFailureBlock)failure {
     
     
+    DLog(@"Path: %@", path);
+        
     if (self.baseAPIPath && [path rangeOfString:@"http"].location == NSNotFound) {
         NSMutableString *newPath = [self.baseAPIPath mutableCopy];
         [newPath appendFormat:@"/%@", path];
@@ -74,36 +80,7 @@
                                                                      success:success
                                                                      failure:failure];
     
-    [self addOperation:operation];
-}
-
-- (void)getPath:(NSString *)path 
-  URLParameters:(NSDictionary *)urlParameters
-        success:(CRRequestOperationSuccessBlock)success
-        failure:(CRRequestOperationFailureBlock)failure {
-    
-    [self addOperationForPath:path 
-                   withMethod:CRRequestMethodGET
-                       header:[self defaultHeader]
-             andURLParameters:urlParameters
-        andHTTPBodyParameters:nil
-                      success:success 
-                      failure:failure];
-}
-
-- (void)getPath:(NSString *)path
-     withHeader:(NSDictionary *)header
-  URLParameters:(NSDictionary *)urlParameters
-        success:(CRRequestOperationSuccessBlock)success
-        failure:(CRRequestOperationFailureBlock)failure {
-    
-    [self addOperationForPath:path 
-                   withMethod:CRRequestMethodGET
-                       header:header
-             andURLParameters:urlParameters
-        andHTTPBodyParameters:nil
-                      success:success 
-                      failure:failure];
+    [self addOperation:operation toQueueNamed:queueName];
 }
 
 - (void)putPath:(NSString *)path 
@@ -116,38 +93,10 @@
                        header:[self defaultHeader]
              andURLParameters:urlParameters
         andHTTPBodyParameters:nil
+                 toQueueNamed:nil
                       success:success 
                       failure:failure];
 }
-
-- (void)postPath:(NSString *)path 
-   URLParameters:(NSDictionary *)urlParameters
-         success:(CRRequestOperationSuccessBlock)success
-         failure:(CRRequestOperationFailureBlock)failure {
-    
-    [self addOperationForPath:path
-                   withMethod:CRRequestMethodPOST
-                       header:[self defaultHeader]
-             andURLParameters:urlParameters
-        andHTTPBodyParameters:nil
-                      success:success 
-                      failure:failure];
-}
-
-- (void)postPath:(NSString *)path URLParameters:(NSDictionary *)urlParameters
-                             HTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                                        success:(CRRequestOperationSuccessBlock)success
-                                        failure:(CRRequestOperationFailureBlock)failure {
-    
-    [self addOperationForPath:path
-                   withMethod:CRRequestMethodPOST
-                       header:[self defaultHeader]
-             andURLParameters:urlParameters
-        andHTTPBodyParameters:httpBodyParameters
-                      success:success 
-                      failure:failure];
-}
-
 
 - (void)deletePath:(NSString *)path 
         URLParameters:(NSDictionary *)urlParameters
@@ -159,6 +108,7 @@
                        header:[self defaultHeader]
              andURLParameters:urlParameters
         andHTTPBodyParameters:nil
+                 toQueueNamed:nil
                       success:success 
                       failure:failure];
 }
