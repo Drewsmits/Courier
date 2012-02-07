@@ -31,7 +31,7 @@
 #import "CRResponse.h"
 
 typedef void (^CRRequestOperationSuccessBlock)(CRRequest *request, CRResponse *response);
-typedef void (^CRRequestOperationFailureBlock)(CRRequest *request, CRResponse *response, NSError *error);
+typedef void (^CRRequestOperationFailureBlock)(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable);
 
 @interface CRRequestOperation : CDOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
 @private    

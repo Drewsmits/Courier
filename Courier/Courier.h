@@ -84,4 +84,7 @@
 
 - (void)deleteCookies;
 
+- (BOOL)isPathReachable:(NSString *)path 
+       unreachableBlock:(CRRequestOperationFailureBlock)unreachableBlock;
+
 @end

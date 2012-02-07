@@ -30,6 +30,10 @@
 		DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D12C1450CC0100D94890 /* NSData+Courier.m */; };
 		DB83D1311450CF9600D94890 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB83D1301450CF9600D94890 /* libz.dylib */; };
 		DB83D1321450CFA300D94890 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB83D1301450CF9600D94890 /* libz.dylib */; };
+		DB843BB614E08A38005DFCF2 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DB843BA014E08A38005DFCF2 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB843BB714E08A38005DFCF2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB843BA114E08A38005DFCF2 /* Reachability.m */; };
+		DB843BC114E08CE7005DFCF2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB843BC014E08CE7005DFCF2 /* SystemConfiguration.framework */; };
+		DB843BC214E08D10005DFCF2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB843BC014E08CE7005DFCF2 /* SystemConfiguration.framework */; };
 		DB8E418E146C8564000C9341 /* libConductor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB24BB621457912800BDAD0A /* libConductor.a */; };
 		DBA5F95714560E4100EBFF68 /* Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C487144F4BCD003D766A /* Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -93,6 +97,12 @@
 		DB83D12B1450CC0100D94890 /* NSData+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Courier.h"; sourceTree = "<group>"; };
 		DB83D12C1450CC0100D94890 /* NSData+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Courier.m"; sourceTree = "<group>"; };
 		DB83D1301450CF9600D94890 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
+		DB843B7F14E08A38005DFCF2 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		DB843BA014E08A38005DFCF2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		DB843BA114E08A38005DFCF2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		DB843BA214E08A38005DFCF2 /* Reachability.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Reachability.podspec; sourceTree = "<group>"; };
+		DB843BA314E08A38005DFCF2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		DB843BC014E08CE7005DFCF2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		DBB524131458EBA9006040C7 /* TestAPI.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = TestAPI.rb; path = Sinatra/TestAPI.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */,
+				DB843BC114E08CE7005DFCF2 /* SystemConfiguration.framework in Frameworks */,
 				DB8E418E146C8564000C9341 /* libConductor.a in Frameworks */,
 				DB83D1311450CF9600D94890 /* libz.dylib in Frameworks */,
 			);
@@ -113,6 +124,7 @@
 			files = (
 				DB64C494144F4BCD003D766A /* Foundation.framework in Frameworks */,
 				DB64C491144F4BCD003D766A /* SenTestingKit.framework in Frameworks */,
+				DB843BC214E08D10005DFCF2 /* SystemConfiguration.framework in Frameworks */,
 				DB64C497144F4BCD003D766A /* libCourier.a in Frameworks */,
 				DB83D1321450CFA300D94890 /* libz.dylib in Frameworks */,
 			);
@@ -124,6 +136,7 @@
 		DB24BB571457910800BDAD0A /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				DB843B7E14E08A38005DFCF2 /* Reachability */,
 				DB24BB591457912800BDAD0A /* Conductor.xcodeproj */,
 			);
 			name = Vendors;
@@ -161,6 +174,7 @@
 		DB64C481144F4BCD003D766A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB843BC014E08CE7005DFCF2 /* SystemConfiguration.framework */,
 				DB83D1301450CF9600D94890 /* libz.dylib */,
 				DB64C482144F4BCD003D766A /* Foundation.framework */,
 				DB64C490144F4BCD003D766A /* SenTestingKit.framework */,
@@ -220,6 +234,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DB843B7E14E08A38005DFCF2 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				DB843B7F14E08A38005DFCF2 /* .gitignore */,
+				DB843BA014E08A38005DFCF2 /* Reachability.h */,
+				DB843BA114E08A38005DFCF2 /* Reachability.m */,
+				DB843BA214E08A38005DFCF2 /* Reachability.podspec */,
+				DB843BA314E08A38005DFCF2 /* README.md */,
+			);
+			name = Reachability;
+			path = Vendors/Reachability;
+			sourceTree = "<group>";
+		};
 		DBB524121458E175006040C7 /* Sinatra */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +270,7 @@
 				DBA5F95714560E4100EBFF68 /* Courier.h in Headers */,
 				DB47B1E614DB61110030A7DB /* Courier+Get.h in Headers */,
 				DB47B1EC14DB62150030A7DB /* Courier+Post.h in Headers */,
+				DB843BB614E08A38005DFCF2 /* Reachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +404,7 @@
 				DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */,
 				DB47B1E714DB61110030A7DB /* Courier+Get.m in Sources */,
 				DB47B1ED14DB62150030A7DB /* Courier+Post.m in Sources */,
+				DB843BB714E08A38005DFCF2 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

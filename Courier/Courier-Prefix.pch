@@ -7,7 +7,7 @@
 #endif
 
 // Comment out to silence logs
-//#define CONDUCTOR_LOG 1
+#define CONDUCTOR_LOG 1
 
 #if defined(DEBUG) && defined(CONDUCTOR_LOG)
 #define DLog(...) NSLog(@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])

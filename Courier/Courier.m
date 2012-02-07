@@ -29,6 +29,7 @@
 
 #import "NSData+Courier.h"
 
+#import "Reachability.h"
 
 @implementation Courier
 
@@ -59,15 +60,17 @@
                toQueueNamed:(NSString *)queueName
                     success:(CRRequestOperationSuccessBlock)success 
                     failure:(CRRequestOperationFailureBlock)failure {
-    
-    
-    DLog(@"Path: %@", path);
-        
+            
     if (self.baseAPIPath && [path rangeOfString:@"http"].location == NSNotFound) {
         NSMutableString *newPath = [self.baseAPIPath mutableCopy];
         [newPath appendFormat:@"/%@", path];
         path = newPath;
     }
+    
+    // Test reachability
+    if (![self isPathReachable:path unreachableBlock:failure]) return;
+    
+    DLog(@"Path: %@", path);
     
     CRRequest *request = [CRRequest requestWithMethod:method 
                                               forPath:path 
@@ -163,5 +166,31 @@
     }
 }
 
+#pragma mark - Reachability
+
+- (BOOL)isPathReachable:(NSString *)path 
+       unreachableBlock:(CRRequestOperationFailureBlock)unreachableBlock {
+    
+    // Build reachability with address
+    struct sockaddr_in address;
+    address.sin_len = sizeof(address);
+    address.sin_family = AF_INET;
+    address.sin_port = htons(9000);
+    address.sin_addr.s_addr = inet_addr((const char*)[path UTF8String]);
+    Reachability *reach = [Reachability reachabilityWithAddress:&address];
+    
+    if ([reach currentReachabilityStatus] == NotReachable) {
+        WLog(@"\nReachability failed! \n%@ is not reachable", path);
+        
+        if (unreachableBlock) {
+            // Fail with unreachable flag set to yes
+            unreachableBlock(nil, nil, nil, YES);
+        }
+        
+        return NO;
+    } else {
+        return YES;
+    }
+}
 
 @end

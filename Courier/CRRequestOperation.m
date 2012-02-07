@@ -141,7 +141,7 @@ static NSThread *_networkRequestThread = nil;
         
         DLog(@"Connection failed!  URL: %@  Response: %@", self.request.path, self.response.responseDescription);
         
-        self.failure(self.request, self.response, error);
+        self.failure(self.request, self.response, error, NO);
         [self finish];
     });
 }
@@ -165,7 +165,7 @@ static NSThread *_networkRequestThread = nil;
             DLog(@"Description: %@", self.response.responseDescription);
             
             if (self.failure) {
-                self.failure(self.request, self.response, error);
+                self.failure(self.request, self.response, error, NO);
             }
         });
     }

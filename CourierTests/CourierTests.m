@@ -142,7 +142,7 @@
         
     };
     
-    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error){        
+    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable){        
         hasCalledBack = YES;
         NSLog(@"FAILED! %@", error);
     }; 
@@ -172,7 +172,7 @@
         hasCalledBack = YES;
     };
     
-    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error){        
+    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable){        
         hasCalledBack = YES;
         
         if ([response statusCode] == 404) {
@@ -211,7 +211,7 @@
         
     };
     
-    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error){        
+    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable){        
         hasCalledBack = YES;
         NSLog(@"FAILED! %@", error);
     }; 
@@ -246,7 +246,7 @@
         
     };
     
-    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error){        
+    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable){        
         hasCalledBack = YES;
         NSLog(@"FAILED! %@", error);
     }; 
@@ -277,7 +277,7 @@
         success = YES;        
     };
     
-    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error){        
+    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable){        
         hasCalledBack = YES;
         NSLog(@"FAILED! %@", error);
     }; 
@@ -308,7 +308,7 @@
         success = YES;        
     };
     
-    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error){        
+    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable){        
         hasCalledBack = YES;
         NSLog(@"FAILED! %@", error);
     }; 
@@ -336,7 +336,7 @@
     __block BOOL hasCalledBack = NO;
     __block BOOL success = NO;
     
-    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error){        
+    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable){        
         hasCalledBack = YES;
         
         if ([response statusCode] == 500) {            
@@ -376,7 +376,7 @@
         
     };
     
-    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error){        
+    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable){        
         hasCalledBack = YES;
         NSLog(@"FAILED! %@", error);
     }; 
@@ -398,4 +398,32 @@
     STAssertTrue(success, @"Response should be 200");
 }
 
+- (void)testReachabilitySuccessTest {
+    
+    __block BOOL unreachable = NO;
+
+    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable){        
+        unreachable = YES;
+    }; 
+    
+    [[Courier sharedInstance] isPathReachable:@"www.google.com"
+                             unreachableBlock:failBlock];
+    
+
+    STAssertFalse(unreachable, @"Google should be reachable");
+}
+
+- (void)testReachabilityFailTest {
+    
+    __block BOOL unreachable = NO;
+    
+    CRRequestOperationFailureBlock failBlock = ^(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable){        
+        unreachable = YES;
+    }; 
+    
+    [[Courier sharedInstance] isPathReachable:@"whatever"
+                             unreachableBlock:failBlock];
+    
+    STAssertFalse(unreachable, @"\"Whatever\" should be unreachable.");
+}
 @end
