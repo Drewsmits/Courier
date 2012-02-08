@@ -92,6 +92,11 @@ static NSThread *_networkRequestThread = nil;
 
 - (void)start {
     
+    if ([self isCancelled]) {
+        [self finish];
+        return;
+    }
+    
     [self performSelector:@selector(startConnection) 
                  onThread:[[self class] networkRequestThread] 
                withObject:nil 
@@ -108,12 +113,50 @@ static NSThread *_networkRequestThread = nil;
 }
 
 - (void)finish {
+    [super finish];
+    
     if(self.connection) {
         [self.connection cancel];
         _connection = nil;
     }
-   
-    [super finish];
+    
+    // If canceled, don't run completion blocks
+    if ([self isCancelled]) {
+        return;
+    }
+
+    if (self.response.success) {
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            self.success(self.request, self.response);
+        });
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            BOOL reachable = YES;
+            NSError *error = nil;
+            if (self.response) {
+                error = [NSError errorWithDomain:@"com.courier.cdrequestoperation" 
+                                            code:self.response.statusCode 
+                                        userInfo:[NSDictionary dictionaryWithObject:self.response.statusCodeDescription 
+                                                                             forKey:NSLocalizedFailureReasonErrorKey]];
+            } else {
+                error = [NSError errorWithDomain:@"com.courier.cdrequestoperation" 
+                                            code:0 
+                                        userInfo:[NSDictionary dictionaryWithObject:@"Connection not reachable" 
+                                                                             forKey:NSLocalizedFailureReasonErrorKey]];
+                reachable = NO;
+
+            }
+            
+            //DLog(@"ERROR: %@", error);
+            //DLog(@"URL: %@", self.request.path);
+            //DLog(@"Description: %@", self.response.responseDescription);
+                        
+            if (self.failure) {
+                self.failure(self.request, self.response, error, reachable);
+            }
+        });
+    }
 }
 
 #pragma mark - NSURLConnection Data
@@ -141,35 +184,11 @@ static NSThread *_networkRequestThread = nil;
         
         DLog(@"Connection failed!  URL: %@  Response: %@", self.request.path, self.response.responseDescription);
         
-        self.failure(self.request, self.response, error, NO);
         [self finish];
     });
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    
-    if (self.response.success) {
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            self.success(self.request, self.response);
-        });
-    } else {
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            
-            NSError *error = [NSError errorWithDomain:@"com.courier.cdrequestoperation" 
-                                                 code:self.response.statusCode 
-                                             userInfo:[NSDictionary dictionaryWithObject:self.response.statusCodeDescription 
-                                                                                  forKey:NSLocalizedFailureReasonErrorKey]];
-            
-            DLog(@"ERROR: %@", error);
-            DLog(@"URL: %@", self.request.path);
-            DLog(@"Description: %@", self.response.responseDescription);
-            
-            if (self.failure) {
-                self.failure(self.request, self.response, error, NO);
-            }
-        });
-    }
-    
     [self finish];
 }
 
