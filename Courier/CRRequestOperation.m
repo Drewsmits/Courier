@@ -31,6 +31,9 @@
 #pragma mark - Private
 
 @interface CRRequestOperation ()
+
+- (void)startConnection;
+
 @property (readwrite, nonatomic, strong) NSURLConnection *connection;
 @property (readwrite, nonatomic, strong) CRRequest *request;
 @property (readwrite, nonatomic, strong) CRResponse *response;
@@ -49,7 +52,6 @@ static NSThread *_networkRequestThread = nil;
             response = _response,
             success,
             failure;
-
 
 
 + (id)operationWithRequest:(CRRequest *)request 
@@ -96,7 +98,7 @@ static NSThread *_networkRequestThread = nil;
         [self finish];
         return;
     }
-    
+     
     [self performSelector:@selector(startConnection) 
                  onThread:[[self class] networkRequestThread] 
                withObject:nil 
@@ -132,7 +134,7 @@ static NSThread *_networkRequestThread = nil;
     } else {
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             
-            BOOL reachable = YES;
+            BOOL unreachable = NO;
             NSError *error = nil;
             if (self.response) {
                 error = [NSError errorWithDomain:@"com.courier.cdrequestoperation" 
@@ -144,7 +146,7 @@ static NSThread *_networkRequestThread = nil;
                                             code:0 
                                         userInfo:[NSDictionary dictionaryWithObject:@"Connection not reachable" 
                                                                              forKey:NSLocalizedFailureReasonErrorKey]];
-                reachable = NO;
+                unreachable = YES;
 
             }
             
@@ -153,7 +155,7 @@ static NSThread *_networkRequestThread = nil;
             //DLog(@"Description: %@", self.response.responseDescription);
                         
             if (self.failure) {
-                self.failure(self.request, self.response, error, reachable);
+                self.failure(self.request, self.response, error, unreachable);
             }
         });
     }

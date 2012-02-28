@@ -116,15 +116,6 @@
                       failure:failure];
 }
 
-#pragma mark - Image
-
-- (void)loadImageAtURL:(NSURL *)imageURL 
-             cacheName:(NSString *)cacheName 
-               success:(CRRequestOperationSuccessBlock)success 
-               failure:(CRRequestOperationFailureBlock)failure {
-    
-}
-
 #pragma mark - Header
 
 - (void)setBasicAuthUsername:(NSString *)username andPassword:(NSString *)password {
