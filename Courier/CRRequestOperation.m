@@ -98,7 +98,7 @@ static NSThread *_networkRequestThread = nil;
         [self finish];
         return;
     }
-     
+        
     [self performSelector:@selector(startConnection) 
                  onThread:[[self class] networkRequestThread] 
                withObject:nil 
@@ -149,11 +149,7 @@ static NSThread *_networkRequestThread = nil;
                 unreachable = YES;
 
             }
-            
-            //DLog(@"ERROR: %@", error);
-            //DLog(@"URL: %@", self.request.path);
-            //DLog(@"Description: %@", self.response.responseDescription);
-                        
+                                    
             if (self.failure) {
                 self.failure(self.request, self.response, error, unreachable);
             }

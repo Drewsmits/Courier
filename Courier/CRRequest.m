@@ -76,6 +76,7 @@
     [request setHTTPBody:[self HTTPBodyData]];
 	[request setHTTPShouldHandleCookies:self.shouldHandleCookies];
 	[request setAllHTTPHeaderFields:[self header]];
+    [request setTimeoutInterval:60.0];
 
     return  request;
 }
