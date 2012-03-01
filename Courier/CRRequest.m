@@ -96,7 +96,7 @@
 }
 
 - (NSURL *)requestURL {
-    if (self.method == CRRequestMethodGET) {
+    if (self.method == CRRequestMethodGET && self.URLParameters.count > 0) {
         NSString *stringToAppend = [self.path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@";
         return [NSURL URLWithString:[self.path stringByAppendingFormat:stringToAppend, [self URLQueryString]]];
     } else {
@@ -137,6 +137,8 @@
 }
 
 - (NSData *)HTTPBodyData {
+    
+    if (self.HTTPBodyParameters.count == 0) return nil;
     
     NSMutableArray *mutableParameterComponents = [NSMutableArray array];
     

@@ -88,6 +88,38 @@
     STAssertEqualObjects(request.requestURL, expectedURL, @"Request should have correct request URL");
 }
 
+- (void)testRequestURLNilURLParams {
+    NSString *path = @"path/to/some/resource";
+        
+    CRRequest *request = [CRRequest requestWithMethod:CRRequestMethodGET
+                                              forPath:path
+                                    withURLParameters:nil
+                                andHTTPBodyParameters:nil
+                                            andHeader:nil
+                                  shouldHandleCookies:NO];
+    
+    NSURL *expectedURL = [NSURL URLWithString:path];
+    
+    STAssertEqualObjects(request.requestURL, expectedURL, @"Request should have correct request URL");
+}
+
+- (void)testRequestURLNoURLParams {
+    NSString *path = @"path/to/some/resource";
+    
+    NSDictionary *URLParams = [NSDictionary dictionary];
+    
+    CRRequest *request = [CRRequest requestWithMethod:CRRequestMethodGET
+                                              forPath:path
+                                    withURLParameters:URLParams
+                                andHTTPBodyParameters:nil
+                                            andHeader:nil
+                                  shouldHandleCookies:NO];
+    
+    NSURL *expectedURL = [NSURL URLWithString:path];
+    
+    STAssertEqualObjects(request.requestURL, expectedURL, @"Request should have correct request URL");
+}
+
 - (void)testRequsetHTTPBodyParameters {
     NSString *path = @"path/to/some/resource";
         
