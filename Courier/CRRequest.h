@@ -60,12 +60,12 @@ typedef enum {
 /**
  Parameters to add to the request URL.
  */
-@property (nonatomic, readonly, strong) NSDictionary *URLParameters;
+@property (nonatomic, readonly, strong) NSMutableDictionary *URLParameters;
 
 /**
  Parameters to insert in into the HTTP body
  */
-@property (nonatomic, readonly, strong) NSDictionary *HTTPBodyParameters;
+@property (nonatomic, readonly, strong) NSMutableDictionary *HTTPBodyParameters;
 
 /**
  Default header for the request

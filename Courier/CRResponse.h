@@ -25,39 +25,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
-    HTTPResponseStatusCodeOK = 200,
-    HTTPResponseStatusCodeCreated,
-    HTTPResponseStatusCodeAccepted,
-    HTTPResponseStatusCodeNonAuthoritativeInformation,
-    HTTPResponseStatusCodeNoContent,
-    HTTPResponseStatusCodeResetContent,
-    HTTPResponseStatusCodePartialContent,
-    HTTPResponseStatusCodeBadRequest = 400,
-    HTTPResponseStatusCodeNotAuthorized,
-    HTTPResponseStatusCodeForbidden = 403,
-    HTTPResponseStatusCodeNotFound,
-    HTTPResponseStatusCodeMethodNotAllowed,
-    HTTPResponseStatusCodeNotAcceptable,
-    HTTPResponseStatusCodeProxyAuthRequired,
-    HTTPResponseStatusCodeRequestTimeout,
-    HTTPResponseStatusCodeConflict,
-    HTTPResponseStatusCodeGone,
-    HTTPResponseStatusCodeLengthRequired,
-    HTTPResponseStatusCodePreconditionFailed,
-    HTTPResponseStatusCodeRequestEntityTooLarge,
-    HTTPResponseStatusCodeRequestedURIIsTooLong,
-    HTTPResponseStatusCodeUnsupportedMediaType,
-    HTTPResponseStatusCodeRequestRangeNotSatisfiable,
-    HTTPResponseStatusExpectationFailed,
-    HTTPResponseStatusCodeInternalServerError = 500,
-    HTTPResponseStatusCodeNotImplemented,
-    HTTPResponseStatusCodeBadGateway,
-    HTTPResponseStatusCodeServiceUnavailable,
-    HTTPResponseStatusCodeGatewayTimeout,
-    HTTPResponseStatusCodeHTTPVersionNotSupported,
-} HTTPResponseStatusCode;
-
 @interface CRResponse : NSObject {
 @private
     NSURLResponse *response;

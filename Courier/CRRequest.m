@@ -28,9 +28,9 @@
 
 @interface CRRequest ()
 @property (nonatomic, readwrite, strong) NSString *path;
-@property (nonatomic, readwrite, strong) NSDictionary *defaultHeader;
-@property (nonatomic, readwrite, strong) NSDictionary *URLParameters;
-@property (nonatomic, readwrite, strong) NSDictionary *HTTPBodyParameters;
+@property (nonatomic, readwrite, strong) NSMutableDictionary *defaultHeader;
+@property (nonatomic, readwrite, strong) NSMutableDictionary *URLParameters;
+@property (nonatomic, readwrite, strong) NSMutableDictionary *HTTPBodyParameters;
 @property (nonatomic, readwrite, weak) BOOL shouldHandleCookies;
 @end
 
@@ -55,11 +55,11 @@
     
 	CRRequest *request = [[CRRequest alloc] init];
     
-    request.method = method;
-    request.path = path;
-    request.URLParameters = urlParameters;
-    request.HTTPBodyParameters = httpBodyParameters;
-    request.defaultHeader = [header mutableCopy];
+    request.method              = method;
+    request.path                = path;
+    request.URLParameters       = [urlParameters mutableCopy];
+    request.HTTPBodyParameters  = [httpBodyParameters mutableCopy];
+    request.defaultHeader       = [header mutableCopy];
     request.shouldHandleCookies = handleCookies;
     
 	return request;

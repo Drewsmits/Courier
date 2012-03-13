@@ -28,7 +28,6 @@
 		DB83D106144F9BC400D94890 /* NSString+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D104144F9BC400D94890 /* NSString+Courier.m */; };
 		DB83D12D1450CC0100D94890 /* NSData+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D12B1450CC0100D94890 /* NSData+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D12C1450CC0100D94890 /* NSData+Courier.m */; };
-		DB83D1311450CF9600D94890 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB83D1301450CF9600D94890 /* libz.dylib */; };
 		DB83D1321450CFA300D94890 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB83D1301450CF9600D94890 /* libz.dylib */; };
 		DB843BB614E08A38005DFCF2 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DB843BA014E08A38005DFCF2 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB843BB714E08A38005DFCF2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB843BA114E08A38005DFCF2 /* Reachability.m */; };
@@ -36,6 +35,7 @@
 		DB843BC214E08D10005DFCF2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB843BC014E08CE7005DFCF2 /* SystemConfiguration.framework */; };
 		DB8E418E146C8564000C9341 /* libConductor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB24BB621457912800BDAD0A /* libConductor.a */; };
 		DBA5F95714560E4100EBFF68 /* Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C487144F4BCD003D766A /* Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBAAA637150FE761004C1532 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAAA636150FE761004C1532 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +100,7 @@
 		DB843BA014E08A38005DFCF2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		DB843BA114E08A38005DFCF2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		DB843BC014E08CE7005DFCF2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		DBAAA636150FE761004C1532 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		DBB524131458EBA9006040C7 /* TestAPI.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = TestAPI.rb; path = Sinatra/TestAPI.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,10 +109,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBAAA637150FE761004C1532 /* libz.dylib in Frameworks */,
 				DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */,
 				DB843BC114E08CE7005DFCF2 /* SystemConfiguration.framework in Frameworks */,
 				DB8E418E146C8564000C9341 /* libConductor.a in Frameworks */,
-				DB83D1311450CF9600D94890 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +152,7 @@
 		DB64C472144F4BB0003D766A = {
 			isa = PBXGroup;
 			children = (
+				DBAAA636150FE761004C1532 /* libz.dylib */,
 				DB64C484144F4BCD003D766A /* Courier */,
 				DB64C498144F4BCD003D766A /* CourierTests */,
 				DB64C481144F4BCD003D766A /* Frameworks */,
@@ -475,7 +477,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = include/Courier/Private;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = include/Courier;
@@ -502,7 +504,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = include/Courier/Private;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = include/Courier;
