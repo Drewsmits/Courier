@@ -27,6 +27,8 @@
 #import "Courier+Get.h"
 #import "Courier+Post.h"
 
+#import <UIKit/UIDevice.h>
+
 #import "NSData+Courier.h"
 
 #import "Reachability.h"
@@ -143,8 +145,14 @@
     [defaultHeader setValue:[NSString stringWithFormat:@"%@, en-us;q=0.8", preferredLanguageCodes] forKey:@"Accept-Language"];
 	
 	// User-Agent Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43
-	//[self setDefaultHeader:@"User-Agent" value:[NSString stringWithFormat:@"%@/%@ (%@, %@ %@, %@, Scale/%f)", [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey], [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey], @"unknown", [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion], [[UIDevice currentDevice] model], ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] ? [[UIScreen mainScreen] scale] : 1.0)]];
-        
+	
+    NSString *bundleIdentifierString = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey];
+    NSString *bundleVersionKey = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+    NSString *systemName = [[UIDevice currentDevice] systemName];
+    NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
+    NSString *model = [[UIDevice currentDevice] model];
+	[defaultHeader setValue:[NSString stringWithFormat:@"%@/%@ (%@, %@ %@, %@", bundleIdentifierString, bundleVersionKey, @"unknown", systemName, systemVersion, model] forKey:@"User-Agent"];
+    
     return defaultHeader;
 }
 

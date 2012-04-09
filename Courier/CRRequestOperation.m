@@ -115,7 +115,6 @@ static NSThread *_networkRequestThread = nil;
 }
 
 - (void)finish {
-    [super finish];
     
     if(self.connection) {
         [self.connection cancel];
@@ -124,6 +123,7 @@ static NSThread *_networkRequestThread = nil;
     
     // If canceled, don't run completion blocks
     if ([self isCancelled]) {
+        [self finish];
         return;
     }
 
@@ -155,6 +155,8 @@ static NSThread *_networkRequestThread = nil;
             }
         });
     }
+    
+    [super finish];
 }
 
 #pragma mark - NSURLConnection Data
