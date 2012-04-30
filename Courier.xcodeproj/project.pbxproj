@@ -20,6 +20,8 @@
 		DB64C4A0144F4BCD003D766A /* CourierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C49F144F4BCD003D766A /* CourierTests.m */; };
 		DB64C4B9144F5C7C003D766A /* CRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB64C4BA144F5C7C003D766A /* CRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */; };
+		DB77CADD153277C4004E34C1 /* Courier+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = DB77CADB153277C4004E34C1 /* Courier+OAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB77CADE153277C4004E34C1 /* Courier+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = DB77CADC153277C4004E34C1 /* Courier+OAuth.m */; };
 		DB83D0EB144F90D100D94890 /* CRRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D0E9144F90D100D94890 /* CRRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB83D0EC144F90D100D94890 /* CRRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D0EA144F90D100D94890 /* CRRequest.m */; };
 		DB83D0F4144F932D00D94890 /* CRResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D0F2144F932D00D94890 /* CRResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -86,6 +88,8 @@
 		DB64C49F144F4BCD003D766A /* CourierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourierTests.m; sourceTree = "<group>"; };
 		DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequestOperation.h; sourceTree = "<group>"; };
 		DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestOperation.m; sourceTree = "<group>"; };
+		DB77CADB153277C4004E34C1 /* Courier+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Courier+OAuth.h"; sourceTree = "<group>"; };
+		DB77CADC153277C4004E34C1 /* Courier+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Courier+OAuth.m"; sourceTree = "<group>"; };
 		DB83D0E9144F90D100D94890 /* CRRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequest.h; sourceTree = "<group>"; };
 		DB83D0EA144F90D100D94890 /* CRRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequest.m; sourceTree = "<group>"; };
 		DB83D0F2144F932D00D94890 /* CRResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRResponse.h; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				DB47B1E514DB61110030A7DB /* Courier+Get.m */,
 				DB47B1EA14DB62150030A7DB /* Courier+Post.h */,
 				DB47B1EB14DB62150030A7DB /* Courier+Post.m */,
+				DB77CADB153277C4004E34C1 /* Courier+OAuth.h */,
+				DB77CADC153277C4004E34C1 /* Courier+OAuth.m */,
 				DB83D0E9144F90D100D94890 /* CRRequest.h */,
 				DB83D0EA144F90D100D94890 /* CRRequest.m */,
 				DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */,
@@ -261,6 +267,7 @@
 				DB47B1E614DB61110030A7DB /* Courier+Get.h in Headers */,
 				DB47B1EC14DB62150030A7DB /* Courier+Post.h in Headers */,
 				DB843BB614E08A38005DFCF2 /* Reachability.h in Headers */,
+				DB77CADD153277C4004E34C1 /* Courier+OAuth.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +402,7 @@
 				DB47B1E714DB61110030A7DB /* Courier+Get.m in Sources */,
 				DB47B1ED14DB62150030A7DB /* Courier+Post.m in Sources */,
 				DB843BB714E08A38005DFCF2 /* Reachability.m in Sources */,
+				DB77CADE153277C4004E34C1 /* Courier+OAuth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

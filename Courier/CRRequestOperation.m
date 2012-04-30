@@ -1,4 +1,4 @@
-//
+
 //  CRHTTPRequestOperation.m
 //  Courier
 //
@@ -116,14 +116,14 @@ static NSThread *_networkRequestThread = nil;
 
 - (void)finish {
     
-    if(self.connection) {
+    if(_connection) {
         [self.connection cancel];
         _connection = nil;
     }
     
     // If canceled, don't run completion blocks
     if ([self isCancelled]) {
-        [self finish];
+        [super finish];
         return;
     }
 
