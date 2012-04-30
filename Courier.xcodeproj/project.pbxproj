@@ -20,6 +20,8 @@
 		DB64C4A0144F4BCD003D766A /* CourierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C49F144F4BCD003D766A /* CourierTests.m */; };
 		DB64C4B9144F5C7C003D766A /* CRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB64C4BA144F5C7C003D766A /* CRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */; };
+		DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DB6BABBB154F47F0004842D2 /* Reachability.h */; };
+		DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6BABBC154F47F0004842D2 /* Reachability.m */; };
 		DB77CADD153277C4004E34C1 /* Courier+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = DB77CADB153277C4004E34C1 /* Courier+OAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB77CADE153277C4004E34C1 /* Courier+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = DB77CADC153277C4004E34C1 /* Courier+OAuth.m */; };
 		DB83D0EB144F90D100D94890 /* CRRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D0E9144F90D100D94890 /* CRRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,36 +32,12 @@
 		DB83D106144F9BC400D94890 /* NSString+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D104144F9BC400D94890 /* NSString+Courier.m */; };
 		DB83D12D1450CC0100D94890 /* NSData+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D12B1450CC0100D94890 /* NSData+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D12C1450CC0100D94890 /* NSData+Courier.m */; };
-		DB843BB614E08A38005DFCF2 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DB843BA014E08A38005DFCF2 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB843BB714E08A38005DFCF2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB843BA114E08A38005DFCF2 /* Reachability.m */; };
 		DBA5F95714560E4100EBFF68 /* Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C487144F4BCD003D766A /* Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBAAA637150FE761004C1532 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAAA636150FE761004C1532 /* libz.dylib */; };
 		DBD4214D15228B0A0046D4CE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */; };
-		DBD4214E15228D300046D4CE /* libConductor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB24BB621457912800BDAD0A /* libConductor.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DB24BB611457912800BDAD0A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB24BB591457912800BDAD0A /* Conductor.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DB83D19A1451F1B200D94890;
-			remoteInfo = Conductor;
-		};
-		DB24BB631457912800BDAD0A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB24BB591457912800BDAD0A /* Conductor.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DB83D1AA1451F1B200D94890;
-			remoteInfo = ConductorTests;
-		};
-		DB24BB661457914300BDAD0A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB24BB591457912800BDAD0A /* Conductor.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = DB83D1991451F1B200D94890;
-			remoteInfo = Conductor;
-		};
 		DB64C495144F4BCD003D766A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB64C474144F4BB0003D766A /* Project object */;
@@ -70,7 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DB24BB591457912800BDAD0A /* Conductor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Conductor.xcodeproj; path = ../Conductor/Conductor.xcodeproj; sourceTree = "<group>"; };
 		DB47B1E414DB61110030A7DB /* Courier+Get.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Courier+Get.h"; sourceTree = "<group>"; };
 		DB47B1E514DB61110030A7DB /* Courier+Get.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Courier+Get.m"; sourceTree = "<group>"; };
 		DB47B1EA14DB62150030A7DB /* Courier+Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Courier+Post.h"; sourceTree = "<group>"; };
@@ -88,6 +65,8 @@
 		DB64C49F144F4BCD003D766A /* CourierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourierTests.m; sourceTree = "<group>"; };
 		DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequestOperation.h; sourceTree = "<group>"; };
 		DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestOperation.m; sourceTree = "<group>"; };
+		DB6BABBB154F47F0004842D2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		DB6BABBC154F47F0004842D2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		DB77CADB153277C4004E34C1 /* Courier+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Courier+OAuth.h"; sourceTree = "<group>"; };
 		DB77CADC153277C4004E34C1 /* Courier+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Courier+OAuth.m"; sourceTree = "<group>"; };
 		DB83D0E9144F90D100D94890 /* CRRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequest.h; sourceTree = "<group>"; };
@@ -98,8 +77,6 @@
 		DB83D104144F9BC400D94890 /* NSString+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Courier.m"; sourceTree = "<group>"; };
 		DB83D12B1450CC0100D94890 /* NSData+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Courier.h"; sourceTree = "<group>"; };
 		DB83D12C1450CC0100D94890 /* NSData+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Courier.m"; sourceTree = "<group>"; };
-		DB843BA014E08A38005DFCF2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		DB843BA114E08A38005DFCF2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		DBAAA636150FE761004C1532 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		DBB524131458EBA9006040C7 /* TestAPI.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = TestAPI.rb; path = Sinatra/TestAPI.rb; sourceTree = "<group>"; };
 		DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
@@ -113,7 +90,6 @@
 				DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */,
 				DBD4214D15228B0A0046D4CE /* SystemConfiguration.framework in Frameworks */,
 				DBAAA637150FE761004C1532 /* libz.dylib in Frameworks */,
-				DBD4214E15228D300046D4CE /* libConductor.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,24 +106,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DB24BB571457910800BDAD0A /* Vendors */ = {
-			isa = PBXGroup;
-			children = (
-				DB843B7E14E08A38005DFCF2 /* Reachability */,
-				DB24BB591457912800BDAD0A /* Conductor.xcodeproj */,
-			);
-			name = Vendors;
-			sourceTree = "<group>";
-		};
-		DB24BB5A1457912800BDAD0A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DB24BB621457912800BDAD0A /* libConductor.a */,
-				DB24BB641457912800BDAD0A /* ConductorTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		DB64C472144F4BB0003D766A = {
 			isa = PBXGroup;
 			children = (
@@ -155,7 +113,6 @@
 				DB64C498144F4BCD003D766A /* CourierTests */,
 				DB64C481144F4BCD003D766A /* Frameworks */,
 				DB64C480144F4BCD003D766A /* Products */,
-				DB24BB571457910800BDAD0A /* Vendors */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,6 +157,8 @@
 				DB83D104144F9BC400D94890 /* NSString+Courier.m */,
 				DB83D12B1450CC0100D94890 /* NSData+Courier.h */,
 				DB83D12C1450CC0100D94890 /* NSData+Courier.m */,
+				DB6BABBB154F47F0004842D2 /* Reachability.h */,
+				DB6BABBC154F47F0004842D2 /* Reachability.m */,
 				DB64C485144F4BCD003D766A /* Supporting Files */,
 			);
 			path = Courier;
@@ -233,16 +192,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		DB843B7E14E08A38005DFCF2 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				DB843BA014E08A38005DFCF2 /* Reachability.h */,
-				DB843BA114E08A38005DFCF2 /* Reachability.m */,
-			);
-			name = Reachability;
-			path = Vendors/Reachability;
-			sourceTree = "<group>";
-		};
 		DBB524121458E175006040C7 /* Sinatra */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,8 +215,8 @@
 				DBA5F95714560E4100EBFF68 /* Courier.h in Headers */,
 				DB47B1E614DB61110030A7DB /* Courier+Get.h in Headers */,
 				DB47B1EC14DB62150030A7DB /* Courier+Post.h in Headers */,
-				DB843BB614E08A38005DFCF2 /* Reachability.h in Headers */,
 				DB77CADD153277C4004E34C1 /* Courier+OAuth.h in Headers */,
+				DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +234,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				DB24BB671457914300BDAD0A /* PBXTargetDependency */,
 			);
 			name = Courier;
 			productName = Courier;
@@ -330,12 +278,6 @@
 			mainGroup = DB64C472144F4BB0003D766A;
 			productRefGroup = DB64C480144F4BCD003D766A /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = DB24BB5A1457912800BDAD0A /* Products */;
-					ProjectRef = DB24BB591457912800BDAD0A /* Conductor.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				DB64C47E144F4BCD003D766A /* Courier */,
@@ -343,23 +285,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		DB24BB621457912800BDAD0A /* libConductor.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libConductor.a;
-			remoteRef = DB24BB611457912800BDAD0A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DB24BB641457912800BDAD0A /* ConductorTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ConductorTests.octest;
-			remoteRef = DB24BB631457912800BDAD0A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DB64C48C144F4BCD003D766A /* Resources */ = {
@@ -401,8 +326,8 @@
 				DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */,
 				DB47B1E714DB61110030A7DB /* Courier+Get.m in Sources */,
 				DB47B1ED14DB62150030A7DB /* Courier+Post.m in Sources */,
-				DB843BB714E08A38005DFCF2 /* Reachability.m in Sources */,
 				DB77CADE153277C4004E34C1 /* Courier+OAuth.m in Sources */,
+				DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,11 +342,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DB24BB671457914300BDAD0A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Conductor;
-			targetProxy = DB24BB661457914300BDAD0A /* PBXContainerItemProxy */;
-		};
 		DB64C496144F4BCD003D766A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DB64C47E144F4BCD003D766A /* Courier */;
