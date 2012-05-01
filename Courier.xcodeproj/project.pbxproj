@@ -35,6 +35,7 @@
 		DBA5F95714560E4100EBFF68 /* Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C487144F4BCD003D766A /* Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBAAA637150FE761004C1532 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAAA636150FE761004C1532 /* libz.dylib */; };
 		DBD4214D15228B0A0046D4CE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */; };
+		DBEEB572154F796F0029003D /* libConductor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEEB56D154F79630029003D /* libConductor.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = DB64C47E144F4BCD003D766A;
 			remoteInfo = Courier;
+		};
+		DBEEB56C154F79630029003D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBEEB567154F79620029003D /* Conductor.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB83D19A1451F1B200D94890;
+			remoteInfo = Conductor;
+		};
+		DBEEB56E154F79630029003D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBEEB567154F79620029003D /* Conductor.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB83D1AA1451F1B200D94890;
+			remoteInfo = ConductorTests;
+		};
+		DBEEB570154F79680029003D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBEEB567154F79620029003D /* Conductor.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DB83D1991451F1B200D94890;
+			remoteInfo = Conductor;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -80,6 +102,7 @@
 		DBAAA636150FE761004C1532 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		DBB524131458EBA9006040C7 /* TestAPI.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = TestAPI.rb; path = Sinatra/TestAPI.rb; sourceTree = "<group>"; };
 		DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		DBEEB567154F79620029003D /* Conductor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Conductor.xcodeproj; path = ../Conductor/Conductor.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +113,7 @@
 				DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */,
 				DBD4214D15228B0A0046D4CE /* SystemConfiguration.framework in Frameworks */,
 				DBAAA637150FE761004C1532 /* libz.dylib in Frameworks */,
+				DBEEB572154F796F0029003D /* libConductor.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +137,7 @@
 				DB64C498144F4BCD003D766A /* CourierTests */,
 				DB64C481144F4BCD003D766A /* Frameworks */,
 				DB64C480144F4BCD003D766A /* Products */,
+				DBEEB565154F79530029003D /* Vendors */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,6 +225,23 @@
 			name = Sinatra;
 			sourceTree = "<group>";
 		};
+		DBEEB565154F79530029003D /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				DBEEB567154F79620029003D /* Conductor.xcodeproj */,
+			);
+			name = Vendors;
+			sourceTree = "<group>";
+		};
+		DBEEB568154F79620029003D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DBEEB56D154F79630029003D /* libConductor.a */,
+				DBEEB56F154F79630029003D /* ConductorTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -234,6 +276,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DBEEB571154F79680029003D /* PBXTargetDependency */,
 			);
 			name = Courier;
 			productName = Courier;
@@ -278,6 +321,12 @@
 			mainGroup = DB64C472144F4BB0003D766A;
 			productRefGroup = DB64C480144F4BCD003D766A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DBEEB568154F79620029003D /* Products */;
+					ProjectRef = DBEEB567154F79620029003D /* Conductor.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DB64C47E144F4BCD003D766A /* Courier */,
@@ -285,6 +334,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		DBEEB56D154F79630029003D /* libConductor.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libConductor.a;
+			remoteRef = DBEEB56C154F79630029003D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DBEEB56F154F79630029003D /* ConductorTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ConductorTests.octest;
+			remoteRef = DBEEB56E154F79630029003D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DB64C48C144F4BCD003D766A /* Resources */ = {
@@ -346,6 +412,11 @@
 			isa = PBXTargetDependency;
 			target = DB64C47E144F4BCD003D766A /* Courier */;
 			targetProxy = DB64C495144F4BCD003D766A /* PBXContainerItemProxy */;
+		};
+		DBEEB571154F79680029003D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Conductor;
+			targetProxy = DBEEB570154F79680029003D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
