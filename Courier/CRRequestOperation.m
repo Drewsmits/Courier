@@ -93,12 +93,8 @@ static NSThread *_networkRequestThread = nil;
 #pragma mark - NSOperation
 
 - (void)start {
+    [super start];
     
-    if ([self isCancelled]) {
-        [self finish];
-        return;
-    }
-        
     [self performSelector:@selector(startConnection) 
                  onThread:[[self class] networkRequestThread] 
                withObject:nil 
@@ -119,12 +115,6 @@ static NSThread *_networkRequestThread = nil;
     if(_connection) {
         [self.connection cancel];
         _connection = nil;
-    }
-    
-    // If canceled, don't run completion blocks
-    if ([self isCancelled]) {
-        [super finish];
-        return;
     }
 
     if (self.response.success) {
@@ -180,12 +170,8 @@ static NSThread *_networkRequestThread = nil;
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    dispatch_async(dispatch_get_main_queue(), ^(void) {
-        
-        DLog(@"Connection failed!  URL: %@  Response: %@", self.request.path, self.response.responseDescription);
-        
-        [self finish];
-    });
+    DLog(@"Connection failed!  URL: %@  Response: %@", self.request.path, self.response.responseDescription);
+    [self finish];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
