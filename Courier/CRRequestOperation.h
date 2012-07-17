@@ -25,7 +25,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Conductor/CDOperation.h"
+//#import "Conductor/CDOperation.h"
+#import "Conductor/CDBackgroundTaskOperation.h"
 
 #import "CRRequest.h"
 #import "CRResponse.h"
@@ -33,7 +34,7 @@
 typedef void (^CRRequestOperationSuccessBlock)(CRRequest *request, CRResponse *response);
 typedef void (^CRRequestOperationFailureBlock)(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable);
 
-@interface CRRequestOperation : CDOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
+@interface CRRequestOperation : CDBackgroundTaskOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
 @private    
     NSURLConnection *_connection;
     CRRequest *_request;

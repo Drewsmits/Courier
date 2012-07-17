@@ -32,6 +32,9 @@
 		DB83D106144F9BC400D94890 /* NSString+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D104144F9BC400D94890 /* NSString+Courier.m */; };
 		DB83D12D1450CC0100D94890 /* NSData+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D12B1450CC0100D94890 /* NSData+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D12C1450CC0100D94890 /* NSData+Courier.m */; };
+		DB9DEFB01573F9ED00E05274 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9DEFAF1573F9ED00E05274 /* UIKit.framework */; };
+		DB9DEFB11573F9FF00E05274 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */; };
+		DB9DEFB21573FA1400E05274 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAAA636150FE761004C1532 /* libz.dylib */; };
 		DBA5F95714560E4100EBFF68 /* Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C487144F4BCD003D766A /* Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBAAA637150FE761004C1532 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAAA636150FE761004C1532 /* libz.dylib */; };
 		DBD4214D15228B0A0046D4CE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */; };
@@ -99,6 +102,7 @@
 		DB83D104144F9BC400D94890 /* NSString+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Courier.m"; sourceTree = "<group>"; };
 		DB83D12B1450CC0100D94890 /* NSData+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Courier.h"; sourceTree = "<group>"; };
 		DB83D12C1450CC0100D94890 /* NSData+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Courier.m"; sourceTree = "<group>"; };
+		DB9DEFAF1573F9ED00E05274 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DBAAA636150FE761004C1532 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		DBB524131458EBA9006040C7 /* TestAPI.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = TestAPI.rb; path = Sinatra/TestAPI.rb; sourceTree = "<group>"; };
 		DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
@@ -121,6 +125,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB9DEFB21573FA1400E05274 /* libz.dylib in Frameworks */,
+				DB9DEFB11573F9FF00E05274 /* SystemConfiguration.framework in Frameworks */,
+				DB9DEFB01573F9ED00E05274 /* UIKit.framework in Frameworks */,
 				DB64C494144F4BCD003D766A /* Foundation.framework in Frameworks */,
 				DB64C491144F4BCD003D766A /* SenTestingKit.framework in Frameworks */,
 				DB64C497144F4BCD003D766A /* libCourier.a in Frameworks */,
@@ -153,6 +160,7 @@
 		DB64C481144F4BCD003D766A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB9DEFAF1573F9ED00E05274 /* UIKit.framework */,
 				DBAAA636150FE761004C1532 /* libz.dylib */,
 				DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */,
 				DB64C482144F4BCD003D766A /* Foundation.framework */,
@@ -493,6 +501,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Courier/Courier-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					NS_BLOCK_ASSERTIONS,
+					"LOGGING_ENABLED=0",
+				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

@@ -149,6 +149,17 @@ static NSThread *_networkRequestThread = nil;
     [super finish];
 }
 
+- (void)cancel {
+    [super cancel];
+    [self.connection cancel];
+}
+
+- (void)backgroundTaskExpirationCleanup {
+    if (self.failure) {
+        self.failure(self.request, self.response, nil, NO);
+    }
+}
+
 #pragma mark - NSURLConnection Data
 
 - (NSURLRequest *)connection:(NSURLConnection *)connection 

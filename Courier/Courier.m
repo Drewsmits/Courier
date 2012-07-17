@@ -28,6 +28,7 @@
 #import "Courier+Post.h"
 
 #import <UIKit/UIDevice.h>
+#import <UIKit/UIApplication.h>
 
 #import "NSData+Courier.h"
 
@@ -54,15 +55,15 @@
 
 #pragma mark - API
 
-- (void)addOperationForPath:(NSString *)path 
-                 withMethod:(CRRequestMethod)method
-                     header:(NSDictionary *)header
-           andURLParameters:(NSDictionary *)parameters
-      andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
-               toQueueNamed:(NSString *)queueName
-                    success:(CRRequestOperationSuccessBlock)success 
-                    failure:(CRRequestOperationFailureBlock)failure {
-            
+- (CDOperation *)addOperationForPath:(NSString *)path 
+                          withMethod:(CRRequestMethod)method
+                              header:(NSDictionary *)header
+                    andURLParameters:(NSDictionary *)parameters
+               andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
+                        toQueueNamed:(NSString *)queueName
+                             success:(CRRequestOperationSuccessBlock)success 
+                             failure:(CRRequestOperationFailureBlock)failure {
+        
     if (self.baseAPIPath && [path rangeOfString:@"http"].location == NSNotFound) {
         NSMutableString *newPath = [self.baseAPIPath mutableCopy];
         [newPath appendFormat:@"/%@", path];
@@ -70,7 +71,7 @@
     }
     
     // Test reachability
-    if (![self isPathReachable:path unreachableBlock:failure]) return;
+    if (![self isPathReachable:path unreachableBlock:failure]) return nil;
     
     DLog(@"Path: %@", path);
     
@@ -84,38 +85,53 @@
     CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request
                                                                      success:success
                                                                      failure:failure];
-    
+        
     [self addOperation:operation toQueueNamed:queueName];
+    
+    // Network activity
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    if (!queueName) queueName = [self queueNameForOperation:operation];
+    
+    CDOperationQueueProgressObserverCompletionBlock completionBlock = ^(void) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    };
+    
+    [self addProgressObserverToQueueNamed:queueName
+                        withProgressBlock:nil
+                       andCompletionBlock:completionBlock];
+    
+    return operation;
 }
 
-- (void)putPath:(NSString *)path 
-  URLParameters:(NSDictionary *)urlParameters
-        success:(CRRequestOperationSuccessBlock)success
-        failure:(CRRequestOperationFailureBlock)failure {
+- (CDOperation *)putPath:(NSString *)path 
+           URLParameters:(NSDictionary *)urlParameters
+                 success:(CRRequestOperationSuccessBlock)success
+                 failure:(CRRequestOperationFailureBlock)failure {
     
-    [self addOperationForPath:path 
-                   withMethod:CRRequestMethodPUT
-                       header:[self defaultHeader]
-             andURLParameters:urlParameters
-        andHTTPBodyParameters:nil
-                 toQueueNamed:nil
-                      success:success 
-                      failure:failure];
+    return [self addOperationForPath:path 
+                          withMethod:CRRequestMethodPUT
+                              header:[self defaultHeader]
+                    andURLParameters:urlParameters
+               andHTTPBodyParameters:nil
+                        toQueueNamed:nil
+                             success:success 
+                             failure:failure];
 }
 
-- (void)deletePath:(NSString *)path 
-        URLParameters:(NSDictionary *)urlParameters
-           success:(CRRequestOperationSuccessBlock)success
-           failure:(CRRequestOperationFailureBlock)failure {
+- (CDOperation *)deletePath:(NSString *)path 
+              URLParameters:(NSDictionary *)urlParameters
+                    success:(CRRequestOperationSuccessBlock)success
+                    failure:(CRRequestOperationFailureBlock)failure {
     
-    [self addOperationForPath:path 
-                   withMethod:CRRequestMethodDELETE
-                       header:[self defaultHeader]
-             andURLParameters:urlParameters
-        andHTTPBodyParameters:nil
-                 toQueueNamed:nil
-                      success:success 
-                      failure:failure];
+    return [self addOperationForPath:path 
+                          withMethod:CRRequestMethodDELETE
+                              header:[self defaultHeader]
+                    andURLParameters:urlParameters
+               andHTTPBodyParameters:nil
+                        toQueueNamed:nil
+                             success:success 
+                             failure:failure];
 }
 
 #pragma mark - Header
@@ -167,8 +183,15 @@
 
 #pragma mark - Reachability
 
+- (BOOL)isBaseAPIPathReachable {
+    return [self isPathReachable:[self baseAPIPath]
+                unreachableBlock:nil];
+}
+
 - (BOOL)isPathReachable:(NSString *)path 
        unreachableBlock:(CRRequestOperationFailureBlock)unreachableBlock {
+    
+    if (!path) return NO;
     
     // Build reachability with address
     struct sockaddr_in address;

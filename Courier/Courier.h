@@ -63,26 +63,28 @@
 - (void)setBasicAuthUsername:(NSString *)username 
                  andPassword:(NSString *)password;
 
-- (void)addOperationForPath:(NSString *)path 
-                 withMethod:(CRRequestMethod)method
-                     header:(NSDictionary *)header
-           andURLParameters:(NSDictionary *)parameters
-      andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
-               toQueueNamed:(NSString *)queueName
-                    success:(CRRequestOperationSuccessBlock)success 
+- (CDOperation *)addOperationForPath:(NSString *)path 
+                          withMethod:(CRRequestMethod)method
+                              header:(NSDictionary *)header
+                    andURLParameters:(NSDictionary *)parameters
+               andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
+                        toQueueNamed:(NSString *)queueName
+                             success:(CRRequestOperationSuccessBlock)success 
+                             failure:(CRRequestOperationFailureBlock)failure;
+
+- (CDOperation *)putPath:(NSString *)path 
+           URLParameters:(NSDictionary *)urlParameters
+                 success:(CRRequestOperationSuccessBlock)success
+                 failure:(CRRequestOperationFailureBlock)failure;
+
+- (CDOperation *)deletePath:(NSString *)path 
+              URLParameters:(NSDictionary *)urlParameters
+                    success:(CRRequestOperationSuccessBlock)success
                     failure:(CRRequestOperationFailureBlock)failure;
 
-- (void)putPath:(NSString *)path 
-  URLParameters:(NSDictionary *)urlParameters
-        success:(CRRequestOperationSuccessBlock)success
-        failure:(CRRequestOperationFailureBlock)failure;
-
-- (void)deletePath:(NSString *)path 
-     URLParameters:(NSDictionary *)urlParameters
-           success:(CRRequestOperationSuccessBlock)success
-           failure:(CRRequestOperationFailureBlock)failure;
-
 - (void)deleteCookies;
+
+- (BOOL)isBaseAPIPathReachable;
 
 - (BOOL)isPathReachable:(NSString *)path 
        unreachableBlock:(CRRequestOperationFailureBlock)unreachableBlock;

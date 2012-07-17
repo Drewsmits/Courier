@@ -10,27 +10,29 @@
 
 @interface Courier (Post)
 
-- (void)postPath:(NSString *)path 
+- (CDOperation *)postPath:(NSString *)path 
    URLParameters:(NSDictionary *)urlParameters
          success:(CRRequestOperationSuccessBlock)success
          failure:(CRRequestOperationFailureBlock)failure;
 
-- (void)postPath:(NSString *)path 
-   URLParameters:(NSDictionary *)urlParameters
- usingQueueNamed:(NSString *)queueName
-         success:(CRRequestOperationSuccessBlock)success
-         failure:(CRRequestOperationFailureBlock)failure;
+- (CDOperation *)postPath:(NSString *)path 
+            URLParameters:(NSDictionary *)urlParameters
+          usingQueueNamed:(NSString *)queueName
+                  success:(CRRequestOperationSuccessBlock)success
+                  failure:(CRRequestOperationFailureBlock)failure;
 
-- (void)postPath:(NSString *)path URLParameters:(NSDictionary *)urlParameters
-                             HTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                                        success:(CRRequestOperationSuccessBlock)success
-                                        failure:(CRRequestOperationFailureBlock)failure;
+- (CDOperation *)postPath:(NSString *)path
+            URLParameters:(NSDictionary *)urlParameters
+       HTTPBodyParameters:(NSDictionary *)httpBodyParameters
+                  success:(CRRequestOperationSuccessBlock)success
+                  failure:(CRRequestOperationFailureBlock)failure;
 
-- (void)postPath:(NSString *)path URLParameters:(NSDictionary *)urlParameters
-                             HTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                                usingQueueNamed:(NSString *)queueName
-                                        success:(CRRequestOperationSuccessBlock)success
-                                        failure:(CRRequestOperationFailureBlock)failure;
+- (CDOperation *)postPath:(NSString *)path
+            URLParameters:(NSDictionary *)urlParameters
+       HTTPBodyParameters:(NSDictionary *)httpBodyParameters
+          usingQueueNamed:(NSString *)queueName
+                  success:(CRRequestOperationSuccessBlock)success
+                  failure:(CRRequestOperationFailureBlock)failure;
 
 
 @end

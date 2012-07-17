@@ -10,28 +10,28 @@
 
 @interface Courier (Get)
 
-- (void)getPath:(NSString *)path 
-  URLParameters:(NSDictionary *)urlParameters
-        success:(CRRequestOperationSuccessBlock)success
-        failure:(CRRequestOperationFailureBlock)failure;
+- (CDOperation *)getPath:(NSString *)path 
+           URLParameters:(NSDictionary *)urlParameters
+                 success:(CRRequestOperationSuccessBlock)success
+                 failure:(CRRequestOperationFailureBlock)failure;
 
-- (void)getPath:(NSString *)path 
-  URLParameters:(NSDictionary *)urlParameters
-usingQueueNamed:(NSString *)queueName
-        success:(CRRequestOperationSuccessBlock)success
-        failure:(CRRequestOperationFailureBlock)failure;
+- (CDOperation *)getPath:(NSString *)path 
+           URLParameters:(NSDictionary *)urlParameters
+         usingQueueNamed:(NSString *)queueName
+                 success:(CRRequestOperationSuccessBlock)success
+                 failure:(CRRequestOperationFailureBlock)failure;
 
-- (void)getPath:(NSString *)path
-     withHeader:(NSDictionary *)header
-  URLParameters:(NSDictionary *)urlParameters
-        success:(CRRequestOperationSuccessBlock)success
-        failure:(CRRequestOperationFailureBlock)failure;
+- (CDOperation *)getPath:(NSString *)path
+              withHeader:(NSDictionary *)header
+           URLParameters:(NSDictionary *)urlParameters
+                 success:(CRRequestOperationSuccessBlock)success
+                 failure:(CRRequestOperationFailureBlock)failure;
 
-- (void)getPath:(NSString *)path
-     withHeader:(NSDictionary *)header
-  URLParameters:(NSDictionary *)urlParameters
-usingQueueNamed:(NSString *)queueName
-        success:(CRRequestOperationSuccessBlock)success
-        failure:(CRRequestOperationFailureBlock)failure;
+- (CDOperation *)getPath:(NSString *)path
+              withHeader:(NSDictionary *)header
+           URLParameters:(NSDictionary *)urlParameters
+         usingQueueNamed:(NSString *)queueName
+                 success:(CRRequestOperationSuccessBlock)success
+                 failure:(CRRequestOperationFailureBlock)failure;
 
 @end
