@@ -37,8 +37,9 @@
 @property (readwrite, nonatomic, strong) NSURLConnection *connection;
 @property (readwrite, nonatomic, strong) CRRequest *request;
 @property (readwrite, nonatomic, strong) CRResponse *response;
-@property (readwrite, nonatomic, copy) CRRequestOperationSuccessBlock success;
-@property (readwrite, nonatomic, copy) CRRequestOperationFailureBlock failure;
+@property (readwrite, nonatomic, strong) CRRequestOperationSuccessBlock success;
+@property (readwrite, nonatomic, strong) CRRequestOperationFailureBlock failure;
+
 @end
 
 #pragma mark -

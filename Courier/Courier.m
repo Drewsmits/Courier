@@ -136,7 +136,9 @@
 
 #pragma mark - Header
 
-- (void)setBasicAuthUsername:(NSString *)username andPassword:(NSString *)password {
+- (void)setBasicAuthUsername:(NSString *)username 
+                 andPassword:(NSString *)password 
+{
     NSString *authHeader = [NSString stringWithFormat:@"%@:%@", username, password];
     NSString *encodedAuthHeader = [[NSData dataWithBytes:[authHeader UTF8String] 
                                                   length:[authHeader length]] base64EncodedString];
