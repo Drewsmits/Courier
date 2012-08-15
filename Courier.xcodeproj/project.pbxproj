@@ -316,7 +316,7 @@
 		DB64C474144F4BB0003D766A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "Andrew B. Smith";
 			};
 			buildConfigurationList = DB64C477144F4BB0003D766A /* Build configuration list for PBXProject "Courier" */;

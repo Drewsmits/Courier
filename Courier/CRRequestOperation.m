@@ -155,12 +155,6 @@ static NSThread *_networkRequestThread = nil;
     [self.connection cancel];
 }
 
-- (void)backgroundTaskExpirationCleanup {
-    if (self.failure) {
-        self.failure(self.request, self.response, nil, NO);
-    }
-}
-
 #pragma mark - NSURLConnection Data
 
 - (NSURLRequest *)connection:(NSURLConnection *)connection 
