@@ -37,6 +37,7 @@
 @property (nonatomic, readonly) BOOL success;
 
 @property (weak, nonatomic, readonly) NSString *responseDescription;
+@property (readonly) id json;
 
 + (id)responseWithResponse:(NSURLResponse *)response 
                andCapacity:(NSInteger)capacity;

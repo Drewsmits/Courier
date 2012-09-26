@@ -53,6 +53,15 @@
     return courier;
 }
 
++ (Courier *)newCourierWithBaseAPIPath:(NSString *)baseAPIPath
+                      andMainQueueName:(NSString *)queueName
+{
+    Courier *courier = [Courier new];
+    courier.baseAPIPath = baseAPIPath;
+    courier.mainQueueName = queueName;
+    return courier;
+}
+
 #pragma mark - API
 
 - (CDOperation *)addOperationForPath:(NSString *)path 
@@ -172,6 +181,14 @@
 	[defaultHeader setValue:[NSString stringWithFormat:@"%@/%@ (%@, %@ %@, %@", bundleIdentifierString, bundleVersionKey, @"unknown", systemName, systemVersion, model] forKey:@"User-Agent"];
     
     return defaultHeader;
+}
+
+#pragma mark - Conductor
+
+- (NSString *)queueNameForOperation:(NSOperation *)operation
+{
+    if (_mainQueueName) return self.mainQueueName;
+    return [super queueNameForOperation:operation];
 }
 
 #pragma mark - Cookies

@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Andrew B. Smith. All rights reserved.
 //
 
+#import "Courier.h"
 #import "Courier+Get.h"
 
 @implementation Courier (Get)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB3A04B3160A7E4400B833CA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B2160A7E4400B833CA /* libz.dylib */; };
+		DB3A04B5160A7E4D00B833CA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */; };
 		DB47B1E614DB61110030A7DB /* Courier+Get.h in Headers */ = {isa = PBXBuildFile; fileRef = DB47B1E414DB61110030A7DB /* Courier+Get.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB47B1E714DB61110030A7DB /* Courier+Get.m in Sources */ = {isa = PBXBuildFile; fileRef = DB47B1E514DB61110030A7DB /* Courier+Get.m */; };
 		DB47B1EC14DB62150030A7DB /* Courier+Post.h in Headers */ = {isa = PBXBuildFile; fileRef = DB47B1EA14DB62150030A7DB /* Courier+Post.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -22,8 +24,6 @@
 		DB64C4BA144F5C7C003D766A /* CRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */; };
 		DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DB6BABBB154F47F0004842D2 /* Reachability.h */; };
 		DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6BABBC154F47F0004842D2 /* Reachability.m */; };
-		DB77CADD153277C4004E34C1 /* Courier+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = DB77CADB153277C4004E34C1 /* Courier+OAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB77CADE153277C4004E34C1 /* Courier+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = DB77CADC153277C4004E34C1 /* Courier+OAuth.m */; };
 		DB83D0EB144F90D100D94890 /* CRRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D0E9144F90D100D94890 /* CRRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB83D0EC144F90D100D94890 /* CRRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D0EA144F90D100D94890 /* CRRequest.m */; };
 		DB83D0F4144F932D00D94890 /* CRResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D0F2144F932D00D94890 /* CRResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,8 +36,6 @@
 		DB9DEFB11573F9FF00E05274 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */; };
 		DB9DEFB21573FA1400E05274 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAAA636150FE761004C1532 /* libz.dylib */; };
 		DBA5F95714560E4100EBFF68 /* Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C487144F4BCD003D766A /* Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DBAAA637150FE761004C1532 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAAA636150FE761004C1532 /* libz.dylib */; };
-		DBD4214D15228B0A0046D4CE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */; };
 		DBEEB572154F796F0029003D /* libConductor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEEB56D154F79630029003D /* libConductor.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB3A04B2160A7E4400B833CA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DB47B1E414DB61110030A7DB /* Courier+Get.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Courier+Get.h"; sourceTree = "<group>"; };
 		DB47B1E514DB61110030A7DB /* Courier+Get.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Courier+Get.m"; sourceTree = "<group>"; };
 		DB47B1EA14DB62150030A7DB /* Courier+Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Courier+Post.h"; sourceTree = "<group>"; };
@@ -114,9 +114,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB3A04B5160A7E4D00B833CA /* SystemConfiguration.framework in Frameworks */,
 				DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */,
-				DBD4214D15228B0A0046D4CE /* SystemConfiguration.framework in Frameworks */,
-				DBAAA637150FE761004C1532 /* libz.dylib in Frameworks */,
+				DB3A04B3160A7E4400B833CA /* libz.dylib in Frameworks */,
 				DBEEB572154F796F0029003D /* libConductor.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,6 +160,8 @@
 		DB64C481144F4BCD003D766A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB3A04B2160A7E4400B833CA /* libz.dylib */,
+				DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */,
 				DB9DEFAF1573F9ED00E05274 /* UIKit.framework */,
 				DBAAA636150FE761004C1532 /* libz.dylib */,
 				DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */,
@@ -265,7 +267,6 @@
 				DBA5F95714560E4100EBFF68 /* Courier.h in Headers */,
 				DB47B1E614DB61110030A7DB /* Courier+Get.h in Headers */,
 				DB47B1EC14DB62150030A7DB /* Courier+Post.h in Headers */,
-				DB77CADD153277C4004E34C1 /* Courier+OAuth.h in Headers */,
 				DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,7 +401,6 @@
 				DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */,
 				DB47B1E714DB61110030A7DB /* Courier+Get.m in Sources */,
 				DB47B1ED14DB62150030A7DB /* Courier+Post.m in Sources */,
-				DB77CADE153277C4004E34C1 /* Courier+OAuth.m in Sources */,
 				DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

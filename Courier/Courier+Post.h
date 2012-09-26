@@ -30,9 +30,9 @@
 - (CDOperation *)postPath:(NSString *)path
             URLParameters:(NSDictionary *)urlParameters
        HTTPBodyParameters:(NSDictionary *)httpBodyParameters
+  addHTTPHeaderParameters:(NSDictionary *)additionalHttpHeaderParameters
           usingQueueNamed:(NSString *)queueName
                   success:(CRRequestOperationSuccessBlock)success
                   failure:(CRRequestOperationFailureBlock)failure;
-
 
 @end

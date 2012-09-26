@@ -33,12 +33,11 @@
 - (void)dealloc {
     response = nil;
     data = nil;
-    
 }
 
 + (id)responseWithResponse:(NSURLResponse *)response 
-               andCapacity:(NSInteger)capacity {
-    
+               andCapacity:(NSInteger)capacity
+{
     CRResponse *rep = [[self alloc] init];
     
     rep.response = response;
@@ -47,16 +46,18 @@
     return rep;
 }
 
-- (NSInteger)statusCode {
+- (NSInteger)statusCode
+{
     return [(NSHTTPURLResponse *)self.response statusCode];
 }
 
-- (NSString *)statusCodeDescription {
+- (NSString *)statusCodeDescription
+{
     return [NSHTTPURLResponse localizedStringForStatusCode:[self statusCode]];
 }
 
-- (BOOL)success {
-    
+- (BOOL)success
+{
     if (self.statusCode > 100 && self.statusCode <= 302) {
         return YES;
     }
@@ -66,14 +67,31 @@
 
 #pragma mark - Accessors
 
-- (NSMutableData *)data {
+- (NSMutableData *)data
+{
     if (data) return data;
     data = [[NSMutableData alloc] initWithCapacity:self.dataCapacity];
     return data;
 }
 
-- (NSString *)responseDescription {
+- (NSString *)responseDescription
+{
     return [NSString stringWithUTF8String:[self.data bytes]];;
+}
+
+- (id)json
+{
+    NSError *error;
+    id json = [NSJSONSerialization JSONObjectWithData:self.data
+                                              options:NSJSONReadingMutableContainers
+                                                error:&error];
+    
+    if (!json) {
+        WLog(@"Unable to create JSON object response data. ERROR: %@", error);
+        return nil;
+    }
+
+    return json;
 }
 
 @end

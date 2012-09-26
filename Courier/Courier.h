@@ -24,7 +24,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Conductor/Conductor.h"
+#import <Conductor/Conductor.h>
 
 #import "CRRequest.h"
 #import "CRRequestOperation.h"
@@ -43,7 +43,7 @@
 /**
  Route on which all API requests are relative to
  */
-@property (nonatomic, strong) NSString *baseAPIPath;
+@property (copy) NSString *baseAPIPath;
 
 /**
  Determines whether or not the Courier instance should handle cookies using the
@@ -51,10 +51,15 @@
  */
 @property (nonatomic, assign) BOOL shouldHandleCookies;
 
+@property (copy) NSString *mainQueueName;
+
 /**
  Returns a new Courier instance
  */
 + (Courier *)courier;
+
++ (Courier *)newCourierWithBaseAPIPath:(NSString *)baseAPIPath
+                      andMainQueueName:(NSString *)queueName;
 
 /**
  Add the username and password to the Basic Auth header in the default header.
