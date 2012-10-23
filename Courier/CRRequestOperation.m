@@ -34,11 +34,8 @@
 
 - (void)startConnection;
 
-@property (readwrite, nonatomic, strong) NSURLConnection *connection;
-@property (readwrite, nonatomic, strong) CRRequest *request;
-@property (readwrite, nonatomic, strong) CRResponse *response;
-@property (readwrite, nonatomic, strong) CRRequestOperationSuccessBlock success;
-@property (readwrite, nonatomic, strong) CRRequestOperationFailureBlock failure;
+@property (nonatomic, copy) CRRequestOperationSuccessBlock success;
+@property (nonatomic, copy) CRRequestOperationFailureBlock failure;
 
 @end
 
@@ -48,29 +45,24 @@
 
 static NSThread *_networkRequestThread = nil;
 
-@synthesize connection = _connection,
-            request = _request,
-            response = _response,
-            success,
-            failure;
-
-
 + (id)operationWithRequest:(CRRequest *)request 
                    success:(CRRequestOperationSuccessBlock)successBlock
-                   failure:(CRRequestOperationFailureBlock)failureBlock {    
+                   failure:(CRRequestOperationFailureBlock)failureBlock
+{    
+    CRRequestOperation *op = [CRRequestOperation new];
     
-    CRRequestOperation *op = [CRRequestOperation operation];
-   
-    op.request = request;
-    op.success = successBlock;
-    op.failure = failureBlock;
+    op.identifier = request.path;
+    op.request    = request;
+    op.success    = successBlock;
+    op.failure    = failureBlock;
         
     return op;
 }
 
 #pragma mark - Threading
 
-+ (void)networkRequestThreadEntryPoint:(id)object {
++ (void)networkRequestThreadEntryPoint:(id)object
+{
     do {
         @autoreleasepool {
             [[NSRunLoop currentRunLoop] run];
@@ -78,7 +70,8 @@ static NSThread *_networkRequestThread = nil;
     } while (YES);
 }
 
-+ (NSThread *)networkRequestThread {
++ (NSThread *)networkRequestThread
+{
     static dispatch_once_t oncePredicate;
     
     dispatch_once(&oncePredicate, ^{
@@ -93,7 +86,8 @@ static NSThread *_networkRequestThread = nil;
 
 #pragma mark - NSOperation
 
-- (void)start {
+- (void)start
+{
     [super start];
     
     [self performSelector:@selector(startConnection) 
@@ -103,7 +97,8 @@ static NSThread *_networkRequestThread = nil;
                     modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
 }
 
-- (void)startConnection {
+- (void)startConnection
+{
     self.connection = [[NSURLConnection alloc] initWithRequest:[self.request URLRequest]
                                                        delegate:self 
                                                startImmediately:NO];
@@ -111,8 +106,8 @@ static NSThread *_networkRequestThread = nil;
     [self.connection start];
 }
 
-- (void)finish {
-    
+- (void)finish
+{    
     if(_connection) {
         [self.connection cancel];
         _connection = nil;
@@ -150,7 +145,8 @@ static NSThread *_networkRequestThread = nil;
     [super finish];
 }
 
-- (void)cancel {
+- (void)cancel
+{
     [super cancel];
     [self.connection cancel];
 }
@@ -159,28 +155,32 @@ static NSThread *_networkRequestThread = nil;
 
 - (NSURLRequest *)connection:(NSURLConnection *)connection 
              willSendRequest:(NSURLRequest *)request 
-            redirectResponse:(NSURLResponse *)response {
+            redirectResponse:(NSURLResponse *)response
+{
     return request;
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{    
     NSInteger capacity = MIN(MAX(abs(response.expectedContentLength), 1024), 1024 * 1024 * 8);
     
     self.response = [CRResponse responseWithResponse:response 
                                          andCapacity:capacity];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
     [self.response.data appendData:data]; 
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
     DLog(@"Connection failed!  URL: %@  Response: %@", self.request.path, self.response.responseDescription);
     [self finish];
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
     [self finish];
 }
 
@@ -196,7 +196,8 @@ static NSThread *_networkRequestThread = nil;
 //}
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection 
-                  willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+                  willCacheResponse:(NSCachedURLResponse *)cachedResponse
+{
     return nil;
 }
 
@@ -218,7 +219,8 @@ static NSThread *_networkRequestThread = nil;
 //    
 //}
 
-- (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection {
+- (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
+{
     return NO;
 }
 

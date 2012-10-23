@@ -30,8 +30,8 @@
            URLParameters:(NSDictionary *)urlParameters
          usingQueueNamed:(NSString *)queueName
                  success:(CRRequestOperationSuccessBlock)success
-                 failure:(CRRequestOperationFailureBlock)failure {
-
+                 failure:(CRRequestOperationFailureBlock)failure
+{
     return [self addOperationForPath:path 
                           withMethod:CRRequestMethodGET
                               header:[self defaultHeader]

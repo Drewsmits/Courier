@@ -79,10 +79,13 @@
         path = newPath;
     }
     
-    // Test reachability
-    if (![self isPathReachable:path unreachableBlock:failure]) return nil;
-    
     DLog(@"Path: %@", path);
+    
+    // Test reachability
+    if (![self isPathReachable:path unreachableBlock:failure]) {
+        WLog(@"Not reachable: %@", path);
+        return nil;
+    }
     
     CRRequest *request = [CRRequest requestWithMethod:method 
                                               forPath:path 

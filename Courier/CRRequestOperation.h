@@ -34,18 +34,13 @@
 typedef void (^CRRequestOperationSuccessBlock)(CRRequest *request, CRResponse *response);
 typedef void (^CRRequestOperationFailureBlock)(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable);
 
-@interface CRRequestOperation : CDBackgroundTaskOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
-@private    
-    NSURLConnection *_connection;
-    CRRequest *_request;
-    CRResponse *_response;
-}
+@interface CRRequestOperation : CDBackgroundTaskOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate> {}
 
-@property (readonly, nonatomic, strong) NSURLConnection *connection;
-@property (readonly, nonatomic, strong) CRRequest *request;
-@property (readonly, nonatomic, strong) CRResponse *response;
+@property (nonatomic, strong) NSURLConnection *connection;
+@property (nonatomic, strong) CRRequest *request;
+@property (nonatomic, strong) CRResponse *response;
 
-+ (id)operationWithRequest:(CRRequest *)aRequest 
++ (id)operationWithRequest:(CRRequest *)request
                    success:(CRRequestOperationSuccessBlock)successBlock
                    failure:(CRRequestOperationFailureBlock)failureBlock;
 
