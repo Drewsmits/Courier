@@ -25,19 +25,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CRResponse : NSObject {
-@private
-    NSURLResponse *response;
-    NSMutableData *data;
-}
+@interface CRResponse : NSObject {}
 
 @property (nonatomic, strong) NSURLResponse *response;
 @property (nonatomic, assign) NSInteger dataCapacity;
-@property (weak, nonatomic, readonly) NSMutableData *data;
-@property (nonatomic, readonly) BOOL success;
+@property (nonatomic, strong) NSMutableData *data;
+@property (nonatomic, assign) BOOL success;
 
-@property (weak, nonatomic, readonly) NSString *responseDescription;
-@property (readonly) id json;
+@property (nonatomic, copy) NSString *responseDescription;
+@property (nonatomic, readonly) id json;
 
 + (id)responseWithResponse:(NSURLResponse *)response 
                andCapacity:(NSInteger)capacity;

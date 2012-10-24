@@ -163,7 +163,8 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 //    return [[[NSString alloc] initWithData:mutableData encoding:NSASCIIStringEncoding] autorelease];
 //}
 
-- (NSData *)dataByGZipCompressingWithError:(NSError **)error {
+- (NSData *)dataByGZipCompressingWithError:(NSError **)error
+{
     if ([self length] == 0) {
         return self;
     }
@@ -202,7 +203,8 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 	return [NSData dataWithData:compressedData];
 }
 
-- (NSData *)dataByGZipDecompressingDataWithError:(NSError **)error {
+- (NSData *)dataByGZipDecompressingDataWithError:(NSError **)error
+{
     z_stream zStream;
 	
     zStream.zalloc = Z_NULL;

@@ -29,21 +29,17 @@
 #import "CRRequest.h"
 #import "CRRequestOperation.h"
 
-@interface Courier : Conductor {
-@private
-    NSMutableDictionary *defaultHeader;
-    NSString *baseAPIPath;
-}
+@interface Courier : Conductor {}
 
 /**
  Default headers used for every request
  */
-@property (weak, nonatomic, readonly) NSMutableDictionary *defaultHeader;
+@property (nonatomic, readonly) NSMutableDictionary *defaultHeader;
 
 /**
  Route on which all API requests are relative to
  */
-@property (copy) NSString *baseAPIPath;
+@property (nonatomic, copy) NSString *baseAPIPath;
 
 /**
  Determines whether or not the Courier instance should handle cookies using the
@@ -51,7 +47,7 @@
  */
 @property (nonatomic, assign) BOOL shouldHandleCookies;
 
-@property (copy) NSString *mainQueueName;
+@property (nonatomic, copy) NSString *mainQueueName;
 
 /**
  Returns a new Courier instance

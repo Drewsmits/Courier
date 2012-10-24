@@ -36,19 +36,49 @@
 
 @implementation Courier
 
-@synthesize baseAPIPath, shouldHandleCookies;
-
-+ (id)sharedInstance {
++ (id)sharedInstance
+{
     static dispatch_once_t pred = 0;
     __strong static id _sharedInstance = nil;
     dispatch_once(&pred, ^{
-        _sharedInstance = [self courier];
+        _sharedInstance = [Courier new];
     });
     return _sharedInstance;
 }
 
-+ (Courier *)courier {
-    Courier *courier = [[self alloc] init];
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        NSMutableDictionary *defaultHeader = [[NSMutableDictionary alloc] init];
+        
+        // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
+        [defaultHeader setValue:@"application/json" forKey:@"Accept"];
+        
+        // Accept-Encoding HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3
+        [defaultHeader setValue:@"gzip" forKey:@"Accept-Encoding"];
+        
+        // Accept-Language HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4
+        NSString *preferredLanguageCodes = [[NSLocale preferredLanguages] componentsJoinedByString:@", "];
+        [defaultHeader setValue:[NSString stringWithFormat:@"%@, en-us;q=0.8", preferredLanguageCodes] forKey:@"Accept-Language"];
+        
+        // User-Agent Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43
+        
+        NSString *bundleIdentifierString = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey];
+        NSString *bundleVersionKey = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+        NSString *systemName = [[UIDevice currentDevice] systemName];
+        NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
+        NSString *model = [[UIDevice currentDevice] model];
+        [defaultHeader setValue:[NSString stringWithFormat:@"%@/%@ (%@, %@ %@, %@", bundleIdentifierString, bundleVersionKey, @"unknown", systemName, systemVersion, model] forKey:@"User-Agent"];
+        
+        _defaultHeader = defaultHeader;
+    }
+    return self;
+}
+
++ (Courier *)courier
+{
+    Courier *courier = [Courier new];
     courier.shouldHandleCookies = NO;
     return courier;
 }
@@ -71,8 +101,8 @@
                andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
                         toQueueNamed:(NSString *)queueName
                              success:(CRRequestOperationSuccessBlock)success 
-                             failure:(CRRequestOperationFailureBlock)failure {
-        
+                             failure:(CRRequestOperationFailureBlock)failure
+{        
     if (self.baseAPIPath && [path rangeOfString:@"http"].location == NSNotFound) {
         NSMutableString *newPath = [self.baseAPIPath mutableCopy];
         [newPath appendFormat:@"/%@", path];
@@ -119,8 +149,8 @@
 - (CDOperation *)putPath:(NSString *)path 
            URLParameters:(NSDictionary *)urlParameters
                  success:(CRRequestOperationSuccessBlock)success
-                 failure:(CRRequestOperationFailureBlock)failure {
-    
+                 failure:(CRRequestOperationFailureBlock)failure
+{    
     return [self addOperationForPath:path 
                           withMethod:CRRequestMethodPUT
                               header:[self defaultHeader]
@@ -134,8 +164,8 @@
 - (CDOperation *)deletePath:(NSString *)path 
               URLParameters:(NSDictionary *)urlParameters
                     success:(CRRequestOperationSuccessBlock)success
-                    failure:(CRRequestOperationFailureBlock)failure {
-    
+                    failure:(CRRequestOperationFailureBlock)failure
+{    
     return [self addOperationForPath:path 
                           withMethod:CRRequestMethodDELETE
                               header:[self defaultHeader]
@@ -159,33 +189,6 @@
                           forKey:@"Authorization"];
 }
 
-- (NSMutableDictionary *)defaultHeader {
-    if (defaultHeader) return defaultHeader;
-    
-    defaultHeader = [[NSMutableDictionary alloc] init];
-    
-    // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
-	[defaultHeader setValue:@"application/json" forKey:@"Accept"];
-    
-	// Accept-Encoding HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3
-    [defaultHeader setValue:@"gzip" forKey:@"Accept-Encoding"];
-    
-	// Accept-Language HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4
-	NSString *preferredLanguageCodes = [[NSLocale preferredLanguages] componentsJoinedByString:@", "];
-    [defaultHeader setValue:[NSString stringWithFormat:@"%@, en-us;q=0.8", preferredLanguageCodes] forKey:@"Accept-Language"];
-	
-	// User-Agent Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43
-	
-    NSString *bundleIdentifierString = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey];
-    NSString *bundleVersionKey = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
-    NSString *systemName = [[UIDevice currentDevice] systemName];
-    NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
-    NSString *model = [[UIDevice currentDevice] model];
-	[defaultHeader setValue:[NSString stringWithFormat:@"%@/%@ (%@, %@ %@, %@", bundleIdentifierString, bundleVersionKey, @"unknown", systemName, systemVersion, model] forKey:@"User-Agent"];
-    
-    return defaultHeader;
-}
-
 #pragma mark - Conductor
 
 - (NSString *)queueNameForOperation:(NSOperation *)operation
@@ -196,7 +199,8 @@
 
 #pragma mark - Cookies
 
-- (void)deleteCookies {
+- (void)deleteCookies
+{
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie *cookie in [cookieStorage cookies]) {
         [cookieStorage deleteCookie:cookie];
@@ -205,14 +209,15 @@
 
 #pragma mark - Reachability
 
-- (BOOL)isBaseAPIPathReachable {
+- (BOOL)isBaseAPIPathReachable
+{
     return [self isPathReachable:[self baseAPIPath]
                 unreachableBlock:nil];
 }
 
 - (BOOL)isPathReachable:(NSString *)path 
-       unreachableBlock:(CRRequestOperationFailureBlock)unreachableBlock {
-    
+       unreachableBlock:(CRRequestOperationFailureBlock)unreachableBlock
+{    
     if (!path) return NO;
     
     // Build reachability with address

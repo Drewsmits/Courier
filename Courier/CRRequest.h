@@ -32,50 +32,42 @@ typedef enum {
     CRRequestMethodDELETE,
 }CRRequestMethod;
 
-@interface CRRequest : NSObject {
-@private
-    CRRequestMethod method;
-    NSString *path;
-    NSMutableDictionary *URLParameters;
-    NSMutableDictionary *HTTPBodyParameters;
-    NSMutableDictionary *defaultHeader;
-    BOOL shouldHandleCookies;
-}
+@interface CRRequest : NSObject {}
 
 /**
  Enum of the request method
  */
-@property (nonatomic, assign) CRRequestMethod method;
+@property (nonatomic, assign, readonly) CRRequestMethod method;
 
 /**
  String representation of the request method
  */
-@property (nonatomic, readonly, strong) NSString *requestMethodString;
+@property (nonatomic, strong, readonly) NSString *requestMethodString;
 
 /**
  The path to the network resource
  */
-@property (nonatomic, readonly, strong) NSString *path;
+@property (nonatomic, copy, readonly) NSString *path;
 
 /**
  Parameters to add to the request URL.
  */
-@property (nonatomic, readonly, strong) NSMutableDictionary *URLParameters;
+@property (nonatomic, strong, readonly) NSMutableDictionary *URLParameters;
 
 /**
  Parameters to insert in into the HTTP body
  */
-@property (nonatomic, readonly, strong) NSMutableDictionary *HTTPBodyParameters;
+@property (nonatomic, strong, readonly) NSMutableDictionary *HTTPBodyParameters;
 
 /**
  Default header for the request
  */
-@property (nonatomic, readonly, strong) NSMutableDictionary *defaultHeader;
+@property (nonatomic, strong, readonly) NSMutableDictionary *defaultHeader;
 
 /**
  Determines if the request should handle cookies
  */
-@property (nonatomic, readonly) BOOL shouldHandleCookies;
+@property (nonatomic, assign, readonly) BOOL shouldHandleCookies;
 
 /**
  Factory method for building the CRRequest

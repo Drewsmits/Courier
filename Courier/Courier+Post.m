@@ -67,7 +67,7 @@
                   success:(CRRequestOperationSuccessBlock)success
                   failure:(CRRequestOperationFailureBlock)failure
 {
-    NSMutableDictionary *header = [self defaultHeader];
+    NSMutableDictionary *header = [self.defaultHeader mutableCopy];
     
     if (additionalHttpHeaderParameters) {
         [header addEntriesFromDictionary:additionalHttpHeaderParameters];

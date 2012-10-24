@@ -88,13 +88,15 @@ static NSThread *_networkRequestThread = nil;
 
 - (void)start
 {
-    [super start];
-    
-    [self performSelector:@selector(startConnection) 
-                 onThread:[[self class] networkRequestThread] 
-               withObject:nil 
-            waitUntilDone:YES 
-                    modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
+    @autoreleasepool {
+        [super start];
+        
+        [self performSelector:@selector(startConnection) 
+                     onThread:[[self class] networkRequestThread] 
+                   withObject:nil 
+                waitUntilDone:YES 
+                        modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
+    }
 }
 
 - (void)startConnection

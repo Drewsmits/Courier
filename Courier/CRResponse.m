@@ -27,14 +27,6 @@
 
 @implementation CRResponse
 
-@synthesize response,
-            dataCapacity;
-
-- (void)dealloc {
-    response = nil;
-    data = nil;
-}
-
 + (id)responseWithResponse:(NSURLResponse *)response 
                andCapacity:(NSInteger)capacity
 {
@@ -42,6 +34,7 @@
     
     rep.response = response;
     rep.dataCapacity = capacity;
+    rep.data = [[NSMutableData alloc] initWithCapacity:capacity];
     
     return rep;
 }
@@ -61,18 +54,10 @@
     if (self.statusCode > 100 && self.statusCode <= 302) {
         return YES;
     }
-    
     return NO;
 }
 
 #pragma mark - Accessors
-
-- (NSMutableData *)data
-{
-    if (data) return data;
-    data = [[NSMutableData alloc] initWithCapacity:self.dataCapacity];
-    return data;
-}
 
 - (NSString *)responseDescription
 {

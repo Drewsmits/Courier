@@ -14,11 +14,11 @@
 - (CDOperation *)getPath:(NSString *)path 
            URLParameters:(NSDictionary *)urlParameters
                  success:(CRRequestOperationSuccessBlock)success
-                 failure:(CRRequestOperationFailureBlock)failure {
-    
+                 failure:(CRRequestOperationFailureBlock)failure
+{    
     return [self addOperationForPath:path 
                           withMethod:CRRequestMethodGET
-                              header:[self defaultHeader]
+                              header:self.defaultHeader
                     andURLParameters:urlParameters
                andHTTPBodyParameters:nil
                         toQueueNamed:nil
@@ -34,7 +34,7 @@
 {
     return [self addOperationForPath:path 
                           withMethod:CRRequestMethodGET
-                              header:[self defaultHeader]
+                              header:self.defaultHeader
                     andURLParameters:urlParameters
                andHTTPBodyParameters:nil
                         toQueueNamed:queueName
@@ -46,8 +46,8 @@
               withHeader:(NSDictionary *)header
            URLParameters:(NSDictionary *)urlParameters
                  success:(CRRequestOperationSuccessBlock)success
-                 failure:(CRRequestOperationFailureBlock)failure {
-    
+                 failure:(CRRequestOperationFailureBlock)failure
+{    
     return [self addOperationForPath:path 
                           withMethod:CRRequestMethodGET
                               header:header
@@ -63,8 +63,8 @@
            URLParameters:(NSDictionary *)urlParameters
          usingQueueNamed:(NSString *)queueName
                  success:(CRRequestOperationSuccessBlock)success
-                 failure:(CRRequestOperationFailureBlock)failure {
-
+                 failure:(CRRequestOperationFailureBlock)failure
+{
    return [self addOperationForPath:path 
                          withMethod:CRRequestMethodGET
                              header:header
