@@ -34,6 +34,7 @@
 
 @property (nonatomic, copy) NSString *responseDescription;
 @property (nonatomic, readonly) id json;
+@property (nonatomic, readonly) BOOL isDataJSON;
 
 + (id)responseWithResponse:(NSURLResponse *)response 
                andCapacity:(NSInteger)capacity;

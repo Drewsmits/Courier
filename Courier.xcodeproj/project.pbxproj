@@ -22,7 +22,7 @@
 		DB64C4A0144F4BCD003D766A /* CourierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C49F144F4BCD003D766A /* CourierTests.m */; };
 		DB64C4B9144F5C7C003D766A /* CRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB64C4BA144F5C7C003D766A /* CRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */; };
-		DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DB6BABBB154F47F0004842D2 /* Reachability.h */; };
+		DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DB6BABBB154F47F0004842D2 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6BABBC154F47F0004842D2 /* Reachability.m */; };
 		DB83D0EB144F90D100D94890 /* CRRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D0E9144F90D100D94890 /* CRRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB83D0EC144F90D100D94890 /* CRRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D0EA144F90D100D94890 /* CRRequest.m */; };

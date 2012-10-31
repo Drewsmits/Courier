@@ -105,7 +105,13 @@
 {        
     if (self.baseAPIPath && [path rangeOfString:@"http"].location == NSNotFound) {
         NSMutableString *newPath = [self.baseAPIPath mutableCopy];
-        [newPath appendFormat:@"/%@", path];
+        
+        if ([path hasPrefix:@"/"]) {
+            [newPath appendFormat:@"%@", path];
+        } else {
+            [newPath appendFormat:@"/%@", path];            
+        }
+        
         path = newPath;
     }
     
@@ -128,12 +134,14 @@
                                                                      success:success
                                                                      failure:failure];
         
+    operation.identifier = path;
+    
+    if (!queueName) queueName = [self queueNameForOperation:operation];
+
     [self addOperation:operation toQueueNamed:queueName];
     
     // Network activity
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    
-    if (!queueName) queueName = [self queueNameForOperation:operation];
     
     CDOperationQueueProgressObserverCompletionBlock completionBlock = ^(void) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];

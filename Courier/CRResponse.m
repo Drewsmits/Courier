@@ -79,4 +79,18 @@
     return json;
 }
 
+- (BOOL)isDataJSON
+{
+    NSError *error;
+    id json = [NSJSONSerialization JSONObjectWithData:self.data
+                                              options:NSJSONReadingMutableContainers
+                                                error:&error];
+    
+    if (!json) {
+        return NO;
+    }
+    
+    return YES;
+}
+
 @end
