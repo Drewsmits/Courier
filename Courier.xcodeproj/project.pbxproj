@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB01067E164C23F700AAAAEF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB01067D164C23F700AAAAEF /* CoreData.framework */; };
 		DB3A04B3160A7E4400B833CA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B2160A7E4400B833CA /* libz.dylib */; };
 		DB3A04B5160A7E4D00B833CA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */; };
 		DB47B1E614DB61110030A7DB /* Courier+Get.h in Headers */ = {isa = PBXBuildFile; fileRef = DB47B1E414DB61110030A7DB /* Courier+Get.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -71,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB01067D164C23F700AAAAEF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DB3A04B2160A7E4400B833CA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DB47B1E414DB61110030A7DB /* Courier+Get.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Courier+Get.h"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB01067E164C23F700AAAAEF /* CoreData.framework in Frameworks */,
 				DB9DEFB21573FA1400E05274 /* libz.dylib in Frameworks */,
 				DB9DEFB11573F9FF00E05274 /* SystemConfiguration.framework in Frameworks */,
 				DB9DEFB01573F9ED00E05274 /* UIKit.framework in Frameworks */,
@@ -160,6 +163,7 @@
 		DB64C481144F4BCD003D766A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB01067D164C23F700AAAAEF /* CoreData.framework */,
 				DB3A04B2160A7E4400B833CA /* libz.dylib */,
 				DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */,
 				DB9DEFAF1573F9ED00E05274 /* UIKit.framework */,

@@ -134,10 +134,8 @@
                                                                      success:success
                                                                      failure:failure];
         
-    operation.identifier = path;
-    
     if (!queueName) queueName = [self queueNameForOperation:operation];
-
+    
     [self addOperation:operation toQueueNamed:queueName];
     
     // Network activity

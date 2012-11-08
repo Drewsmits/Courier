@@ -132,7 +132,7 @@
                                             andHeader:nil
                                   shouldHandleCookies:NO];
     
-    NSString *expectedString = [NSString stringWithString:@"D=four&E=five&F=six"];
+    NSString *expectedString = @"D=four&E=five&F=six";
         
     NSString *string = [[NSString alloc] initWithData:[request HTTPBodyData]
                                              encoding:NSUTF8StringEncoding];
@@ -457,4 +457,40 @@
     
     STAssertFalse(unreachable, @"\"Whatever\" should be unreachable.");
 }
+
+- (void)testAddDuplicatePathOperations
+{
+    NSString *path = @"http://bunk";
+    
+    NSString *queueName = @"testQueue";
+        
+    [[Courier sharedInstance] postPath:path
+                         URLParameters:nil
+                    HTTPBodyParameters:nil
+               addHTTPHeaderParameters:nil
+                       usingQueueNamed:queueName
+                               success:nil
+                               failure:nil];
+    
+    [[Courier sharedInstance] postPath:path
+                         URLParameters:nil
+                    HTTPBodyParameters:nil
+               addHTTPHeaderParameters:nil
+                       usingQueueNamed:queueName
+                               success:nil
+                               failure:nil];
+    
+    [[Courier sharedInstance] postPath:path
+                         URLParameters:nil
+                    HTTPBodyParameters:nil
+               addHTTPHeaderParameters:nil
+                       usingQueueNamed:queueName
+                               success:nil
+                               failure:nil];
+    
+    CDOperationQueue *queue = [[Courier sharedInstance] queueForQueueName:queueName shouldCreate:NO];
+    
+    STAssertEquals(queue.operationCount, 3U, @"Courier should have 3 operations");
+}
+
 @end
