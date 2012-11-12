@@ -76,19 +76,11 @@
     return self;
 }
 
-+ (Courier *)courier
-{
-    Courier *courier = [Courier new];
-    courier.shouldHandleCookies = NO;
-    return courier;
-}
-
 + (Courier *)newCourierWithBaseAPIPath:(NSString *)baseAPIPath
-                      andMainQueueName:(NSString *)queueName
 {
     Courier *courier = [Courier new];
     courier.baseAPIPath = baseAPIPath;
-    courier.mainQueueName = queueName;
+    courier.shouldHandleCookies = NO;
     return courier;
 }
 
@@ -133,23 +125,25 @@
     CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request
                                                                      success:success
                                                                      failure:failure];
-        
-    if (!queueName) queueName = [self queueNameForOperation:operation];
-    
+            
     [self addOperation:operation toQueueNamed:queueName];
     
-    // Network activity
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    
-    CDOperationQueueProgressObserverCompletionBlock completionBlock = ^(void) {
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    };
-    
-    [self addProgressObserverToQueueNamed:queueName
-                        withProgressBlock:nil
-                       andCompletionBlock:completionBlock];
-    
     return operation;
+}
+
+#pragma mark - Conductor
+
+- (void)addOperation:(CDOperation *)operation toQueueNamed:(NSString *)queueName
+{
+    [super addOperation:operation toQueueNamed:queueName];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+}
+
+- (void)queueDidFinish:(CDOperationQueue *)queue
+{
+    if (!self.isExecuting) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    }
 }
 
 - (CDOperation *)putPath:(NSString *)path 
@@ -193,14 +187,6 @@
     
     [self.defaultHeader setValue:[NSString stringWithFormat:@"Basic %@", encodedAuthHeader] 
                           forKey:@"Authorization"];
-}
-
-#pragma mark - Conductor
-
-- (NSString *)queueNameForOperation:(NSOperation *)operation
-{
-    if (_mainQueueName) return self.mainQueueName;
-    return [super queueNameForOperation:operation];
 }
 
 #pragma mark - Cookies

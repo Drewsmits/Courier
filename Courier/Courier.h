@@ -47,15 +47,7 @@
  */
 @property (nonatomic, assign) BOOL shouldHandleCookies;
 
-@property (nonatomic, copy) NSString *mainQueueName;
-
-/**
- Returns a new Courier instance
- */
-+ (Courier *)courier;
-
-+ (Courier *)newCourierWithBaseAPIPath:(NSString *)baseAPIPath
-                      andMainQueueName:(NSString *)queueName;
++ (Courier *)newCourierWithBaseAPIPath:(NSString *)baseAPIPat;
 
 /**
  Add the username and password to the Basic Auth header in the default header.

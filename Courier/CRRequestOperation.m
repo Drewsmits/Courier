@@ -51,7 +51,7 @@ static NSThread *_networkRequestThread = nil;
 {    
     CRRequestOperation *op = [CRRequestOperation new];
     
-    op.identifier = request.path;
+    //op.identifier = request.path;
     op.request    = request;
     op.success    = successBlock;
     op.failure    = failureBlock;
