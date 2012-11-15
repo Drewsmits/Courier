@@ -146,7 +146,13 @@
     }
 }
 
-- (CDOperation *)putPath:(NSString *)path 
+- (void)cancelAllOperations
+{
+    [super cancelAllOperations];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+}
+
+- (CDOperation *)putPath:(NSString *)path
            URLParameters:(NSDictionary *)urlParameters
                  success:(CRRequestOperationSuccessBlock)success
                  failure:(CRRequestOperationFailureBlock)failure
