@@ -184,44 +184,10 @@ static NSThread *_networkRequestThread = nil;
     [self finish];
 }
 
-//- (NSInputStream *)connection:(NSURLConnection *)connection 
-//            needNewBodyStream:(NSURLRequest *)request {
-//    
-//}
-
-//- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten 
-//                                               totalBytesWritten:(NSInteger)totalBytesWritten 
-//                                       totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
-//
-//}
-
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection 
                   willCacheResponse:(NSCachedURLResponse *)cachedResponse
 {
     return nil;
-}
-
-#pragma mark - NSURLConnection Authentication
-
-//- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-//    NSLog(@"auth challenge");
-//}
-//
-//- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-//    NSLog(@"auth challenge");
-//}
-//
-//- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-//    NSLog(@"auth challenge");
-//}
-
-//- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
-//    
-//}
-
-- (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
-{
-    return NO;
 }
 
 @end
