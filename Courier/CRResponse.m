@@ -51,10 +51,12 @@
 
 - (BOOL)success
 {
-    if (self.statusCode > 100 && self.statusCode <= 302) {
-        return YES;
-    }
-    return NO;
+    return [self isStatusCodeSuccess:self.statusCode];
+}
+
+- (BOOL)isStatusCodeSuccess:(NSInteger)statusCode
+{
+    return (statusCode >= 200 && statusCode < 300);
 }
 
 #pragma mark - Accessors

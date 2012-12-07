@@ -49,12 +49,17 @@
 
 + (Courier *)newCourierWithBaseAPIPath:(NSString *)baseAPIPat;
 
+
+
 /**
  Add the username and password to the Basic Auth header in the default header.
  Username and password are encrypted.
  */
 - (void)setBasicAuthUsername:(NSString *)username 
                  andPassword:(NSString *)password;
+
+- (NSString *)encodedAuthHeaderValueForUsername:(NSString *)username
+                                       password:(NSString *)password;
 
 - (CDOperation *)addOperationForPath:(NSString *)path 
                           withMethod:(CRRequestMethod)method

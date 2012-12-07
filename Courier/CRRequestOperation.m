@@ -51,7 +51,6 @@ static NSThread *_networkRequestThread = nil;
 {    
     CRRequestOperation *op = [CRRequestOperation new];
     
-    //op.identifier = request.path;
     op.request    = request;
     op.success    = successBlock;
     op.failure    = failureBlock;
@@ -135,7 +134,6 @@ static NSThread *_networkRequestThread = nil;
                                         userInfo:[NSDictionary dictionaryWithObject:@"Connection not reachable" 
                                                                              forKey:NSLocalizedFailureReasonErrorKey]];
                 unreachable = YES;
-
             }
                                     
             if (self.failure) {

@@ -195,6 +195,16 @@
                           forKey:@"Authorization"];
 }
 
+- (NSString *)encodedAuthHeaderValueForUsername:(NSString *)username
+                                       password:(NSString *)password
+{
+    NSString *authHeader = [NSString stringWithFormat:@"%@:%@", username, password];
+    NSString *encodedAuthHeader = [[NSData dataWithBytes:[authHeader UTF8String]
+                                                  length:[authHeader length]] base64EncodedString];
+    
+    return [NSString stringWithFormat:@"Basic %@", encodedAuthHeader];
+}
+
 #pragma mark - Cookies
 
 - (void)deleteCookies

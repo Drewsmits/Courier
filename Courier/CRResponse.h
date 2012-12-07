@@ -39,6 +39,7 @@
 + (id)responseWithResponse:(NSURLResponse *)response 
                andCapacity:(NSInteger)capacity;
 
+- (BOOL)isStatusCodeSuccess:(NSInteger)statusCode;
 - (NSInteger)statusCode;
 - (NSString *)statusCodeDescription;
 
