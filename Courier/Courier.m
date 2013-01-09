@@ -189,7 +189,7 @@
 {
     NSString *authHeader = [NSString stringWithFormat:@"%@:%@", username, password];
     NSString *encodedAuthHeader = [[NSData dataWithBytes:[authHeader UTF8String] 
-                                                  length:[authHeader length]] base64EncodedString];
+                                                  length:[authHeader length]] cr_base64EncodedString];
     
     [self.defaultHeader setValue:[NSString stringWithFormat:@"Basic %@", encodedAuthHeader] 
                           forKey:@"Authorization"];
@@ -200,7 +200,7 @@
 {
     NSString *authHeader = [NSString stringWithFormat:@"%@:%@", username, password];
     NSString *encodedAuthHeader = [[NSData dataWithBytes:[authHeader UTF8String]
-                                                  length:[authHeader length]] base64EncodedString];
+                                                  length:[authHeader length]] cr_base64EncodedString];
     
     return [NSString stringWithFormat:@"Basic %@", encodedAuthHeader];
 }

@@ -39,4 +39,19 @@
 - (NSData *)dataByGZipCompressingWithError:(NSError **)error;
 - (NSData *)dataByGZipDecompressingDataWithError:(NSError **)error;
 
+
+// From Mixpanel
+void *CR_NewBase64Decode(const char *inputBuffer,
+                         size_t length,
+                         size_t *outputLength);
+
+char *CR_NewBase64Encode(const void *inputBuffer,
+                         size_t length,
+                         bool separateLines,
+                         size_t *outputLength);
+
++ (NSData *)cr_dataFromBase64String:(NSString *)aString;
+- (NSString *)cr_base64EncodedString;
+
+
 @end
