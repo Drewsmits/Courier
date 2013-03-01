@@ -10,7 +10,7 @@ A sequence of network request-response transactions.
 
 ### Request Method
 
-HTTP defines methods to indicate the desired action to be performed on the identified remote resource.[^HTTP-wiki]
+HTTP defines methods to indicate the desired action to be performed on the identified remote resource. See [Hypertext Transfer Protocol] []
 
 * __GET__: Requests a representation of the specified resource. Requests using GET should only retrieve data and should have no other effect.
 * __POST__: Requests that the server accept the entity enclosed in the request as a new subordinate of the resource identified by the URI.
@@ -21,7 +21,7 @@ HTTP defines methods to indicate the desired action to be performed on the ident
 
 ### Request Response
 
-The first line of the HTTP response is the status line and includes a status code and a textual reason phrase. See a [list of all HTTP status codes](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
+The first line of the HTTP response is the status line and includes a status code and a textual reason phrase. See a [list of all HTTP status codes][].
 
 ## What makes a good network framework?
 
@@ -47,4 +47,5 @@ Courier is built on top of Conductor, which lets you manage request queues like 
 
 ### Allow Flexible Requests
 
-[^HTTP-wiki]: [Hypertext Transfer Protocol](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
+[Hypertext Transfer Protocol]: http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+[list of all HTTP status codes]: http://en.wikipedia.org/wiki/List_of_HTTP_status_codes
