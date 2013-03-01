@@ -91,11 +91,31 @@
                                 success:(CRRequestOperationSuccessBlock)success
                                 failure:(CRRequestOperationFailureBlock)failure
 {
+    NSString *path = request.path;
+    
+    if (self.baseAPIPath && [path rangeOfString:@"http"].location == NSNotFound) {
+        NSMutableString *newPath = [self.baseAPIPath mutableCopy];
+        
+        if ([path hasPrefix:@"/"]) {
+            [newPath appendFormat:@"%@", path];
+        } else {
+            [newPath appendFormat:@"/%@", path];
+        }
+        
+        request.path = newPath;
+    }
+    
     //
     // Test reachability
     //
     if (![self isPathReachable:request.path unreachableBlock:failure]) {
         return nil;
+    }
+
+    if (!request.header) {
+        request.header = self.defaultHeader;
+    } else {
+        [request.header addEntriesFromDictionary:self.defaultHeader];        
     }
     
     //
@@ -133,9 +153,7 @@
         
         path = newPath;
     }
-    
-    DLog(@"Path: %@", path);
-    
+        
     // Test reachability
     if (![self isPathReachable:path unreachableBlock:failure]) {
         WLog(@"Not reachable: %@", path);

@@ -29,8 +29,6 @@
 
 @interface CRRequest ()
 @property (nonatomic, assign) CRRequestMethod method;
-@property (nonatomic, copy) NSString *path;
-@property (nonatomic, strong) NSMutableDictionary *defaultHeader;
 @property (nonatomic, strong) NSMutableDictionary *URLParameters;
 @property (nonatomic, strong) NSMutableDictionary *HTTPBodyParameters;
 @property (nonatomic, assign) BOOL shouldHandleCookies;
@@ -51,7 +49,28 @@
     request.path                = path;
     request.URLParameters       = [urlParameters mutableCopy];
     request.HTTPBodyParameters  = [httpBodyParameters mutableCopy];
-    request.defaultHeader       = [header mutableCopy];
+    request.header              = [header mutableCopy];
+    request.shouldHandleCookies = handleCookies;
+    
+	return request;
+}
+
++ (CRRequest *)requestWithMethod:(CRRequestMethod)method
+                            path:(NSString *)path
+                        encoding:(CRRequestEncoding)encoding
+                   URLParameters:(NSDictionary *)urlParameters
+              HTTPBodyParameters:(NSDictionary *)httpBodyParameters
+                          header:(NSDictionary *)header
+             shouldHandleCookies:(BOOL)handleCookies
+{
+	CRRequest *request = [CRRequest new];
+    
+    request.method              = method;
+    request.path                = path;
+    request.encoding            = encoding;
+    request.URLParameters       = [urlParameters mutableCopy];
+    request.HTTPBodyParameters  = [httpBodyParameters mutableCopy];
+    request.header              = [header mutableCopy];
     request.shouldHandleCookies = handleCookies;
     
 	return request;
@@ -67,7 +86,14 @@
 	[request setHTTPMethod:self.requestMethodString];
     [request setHTTPBody:[self HTTPBodyData]];
 	[request setHTTPShouldHandleCookies:self.shouldHandleCookies];
-	[request setAllHTTPHeaderFields:[self header]];
+	
+    // Content-Type
+    [self setHeaderContentType];
+    [request setAllHTTPHeaderFields:self.header];
+    
+    //
+    // for POST requests only
+    //
     [request setTimeoutInterval:60.0];
 
     return  request;
@@ -108,7 +134,7 @@
     }
 }
 
-- (NSDictionary *)header
+- (void)setHeaderContentType
 { 
     //
     // Form URL encoding
@@ -116,17 +142,15 @@
     if (self.encoding == CRFormURLParameterEncoding) {
         NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
         NSString *type = [NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset];
-        self.defaultHeader[@"Content-Type"] = type;
+        self.header[@"Content-Type"] = type;
     }
     
     //
     // JSON encoding
     //
     if (self.encoding == CRJSONParameterEncoding) {
-        self.defaultHeader[@"Content-Type"] = @"application/json";
+        self.header[@"Content-Type"] = @"application/json";
     }
-
-    return self.defaultHeader;
 }
 
 - (NSData *)HTTPBodyData

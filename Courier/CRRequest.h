@@ -59,7 +59,7 @@ typedef enum {
 /**
  The path to the network resource
  */
-@property (nonatomic, copy, readonly) NSString *path;
+@property (nonatomic, copy) NSString *path;
 
 /**
  Parameters to add to the request URL.
@@ -74,7 +74,7 @@ typedef enum {
 /**
  Default header for the request
  */
-@property (nonatomic, strong, readonly) NSMutableDictionary *defaultHeader;
+@property (nonatomic, strong) NSMutableDictionary *header;
 
 /**
  Determines if the request should handle cookies
@@ -98,20 +98,18 @@ typedef enum {
                        andHeader:(NSDictionary *)header
              shouldHandleCookies:(BOOL)handleCookies;
 
-/**
- Builds the request header
- */
-- (NSDictionary *)header;
++ (CRRequest *)requestWithMethod:(CRRequestMethod)method
+                            path:(NSString *)path
+                        encoding:(CRRequestEncoding)encoding
+                   URLParameters:(NSDictionary *)urlParameters
+              HTTPBodyParameters:(NSDictionary *)httpBodyParameters
+                          header:(NSDictionary *)header
+             shouldHandleCookies:(BOOL)handleCookies;
 
 /**
  Builds the http body data from the HTTPBodyParameters
  */
 - (NSData *)HTTPBodyData;
-
-/**
- Builds the URL query string from the URLParameters
- */
-- (NSString *)URLQueryString;
 
 /**
  Builds the request URL from the passed in path
