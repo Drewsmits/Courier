@@ -152,6 +152,8 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
+#pragma mark - HTTP Methods
+
 - (CDOperation *)putPath:(NSString *)path
            URLParameters:(NSDictionary *)urlParameters
                  success:(CRRequestOperationSuccessBlock)success
