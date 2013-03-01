@@ -34,19 +34,25 @@
 
 #pragma mark - application/x-www-form-urlencoded
 
-- (NSData *)asFormURLEncodedData
+- (NSString *)asFormURLEncodedString
 {
     __block NSMutableArray *mutableParameterComponents = [NSMutableArray array];
     
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        NSString *encodedKey = [[key description] urlEncodedStringWithEncoding:NSUTF8StringEncoding];
+        NSString *encodedKey   = [[key description] urlEncodedStringWithEncoding:NSUTF8StringEncoding];
         NSString *encodedValue = [[obj description] urlEncodedStringWithEncoding:NSUTF8StringEncoding];
-        NSString *component = [NSString stringWithFormat:@"%@=%@", encodedKey, encodedValue];
+        NSString *component    = [NSString stringWithFormat:@"%@=%@", encodedKey, encodedValue];
         [mutableParameterComponents addObject:component];
     }];
     
     NSString *andJoinedString = [mutableParameterComponents componentsJoinedByString:@"&"];
-    
+
+    return andJoinedString;
+}
+
+- (NSData *)asFormURLEncodedData
+{
+    NSString *andJoinedString = [self asFormURLEncodedString];
     return [andJoinedString dataUsingEncoding:NSUTF8StringEncoding];
 }
 

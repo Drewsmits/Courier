@@ -25,4 +25,9 @@
  */
 - (NSData *)asFormURLEncodedData;
 
+/**
+ * Returns URL formated query string, "key1=value1&key2=value2..."
+ */
+- (NSString *)asFormURLEncodedString;
+
 @end

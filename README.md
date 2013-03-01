@@ -19,6 +19,8 @@ HTTP defines methods to indicate the desired action to be performed on the ident
 
 ### Request Header
 
+The request header defines the operating parameters of an HTTP transaction. Things like content type, encoding, authorization, cookies, and user-agent, are all specified in the header.
+
 ### Request Response
 
 The first line of the HTTP response is the status line and includes a status code and a textual reason phrase. See a [list of all HTTP status codes][].
@@ -41,7 +43,11 @@ Courier is built on top of Conductor, which lets you manage request queues like 
 
 ### Manage Your Headers
 
+Typically you use the same request header for all your Apps requests. However, there are times when you may need to change things like Content-Type on the fly. Allow the "dont make me thing" users to set it and forget it, but also allow injection of new or different fields before the request goes out.
+
 ### Encode Your Data
+
+In my experience, there are two common encoding types that APIs use; form url and JSON. When submitting parameters, it's nice to use key/value structures to build your request, and then have the network framework turn it into whatever it needs to to talk to the API. 
 
 ### Provide Request Success/Failure Feedback
 

@@ -32,12 +32,24 @@ typedef enum {
     CRRequestMethodDELETE,
 }CRRequestMethod;
 
+typedef enum {
+    CRFormURLParameterEncoding,
+    CRJSONParameterEncoding,
+} CRRequestEncoding;
+
 @interface CRRequest : NSObject {}
 
 /**
  Enum of the request method
  */
 @property (nonatomic, assign, readonly) CRRequestMethod method;
+
+/**
+ *
+ * The Content-Type encoding to use when sending POST/PUT requests
+ *
+ */
+@property (nonatomic, assign) CRRequestEncoding encoding;
 
 /**
  String representation of the request method

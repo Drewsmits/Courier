@@ -61,6 +61,11 @@
 - (NSString *)encodedAuthHeaderValueForUsername:(NSString *)username
                                        password:(NSString *)password;
 
+- (CDOperation *)addOperationForRequest:(CRRequest *)request
+                           toQueueNamed:(NSString *)queueName
+                                success:(CRRequestOperationSuccessBlock)success
+                                failure:(CRRequestOperationFailureBlock)failure;
+
 - (CDOperation *)addOperationForPath:(NSString *)path 
                           withMethod:(CRRequestMethod)method
                               header:(NSDictionary *)header

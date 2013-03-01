@@ -86,7 +86,34 @@
 
 #pragma mark - API
 
-- (CDOperation *)addOperationForPath:(NSString *)path 
+- (CDOperation *)addOperationForRequest:(CRRequest *)request
+                           toQueueNamed:(NSString *)queueName
+                                success:(CRRequestOperationSuccessBlock)success
+                                failure:(CRRequestOperationFailureBlock)failure
+{
+    //
+    // Test reachability
+    //
+    if (![self isPathReachable:request.path unreachableBlock:failure]) {
+        return nil;
+    }
+    
+    //
+    // Build operation
+    //
+    CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request
+                                                                     success:success
+                                                                     failure:failure];
+    
+    [self addOperation:operation toQueueNamed:queueName];
+    
+    //
+    // Returning operation allows you to keep track of it and update priority, if necessary
+    //
+    return operation;
+}
+
+- (CDOperation *)addOperationForPath:(NSString *)path
                           withMethod:(CRRequestMethod)method
                               header:(NSDictionary *)header
                     andURLParameters:(NSDictionary *)parameters

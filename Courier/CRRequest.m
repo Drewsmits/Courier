@@ -24,6 +24,7 @@
 //
 
 #import "CRRequest.h"
+#import "NSDictionary+Courier.h"
 #import "NSString+Courier.h"
 
 @interface CRRequest ()
@@ -72,29 +73,18 @@
     return  request;
 }
 
-- (NSString *)URLQueryString
-{
-    NSMutableArray *mutableParameterComponents = [NSMutableArray array];
-    
-    for (id parameter in self.URLParameters) {
-        NSString *component = [NSString stringWithFormat:@"%@=%@", [[parameter description] urlEncodedStringWithEncoding:NSUTF8StringEncoding], 
-                               [[[self.URLParameters valueForKey:parameter] description] urlEncodedStringWithEncoding:NSUTF8StringEncoding]];
-        
-        [mutableParameterComponents addObject:component];
-    }
-    
-    NSString *str = [mutableParameterComponents componentsJoinedByString:@"&"];
-    return str;
-}
-
 - (NSURL *)requestURL
 {
-    if (self.method == CRRequestMethodGET && self.URLParameters.count > 0) {
+    //
+    // Append path with URL params, if present
+    //
+    if (self.URLParameters.count > 0) {
         NSString *stringToAppend = [self.path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@";
-        return [NSURL URLWithString:[self.path stringByAppendingFormat:stringToAppend, [self URLQueryString]]];
-    } else {
-        return [NSURL URLWithString:self.path];
+        NSString *newPath = [self.path stringByAppendingFormat:stringToAppend, [self.URLParameters asFormURLEncodedString]];
+        self.path = newPath;
     }
+    
+    return [NSURL URLWithString:self.path];
 }
 
 - (NSString *)requestMethodString
@@ -119,10 +109,21 @@
 }
 
 - (NSDictionary *)header
-{        
-    if ((self.URLParameters || self.HTTPBodyParameters) && self.method != CRRequestMethodGET) {
+{ 
+    //
+    // Form URL encoding
+    //
+    if (self.encoding == CRFormURLParameterEncoding) {
         NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-        [self.defaultHeader setObject:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset] forKey:@"Content-Type"];
+        NSString *type = [NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset];
+        self.defaultHeader[@"Content-Type"] = type;
+    }
+    
+    //
+    // JSON encoding
+    //
+    if (self.encoding == CRJSONParameterEncoding) {
+        self.defaultHeader[@"Content-Type"] = @"application/json";
     }
 
     return self.defaultHeader;
@@ -132,21 +133,21 @@
 {    
     if (self.HTTPBodyParameters.count == 0) return nil;
     
-    NSMutableArray *mutableParameterComponents = [NSMutableArray array];
-    
-    for (id parameter in self.HTTPBodyParameters) {
-        
-        NSString *encodedKey = [[parameter description] urlEncodedStringWithEncoding:NSUTF8StringEncoding];
-        NSString *encodedValue = [[[self.HTTPBodyParameters valueForKey:parameter] description] urlEncodedStringWithEncoding:NSUTF8StringEncoding];
-        
-        NSString *component = [NSString stringWithFormat:@"%@=%@", encodedKey, encodedValue];
-        
-        [mutableParameterComponents addObject:component];
+    //
+    // Form URL encoding
+    //
+    if (self.encoding == CRFormURLParameterEncoding) {
+        return [self.HTTPBodyParameters asFormURLEncodedData];
     }
     
-    NSString *andJoinedString = [mutableParameterComponents componentsJoinedByString:@"&"];
+    //
+    // JSON encoding
+    //
+    if (self.encoding == CRJSONParameterEncoding) {
+        return [self.HTTPBodyParameters asJSONData];
+    }
     
-    return [andJoinedString dataUsingEncoding:NSUTF8StringEncoding];
+    return nil;
 }
 
 @end
