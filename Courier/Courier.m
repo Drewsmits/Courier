@@ -125,6 +125,9 @@
                                                                      success:success
                                                                      failure:failure];
     
+    //
+    // Conductor method
+    //
     [self addOperation:operation toQueueNamed:queueName];
     
     //
