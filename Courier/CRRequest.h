@@ -33,6 +33,7 @@ typedef enum {
 }CRRequestMethod;
 
 typedef enum {
+    CRRequestEncodingUnknown,
     CRFormURLParameterEncoding,
     CRJSONParameterEncoding,
 } CRRequestEncoding;

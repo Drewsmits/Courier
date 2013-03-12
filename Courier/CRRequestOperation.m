@@ -94,7 +94,7 @@ static NSThread *_networkRequestThread = nil;
                      onThread:[[self class] networkRequestThread] 
                    withObject:nil 
                 waitUntilDone:YES 
-                        modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
+                        modes:@[NSDefaultRunLoopMode]];
     }
 }
 
@@ -109,37 +109,12 @@ static NSThread *_networkRequestThread = nil;
 
 - (void)finish
 {    
-    if(_connection) {
-        [self.connection cancel];
-        _connection = nil;
-    }
+    [self.connection cancel];
 
     if (self.response.success) {
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            self.success(self.request, self.response);
-        });
+        [self runSuccessBlock];
     } else {
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            
-            BOOL unreachable = NO;
-            NSError *error = nil;
-            if (self.response) {
-                error = [NSError errorWithDomain:@"com.courier.cdrequestoperation" 
-                                            code:self.response.statusCode 
-                                        userInfo:[NSDictionary dictionaryWithObject:self.response.statusCodeDescription 
-                                                                             forKey:NSLocalizedFailureReasonErrorKey]];
-            } else {
-                error = [NSError errorWithDomain:@"com.courier.cdrequestoperation" 
-                                            code:0 
-                                        userInfo:[NSDictionary dictionaryWithObject:@"Connection not reachable" 
-                                                                             forKey:NSLocalizedFailureReasonErrorKey]];
-                unreachable = YES;
-            }
-                                    
-            if (self.failure) {
-                self.failure(self.request, self.response, error, unreachable);
-            }
-        });
+        [self runFailureBlock];
     }
     
     [super finish];
@@ -151,10 +126,46 @@ static NSThread *_networkRequestThread = nil;
     [self.connection cancel];
 }
 
+#pragma mark - Success/Failure
+
+- (void)runSuccessBlock
+{
+    if (!self.success) return;
+    
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        self.success(self.request, self.response);
+    });
+}
+
+- (void)runFailureBlock
+{
+    if (!self.failure) return;
+    
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        
+        BOOL unreachable = NO;
+        NSError *error = nil;
+        if (self.response) {
+            error = [NSError errorWithDomain:@"com.courier.cdrequestoperation"
+                                        code:self.response.statusCode
+                                    userInfo:[NSDictionary dictionaryWithObject:self.response.statusCodeDescription
+                                                                         forKey:NSLocalizedFailureReasonErrorKey]];
+        } else {
+            error = [NSError errorWithDomain:@"com.courier.cdrequestoperation"
+                                        code:0
+                                    userInfo:[NSDictionary dictionaryWithObject:@"Connection not reachable"
+                                                                         forKey:NSLocalizedFailureReasonErrorKey]];
+            unreachable = YES;
+        }
+        
+        self.failure(self.request, self.response, error, unreachable);
+    });
+}
+
 #pragma mark - NSURLConnection Data
 
-- (NSURLRequest *)connection:(NSURLConnection *)connection 
-             willSendRequest:(NSURLRequest *)request 
+- (NSURLRequest *)connection:(NSURLConnection *)connection
+             willSendRequest:(NSURLRequest *)request
             redirectResponse:(NSURLResponse *)response
 {
     return request;
@@ -175,7 +186,6 @@ static NSThread *_networkRequestThread = nil;
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    DLog(@"Connection failed!  URL: %@  Response: %@", self.request.path, self.response.responseDescription);
     [self finish];
 }
 
