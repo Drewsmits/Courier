@@ -1,0 +1,6 @@
+[0m[[0minfo[0m] [0mCompiling 5 Scala sources and 1 Java source to /Users/andrewsmith/Workspace/Courier/CourierServer/target/scala-2.10/classes...[0m
+[0m[[31merror[0m] [0m/Users/andrewsmith/Workspace/Courier/CourierServer/app/controllers/Application.scala:44: not a legal formal parameter[0m
+[0m[[31merror[0m] [0m      value => {[0m
+[0m[[31merror[0m] [0m      ^[0m
+[0m[[31merror[0m] [0mone error found[0m
+[0m[[31merror[0m] [0m(compile:[31mcompile[0m) Compilation failed[0m
