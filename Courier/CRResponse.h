@@ -25,22 +25,26 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CRResponse : NSObject {}
+@interface CRResponse : NSObject
 
-@property (nonatomic, strong) NSURLResponse *response;
-@property (nonatomic, assign) NSInteger dataCapacity;
-@property (nonatomic, strong) NSMutableData *data;
+@property (nonatomic, strong, readonly) NSURLResponse *response;
+
+@property (nonatomic, strong, readonly) NSMutableData *data;
+
+@property (nonatomic, readonly) NSInteger *statusCode;
+
 @property (nonatomic, readonly) BOOL success;
 
-@property (nonatomic, copy) NSString *responseDescription;
+@property (nonatomic, readonly) NSString *responseDescription;
+
 @property (nonatomic, readonly) id json;
-@property (nonatomic, readonly) BOOL isDataJSON;
 
 + (id)responseWithResponse:(NSURLResponse *)response 
                andCapacity:(NSInteger)capacity;
 
+// For unit tests
 - (BOOL)isStatusCodeSuccess:(NSInteger)statusCode;
-- (NSInteger)statusCode;
+
 - (NSString *)statusCodeDescription;
 
 @end

@@ -25,6 +25,14 @@
 
 #import "CRResponse.h"
 
+@interface CRResponse ()
+
+@property (nonatomic, assign) NSInteger dataCapacity;
+@property (nonatomic, strong, readwrite) NSMutableData *data;
+@property (nonatomic, strong, readwrite) NSURLResponse *response;
+
+@end
+
 @implementation CRResponse
 
 + (id)responseWithResponse:(NSURLResponse *)response 
@@ -39,6 +47,8 @@
     return rep;
 }
 
+#pragma mark - Result
+
 - (NSInteger)statusCode
 {
     return [(NSHTTPURLResponse *)self.response statusCode];
@@ -46,7 +56,7 @@
 
 - (NSString *)statusCodeDescription
 {
-    return [NSHTTPURLResponse localizedStringForStatusCode:[self statusCode]];
+    return [NSHTTPURLResponse localizedStringForStatusCode:self.statusCode];
 }
 
 - (BOOL)success
@@ -79,20 +89,6 @@
     }
 
     return json;
-}
-
-- (BOOL)isDataJSON
-{
-    NSError *error;
-    id json = [NSJSONSerialization JSONObjectWithData:self.data
-                                              options:NSJSONReadingMutableContainers
-                                                error:&error];
-    
-    if (!json) {
-        return NO;
-    }
-    
-    return YES;
 }
 
 @end

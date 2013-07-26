@@ -34,6 +34,10 @@
 
 - (void)startConnection;
 
+@property (nonatomic, strong) NSMutableURLRequest *request;
+@property (nonatomic, strong) NSURLConnection *connection;
+@property (nonatomic, strong) CRResponse *response;
+
 @property (nonatomic, copy) CRRequestOperationSuccessBlock success;
 @property (nonatomic, copy) CRRequestOperationFailureBlock failure;
 
@@ -45,17 +49,17 @@
 
 static NSThread *_networkRequestThread = nil;
 
-+ (id)operationWithRequest:(CRRequest *)request 
++ (id)operationWithRequest:(NSMutableURLRequest *)request
                    success:(CRRequestOperationSuccessBlock)successBlock
                    failure:(CRRequestOperationFailureBlock)failureBlock
-{    
+{
     CRRequestOperation *op = [CRRequestOperation new];
     
-    op.request    = request;
-    op.success    = successBlock;
-    op.failure    = failureBlock;
-        
-    return op;
+    op.request = request;
+    op.success = successBlock;
+    op.failure = failureBlock;
+    
+    return op;    
 }
 
 #pragma mark - Threading
@@ -72,7 +76,6 @@ static NSThread *_networkRequestThread = nil;
 + (NSThread *)networkRequestThread
 {
     static dispatch_once_t oncePredicate;
-    
     dispatch_once(&oncePredicate, ^{
         _networkRequestThread = [[NSThread alloc] initWithTarget:self 
                                                         selector:@selector(networkRequestThreadEntryPoint:) 
@@ -100,7 +103,7 @@ static NSThread *_networkRequestThread = nil;
 
 - (void)startConnection
 {
-    self.connection = [[NSURLConnection alloc] initWithRequest:[self.request URLRequest]
+    self.connection = [[NSURLConnection alloc] initWithRequest:self.request
                                                        delegate:self 
                                                startImmediately:YES];
 }
