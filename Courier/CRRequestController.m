@@ -60,6 +60,14 @@
     return operation;
 }
 
+
+- (CRRequestOperation *)operationForURLRequest:(NSMutableURLRequest *)request
+                                       success:(CRRequestOperationSuccessBlock)success
+                                       failure:(CRRequestOperationFailureBlock)failure
+{
+  
+}
+
 #pragma mark - Reachability
 
 - (BOOL)isPathReachable:(NSString *)path

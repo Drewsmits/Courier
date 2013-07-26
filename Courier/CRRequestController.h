@@ -22,4 +22,8 @@
                                     success:(CRRequestOperationSuccessBlock)success
                                     failure:(CRRequestOperationFailureBlock)failure;
 
+- (CRRequestOperation *)operationForURLRequest:(NSMutableURLRequest *)request
+                                       success:(CRRequestOperationSuccessBlock)success
+                                       failure:(CRRequestOperationFailureBlock)failure;
+
 @end

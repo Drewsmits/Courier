@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8831EB8217A205B800B6E1D7 /* NSMutableURLRequest+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = 8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */; };
+		8831EB8317A205B800B6E1D7 /* NSMutableURLRequest+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */; };
 		883230DD176A41E700152201 /* CRRequestController.h in Headers */ = {isa = PBXBuildFile; fileRef = 883230DB176A41E700152201 /* CRRequestController.h */; };
 		883230DE176A41E700152201 /* CRRequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883230DC176A41E700152201 /* CRRequestController.m */; };
 		DB01067E164C23F700AAAAEF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB01067D164C23F700AAAAEF /* CoreData.framework */; };
@@ -80,6 +82,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Courier.h"; sourceTree = "<group>"; };
+		8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+Courier.m"; sourceTree = "<group>"; };
 		883230DB176A41E700152201 /* CRRequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequestController.h; sourceTree = "<group>"; };
 		883230DC176A41E700152201 /* CRRequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestController.m; sourceTree = "<group>"; };
 		DB01067D164C23F700AAAAEF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -205,6 +209,8 @@
 				DB6BABBB154F47F0004842D2 /* Reachability.h */,
 				DB6BABBC154F47F0004842D2 /* Reachability.m */,
 				DB64C485144F4BCD003D766A /* Supporting Files */,
+				8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */,
+				8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */,
 			);
 			path = Courier;
 			sourceTree = "<group>";
@@ -281,6 +287,7 @@
 				DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */,
 				DBC30B5A16E047D600C795BA /* NSDictionary+Courier.h in Headers */,
 				883230DD176A41E700152201 /* CRRequestController.h in Headers */,
+				8831EB8217A205B800B6E1D7 /* NSMutableURLRequest+Courier.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +429,7 @@
 				DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */,
 				DBC30B5B16E047D600C795BA /* NSDictionary+Courier.m in Sources */,
 				883230DE176A41E700152201 /* CRRequestController.m in Sources */,
+				8831EB8317A205B800B6E1D7 /* NSMutableURLRequest+Courier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

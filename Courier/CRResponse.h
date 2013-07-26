@@ -30,7 +30,7 @@
 @property (nonatomic, strong) NSURLResponse *response;
 @property (nonatomic, assign) NSInteger dataCapacity;
 @property (nonatomic, strong) NSMutableData *data;
-@property (nonatomic, assign) BOOL success;
+@property (nonatomic, readonly) BOOL success;
 
 @property (nonatomic, copy) NSString *responseDescription;
 @property (nonatomic, readonly) id json;

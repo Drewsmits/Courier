@@ -102,9 +102,7 @@ static NSThread *_networkRequestThread = nil;
 {
     self.connection = [[NSURLConnection alloc] initWithRequest:[self.request URLRequest]
                                                        delegate:self 
-                                               startImmediately:NO];
-    
-    [self.connection start];
+                                               startImmediately:YES];
 }
 
 - (void)finish
@@ -140,24 +138,23 @@ static NSThread *_networkRequestThread = nil;
 - (void)runFailureBlock
 {
     if (!self.failure) return;
-    
+  
+    BOOL unreachable;
+    NSError *error;
+    if (self.response) {
+      error = [NSError errorWithDomain:@"com.courier.cdrequestoperation"
+                                  code:self.response.statusCode
+                              userInfo:[NSDictionary dictionaryWithObject:self.response.statusCodeDescription
+                                                                   forKey:NSLocalizedFailureReasonErrorKey]];
+    } else {
+      error = [NSError errorWithDomain:@"com.courier.cdrequestoperation"
+                                  code:0
+                              userInfo:[NSDictionary dictionaryWithObject:@"Connection not reachable"
+                                                                   forKey:NSLocalizedFailureReasonErrorKey]];
+      unreachable = YES;
+    }
+  
     dispatch_async(dispatch_get_main_queue(), ^(void) {
-        
-        BOOL unreachable = NO;
-        NSError *error = nil;
-        if (self.response) {
-            error = [NSError errorWithDomain:@"com.courier.cdrequestoperation"
-                                        code:self.response.statusCode
-                                    userInfo:[NSDictionary dictionaryWithObject:self.response.statusCodeDescription
-                                                                         forKey:NSLocalizedFailureReasonErrorKey]];
-        } else {
-            error = [NSError errorWithDomain:@"com.courier.cdrequestoperation"
-                                        code:0
-                                    userInfo:[NSDictionary dictionaryWithObject:@"Connection not reachable"
-                                                                         forKey:NSLocalizedFailureReasonErrorKey]];
-            unreachable = YES;
-        }
-        
         self.failure(self.request, self.response, error, unreachable);
     });
 }
