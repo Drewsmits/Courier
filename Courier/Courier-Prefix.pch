@@ -4,6 +4,7 @@
 
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
+    #import <Conductor/Conductor.h>
 #endif
 
 // Comment out to silence logs

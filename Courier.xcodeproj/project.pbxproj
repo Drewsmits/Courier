@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		883230DD176A41E700152201 /* CRRequestController.h in Headers */ = {isa = PBXBuildFile; fileRef = 883230DB176A41E700152201 /* CRRequestController.h */; };
+		883230DE176A41E700152201 /* CRRequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883230DC176A41E700152201 /* CRRequestController.m */; };
 		DB01067E164C23F700AAAAEF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB01067D164C23F700AAAAEF /* CoreData.framework */; };
 		DB3A04B3160A7E4400B833CA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B2160A7E4400B833CA /* libz.dylib */; };
 		DB3A04B5160A7E4D00B833CA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */; };
-		DB47B1E614DB61110030A7DB /* Courier+Get.h in Headers */ = {isa = PBXBuildFile; fileRef = DB47B1E414DB61110030A7DB /* Courier+Get.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB47B1E714DB61110030A7DB /* Courier+Get.m in Sources */ = {isa = PBXBuildFile; fileRef = DB47B1E514DB61110030A7DB /* Courier+Get.m */; };
-		DB47B1EC14DB62150030A7DB /* Courier+Post.h in Headers */ = {isa = PBXBuildFile; fileRef = DB47B1EA14DB62150030A7DB /* Courier+Post.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB47B1ED14DB62150030A7DB /* Courier+Post.m in Sources */ = {isa = PBXBuildFile; fileRef = DB47B1EB14DB62150030A7DB /* Courier+Post.m */; };
 		DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C482144F4BCD003D766A /* Foundation.framework */; };
 		DB64C489144F4BCD003D766A /* Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C488144F4BCD003D766A /* Courier.m */; };
 		DB64C491144F4BCD003D766A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C490144F4BCD003D766A /* SenTestingKit.framework */; };
@@ -82,13 +80,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		883230DB176A41E700152201 /* CRRequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequestController.h; sourceTree = "<group>"; };
+		883230DC176A41E700152201 /* CRRequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestController.m; sourceTree = "<group>"; };
 		DB01067D164C23F700AAAAEF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DB3A04B2160A7E4400B833CA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		DB47B1E414DB61110030A7DB /* Courier+Get.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Courier+Get.h"; sourceTree = "<group>"; };
-		DB47B1E514DB61110030A7DB /* Courier+Get.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Courier+Get.m"; sourceTree = "<group>"; };
-		DB47B1EA14DB62150030A7DB /* Courier+Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Courier+Post.h"; sourceTree = "<group>"; };
-		DB47B1EB14DB62150030A7DB /* Courier+Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Courier+Post.m"; sourceTree = "<group>"; };
 		DB64C47F144F4BCD003D766A /* libCourier.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCourier.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB64C482144F4BCD003D766A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB64C486144F4BCD003D766A /* Courier-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Courier-Prefix.pch"; sourceTree = "<group>"; };
@@ -104,8 +100,6 @@
 		DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestOperation.m; sourceTree = "<group>"; };
 		DB6BABBB154F47F0004842D2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		DB6BABBC154F47F0004842D2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		DB77CADB153277C4004E34C1 /* Courier+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Courier+OAuth.h"; sourceTree = "<group>"; };
-		DB77CADC153277C4004E34C1 /* Courier+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Courier+OAuth.m"; sourceTree = "<group>"; };
 		DB7C53A81671736600099CBC /* CRResponseTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRResponseTests.h; sourceTree = "<group>"; };
 		DB7C53A91671736700099CBC /* CRResponseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRResponseTests.m; sourceTree = "<group>"; };
 		DB83D0E9144F90D100D94890 /* CRRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequest.h; sourceTree = "<group>"; };
@@ -192,16 +186,12 @@
 		DB64C484144F4BCD003D766A /* Courier */ = {
 			isa = PBXGroup;
 			children = (
-				DB47B1E414DB61110030A7DB /* Courier+Get.h */,
-				DB47B1E514DB61110030A7DB /* Courier+Get.m */,
-				DB77CADB153277C4004E34C1 /* Courier+OAuth.h */,
-				DB77CADC153277C4004E34C1 /* Courier+OAuth.m */,
-				DB47B1EA14DB62150030A7DB /* Courier+Post.h */,
-				DB47B1EB14DB62150030A7DB /* Courier+Post.m */,
 				DB64C487144F4BCD003D766A /* Courier.h */,
 				DB64C488144F4BCD003D766A /* Courier.m */,
 				DB83D0E9144F90D100D94890 /* CRRequest.h */,
 				DB83D0EA144F90D100D94890 /* CRRequest.m */,
+				883230DB176A41E700152201 /* CRRequestController.h */,
+				883230DC176A41E700152201 /* CRRequestController.m */,
 				DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */,
 				DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */,
 				DB83D0F2144F932D00D94890 /* CRResponse.h */,
@@ -288,10 +278,9 @@
 				DB83D105144F9BC400D94890 /* NSString+Courier.h in Headers */,
 				DB83D12D1450CC0100D94890 /* NSData+Courier.h in Headers */,
 				DBA5F95714560E4100EBFF68 /* Courier.h in Headers */,
-				DB47B1E614DB61110030A7DB /* Courier+Get.h in Headers */,
-				DB47B1EC14DB62150030A7DB /* Courier+Post.h in Headers */,
 				DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */,
 				DBC30B5A16E047D600C795BA /* NSDictionary+Courier.h in Headers */,
+				883230DD176A41E700152201 /* CRRequestController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,10 +419,9 @@
 				DB83D0F5144F932D00D94890 /* CRResponse.m in Sources */,
 				DB83D106144F9BC400D94890 /* NSString+Courier.m in Sources */,
 				DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */,
-				DB47B1E714DB61110030A7DB /* Courier+Get.m in Sources */,
-				DB47B1ED14DB62150030A7DB /* Courier+Post.m in Sources */,
 				DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */,
 				DBC30B5B16E047D600C795BA /* NSDictionary+Courier.m in Sources */,
+				883230DE176A41E700152201 /* CRRequestController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

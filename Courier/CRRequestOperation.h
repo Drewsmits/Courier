@@ -25,16 +25,13 @@
 
 #import <Foundation/Foundation.h>
 
-//#import "Conductor/CDOperation.h"
-#import "Conductor/CDBackgroundTaskOperation.h"
-
 #import "CRRequest.h"
 #import "CRResponse.h"
 
 typedef void (^CRRequestOperationSuccessBlock)(CRRequest *request, CRResponse *response);
 typedef void (^CRRequestOperationFailureBlock)(CRRequest *request, CRResponse *response, NSError *error, BOOL unreachable);
 
-@interface CRRequestOperation : CDBackgroundTaskOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate> {}
+@interface CRRequestOperation : CDKVOOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, strong) CRRequest *request;

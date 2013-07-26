@@ -29,31 +29,13 @@
 
 @interface CRRequest ()
 @property (nonatomic, assign) CRRequestMethod method;
+@property (nonatomic, assign) CRRequestEncoding encoding;
 @property (nonatomic, strong) NSMutableDictionary *URLParameters;
 @property (nonatomic, strong) NSMutableDictionary *HTTPBodyParameters;
 @property (nonatomic, assign) BOOL shouldHandleCookies;
 @end
 
 @implementation CRRequest
-
-+ (CRRequest *)requestWithMethod:(CRRequestMethod)method
-                         forPath:(NSString *)path
-               withURLParameters:(NSDictionary *)urlParameters
-           andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                       andHeader:(NSDictionary *)header
-             shouldHandleCookies:(BOOL)handleCookies
-{    
-	CRRequest *request = [CRRequest new];
-    
-    request.method              = method;
-    request.path                = path;
-    request.URLParameters       = [urlParameters mutableCopy];
-    request.HTTPBodyParameters  = [httpBodyParameters mutableCopy];
-    request.header              = [header mutableCopy];
-    request.shouldHandleCookies = handleCookies;
-    
-	return request;
-}
 
 + (CRRequest *)requestWithMethod:(CRRequestMethod)method
                             path:(NSString *)path
@@ -63,7 +45,7 @@
                           header:(NSDictionary *)header
              shouldHandleCookies:(BOOL)handleCookies
 {
-	CRRequest *request = [CRRequest new];
+    CRRequest *request = [CRRequest new];
     
     request.method              = method;
     request.path                = path;
@@ -73,19 +55,19 @@
     request.header              = [header mutableCopy];
     request.shouldHandleCookies = handleCookies;
     
-	return request;
+    return request;
 }
 
 #pragma mark - Accessors
 
 - (NSMutableURLRequest *)URLRequest
 {    
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     
-	[request setURL:self.requestURL];
-	[request setHTTPMethod:self.requestMethodString];
+    [request setURL:self.requestURL];
+    [request setHTTPMethod:self.requestMethodString];
     [request setHTTPBody:[self HTTPBodyData]];
-	[request setHTTPShouldHandleCookies:self.shouldHandleCookies];
+    [request setHTTPShouldHandleCookies:self.shouldHandleCookies];
 	
     // Content-Type
     [self setHeaderContentType];

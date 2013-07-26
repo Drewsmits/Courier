@@ -24,8 +24,6 @@
 //
 
 #import "Courier.h"
-#import "Courier+Get.h"
-#import "Courier+Post.h"
 
 #import <UIKit/UIDevice.h>
 #import <UIKit/UIApplication.h>
@@ -136,49 +134,6 @@
     return operation;
 }
 
-- (CDOperation *)addOperationForPath:(NSString *)path
-                          withMethod:(CRRequestMethod)method
-                              header:(NSDictionary *)header
-                    andURLParameters:(NSDictionary *)parameters
-               andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                        toQueueNamed:(NSString *)queueName
-                             success:(CRRequestOperationSuccessBlock)success 
-                             failure:(CRRequestOperationFailureBlock)failure
-{        
-    if (self.baseAPIPath && [path rangeOfString:@"http"].location == NSNotFound) {
-        NSMutableString *newPath = [self.baseAPIPath mutableCopy];
-        
-        if ([path hasPrefix:@"/"]) {
-            [newPath appendFormat:@"%@", path];
-        } else {
-            [newPath appendFormat:@"/%@", path];            
-        }
-        
-        path = newPath;
-    }
-        
-    // Test reachability
-    if (![self isPathReachable:path unreachableBlock:failure]) {
-        WLog(@"Not reachable: %@", path);
-        return nil;
-    }
-        
-    CRRequest *request = [CRRequest requestWithMethod:method 
-                                              forPath:path 
-                                    withURLParameters:parameters
-                                andHTTPBodyParameters:httpBodyParameters
-                                            andHeader:header
-                                  shouldHandleCookies:self.shouldHandleCookies];
-    
-    CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request
-                                                                     success:success
-                                                                     failure:failure];
-            
-    [self addOperation:operation toQueueNamed:queueName];
-    
-    return operation;
-}
-
 #pragma mark - Conductor
 
 - (void)addOperation:(CDOperation *)operation toQueueNamed:(NSString *)queueName
@@ -198,38 +153,6 @@
 {
     [super cancelAllOperations];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-}
-
-#pragma mark - HTTP Methods
-
-- (CDOperation *)putPath:(NSString *)path
-           URLParameters:(NSDictionary *)urlParameters
-                 success:(CRRequestOperationSuccessBlock)success
-                 failure:(CRRequestOperationFailureBlock)failure
-{    
-    return [self addOperationForPath:path 
-                          withMethod:CRRequestMethodPUT
-                              header:[self defaultHeader]
-                    andURLParameters:urlParameters
-               andHTTPBodyParameters:nil
-                        toQueueNamed:nil
-                             success:success 
-                             failure:failure];
-}
-
-- (CDOperation *)deletePath:(NSString *)path 
-              URLParameters:(NSDictionary *)urlParameters
-                    success:(CRRequestOperationSuccessBlock)success
-                    failure:(CRRequestOperationFailureBlock)failure
-{    
-    return [self addOperationForPath:path 
-                          withMethod:CRRequestMethodDELETE
-                              header:[self defaultHeader]
-                    andURLParameters:urlParameters
-               andHTTPBodyParameters:nil
-                        toQueueNamed:nil
-                             success:success 
-                             failure:failure];
 }
 
 #pragma mark - Header

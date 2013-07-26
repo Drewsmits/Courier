@@ -38,7 +38,25 @@ typedef enum {
     CRJSONParameterEncoding,
 } CRRequestEncoding;
 
-@interface CRRequest : NSObject {}
+@interface CRRequest : NSObject
+
+/**
+ Factory method for building the CRRequest
+ 
+ @param
+ @param
+ @param
+ @param
+ @param
+ 
+ */
++ (CRRequest *)requestWithMethod:(CRRequestMethod)method
+                            path:(NSString *)path
+                        encoding:(CRRequestEncoding)encoding
+                   URLParameters:(NSDictionary *)urlParameters
+              HTTPBodyParameters:(NSDictionary *)httpBodyParameters
+                          header:(NSDictionary *)header
+             shouldHandleCookies:(BOOL)handleCookies;
 
 /**
  Enum of the request method
@@ -50,7 +68,7 @@ typedef enum {
  * The Content-Type encoding to use when sending POST/PUT requests
  *
  */
-@property (nonatomic, assign) CRRequestEncoding encoding;
+@property (nonatomic, assign, readonly) CRRequestEncoding encoding;
 
 /**
  String representation of the request method
@@ -81,31 +99,6 @@ typedef enum {
  Determines if the request should handle cookies
  */
 @property (nonatomic, assign, readonly) BOOL shouldHandleCookies;
-
-/**
- Factory method for building the CRRequest
- 
- @param
- @param
- @param
- @param
- @param
- 
- */
-+ (CRRequest *)requestWithMethod:(CRRequestMethod)method
-                         forPath:(NSString *)path
-               withURLParameters:(NSDictionary *)urlParameters
-           andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                       andHeader:(NSDictionary *)header
-             shouldHandleCookies:(BOOL)handleCookies;
-
-+ (CRRequest *)requestWithMethod:(CRRequestMethod)method
-                            path:(NSString *)path
-                        encoding:(CRRequestEncoding)encoding
-                   URLParameters:(NSDictionary *)urlParameters
-              HTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                          header:(NSDictionary *)header
-             shouldHandleCookies:(BOOL)handleCookies;
 
 /**
  Builds the http body data from the HTTPBodyParameters

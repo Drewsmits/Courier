@@ -29,7 +29,7 @@
 #import "CRRequest.h"
 #import "CRRequestOperation.h"
 
-@interface Courier : Conductor {}
+@interface Courier : CDQueueController
 
 /**
  Default headers used for every request
@@ -65,25 +65,6 @@
                            toQueueNamed:(NSString *)queueName
                                 success:(CRRequestOperationSuccessBlock)success
                                 failure:(CRRequestOperationFailureBlock)failure;
-
-- (CDOperation *)addOperationForPath:(NSString *)path 
-                          withMethod:(CRRequestMethod)method
-                              header:(NSDictionary *)header
-                    andURLParameters:(NSDictionary *)parameters
-               andHTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                        toQueueNamed:(NSString *)queueName
-                             success:(CRRequestOperationSuccessBlock)success 
-                             failure:(CRRequestOperationFailureBlock)failure;
-
-- (CDOperation *)putPath:(NSString *)path 
-           URLParameters:(NSDictionary *)urlParameters
-                 success:(CRRequestOperationSuccessBlock)success
-                 failure:(CRRequestOperationFailureBlock)failure;
-
-- (CDOperation *)deletePath:(NSString *)path 
-              URLParameters:(NSDictionary *)urlParameters
-                    success:(CRRequestOperationSuccessBlock)success
-                    failure:(CRRequestOperationFailureBlock)failure;
 
 - (void)deleteCookies;
 
