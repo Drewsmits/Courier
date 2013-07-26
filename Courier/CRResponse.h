@@ -31,7 +31,7 @@
 
 @property (nonatomic, strong, readonly) NSMutableData *data;
 
-@property (nonatomic, readonly) NSInteger *statusCode;
+@property (nonatomic, readonly) NSInteger statusCode;
 
 @property (nonatomic, readonly) BOOL success;
 

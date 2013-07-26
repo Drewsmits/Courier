@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8831EB8217A205B800B6E1D7 /* NSMutableURLRequest+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = 8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */; };
+		8831EB8217A205B800B6E1D7 /* NSMutableURLRequest+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = 8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8831EB8317A205B800B6E1D7 /* NSMutableURLRequest+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */; };
+		8831EB8917A2F3DA00B6E1D7 /* CourierPingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831EB8817A2F3DA00B6E1D7 /* CourierPingTest.m */; };
+		8831EB8E17A2F5F500B6E1D7 /* CRRequestQueueController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8831EB8C17A2F5F500B6E1D7 /* CRRequestQueueController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8831EB8F17A2F5F500B6E1D7 /* CRRequestQueueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831EB8D17A2F5F500B6E1D7 /* CRRequestQueueController.m */; };
 		883230DD176A41E700152201 /* CRRequestController.h in Headers */ = {isa = PBXBuildFile; fileRef = 883230DB176A41E700152201 /* CRRequestController.h */; };
 		883230DE176A41E700152201 /* CRRequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883230DC176A41E700152201 /* CRRequestController.m */; };
 		DB01067E164C23F700AAAAEF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB01067D164C23F700AAAAEF /* CoreData.framework */; };
@@ -20,14 +23,10 @@
 		DB64C494144F4BCD003D766A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C482144F4BCD003D766A /* Foundation.framework */; };
 		DB64C497144F4BCD003D766A /* libCourier.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C47F144F4BCD003D766A /* libCourier.a */; };
 		DB64C49D144F4BCD003D766A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB64C49B144F4BCD003D766A /* InfoPlist.strings */; };
-		DB64C4A0144F4BCD003D766A /* CourierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C49F144F4BCD003D766A /* CourierTests.m */; };
 		DB64C4B9144F5C7C003D766A /* CRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB64C4BA144F5C7C003D766A /* CRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */; };
 		DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DB6BABBB154F47F0004842D2 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6BABBC154F47F0004842D2 /* Reachability.m */; };
-		DB7C53AA1671736700099CBC /* CRResponseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7C53A91671736700099CBC /* CRResponseTests.m */; };
-		DB83D0EB144F90D100D94890 /* CRRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D0E9144F90D100D94890 /* CRRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB83D0EC144F90D100D94890 /* CRRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D0EA144F90D100D94890 /* CRRequest.m */; };
 		DB83D0F4144F932D00D94890 /* CRResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D0F2144F932D00D94890 /* CRResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB83D0F5144F932D00D94890 /* CRResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D0F3144F932D00D94890 /* CRResponse.m */; };
 		DB83D105144F9BC400D94890 /* NSString+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D103144F9BC400D94890 /* NSString+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -38,7 +37,7 @@
 		DB9DEFB11573F9FF00E05274 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */; };
 		DB9DEFB21573FA1400E05274 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAAA636150FE761004C1532 /* libz.dylib */; };
 		DBA5F95714560E4100EBFF68 /* Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C487144F4BCD003D766A /* Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DBC30B5A16E047D600C795BA /* NSDictionary+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DBC30B5816E047D600C795BA /* NSDictionary+Courier.h */; };
+		DBC30B5A16E047D600C795BA /* NSDictionary+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DBC30B5816E047D600C795BA /* NSDictionary+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBC30B5B16E047D600C795BA /* NSDictionary+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC30B5916E047D600C795BA /* NSDictionary+Courier.m */; };
 		DBEEB572154F796F0029003D /* libConductor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEEB56D154F79630029003D /* libConductor.a */; };
 /* End PBXBuildFile section */
@@ -84,6 +83,10 @@
 /* Begin PBXFileReference section */
 		8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Courier.h"; sourceTree = "<group>"; };
 		8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+Courier.m"; sourceTree = "<group>"; };
+		8831EB8717A2F3DA00B6E1D7 /* CourierPingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourierPingTest.h; sourceTree = "<group>"; };
+		8831EB8817A2F3DA00B6E1D7 /* CourierPingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourierPingTest.m; sourceTree = "<group>"; };
+		8831EB8C17A2F5F500B6E1D7 /* CRRequestQueueController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequestQueueController.h; sourceTree = "<group>"; };
+		8831EB8D17A2F5F500B6E1D7 /* CRRequestQueueController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestQueueController.m; sourceTree = "<group>"; };
 		883230DB176A41E700152201 /* CRRequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequestController.h; sourceTree = "<group>"; };
 		883230DC176A41E700152201 /* CRRequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestController.m; sourceTree = "<group>"; };
 		DB01067D164C23F700AAAAEF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -198,19 +201,21 @@
 				883230DC176A41E700152201 /* CRRequestController.m */,
 				DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */,
 				DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */,
+				8831EB8C17A2F5F500B6E1D7 /* CRRequestQueueController.h */,
+				8831EB8D17A2F5F500B6E1D7 /* CRRequestQueueController.m */,
 				DB83D0F2144F932D00D94890 /* CRResponse.h */,
 				DB83D0F3144F932D00D94890 /* CRResponse.m */,
 				DB83D12B1450CC0100D94890 /* NSData+Courier.h */,
 				DB83D12C1450CC0100D94890 /* NSData+Courier.m */,
 				DBC30B5816E047D600C795BA /* NSDictionary+Courier.h */,
 				DBC30B5916E047D600C795BA /* NSDictionary+Courier.m */,
+				8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */,
+				8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */,
 				DB83D103144F9BC400D94890 /* NSString+Courier.h */,
 				DB83D104144F9BC400D94890 /* NSString+Courier.m */,
 				DB6BABBB154F47F0004842D2 /* Reachability.h */,
 				DB6BABBC154F47F0004842D2 /* Reachability.m */,
 				DB64C485144F4BCD003D766A /* Supporting Files */,
-				8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */,
-				8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */,
 			);
 			path = Courier;
 			sourceTree = "<group>";
@@ -226,12 +231,14 @@
 		DB64C498144F4BCD003D766A /* CourierTests */ = {
 			isa = PBXGroup;
 			children = (
+				8831EB8717A2F3DA00B6E1D7 /* CourierPingTest.h */,
+				8831EB8817A2F3DA00B6E1D7 /* CourierPingTest.m */,
 				DB64C49E144F4BCD003D766A /* CourierTests.h */,
 				DB64C49F144F4BCD003D766A /* CourierTests.m */,
 				DB7C53A81671736600099CBC /* CRResponseTests.h */,
 				DB7C53A91671736700099CBC /* CRResponseTests.m */,
-				DB64C499144F4BCD003D766A /* Supporting Files */,
 				DBB524121458E175006040C7 /* Sinatra */,
+				DB64C499144F4BCD003D766A /* Supporting Files */,
 			);
 			path = CourierTests;
 			sourceTree = "<group>";
@@ -279,7 +286,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB64C4B9144F5C7C003D766A /* CRRequestOperation.h in Headers */,
-				DB83D0EB144F90D100D94890 /* CRRequest.h in Headers */,
 				DB83D0F4144F932D00D94890 /* CRResponse.h in Headers */,
 				DB83D105144F9BC400D94890 /* NSString+Courier.h in Headers */,
 				DB83D12D1450CC0100D94890 /* NSData+Courier.h in Headers */,
@@ -288,6 +294,7 @@
 				DBC30B5A16E047D600C795BA /* NSDictionary+Courier.h in Headers */,
 				883230DD176A41E700152201 /* CRRequestController.h in Headers */,
 				8831EB8217A205B800B6E1D7 /* NSMutableURLRequest+Courier.h in Headers */,
+				8831EB8E17A2F5F500B6E1D7 /* CRRequestQueueController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,7 +429,6 @@
 			files = (
 				DB64C489144F4BCD003D766A /* Courier.m in Sources */,
 				DB64C4BA144F5C7C003D766A /* CRRequestOperation.m in Sources */,
-				DB83D0EC144F90D100D94890 /* CRRequest.m in Sources */,
 				DB83D0F5144F932D00D94890 /* CRResponse.m in Sources */,
 				DB83D106144F9BC400D94890 /* NSString+Courier.m in Sources */,
 				DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */,
@@ -430,6 +436,7 @@
 				DBC30B5B16E047D600C795BA /* NSDictionary+Courier.m in Sources */,
 				883230DE176A41E700152201 /* CRRequestController.m in Sources */,
 				8831EB8317A205B800B6E1D7 /* NSMutableURLRequest+Courier.m in Sources */,
+				8831EB8F17A2F5F500B6E1D7 /* CRRequestQueueController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,8 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB64C4A0144F4BCD003D766A /* CourierTests.m in Sources */,
-				DB7C53AA1671736700099CBC /* CRResponseTests.m in Sources */,
+				8831EB8917A2F3DA00B6E1D7 /* CourierPingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
