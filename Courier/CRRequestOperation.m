@@ -24,11 +24,7 @@
 //
 
 #import "CRRequestOperation.h"
-
-#pragma mark - State
-
-
-#pragma mark - Private
+#import "CRResponse.h"
 
 @interface CRRequestOperation ()
 
@@ -48,6 +44,13 @@
 @implementation CRRequestOperation
 
 static NSThread *_networkRequestThread = nil;
+
++ (id)operationWithRequest:(NSMutableURLRequest *)request
+{
+  return [self operationWithRequest:request
+                            success:nil
+                            failure:nil];
+}
 
 + (id)operationWithRequest:(NSMutableURLRequest *)request
                    success:(CRRequestOperationSuccessBlock)successBlock

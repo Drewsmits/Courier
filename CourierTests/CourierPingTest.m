@@ -10,9 +10,9 @@
 #import "NSMutableURLRequest+Courier.h"
 #import "CRRequestController.h" 
 #import "CRRequestOperation.h"
-#import "CDQueueController.h"
+#import "CRResponse.h"
 
-#define TEST_QUEUE @"com.courier.requestQueue"
+#define TEST_QUEUE @"com.courierTests.requestQueue"
 
 @interface CourierPingTest ()
 
@@ -35,24 +35,14 @@
 
 - (void)testPing200
 {
-  NSMutableURLRequest *request = [NSMutableURLRequest requestWithMethod:@"POST"
-                                                                   path:@"http://localhost:9000/ping/200"
-                                                               encoding:CR_URLRequestEncodingUnknown
-                                                          URLParameters:nil
-                                                     HTTPBodyParameters:nil
-                                                                 header:nil
-                                                    shouldHandleCookies:NO];
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithMethod:@"GET"
+                                                                   path:@"http://localhost:9000/ping/200"];
   
+  CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request];
   __block BOOL hasCalledBack = NO;
-  __block BOOL success = NO;
-  CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request
-                                                                   success:^(NSMutableURLRequest *request, CRResponse *response) {
-                                                                     hasCalledBack = YES;
-                                                                     success = (response.statusCode == 200);
-                                                                   } failure:^(NSMutableURLRequest *request, CRResponse *response, NSError *error, BOOL unreachable) {
-                                                                     hasCalledBack = YES;
-                                                                   }];
-  
+  operation.completionBlock = ^{
+    hasCalledBack = YES;
+  };
 
   [self.testQueueController addOperation:operation
                             toQueueNamed:TEST_QUEUE];
@@ -62,8 +52,8 @@
     [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
                              beforeDate:loopUntil];
   }
-  
-  STAssertTrue(success, @"Response should be 200,OK!");
+    
+  STAssertEquals(operation.response.statusCode, 200, @"Response should be 200,OK!");
 }
 
 @end

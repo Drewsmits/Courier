@@ -1,6 +1,7 @@
 package controllers
 
-import play.api._
+import scala.concurrent.Future
+import play.api.libs.concurrent.Execution.Implicits._
 import play.api.mvc._
 
 object Application extends Controller {
@@ -23,7 +24,7 @@ object Application extends Controller {
     }
   }
 
-  def testJson = Action(parse.json) { request =>
+  def testJsonPost = Action(parse.json) { request =>
     (request.body \ "name").asOpt[String].map { name =>
       if (name == "Drewsmits") {
         Ok
@@ -32,6 +33,16 @@ object Application extends Controller {
       }
     }.getOrElse {
       BadRequest("Missing parameter [name]")
+    }
+  }
+
+  def longRequest(sleepLength: Long)  = Action {
+    val futureInt: Future[Int] = Future {
+      Thread.sleep(sleepLength)
+      1
+    }
+    Async {
+      futureInt.map(i => Ok)
     }
   }
 }

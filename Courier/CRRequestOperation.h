@@ -25,8 +25,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "CRRequest.h"
-#import "CRResponse.h"
+@class CRResponse;
 
 typedef void (^CRRequestOperationSuccessBlock)(NSMutableURLRequest *request, CRResponse *response);
 typedef void (^CRRequestOperationFailureBlock)(NSMutableURLRequest *request, CRResponse *response, NSError *error, BOOL unreachable);
@@ -34,6 +33,8 @@ typedef void (^CRRequestOperationFailureBlock)(NSMutableURLRequest *request, CRR
 @interface CRRequestOperation : CDKVOOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
 @property (nonatomic, strong, readonly) CRResponse *response;
+
++ (id)operationWithRequest:(NSMutableURLRequest *)request;
 
 + (id)operationWithRequest:(NSMutableURLRequest *)request
                    success:(CRRequestOperationSuccessBlock)successBlock

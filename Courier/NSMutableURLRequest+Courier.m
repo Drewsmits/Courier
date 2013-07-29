@@ -14,18 +14,27 @@
 
 + (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                       path:(NSString *)path
+{
+  return [self requestWithMethod:method
+                            path:path
+                        encoding:CR_URLRequestEncodingUnknown
+                   URLParameters:nil
+              HTTPBodyParameters:nil
+                          header:nil];
+}
+
++ (NSMutableURLRequest *)requestWithMethod:(NSString *)method
+                                      path:(NSString *)path
                                   encoding:(CR_URLRequestEncoding)encoding
                              URLParameters:(NSDictionary *)urlParameters
                         HTTPBodyParameters:(NSDictionary *)httpBodyParameters
                                     header:(NSDictionary *)header
-                       shouldHandleCookies:(BOOL)handleCookies
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     
     [request setURLPath:path withParameters:urlParameters];
     [request setHTTPMethod:method];
     [request setHTTPBodyDataWithParameters:httpBodyParameters encoding:encoding];
-    [request setHTTPShouldHandleCookies:handleCookies];
     [request setAllHTTPHeaderFields:header];
     [request addHeaderContentTypeForEncoding:encoding];
     

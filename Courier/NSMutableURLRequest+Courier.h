@@ -17,11 +17,13 @@ typedef enum {
 @interface NSMutableURLRequest (Courier)
 
 + (NSMutableURLRequest *)requestWithMethod:(NSString *)method
+                                      path:(NSString *)path;
+
++ (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                       path:(NSString *)path
                                   encoding:(CR_URLRequestEncoding)encoding
                              URLParameters:(NSDictionary *)urlParameters
                         HTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                                    header:(NSDictionary *)header
-                       shouldHandleCookies:(BOOL)handleCookies;
+                                    header:(NSDictionary *)header;
 
 @end
