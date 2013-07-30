@@ -93,6 +93,7 @@
 		88C1E62B17A6D14A00895970 /* CourierReachabilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourierReachabilityTests.m; sourceTree = "<group>"; };
 		88C1E62E17A6DDAC00895970 /* CourierJsonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourierJsonTests.h; sourceTree = "<group>"; };
 		88C1E62F17A6DDAC00895970 /* CourierJsonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourierJsonTests.m; sourceTree = "<group>"; };
+		88C1E63B17A7490800895970 /* CRTestMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRTestMacros.h; sourceTree = "<group>"; };
 		DB01067D164C23F700AAAAEF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DB3A04B2160A7E4400B833CA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -243,6 +244,7 @@
 				DB7C53A91671736700099CBC /* CRResponseTests.m */,
 				DBB524121458E175006040C7 /* Sinatra */,
 				DB64C499144F4BCD003D766A /* Supporting Files */,
+				88C1E63B17A7490800895970 /* CRTestMacros.h */,
 			);
 			path = CourierTests;
 			sourceTree = "<group>";

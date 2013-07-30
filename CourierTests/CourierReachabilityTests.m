@@ -10,8 +10,7 @@
 #import "CRRequestOperation.h"
 #import "CRRequestQueueController.h"
 #import "NSMutableURLRequest+Courier.h"
-
-#define TEST_QUEUE @"com.courierTests.requestQueue"
+#import "CRTestMacros.h"
 
 @interface CourierReachabilityTests ()
 
@@ -34,7 +33,7 @@
 
 - (void)testUnreachableURL
 {
-  [self.testQueueController monitorReachability];
+  [self.testQueueController startReachabilityNotifier];
   
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithMethod:@"GET"
                                                                    path:@"http://request.com/to/nowhere"];
@@ -54,11 +53,7 @@
   [self.testQueueController addOperation:operation
                             toQueueNamed:TEST_QUEUE];
     
-  NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:0.1];
-  while (hasCalledBack == NO) {
-    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                             beforeDate:loopUntil];
-  }
+  WAIT_ON_BOOL(hasCalledBack);
   
   STAssertTrue(shouldBeUnreachable, @"Unreachable should be YES");
 }

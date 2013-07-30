@@ -29,44 +29,6 @@
   return controller;
 }
 
-//- (CRRequestOperation *)operationForRequest:(CRRequest *)request
-//                                    success:(CRRequestOperationSuccessBlock)success
-//                                    failure:(CRRequestOperationFailureBlock)failure
-//{
-//    //
-//    // Test reachability
-//    //
-//    if (![self isPathReachable:request.path unreachableBlock:failure]) {
-//        return nil;
-//    }
-//  
-//    //
-//    // Add default header values. The keys for the request header will stomp the
-//    // default header values. This allways allows the user to override defaults if
-//    // they want to when building the request
-//    //
-//    NSMutableDictionary *tempHeader = [self.defaultHeader mutableCopy];
-//    [tempHeader addEntriesFromDictionary:request.header];
-//    request.header = tempHeader;
-//
-//    //
-//    // Build operation
-//    //
-//    CRRequestOperation *operation = [CRRequestOperation operationWithRequest:request
-//                                                                     success:success
-//                                                                     failure:failure];
-//  
-//    return operation;
-//}
-
-
-- (CRRequestOperation *)operationForURLRequest:(NSMutableURLRequest *)request
-                                       success:(CRRequestOperationSuccessBlock)success
-                                       failure:(CRRequestOperationFailureBlock)failure
-{
-  
-}
-
 #pragma mark - Reachability
 
 - (BOOL)isPathReachable:(NSString *)path

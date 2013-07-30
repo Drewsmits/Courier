@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CRRequestOperation.h"
 
+@class CRRequestOperation;
+@class CRResponse;
 
 @interface CRRequestController : NSObject
 
@@ -16,9 +17,5 @@
  Default headers used for every request
  */
 @property (nonatomic, strong) NSMutableDictionary *defaultHeader;
-
-- (CRRequestOperation *)operationForURLRequest:(NSMutableURLRequest *)request
-                                       success:(CRRequestOperationSuccessBlock)success
-                                       failure:(CRRequestOperationFailureBlock)failure;
 
 @end

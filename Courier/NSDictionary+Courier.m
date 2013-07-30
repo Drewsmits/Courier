@@ -24,7 +24,7 @@
 {
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
-                                                       options:NSJSONWritingPrettyPrinted
+                                                       options:0
                                                          error:&error];
     
     if (!jsonData) NSLog(@"JSON serialization error: %@", error);

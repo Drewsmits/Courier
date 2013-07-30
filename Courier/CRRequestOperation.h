@@ -37,7 +37,7 @@ typedef void (^CRRequestOperationFailureBlock)(NSMutableURLRequest *request, CRR
 + (id)operationWithRequest:(NSMutableURLRequest *)request;
 
 + (id)operationWithRequest:(NSMutableURLRequest *)request
-                   success:(CRRequestOperationSuccessBlock)successBlock
-                   failure:(CRRequestOperationFailureBlock)failureBlock;
+                   success:(void (^)(NSMutableURLRequest *request, CRResponse *response))successBlock
+                   failure:(void (^)(NSMutableURLRequest *request, CRResponse *response, NSError *error, BOOL unreachable))failureBlock;
 
 @end

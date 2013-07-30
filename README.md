@@ -1,29 +1,10 @@
-# About Courier
+# Courier
 
-## What makes a URL request?
+## Introduction
 
-***
+Courier is a simple network layer inspired by ASIHTTPRequest and AFNetworking. The main difference is that Courier is much lighter weight and hopefully easier to understand. Easily opt in to Courier's built in operation management through using (Conductor)[http://github.com/Drewsmits/Conductor), or do it yourself.
 
-### HTTP Session
 
-A sequence of network request-response transactions.
-
-### Request Method
-
-HTTP defines methods to indicate the desired action to be performed on the identified remote resource. See [Hypertext Transfer Protocol] []
-
-* __GET__: Requests a representation of the specified resource. Requests using GET should only retrieve data and should have no other effect.
-* __POST__: Requests that the server accept the entity enclosed in the request as a new subordinate of the resource identified by the URI.
-* __PUT__: Requests that the enclosed entity be stored under the supplied URI. If the URI refers to an already existing resource, it is modified; if the URI does not point to an existing resource, then the server can create the resource with that URI.
-* __DELETE__: Deletes the specified resource.
-
-### Request Header
-
-The request header defines the operating parameters of an HTTP transaction. Things like content type, encoding, authorization, cookies, and user-agent, are all specified in the header.
-
-### Request Response
-
-The first line of the HTTP response is the status line and includes a status code and a textual reason phrase. See a [list of all HTTP status codes][].
 
 ## What makes a good network framework?
 
@@ -31,7 +12,7 @@ The first line of the HTTP response is the status line and includes a status cod
 
 ### Request Queues
 
-All devices have limited bandwidth for fielding requests. This is especially true when designing for the iPhone, as you sometimes have spotty internet connections and extremely impatient users. As your user dives into your app, requests you made a moment ago may no longer be relevant. For example, if a user is scrolling through a list of Twitter users, what is the point of downloading profile images for users no longer on screen? In this case being responsive is better than being fast. You could write the fastest twitter profile image downloader of all time, but it will lose to the app that shows the user what is relevant first.
+All devices have limited bandwidth for sending requests. This is especially true when designing for the mobile devices, as the end of your request pipeline is one antenna. as you sometimes have spotty internet connections and extremely impatient users. As your user dives into your app, requests you made a moment ago may no longer be relevant. For example, if a user is scrolling through a list of Twitter users, what is the point of downloading profile images for users no longer on screen? In this case being responsive is better than being fast. You could write the fastest twitter profile image downloader of all time, but it will lose to the app that shows the user what is relevant first.
 
 Courier is built on top of Conductor, which lets you manage request queues like a pro.
 
@@ -43,7 +24,7 @@ Courier is built on top of Conductor, which lets you manage request queues like 
 
 ### Manage Your Headers
 
-Typically you use the same request header for all your Apps requests. However, there are times when you may need to change things like Content-Type on the fly. Allow the "dont make me thing" users to set it and forget it, but also allow injection of new or different fields before the request goes out.
+Typically you use the same request header for all your Apps requests. However, there are times when you may need to change things like Content-Type on the fly. Allow the "dont make me think" users to set it and forget it, but also allow injection of new or different fields before the request goes out.
 
 ### Encode Your Data
 

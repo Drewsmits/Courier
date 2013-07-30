@@ -11,8 +11,7 @@
 #import "CRRequestController.h" 
 #import "CRRequestOperation.h"
 #import "CRResponse.h"
-
-#define TEST_QUEUE @"com.courierTests.requestQueue"
+#import "CRTestMacros.h"
 
 @interface CourierPingTest ()
 
@@ -47,13 +46,9 @@
   [self.testQueueController addOperation:operation
                             toQueueNamed:TEST_QUEUE];
   
-  NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:0.1];
-  while (hasCalledBack == NO) {
-    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                             beforeDate:loopUntil];
-  }
+  WAIT_ON_BOOL(hasCalledBack)
     
-  STAssertEquals(operation.response.statusCode, 200, @"Response should be 200,OK!");
+  STAssertEquals(operation.response.statusCode, 200, @"Response should be 200 OK!");
 }
 
 @end
