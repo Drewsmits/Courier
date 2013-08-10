@@ -45,4 +45,21 @@ object Application extends Controller {
       futureInt.map(i => Ok)
     }
   }
+
+  def getTest = Action {
+    Ok
+  }
+
+  def postTest = Action {
+    Ok
+  }
+
+  def putTest = Action {
+    Ok
+  }
+
+  def deleteTest = Action {
+    println("got here")
+    Ok
+  }
 }

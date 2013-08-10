@@ -12,3 +12,7 @@ GET         /assets/*file            controllers.Assets.at(path="/public", file)
 GET         /ping/:statusCode        controllers.Application.ping(statusCode: Int)
 POST        /testJsonPost            controllers.Application.testJsonPost
 GET         /longRequest             controllers.Application.longRequest(sleepLength: Long)
+GET         /getTest                 controllers.Application.getTest
+POST        /postTest                controllers.Application.postTest
+PUT         /putTest                 controllers.Application.putTest
+DELETE      /deleteTest              controllers.Application.deleteTest

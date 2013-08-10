@@ -14,6 +14,7 @@
 		8831EB8F17A2F5F500B6E1D7 /* CRRequestQueueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831EB8D17A2F5F500B6E1D7 /* CRRequestQueueController.m */; };
 		883230DD176A41E700152201 /* CRRequestController.h in Headers */ = {isa = PBXBuildFile; fileRef = 883230DB176A41E700152201 /* CRRequestController.h */; };
 		883230DE176A41E700152201 /* CRRequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883230DC176A41E700152201 /* CRRequestController.m */; };
+		88B0A12417B5B86400D49995 /* CourierRESTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B0A12317B5B86400D49995 /* CourierRESTTests.m */; };
 		88C1E62C17A6D14A00895970 /* CourierReachabilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C1E62B17A6D14A00895970 /* CourierReachabilityTests.m */; };
 		88C1E63017A6DDAC00895970 /* CourierJsonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C1E62F17A6DDAC00895970 /* CourierJsonTests.m */; };
 		DB01067E164C23F700AAAAEF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB01067D164C23F700AAAAEF /* CoreData.framework */; };
@@ -89,6 +90,8 @@
 		8831EB8D17A2F5F500B6E1D7 /* CRRequestQueueController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestQueueController.m; sourceTree = "<group>"; };
 		883230DB176A41E700152201 /* CRRequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequestController.h; sourceTree = "<group>"; };
 		883230DC176A41E700152201 /* CRRequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestController.m; sourceTree = "<group>"; };
+		88B0A12217B5B86400D49995 /* CourierRESTTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourierRESTTests.h; sourceTree = "<group>"; };
+		88B0A12317B5B86400D49995 /* CourierRESTTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourierRESTTests.m; sourceTree = "<group>"; };
 		88C1E62A17A6D14A00895970 /* CourierReachabilityTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourierReachabilityTests.h; sourceTree = "<group>"; };
 		88C1E62B17A6D14A00895970 /* CourierReachabilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourierReachabilityTests.m; sourceTree = "<group>"; };
 		88C1E62E17A6DDAC00895970 /* CourierJsonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourierJsonTests.h; sourceTree = "<group>"; };
@@ -238,13 +241,15 @@
 				8831EB8817A2F3DA00B6E1D7 /* CourierPingTest.m */,
 				88C1E62A17A6D14A00895970 /* CourierReachabilityTests.h */,
 				88C1E62B17A6D14A00895970 /* CourierReachabilityTests.m */,
+				88B0A12217B5B86400D49995 /* CourierRESTTests.h */,
+				88B0A12317B5B86400D49995 /* CourierRESTTests.m */,
 				DB64C49E144F4BCD003D766A /* CourierTests.h */,
 				DB64C49F144F4BCD003D766A /* CourierTests.m */,
 				DB7C53A81671736600099CBC /* CRResponseTests.h */,
 				DB7C53A91671736700099CBC /* CRResponseTests.m */,
+				88C1E63B17A7490800895970 /* CRTestMacros.h */,
 				DBB524121458E175006040C7 /* Sinatra */,
 				DB64C499144F4BCD003D766A /* Supporting Files */,
-				88C1E63B17A7490800895970 /* CRTestMacros.h */,
 			);
 			path = CourierTests;
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 				8831EB8917A2F3DA00B6E1D7 /* CourierPingTest.m in Sources */,
 				88C1E62C17A6D14A00895970 /* CourierReachabilityTests.m in Sources */,
 				88C1E63017A6DDAC00895970 /* CourierJsonTests.m in Sources */,
+				88B0A12417B5B86400D49995 /* CourierRESTTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
