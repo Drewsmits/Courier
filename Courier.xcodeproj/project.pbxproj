@@ -57,6 +57,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DB2FC64D17DA1D4F00EDF9F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB2FC64417DA1D4F00EDF9F0 /* Session.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB2FC5B817D26B5000EDF9F0;
+			remoteInfo = Session;
+		};
+		DB2FC64F17DA1D4F00EDF9F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB2FC64417DA1D4F00EDF9F0 /* Session.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB2FC5D917D26B5100EDF9F0;
+			remoteInfo = SessionTests;
+		};
 		DB64C495144F4BCD003D766A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB64C474144F4BB0003D766A /* Project object */;
@@ -120,6 +134,7 @@
 		DB01067D164C23F700AAAAEF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLResponse+Courier.h"; sourceTree = "<group>"; };
 		DB2FC63717D291DA00EDF9F0 /* NSURLResponse+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLResponse+Courier.m"; sourceTree = "<group>"; };
+		DB2FC64417DA1D4F00EDF9F0 /* Session.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Session.xcodeproj; path = Session/Session.xcodeproj; sourceTree = "<group>"; };
 		DB3A04B2160A7E4400B833CA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DB487DBA17C0182300D189D3 /* CourierNSURLSessionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourierNSURLSessionTests.m; path = ../CourierTests/CourierNSURLSessionTests.m; sourceTree = "<group>"; };
@@ -205,6 +220,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB2FC64517DA1D4F00EDF9F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB2FC64E17DA1D4F00EDF9F0 /* Session.app */,
+				DB2FC65017DA1D4F00EDF9F0 /* SessionTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		DB64C472144F4BB0003D766A = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +238,7 @@
 				DB64C481144F4BCD003D766A /* Frameworks */,
 				DB64C480144F4BCD003D766A /* Products */,
 				DBEEB565154F79530029003D /* Vendors */,
+				DB2FC64417DA1D4F00EDF9F0 /* Session.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -465,6 +490,10 @@
 					ProductGroup = DBEEB568154F79620029003D /* Products */;
 					ProjectRef = DBEEB567154F79620029003D /* Conductor.xcodeproj */;
 				},
+				{
+					ProductGroup = DB2FC64517DA1D4F00EDF9F0 /* Products */;
+					ProjectRef = DB2FC64417DA1D4F00EDF9F0 /* Session.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -476,6 +505,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		DB2FC64E17DA1D4F00EDF9F0 /* Session.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Session.app;
+			remoteRef = DB2FC64D17DA1D4F00EDF9F0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DB2FC65017DA1D4F00EDF9F0 /* SessionTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SessionTests.xctest;
+			remoteRef = DB2FC64F17DA1D4F00EDF9F0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		DBC30B5F16E047D700C795BA /* ConductorApp.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
