@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>874E602F-EC37-4A6A-BFEE-57E47ECB0BC5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Courier</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1F371DBB-2DFC-488D-88B2-4E7B1598CDC4</key>
+		<string>ssh://github.com/Drewsmits/Conductor.git</string>
+		<key>4F5C8581-9EAD-4B55-AF2F-0FF2E7AF7602</key>
+		<string>ssh://github.com/Drewsmits/Courier.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Courier.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1F371DBB-2DFC-488D-88B2-4E7B1598CDC4</key>
+		<string>../../../Conductor</string>
+		<key>4F5C8581-9EAD-4B55-AF2F-0FF2E7AF7602</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/Drewsmits/Courier.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4F5C8581-9EAD-4B55-AF2F-0FF2E7AF7602</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1F371DBB-2DFC-488D-88B2-4E7B1598CDC4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Conductor</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4F5C8581-9EAD-4B55-AF2F-0FF2E7AF7602</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Courier</string>
+		</dict>
+	</array>
+</dict>
+</plist>

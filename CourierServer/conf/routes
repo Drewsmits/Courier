@@ -16,3 +16,5 @@ GET         /getTest                 controllers.Application.getTest
 POST        /postTest                controllers.Application.postTest
 PUT         /putTest                 controllers.Application.putTest
 DELETE      /deleteTest              controllers.Application.deleteTest
+
+GET         /listOfImages            controllers.Application.listOfImages

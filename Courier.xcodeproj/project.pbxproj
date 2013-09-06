@@ -18,8 +18,11 @@
 		88C1E62C17A6D14A00895970 /* CourierReachabilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C1E62B17A6D14A00895970 /* CourierReachabilityTests.m */; };
 		88C1E63017A6DDAC00895970 /* CourierJsonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C1E62F17A6DDAC00895970 /* CourierJsonTests.m */; };
 		DB01067E164C23F700AAAAEF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB01067D164C23F700AAAAEF /* CoreData.framework */; };
+		DB2FC63817D291DA00EDF9F0 /* NSURLResponse+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */; };
+		DB2FC63917D291DA00EDF9F0 /* NSURLResponse+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2FC63717D291DA00EDF9F0 /* NSURLResponse+Courier.m */; };
 		DB3A04B3160A7E4400B833CA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B2160A7E4400B833CA /* libz.dylib */; };
 		DB3A04B5160A7E4D00B833CA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */; };
+		DB487DBF17C019D400D189D3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB487DBE17C019D400D189D3 /* XCTest.framework */; };
 		DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C482144F4BCD003D766A /* Foundation.framework */; };
 		DB64C491144F4BCD003D766A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C490144F4BCD003D766A /* SenTestingKit.framework */; };
 		DB64C494144F4BCD003D766A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C482144F4BCD003D766A /* Foundation.framework */; };
@@ -29,6 +32,16 @@
 		DB64C4BA144F5C7C003D766A /* CRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */; };
 		DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DB6BABBB154F47F0004842D2 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6BABBC154F47F0004842D2 /* Reachability.m */; };
+		DB6F42E417C021B4006CB621 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB487DBE17C019D400D189D3 /* XCTest.framework */; };
+		DB6F42E517C021B4006CB621 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C482144F4BCD003D766A /* Foundation.framework */; };
+		DB6F42E617C021B4006CB621 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9DEFAF1573F9ED00E05274 /* UIKit.framework */; };
+		DB6F42EC17C021B4006CB621 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6F42EA17C021B4006CB621 /* InfoPlist.strings */; };
+		DB6F42F717C021DA006CB621 /* CourierNSURLSessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB487DBA17C0182300D189D3 /* CourierNSURLSessionTests.m */; };
+		DB6F42F817C027C4006CB621 /* libCourier.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C47F144F4BCD003D766A /* libCourier.a */; };
+		DB6F42F917C027FA006CB621 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */; };
+		DB6F42FA17C0280A006CB621 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB01067D164C23F700AAAAEF /* CoreData.framework */; };
+		DB6F42FB17C02818006CB621 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B2160A7E4400B833CA /* libz.dylib */; };
+		DB6F430017C02C0C006CB621 /* SampleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6F42FF17C02C0C006CB621 /* SampleTest.m */; };
 		DB83D0F4144F932D00D94890 /* CRResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D0F2144F932D00D94890 /* CRResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB83D0F5144F932D00D94890 /* CRResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D0F3144F932D00D94890 /* CRResponse.m */; };
 		DB83D105144F9BC400D94890 /* NSString+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D103144F9BC400D94890 /* NSString+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,6 +58,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		DB64C495144F4BCD003D766A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB64C474144F4BB0003D766A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB64C47E144F4BCD003D766A;
+			remoteInfo = Courier;
+		};
+		DB6F42F017C021B4006CB621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB64C474144F4BB0003D766A /* Project object */;
 			proxyType = 1;
@@ -98,8 +118,12 @@
 		88C1E62F17A6DDAC00895970 /* CourierJsonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourierJsonTests.m; sourceTree = "<group>"; };
 		88C1E63B17A7490800895970 /* CRTestMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRTestMacros.h; sourceTree = "<group>"; };
 		DB01067D164C23F700AAAAEF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLResponse+Courier.h"; sourceTree = "<group>"; };
+		DB2FC63717D291DA00EDF9F0 /* NSURLResponse+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLResponse+Courier.m"; sourceTree = "<group>"; };
 		DB3A04B2160A7E4400B833CA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DB487DBA17C0182300D189D3 /* CourierNSURLSessionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourierNSURLSessionTests.m; path = ../CourierTests/CourierNSURLSessionTests.m; sourceTree = "<group>"; };
+		DB487DBE17C019D400D189D3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		DB64C47F144F4BCD003D766A /* libCourier.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCourier.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB64C482144F4BCD003D766A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB64C486144F4BCD003D766A /* Courier-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Courier-Prefix.pch"; sourceTree = "<group>"; };
@@ -115,6 +139,11 @@
 		DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestOperation.m; sourceTree = "<group>"; };
 		DB6BABBB154F47F0004842D2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		DB6BABBC154F47F0004842D2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		DB6F42E317C021B4006CB621 /* Courier-ios7-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Courier-ios7-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB6F42E917C021B4006CB621 /* Courier-ios7-tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Courier-ios7-tests-Info.plist"; sourceTree = "<group>"; };
+		DB6F42EB17C021B4006CB621 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DB6F42EF17C021B4006CB621 /* Courier-ios7-tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Courier-ios7-tests-Prefix.pch"; sourceTree = "<group>"; };
+		DB6F42FF17C02C0C006CB621 /* SampleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTest.m; sourceTree = "<group>"; };
 		DB7C53A81671736600099CBC /* CRResponseTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRResponseTests.h; sourceTree = "<group>"; };
 		DB7C53A91671736700099CBC /* CRResponseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRResponseTests.m; sourceTree = "<group>"; };
 		DB83D0F2144F932D00D94890 /* CRResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRResponse.h; sourceTree = "<group>"; };
@@ -148,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB487DBF17C019D400D189D3 /* XCTest.framework in Frameworks */,
 				DB01067E164C23F700AAAAEF /* CoreData.framework in Frameworks */,
 				DB9DEFB21573FA1400E05274 /* libz.dylib in Frameworks */,
 				DB9DEFB11573F9FF00E05274 /* SystemConfiguration.framework in Frameworks */,
@@ -155,6 +185,20 @@
 				DB64C494144F4BCD003D766A /* Foundation.framework in Frameworks */,
 				DB64C491144F4BCD003D766A /* SenTestingKit.framework in Frameworks */,
 				DB64C497144F4BCD003D766A /* libCourier.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB6F42E017C021B4006CB621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB6F42FB17C02818006CB621 /* libz.dylib in Frameworks */,
+				DB6F42FA17C0280A006CB621 /* CoreData.framework in Frameworks */,
+				DB6F42F917C027FA006CB621 /* SystemConfiguration.framework in Frameworks */,
+				DB6F42E417C021B4006CB621 /* XCTest.framework in Frameworks */,
+				DB6F42E617C021B4006CB621 /* UIKit.framework in Frameworks */,
+				DB6F42E517C021B4006CB621 /* Foundation.framework in Frameworks */,
+				DB6F42F817C027C4006CB621 /* libCourier.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +210,7 @@
 			children = (
 				DB64C484144F4BCD003D766A /* Courier */,
 				DB64C498144F4BCD003D766A /* CourierTests */,
+				DB6F42E717C021B4006CB621 /* Courier-ios7-tests */,
 				DB64C481144F4BCD003D766A /* Frameworks */,
 				DB64C480144F4BCD003D766A /* Products */,
 				DBEEB565154F79530029003D /* Vendors */,
@@ -177,6 +222,7 @@
 			children = (
 				DB64C47F144F4BCD003D766A /* libCourier.a */,
 				DB64C48F144F4BCD003D766A /* CourierTests.octest */,
+				DB6F42E317C021B4006CB621 /* Courier-ios7-tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +230,7 @@
 		DB64C481144F4BCD003D766A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB487DBE17C019D400D189D3 /* XCTest.framework */,
 				DB01067D164C23F700AAAAEF /* CoreData.framework */,
 				DB3A04B2160A7E4400B833CA /* libz.dylib */,
 				DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */,
@@ -217,6 +264,8 @@
 				8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */,
 				DB83D103144F9BC400D94890 /* NSString+Courier.h */,
 				DB83D104144F9BC400D94890 /* NSString+Courier.m */,
+				DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */,
+				DB2FC63717D291DA00EDF9F0 /* NSURLResponse+Courier.m */,
 				DB6BABBB154F47F0004842D2 /* Reachability.h */,
 				DB6BABBC154F47F0004842D2 /* Reachability.m */,
 				DB64C485144F4BCD003D766A /* Supporting Files */,
@@ -235,6 +284,7 @@
 		DB64C498144F4BCD003D766A /* CourierTests */ = {
 			isa = PBXGroup;
 			children = (
+				DB6F42FF17C02C0C006CB621 /* SampleTest.m */,
 				88C1E62E17A6DDAC00895970 /* CourierJsonTests.h */,
 				88C1E62F17A6DDAC00895970 /* CourierJsonTests.m */,
 				8831EB8717A2F3DA00B6E1D7 /* CourierPingTest.h */,
@@ -259,6 +309,25 @@
 			children = (
 				DB64C49A144F4BCD003D766A /* CourierTests-Info.plist */,
 				DB64C49B144F4BCD003D766A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB6F42E717C021B4006CB621 /* Courier-ios7-tests */ = {
+			isa = PBXGroup;
+			children = (
+				DB487DBA17C0182300D189D3 /* CourierNSURLSessionTests.m */,
+				DB6F42E817C021B4006CB621 /* Supporting Files */,
+			);
+			path = "Courier-ios7-tests";
+			sourceTree = "<group>";
+		};
+		DB6F42E817C021B4006CB621 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB6F42E917C021B4006CB621 /* Courier-ios7-tests-Info.plist */,
+				DB6F42EA17C021B4006CB621 /* InfoPlist.strings */,
+				DB6F42EF17C021B4006CB621 /* Courier-ios7-tests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -304,6 +373,7 @@
 				DBC30B5A16E047D600C795BA /* NSDictionary+Courier.h in Headers */,
 				883230DD176A41E700152201 /* CRRequestController.h in Headers */,
 				8831EB8217A205B800B6E1D7 /* NSMutableURLRequest+Courier.h in Headers */,
+				DB2FC63817D291DA00EDF9F0 /* NSURLResponse+Courier.h in Headers */,
 				8831EB8E17A2F5F500B6E1D7 /* CRRequestQueueController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +418,24 @@
 			productReference = DB64C48F144F4BCD003D766A /* CourierTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		DB6F42E217C021B4006CB621 /* Courier-ios7-tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB6F42F617C021B4006CB621 /* Build configuration list for PBXNativeTarget "Courier-ios7-tests" */;
+			buildPhases = (
+				DB6F42DF17C021B4006CB621 /* Sources */,
+				DB6F42E017C021B4006CB621 /* Frameworks */,
+				DB6F42E117C021B4006CB621 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB6F42F117C021B4006CB621 /* PBXTargetDependency */,
+			);
+			name = "Courier-ios7-tests";
+			productName = "Courier-ios7-tests";
+			productReference = DB6F42E317C021B4006CB621 /* Courier-ios7-tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -356,6 +444,11 @@
 			attributes = {
 				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "Andrew B. Smith";
+				TargetAttributes = {
+					DB6F42E217C021B4006CB621 = {
+						TestTargetID = DB64C47E144F4BCD003D766A;
+					};
+				};
 			};
 			buildConfigurationList = DB64C477144F4BB0003D766A /* Build configuration list for PBXProject "Courier" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -377,6 +470,7 @@
 			targets = (
 				DB64C47E144F4BCD003D766A /* Courier */,
 				DB64C48E144F4BCD003D766A /* CourierTests */,
+				DB6F42E217C021B4006CB621 /* Courier-ios7-tests */,
 			);
 		};
 /* End PBXProject section */
@@ -414,6 +508,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DB6F42E117C021B4006CB621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB6F42EC17C021B4006CB621 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -440,6 +542,7 @@
 				DB64C4BA144F5C7C003D766A /* CRRequestOperation.m in Sources */,
 				DB83D0F5144F932D00D94890 /* CRResponse.m in Sources */,
 				DB83D106144F9BC400D94890 /* NSString+Courier.m in Sources */,
+				DB2FC63917D291DA00EDF9F0 /* NSURLResponse+Courier.m in Sources */,
 				DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */,
 				DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */,
 				DBC30B5B16E047D600C795BA /* NSDictionary+Courier.m in Sources */,
@@ -454,9 +557,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8831EB8917A2F3DA00B6E1D7 /* CourierPingTest.m in Sources */,
+				DB6F430017C02C0C006CB621 /* SampleTest.m in Sources */,
 				88C1E62C17A6D14A00895970 /* CourierReachabilityTests.m in Sources */,
 				88C1E63017A6DDAC00895970 /* CourierJsonTests.m in Sources */,
 				88B0A12417B5B86400D49995 /* CourierRESTTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB6F42DF17C021B4006CB621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB6F42F717C021DA006CB621 /* CourierNSURLSessionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +579,11 @@
 			isa = PBXTargetDependency;
 			target = DB64C47E144F4BCD003D766A /* Courier */;
 			targetProxy = DB64C495144F4BCD003D766A /* PBXContainerItemProxy */;
+		};
+		DB6F42F117C021B4006CB621 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB64C47E144F4BCD003D766A /* Courier */;
+			targetProxy = DB6F42F017C021B4006CB621 /* PBXContainerItemProxy */;
 		};
 		DBEEB571154F79680029003D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -484,12 +601,21 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		DB6F42EA17C021B4006CB621 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB6F42EB17C021B4006CB621 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DB64C479144F4BB0003D766A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 			};
@@ -498,6 +624,7 @@
 		DB64C47A144F4BB0003D766A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 			};
@@ -578,6 +705,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -594,8 +722,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "CourierTests/CourierTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_LDFLAGS = "-ObjC";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/include/** $(BUILT_PRODUCTS_DIR)/include/Courier $(BUILT_PRODUCTS_DIR)/include/Conductor";
@@ -612,6 +745,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -621,13 +755,112 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "CourierTests/CourierTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_LDFLAGS = "-ObjC";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/include/** $(BUILT_PRODUCTS_DIR)/include/Courier $(BUILT_PRODUCTS_DIR)/include/Conductor";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		DB6F42F217C021B4006CB621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Courier-ios7-tests/Courier-ios7-tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Courier-ios7-tests/Courier-ios7-tests-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DB6F42F317C021B4006CB621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Courier-ios7-tests/Courier-ios7-tests-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Courier-ios7-tests/Courier-ios7-tests-Info.plist";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -657,6 +890,15 @@
 			buildConfigurations = (
 				DB64C4A5144F4BCD003D766A /* Debug */,
 				DB64C4A6144F4BCD003D766A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB6F42F617C021B4006CB621 /* Build configuration list for PBXNativeTarget "Courier-ios7-tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB6F42F217C021B4006CB621 /* Debug */,
+				DB6F42F317C021B4006CB621 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
