@@ -5,10 +5,6 @@
 //  Created by Andrew Smith on 10/19/11.
 //  Copyright (c) 2011 Andrew B. Smith ( http://github.com/drewsmits ). All rights reserved.
 //
-//  Shamelessly borrowed from:
-//  NSData+AFNetworking.h
-//
-//  Copyright (c) 2011 Gowalla (http://gowalla.com/)
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy 
 // of this software and associated documentation files (the "Software"), to deal 
@@ -33,6 +29,7 @@
 @interface NSString (Courier)
 
 - (NSString *)urlEncodedString;
+
 - (NSString *)urlEncodedStringWithEncoding:(NSStringEncoding)encoding;
 
 @end

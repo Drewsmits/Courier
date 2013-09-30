@@ -10,6 +10,7 @@ GET         /assets/*file            controllers.Assets.at(path="/public", file)
 
 # API
 GET         /ping/:statusCode        controllers.Application.ping(statusCode: Int)
+GET         /testJsonGet             controllers.Application.testJsonGet
 POST        /testJsonPost            controllers.Application.testJsonPost
 GET         /longRequest             controllers.Application.longRequest(sleepLength: Long)
 GET         /getTest                 controllers.Application.getTest

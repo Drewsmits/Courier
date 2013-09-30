@@ -43,7 +43,8 @@
 
 #pragma mark - URL
 
-- (void)setURLPath:(NSString *)path withParameters:(NSDictionary *)parameters
+- (void)setURLPath:(NSString *)path
+    withParameters:(NSDictionary *)parameters
 {
     //
     // Append path with URL params, if present

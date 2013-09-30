@@ -10,6 +10,8 @@
 
 @interface NSURLResponse (Courier)
 
+@property (readonly) NSInteger statusCode;
+
 - (BOOL)success;
 
 @end

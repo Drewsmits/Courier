@@ -145,7 +145,7 @@ static NSThread *_networkRequestThread = nil;
 {
     if (!self.failure) return;
   
-    BOOL unreachable;
+    BOOL unreachable = NO;
     NSError *error;
     if (self.response) {
       error = [NSError errorWithDomain:@"com.courier.cdrequestoperation"

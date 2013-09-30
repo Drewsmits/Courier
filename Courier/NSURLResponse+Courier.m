@@ -10,6 +10,11 @@
 
 @implementation NSURLResponse (Courier)
 
+- (NSInteger)statusCode
+{
+    return [(NSHTTPURLResponse *)self statusCode];
+}
+
 - (BOOL)success
 {
     NSInteger statusCode = [(NSHTTPURLResponse *)self statusCode];
