@@ -8,9 +8,7 @@
 
 #import "CRSessionController.h"
 
-#import "NSURLSession+Courier.h"
 #import "CRTaskHandler.h"
-#import "NSURLSessionTask+Courier.h"
 
 @interface CRSessionController ()
 
@@ -24,46 +22,11 @@
 
 @implementation CRSessionController
 
-- (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration
+- (instancetype)initWithSession:(NSURLSession *)session
 {
     self = [super init];
     if (self) {
-        _delegateQueue = [NSOperationQueue new];
-        [_delegateQueue setMaxConcurrentOperationCount:1];
-        
-        if (!configuration) {
-            configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        }
-        _sessionConfig = configuration;
-        
-        // Session
-        _session = [NSURLSession sessionWithConfiguration:_sessionConfig
-                                                 delegate:self
-                                            delegateQueue:_delegateQueue];
-        
-        // Task handlers
-        _taskHandlers = [NSMutableDictionary new];
-    }
-    return self;
-}
-
-- (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration
-                                    delegate:(id <NSURLSessionDelegate>)sessionDelegate
-                               delegateQueue:(NSOperationQueue *)queue
-{
-    self = [super init];
-    if (self) {
-        _delegateQueue = queue;
-        
-        if (!configuration) {
-            configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        }
-        _sessionConfig = configuration;
-        
-        // Session
-        _session = [NSURLSession sessionWithConfiguration:_sessionConfig
-                                                 delegate:sessionDelegate
-                                            delegateQueue:_delegateQueue];
+        _session = session;
     }
     return self;
 }
@@ -82,29 +45,105 @@
 #pragma mark - NSURLSessionDelegate
 
 - (void)URLSession:(NSURLSession *)session
+didBecomeInvalidWithError:(NSError *)error
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)Session
+didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
+ completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
+{
+    
+}
+
+- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session
+{
+    
+}
+
+#pragma mark - NSURLSessionTaskDelegate
+
+- (void)URLSession:(NSURLSession *)session
+              task:(NSURLSessionTask *)task
+didCompleteWithError:(NSError *)error
+{
+    CRTaskHandler *taskHandler = [self taskHandlerForTask:task];
+    
+    if (taskHandler && taskHandler.completionHandler) {
+        taskHandler.completionHandler(session, task, error);
+    }
+    
+    [self removeHandlerForTask:task];
+}
+
+- (void)URLSession:(NSURLSession *)session
+              task:(NSURLSessionTask *)task
+didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
+ completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session
+              task:(NSURLSessionTask *)task
+   didSendBodyData:(int64_t)bytesSent
+    totalBytesSent:(int64_t)totalBytesSent
+totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session
+              task:(NSURLSessionTask *)task
+ needNewBodyStream:(void (^)(NSInputStream *))completionHandler
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session
+              task:(NSURLSessionTask *)task
+willPerformHTTPRedirection:(NSHTTPURLResponse *)response
+        newRequest:(NSURLRequest *)request
+ completionHandler:(void (^)(NSURLRequest *))completionHandler
+{
+    
+}
+
+#pragma mark - NSURLSessionTaskDelegate
+
+- (void)URLSession:(NSURLSession *)session
+          dataTask:(NSURLSessionDataTask *)dataTask
+didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session
           dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data;
 {
-    NSString *taskId = [NSString stringWithFormat:@"%i", dataTask.taskIdentifier];
-    
-    CRTaskHandler *taskHandler = (CRTaskHandler *)[self.taskHandlers valueForKey:taskId];
-    
+    CRTaskHandler *taskHandler = [self taskHandlerForTask:dataTask];
     if (taskHandler && taskHandler.didRecieveDataHandler) {
         taskHandler.didRecieveDataHandler(session, dataTask, data);
     }
 }
 
 - (void)URLSession:(NSURLSession *)session
-              task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+          dataTask:(NSURLSessionDataTask *)dataTask
+didReceiveResponse:(NSURLResponse *)response
+ completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
 {
-    CRTaskHandler *taskHandler = (CRTaskHandler *)[self.taskHandlers valueForKey:task.taskIdentifierKey];
-
-    if (taskHandler && taskHandler.completionHandler) {
-        taskHandler.completionHandler(session, task, error);
-    }
     
-    [self removeTaskHandlerForTaskId:task.taskIdentifierKey];
 }
+
+//- (void)URLSession:(NSURLSession *)session
+//          dataTask:(NSURLSessionDataTask *)dataTask
+// willCacheResponse:(NSCachedURLResponse *)proposedResponse
+// completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler
+//{
+//    
+//}
 
 #pragma mark - Task Handlers
 
@@ -118,12 +157,26 @@
     }
 }
 
-- (void)removeTaskHandlerForTaskId:(NSString *)taskId
+- (void)removeHandlerForTask:(NSURLSessionTask *)task
 {
+    NSString *taskKey = [NSString stringWithFormat:@"%i", task.taskIdentifier];
     @synchronized (self.taskHandlers) {
-        NSLog(@"Remove task with ID : %@", taskId);
-        [self.taskHandlers removeObjectForKey:taskId];
+        NSLog(@"Remove task with ID : %@", taskKey);
+        [self.taskHandlers removeObjectForKey:taskKey];
     }
+}
+
+#pragma mark - Task
+
+- (CRTaskHandler *)taskHandlerForTask:(NSURLSessionTask *)task
+{
+    NSString *taskKey = [NSString stringWithFormat:@"%i", task.taskIdentifier];
+    return (CRTaskHandler *)[self.taskHandlers valueForKey:taskKey];
+}
+
+- (NSString *)taskKeyForTask:(NSURLSessionTask *)task
+{
+    return [NSString stringWithFormat:@"%i", task.taskIdentifier];
 }
 
 @end

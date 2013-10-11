@@ -51,8 +51,6 @@
 		DB9DEFB01573F9ED00E05274 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9DEFAF1573F9ED00E05274 /* UIKit.framework */; };
 		DB9DEFB11573F9FF00E05274 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */; };
 		DB9DEFB21573FA1400E05274 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAAA636150FE761004C1532 /* libz.dylib */; };
-		DBA2A86717EF8D37005E2D9F /* NSURLSession+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DBA2A86517EF8D37005E2D9F /* NSURLSession+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DBA2A86817EF8D37005E2D9F /* NSURLSession+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA2A86617EF8D37005E2D9F /* NSURLSession+Courier.m */; };
 		DBA2A86B17EF8D67005E2D9F /* CRSessionController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBA2A86917EF8D67005E2D9F /* CRSessionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBA2A86C17EF8D67005E2D9F /* CRSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA2A86A17EF8D67005E2D9F /* CRSessionController.m */; };
 		DBA2A87217EF9AF0005E2D9F /* CourierSession.h in Headers */ = {isa = PBXBuildFile; fileRef = DBA2A87117EF9A7B005E2D9F /* CourierSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -60,8 +58,6 @@
 		DBC30B5B16E047D600C795BA /* NSDictionary+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC30B5916E047D600C795BA /* NSDictionary+Courier.m */; };
 		DBCE847917F91CC9000511B6 /* CRTaskHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE847717F91CC9000511B6 /* CRTaskHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBCE847A17F91CC9000511B6 /* CRTaskHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE847817F91CC9000511B6 /* CRTaskHandler.m */; };
-		DBCE848317F934B7000511B6 /* NSURLSessionTask+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE848117F934B7000511B6 /* NSURLSessionTask+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DBCE848417F934B7000511B6 /* NSURLSessionTask+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE848217F934B7000511B6 /* NSURLSessionTask+Courier.m */; };
 		DBEEB572154F796F0029003D /* libConductor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEEB56D154F79630029003D /* libConductor.a */; };
 /* End PBXBuildFile section */
 
@@ -162,8 +158,6 @@
 		DB83D12B1450CC0100D94890 /* NSData+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Courier.h"; sourceTree = "<group>"; };
 		DB83D12C1450CC0100D94890 /* NSData+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Courier.m"; sourceTree = "<group>"; };
 		DB9DEFAF1573F9ED00E05274 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		DBA2A86517EF8D37005E2D9F /* NSURLSession+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+Courier.h"; sourceTree = "<group>"; };
-		DBA2A86617EF8D37005E2D9F /* NSURLSession+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+Courier.m"; sourceTree = "<group>"; };
 		DBA2A86917EF8D67005E2D9F /* CRSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRSessionController.h; sourceTree = "<group>"; };
 		DBA2A86A17EF8D67005E2D9F /* CRSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRSessionController.m; sourceTree = "<group>"; };
 		DBA2A87117EF9A7B005E2D9F /* CourierSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourierSession.h; sourceTree = "<group>"; };
@@ -173,8 +167,6 @@
 		DBC30B5916E047D600C795BA /* NSDictionary+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Courier.m"; sourceTree = "<group>"; };
 		DBCE847717F91CC9000511B6 /* CRTaskHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTaskHandler.h; sourceTree = "<group>"; };
 		DBCE847817F91CC9000511B6 /* CRTaskHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTaskHandler.m; sourceTree = "<group>"; };
-		DBCE848117F934B7000511B6 /* NSURLSessionTask+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSessionTask+Courier.h"; sourceTree = "<group>"; };
-		DBCE848217F934B7000511B6 /* NSURLSessionTask+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSessionTask+Courier.m"; sourceTree = "<group>"; };
 		DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		DBEEB567154F79620029003D /* Conductor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Conductor.xcodeproj; path = ../Conductor/Conductor.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -359,10 +351,6 @@
 				DB83D104144F9BC400D94890 /* NSString+Courier.m */,
 				DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */,
 				DB2FC63717D291DA00EDF9F0 /* NSURLResponse+Courier.m */,
-				DBA2A86517EF8D37005E2D9F /* NSURLSession+Courier.h */,
-				DBA2A86617EF8D37005E2D9F /* NSURLSession+Courier.m */,
-				DBCE848117F934B7000511B6 /* NSURLSessionTask+Courier.h */,
-				DBCE848217F934B7000511B6 /* NSURLSessionTask+Courier.m */,
 			);
 			name = "iOS 7";
 			sourceTree = "<group>";
@@ -401,10 +389,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB64C4B9144F5C7C003D766A /* CRRequestOperation.h in Headers */,
-				DBCE848317F934B7000511B6 /* NSURLSessionTask+Courier.h in Headers */,
 				DB83D0F4144F932D00D94890 /* CRResponse.h in Headers */,
 				DB83D105144F9BC400D94890 /* NSString+Courier.h in Headers */,
-				DBA2A86717EF8D37005E2D9F /* NSURLSession+Courier.h in Headers */,
 				DBA2A86B17EF8D67005E2D9F /* CRSessionController.h in Headers */,
 				DB83D12D1450CC0100D94890 /* NSData+Courier.h in Headers */,
 				DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */,
@@ -579,7 +565,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBCE848417F934B7000511B6 /* NSURLSessionTask+Courier.m in Sources */,
 				DB64C4BA144F5C7C003D766A /* CRRequestOperation.m in Sources */,
 				DBA2A86C17EF8D67005E2D9F /* CRSessionController.m in Sources */,
 				DB83D0F5144F932D00D94890 /* CRResponse.m in Sources */,
@@ -588,7 +573,6 @@
 				DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */,
 				DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */,
 				DBCE847A17F91CC9000511B6 /* CRTaskHandler.m in Sources */,
-				DBA2A86817EF8D37005E2D9F /* NSURLSession+Courier.m in Sources */,
 				DBC30B5B16E047D600C795BA /* NSDictionary+Courier.m in Sources */,
 				883230DE176A41E700152201 /* CRRequestController.m in Sources */,
 				8831EB8317A205B800B6E1D7 /* NSMutableURLRequest+Courier.m in Sources */,

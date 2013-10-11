@@ -23,17 +23,7 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
  */
 @property (nonatomic, readonly, strong) NSMutableDictionary *taskHandlers;
 
-/**
- BOOL for checking the suspended state of the internal NSURLSession
- @return bool Returns YES if the internal NSURLSession is suspended, NO otherwise.
- */
-@property (getter = isSesssionSuspended) BOOL sessionSuspended;
-
-- (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration;
-
-- (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration
-                                    delegate:(id <NSURLSessionDelegate>)sessionDelegate
-                               delegateQueue:(NSOperationQueue *)queue;
+- (instancetype)initWithSession:(NSURLSession *)session;
 
 - (NSURLSessionDataTask *)dataTaskForRequest:(NSURLRequest *)request
                                  taskHandler:(CRTaskHandler *)handler;
