@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import <StoreMad/StoreMad.h>
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;

@@ -127,4 +127,9 @@ object Application extends Controller {
       result
     )
   }
+
+  def authenticationChallenge = Action { request =>
+    logRequest(request)
+
+  }
 }

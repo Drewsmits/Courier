@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88EDD9DC180F6C230085463D /* libStoreMad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 885545C018084FD1004EC148 /* libStoreMad.a */; };
 		DB2FC5BC17D26B5000EDF9F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2FC5BB17D26B5000EDF9F0 /* Foundation.framework */; };
 		DB2FC5BE17D26B5000EDF9F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2FC5BD17D26B5000EDF9F0 /* CoreGraphics.framework */; };
 		DB2FC5C017D26B5000EDF9F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2FC5BF17D26B5000EDF9F0 /* UIKit.framework */; };
@@ -21,12 +22,10 @@
 		DB2FC5DD17D26B5100EDF9F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2FC5BF17D26B5000EDF9F0 /* UIKit.framework */; };
 		DB2FC5E517D26B5100EDF9F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB2FC5E317D26B5100EDF9F0 /* InfoPlist.strings */; };
 		DB2FC5E717D26B5100EDF9F0 /* SessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2FC5E617D26B5100EDF9F0 /* SessionTests.m */; };
-		DB2FC60217D26C4E00EDF9F0 /* libCourier.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2FC5F817D26BEF00EDF9F0 /* libCourier.a */; };
 		DB2FC60717D270C700EDF9F0 /* SessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2FC60617D270C700EDF9F0 /* SessionController.m */; };
 		DB2FC60B17D2740C00EDF9F0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2FC60A17D2740C00EDF9F0 /* libz.dylib */; };
 		DB2FC60D17D2742300EDF9F0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2FC60C17D2742300EDF9F0 /* SystemConfiguration.framework */; };
 		DB2FC60F17D2742D00EDF9F0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2FC60E17D2742D00EDF9F0 /* CoreData.framework */; };
-		DB2FC61C17D289CC00EDF9F0 /* libStoreMad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2FC61717D289AD00EDF9F0 /* libStoreMad.a */; };
 		DB2FC61F17D289E600EDF9F0 /* ImageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2FC61E17D289E600EDF9F0 /* ImageTableViewController.m */; };
 		DB2FC62A17D28B4500EDF9F0 /* SessionModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB2FC62817D28B4500EDF9F0 /* SessionModel.xcdatamodeld */; };
 		DB2FC62E17D28B7500EDF9F0 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2FC62D17D28B7500EDF9F0 /* Image.m */; };
@@ -34,61 +33,61 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DB2FC5DE17D26B5100EDF9F0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB2FC5B017D26B5000EDF9F0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DB2FC5B717D26B5000EDF9F0;
-			remoteInfo = Session;
-		};
-		DB2FC5F717D26BEF00EDF9F0 /* PBXContainerItemProxy */ = {
+		885545B518084F82004EC148 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB2FC5F117D26BEF00EDF9F0 /* Courier.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = DB64C47F144F4BCD003D766A;
 			remoteInfo = Courier;
 		};
-		DB2FC5F917D26BEF00EDF9F0 /* PBXContainerItemProxy */ = {
+		885545B718084F82004EC148 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB2FC5F117D26BEF00EDF9F0 /* Courier.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = DB64C48F144F4BCD003D766A;
 			remoteInfo = CourierTests;
 		};
-		DB2FC5FB17D26BEF00EDF9F0 /* PBXContainerItemProxy */ = {
+		885545B918084F82004EC148 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB2FC5F117D26BEF00EDF9F0 /* Courier.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = DB6F42E317C021B4006CB621;
 			remoteInfo = "Courier-ios7-tests";
 		};
-		DB2FC60317D26C6900EDF9F0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB2FC5F117D26BEF00EDF9F0 /* Courier.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = DB64C47E144F4BCD003D766A;
-			remoteInfo = Courier;
-		};
-		DB2FC61617D289AD00EDF9F0 /* PBXContainerItemProxy */ = {
+		885545BF18084FD1004EC148 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB2FC61117D289AD00EDF9F0 /* StoreMad.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = DB0DE4A015B9BB5F007F382F;
 			remoteInfo = StoreMad;
 		};
-		DB2FC61817D289AD00EDF9F0 /* PBXContainerItemProxy */ = {
+		885545C118084FD1004EC148 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB2FC61117D289AD00EDF9F0 /* StoreMad.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = DB0DE4B015B9BB5F007F382F;
 			remoteInfo = StoreMadTests;
 		};
-		DB2FC61A17D289C600EDF9F0 /* PBXContainerItemProxy */ = {
+		885545C318085008004EC148 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB2FC61117D289AD00EDF9F0 /* StoreMad.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = DB0DE49F15B9BB5F007F382F;
 			remoteInfo = StoreMad;
+		};
+		885545C51808500B004EC148 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB2FC5F117D26BEF00EDF9F0 /* Courier.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DB64C47E144F4BCD003D766A;
+			remoteInfo = Courier;
+		};
+		DB2FC5DE17D26B5100EDF9F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB2FC5B017D26B5000EDF9F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB2FC5B717D26B5000EDF9F0;
+			remoteInfo = Session;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -112,14 +111,14 @@
 		DB2FC5E217D26B5100EDF9F0 /* SessionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SessionTests-Info.plist"; sourceTree = "<group>"; };
 		DB2FC5E417D26B5100EDF9F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DB2FC5E617D26B5100EDF9F0 /* SessionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionTests.m; sourceTree = "<group>"; };
-		DB2FC5F117D26BEF00EDF9F0 /* Courier.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Courier.xcodeproj; path = ../Courier/Courier.xcodeproj; sourceTree = "<group>"; };
+		DB2FC5F117D26BEF00EDF9F0 /* Courier.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Courier.xcodeproj; path = ../Courier.xcodeproj; sourceTree = "<group>"; };
 		DB2FC60517D270C700EDF9F0 /* SessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionController.h; sourceTree = "<group>"; };
 		DB2FC60617D270C700EDF9F0 /* SessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionController.m; sourceTree = "<group>"; };
 		DB2FC60817D273FE00EDF9F0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DB2FC60A17D2740C00EDF9F0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DB2FC60C17D2742300EDF9F0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DB2FC60E17D2742D00EDF9F0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		DB2FC61117D289AD00EDF9F0 /* StoreMad.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = StoreMad.xcodeproj; path = ../StoreMad/StoreMad.xcodeproj; sourceTree = "<group>"; };
+		DB2FC61117D289AD00EDF9F0 /* StoreMad.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = StoreMad.xcodeproj; path = ../../StoreMad/StoreMad.xcodeproj; sourceTree = "<group>"; };
 		DB2FC61D17D289E600EDF9F0 /* ImageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTableViewController.h; sourceTree = "<group>"; };
 		DB2FC61E17D289E600EDF9F0 /* ImageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTableViewController.m; sourceTree = "<group>"; };
 		DB2FC62917D28B4500EDF9F0 /* SessionModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SessionModel.xcdatamodel; sourceTree = "<group>"; };
@@ -134,11 +133,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88EDD9DC180F6C230085463D /* libStoreMad.a in Frameworks */,
 				DB2FC60F17D2742D00EDF9F0 /* CoreData.framework in Frameworks */,
-				DB2FC61C17D289CC00EDF9F0 /* libStoreMad.a in Frameworks */,
 				DB2FC60D17D2742300EDF9F0 /* SystemConfiguration.framework in Frameworks */,
 				DB2FC60B17D2740C00EDF9F0 /* libz.dylib in Frameworks */,
-				DB2FC60217D26C4E00EDF9F0 /* libCourier.a in Frameworks */,
 				DB2FC5BE17D26B5000EDF9F0 /* CoreGraphics.framework in Frameworks */,
 				DB2FC5C017D26B5000EDF9F0 /* UIKit.framework in Frameworks */,
 				DB2FC5BC17D26B5000EDF9F0 /* Foundation.framework in Frameworks */,
@@ -158,6 +156,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		885545B018084F82004EC148 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				885545B618084F82004EC148 /* libCourier.a */,
+				885545B818084F82004EC148 /* CourierTests.octest */,
+				885545BA18084F82004EC148 /* Courier-ios7-tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		885545BB18084FD1004EC148 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				885545C018084FD1004EC148 /* libStoreMad.a */,
+				885545C218084FD1004EC148 /* StoreMadTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		DB2FC5AF17D26B5000EDF9F0 = {
 			isa = PBXGroup;
 			children = (
@@ -248,16 +265,6 @@
 			name = Vendors;
 			sourceTree = "<group>";
 		};
-		DB2FC5F217D26BEF00EDF9F0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DB2FC5F817D26BEF00EDF9F0 /* libCourier.a */,
-				DB2FC5FA17D26BEF00EDF9F0 /* CourierTests.octest */,
-				DB2FC5FC17D26BEF00EDF9F0 /* Courier-ios7-tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		DB2FC61017D2898C00EDF9F0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,15 +274,6 @@
 				DB2FC61E17D289E600EDF9F0 /* ImageTableViewController.m */,
 			);
 			name = Images;
-			sourceTree = "<group>";
-		};
-		DB2FC61217D289AD00EDF9F0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DB2FC61717D289AD00EDF9F0 /* libStoreMad.a */,
-				DB2FC61917D289AD00EDF9F0 /* StoreMadTests.octest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		DB2FC62517D28B1000EDF9F0 /* Core Data */ = {
@@ -335,8 +333,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				DB2FC61B17D289C600EDF9F0 /* PBXTargetDependency */,
-				DB2FC60417D26C6900EDF9F0 /* PBXTargetDependency */,
+				885545C61808500B004EC148 /* PBXTargetDependency */,
+				885545C418085008004EC148 /* PBXTargetDependency */,
 			);
 			name = Session;
 			productName = Session;
@@ -388,11 +386,11 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = DB2FC5F217D26BEF00EDF9F0 /* Products */;
+					ProductGroup = 885545B018084F82004EC148 /* Products */;
 					ProjectRef = DB2FC5F117D26BEF00EDF9F0 /* Courier.xcodeproj */;
 				},
 				{
-					ProductGroup = DB2FC61217D289AD00EDF9F0 /* Products */;
+					ProductGroup = 885545BB18084FD1004EC148 /* Products */;
 					ProjectRef = DB2FC61117D289AD00EDF9F0 /* StoreMad.xcodeproj */;
 				},
 			);
@@ -405,39 +403,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		DB2FC5F817D26BEF00EDF9F0 /* libCourier.a */ = {
+		885545B618084F82004EC148 /* libCourier.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libCourier.a;
-			remoteRef = DB2FC5F717D26BEF00EDF9F0 /* PBXContainerItemProxy */;
+			remoteRef = 885545B518084F82004EC148 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		DB2FC5FA17D26BEF00EDF9F0 /* CourierTests.octest */ = {
+		885545B818084F82004EC148 /* CourierTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = CourierTests.octest;
-			remoteRef = DB2FC5F917D26BEF00EDF9F0 /* PBXContainerItemProxy */;
+			remoteRef = 885545B718084F82004EC148 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		DB2FC5FC17D26BEF00EDF9F0 /* Courier-ios7-tests.xctest */ = {
+		885545BA18084F82004EC148 /* Courier-ios7-tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = "Courier-ios7-tests.xctest";
-			remoteRef = DB2FC5FB17D26BEF00EDF9F0 /* PBXContainerItemProxy */;
+			remoteRef = 885545B918084F82004EC148 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		DB2FC61717D289AD00EDF9F0 /* libStoreMad.a */ = {
+		885545C018084FD1004EC148 /* libStoreMad.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libStoreMad.a;
-			remoteRef = DB2FC61617D289AD00EDF9F0 /* PBXContainerItemProxy */;
+			remoteRef = 885545BF18084FD1004EC148 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		DB2FC61917D289AD00EDF9F0 /* StoreMadTests.octest */ = {
+		885545C218084FD1004EC148 /* StoreMadTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = StoreMadTests.octest;
-			remoteRef = DB2FC61817D289AD00EDF9F0 /* PBXContainerItemProxy */;
+			remoteRef = 885545C118084FD1004EC148 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -490,20 +488,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		885545C418085008004EC148 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = StoreMad;
+			targetProxy = 885545C318085008004EC148 /* PBXContainerItemProxy */;
+		};
+		885545C61808500B004EC148 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Courier;
+			targetProxy = 885545C51808500B004EC148 /* PBXContainerItemProxy */;
+		};
 		DB2FC5DF17D26B5100EDF9F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DB2FC5B717D26B5000EDF9F0 /* Session */;
 			targetProxy = DB2FC5DE17D26B5100EDF9F0 /* PBXContainerItemProxy */;
-		};
-		DB2FC60417D26C6900EDF9F0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Courier;
-			targetProxy = DB2FC60317D26C6900EDF9F0 /* PBXContainerItemProxy */;
-		};
-		DB2FC61B17D289C600EDF9F0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = StoreMad;
-			targetProxy = DB2FC61A17D289C600EDF9F0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

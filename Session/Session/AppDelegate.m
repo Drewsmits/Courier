@@ -57,7 +57,7 @@
     //
     // Context saves when app changes state
     //
-    [newStoreController shouldSaveOnAppStateChanges:YES];
+    [newStoreController setSaveOnAppStateChange:YES];
     
     return newStoreController;
 }

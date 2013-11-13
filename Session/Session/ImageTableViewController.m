@@ -8,9 +8,6 @@
 
 #import "ImageTableViewController.h"
 
-// Frameworks
-#import <StoreMad/StoreMad.h>
-
 // Models
 #import "Image.h"
 
@@ -20,6 +17,8 @@
 // Controllers
 #import "AppDelegate.h"
 #import "SessionController.h"
+
+#import <Courier/NSMutableURLRequest+Courier.h>
 
 @interface ImageTableViewController () <SMDataSourceViewController, SMDataSourceDelegate>
 

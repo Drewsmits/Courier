@@ -3,19 +3,21 @@
 # ~~~~
 
 # Home page
-GET         /                        controllers.Application.index
+GET           /                        controllers.Application.index
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file            controllers.Assets.at(path="/public", file)
+GET           /assets/*file            controllers.Assets.at(path="/public", file)
 
 # API
-GET         /ping/:statusCode        controllers.Application.ping(statusCode: Int)
-GET         /testJsonGet             controllers.Application.testJsonGet
-POST        /testJsonPost            controllers.Application.testJsonPost
-GET         /longRequest             controllers.Application.longRequest(sleepLength: Long)
-GET         /getTest                 controllers.Application.getTest
-POST        /postTest                controllers.Application.postTest
-PUT         /putTest                 controllers.Application.putTest
-DELETE      /deleteTest              controllers.Application.deleteTest
+GET           /ping/:statusCode        controllers.Application.ping(statusCode: Int)
+GET           /testJsonGet             controllers.Application.testJsonGet
+POST          /testJsonPost            controllers.Application.testJsonPost
+GET           /longRequest             controllers.Application.longRequest(sleepLength: Long)
+GET           /getTest                 controllers.Application.getTest
+POST          /postTest                controllers.Application.postTest
+PUT           /putTest                 controllers.Application.putTest
+DELETE        /deleteTest              controllers.Application.deleteTest
 
-GET         /listOfImages            controllers.Application.listOfImages
+GET           /listOfImages            controllers.Application.listOfImages
+
+GET           /authenticationChallenge controllers.Application.authenticationChallenge

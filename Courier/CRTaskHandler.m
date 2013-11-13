@@ -20,12 +20,12 @@
 
 - (void)setTaskDidCompleteBlock:(void (^)(NSURLSession *session, NSURLSessionTask *task, NSError *error))completion
 {
-    self.completionHandler = completion;
+    _completionHandler = completion;
 }
 
 - (void)setTaskDidRecieveDataHandler:(void (^)(NSURLSession *session, NSURLSessionTask *task, NSData *data))handler
 {
-    self.didRecieveDataHandler = handler;
+    _didRecieveDataHandler = handler;
 }
 
 @end
