@@ -9,27 +9,13 @@
 /* Begin PBXBuildFile section */
 		8831EB8217A205B800B6E1D7 /* NSMutableURLRequest+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = 8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8831EB8317A205B800B6E1D7 /* NSMutableURLRequest+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */; };
-		8831EB8917A2F3DA00B6E1D7 /* CourierPingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831EB8817A2F3DA00B6E1D7 /* CourierPingTest.m */; };
-		8831EB8E17A2F5F500B6E1D7 /* CRRequestQueueController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8831EB8C17A2F5F500B6E1D7 /* CRRequestQueueController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8831EB8F17A2F5F500B6E1D7 /* CRRequestQueueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831EB8D17A2F5F500B6E1D7 /* CRRequestQueueController.m */; };
-		883230DD176A41E700152201 /* CRRequestController.h in Headers */ = {isa = PBXBuildFile; fileRef = 883230DB176A41E700152201 /* CRRequestController.h */; };
-		883230DE176A41E700152201 /* CRRequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883230DC176A41E700152201 /* CRRequestController.m */; };
-		88B0A12417B5B86400D49995 /* CourierRESTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B0A12317B5B86400D49995 /* CourierRESTTests.m */; };
-		88C1E62C17A6D14A00895970 /* CourierReachabilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C1E62B17A6D14A00895970 /* CourierReachabilityTests.m */; };
-		88C1E63017A6DDAC00895970 /* CourierJsonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C1E62F17A6DDAC00895970 /* CourierJsonTests.m */; };
-		DB01067E164C23F700AAAAEF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB01067D164C23F700AAAAEF /* CoreData.framework */; };
+		88DCD95A1834132400FBB87A /* CRTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DCD9591834132400FBB87A /* CRTestHelper.m */; };
+		88DCD95D1834136300FBB87A /* TestCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DCD95C1834136300FBB87A /* TestCounter.m */; };
 		DB2FC63817D291DA00EDF9F0 /* NSURLResponse+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB2FC63917D291DA00EDF9F0 /* NSURLResponse+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2FC63717D291DA00EDF9F0 /* NSURLResponse+Courier.m */; };
 		DB3A04B3160A7E4400B833CA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B2160A7E4400B833CA /* libz.dylib */; };
 		DB3A04B5160A7E4D00B833CA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */; };
-		DB487DBF17C019D400D189D3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB487DBE17C019D400D189D3 /* XCTest.framework */; };
 		DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C482144F4BCD003D766A /* Foundation.framework */; };
-		DB64C491144F4BCD003D766A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C490144F4BCD003D766A /* SenTestingKit.framework */; };
-		DB64C494144F4BCD003D766A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C482144F4BCD003D766A /* Foundation.framework */; };
-		DB64C497144F4BCD003D766A /* libCourier.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C47F144F4BCD003D766A /* libCourier.a */; };
-		DB64C49D144F4BCD003D766A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB64C49B144F4BCD003D766A /* InfoPlist.strings */; };
-		DB64C4B9144F5C7C003D766A /* CRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB64C4BA144F5C7C003D766A /* CRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */; };
 		DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DB6BABBB154F47F0004842D2 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6BABBC154F47F0004842D2 /* Reachability.m */; };
 		DB6F42E417C021B4006CB621 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB487DBE17C019D400D189D3 /* XCTest.framework */; };
@@ -41,16 +27,8 @@
 		DB6F42F917C027FA006CB621 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */; };
 		DB6F42FA17C0280A006CB621 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB01067D164C23F700AAAAEF /* CoreData.framework */; };
 		DB6F42FB17C02818006CB621 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B2160A7E4400B833CA /* libz.dylib */; };
-		DB6F430017C02C0C006CB621 /* SampleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6F42FF17C02C0C006CB621 /* SampleTest.m */; };
-		DB83D0F4144F932D00D94890 /* CRResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D0F2144F932D00D94890 /* CRResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB83D0F5144F932D00D94890 /* CRResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D0F3144F932D00D94890 /* CRResponse.m */; };
 		DB83D105144F9BC400D94890 /* NSString+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D103144F9BC400D94890 /* NSString+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB83D106144F9BC400D94890 /* NSString+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D104144F9BC400D94890 /* NSString+Courier.m */; };
-		DB83D12D1450CC0100D94890 /* NSData+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D12B1450CC0100D94890 /* NSData+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D12C1450CC0100D94890 /* NSData+Courier.m */; };
-		DB9DEFB01573F9ED00E05274 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9DEFAF1573F9ED00E05274 /* UIKit.framework */; };
-		DB9DEFB11573F9FF00E05274 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */; };
-		DB9DEFB21573FA1400E05274 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAAA636150FE761004C1532 /* libz.dylib */; };
 		DBA2A86B17EF8D67005E2D9F /* CRSessionController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBA2A86917EF8D67005E2D9F /* CRSessionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBA2A86C17EF8D67005E2D9F /* CRSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA2A86A17EF8D67005E2D9F /* CRSessionController.m */; };
 		DBA2A87217EF9AF0005E2D9F /* CourierSession.h in Headers */ = {isa = PBXBuildFile; fileRef = DBA2A87117EF9A7B005E2D9F /* CourierSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -58,17 +36,9 @@
 		DBC30B5B16E047D600C795BA /* NSDictionary+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC30B5916E047D600C795BA /* NSDictionary+Courier.m */; };
 		DBCE847917F91CC9000511B6 /* CRTaskHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE847717F91CC9000511B6 /* CRTaskHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBCE847A17F91CC9000511B6 /* CRTaskHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE847817F91CC9000511B6 /* CRTaskHandler.m */; };
-		DBEEB572154F796F0029003D /* libConductor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEEB56D154F79630029003D /* libConductor.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DB64C495144F4BCD003D766A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB64C474144F4BB0003D766A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DB64C47E144F4BCD003D766A;
-			remoteInfo = Courier;
-		};
 		DB6F42F017C021B4006CB621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB64C474144F4BB0003D766A /* Project object */;
@@ -76,52 +46,18 @@
 			remoteGlobalIDString = DB64C47E144F4BCD003D766A;
 			remoteInfo = Courier;
 		};
-		DBC30B5E16E047D700C795BA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DBEEB567154F79620029003D /* Conductor.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DBD17290167948B80019FF3D;
-			remoteInfo = ConductorApp;
-		};
-		DBEEB56C154F79630029003D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DBEEB567154F79620029003D /* Conductor.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DB83D19A1451F1B200D94890;
-			remoteInfo = Conductor;
-		};
-		DBEEB56E154F79630029003D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DBEEB567154F79620029003D /* Conductor.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DB83D1AA1451F1B200D94890;
-			remoteInfo = ConductorTests;
-		};
-		DBEEB570154F79680029003D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DBEEB567154F79620029003D /* Conductor.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = DB83D1991451F1B200D94890;
-			remoteInfo = Conductor;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Courier.h"; sourceTree = "<group>"; };
 		8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+Courier.m"; sourceTree = "<group>"; };
-		8831EB8717A2F3DA00B6E1D7 /* CourierPingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourierPingTest.h; sourceTree = "<group>"; };
-		8831EB8817A2F3DA00B6E1D7 /* CourierPingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourierPingTest.m; sourceTree = "<group>"; };
-		8831EB8C17A2F5F500B6E1D7 /* CRRequestQueueController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequestQueueController.h; sourceTree = "<group>"; };
-		8831EB8D17A2F5F500B6E1D7 /* CRRequestQueueController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestQueueController.m; sourceTree = "<group>"; };
-		883230DB176A41E700152201 /* CRRequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequestController.h; sourceTree = "<group>"; };
-		883230DC176A41E700152201 /* CRRequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestController.m; sourceTree = "<group>"; };
 		88B0A12217B5B86400D49995 /* CourierRESTTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourierRESTTests.h; sourceTree = "<group>"; };
 		88B0A12317B5B86400D49995 /* CourierRESTTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourierRESTTests.m; sourceTree = "<group>"; };
-		88C1E62A17A6D14A00895970 /* CourierReachabilityTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourierReachabilityTests.h; sourceTree = "<group>"; };
-		88C1E62B17A6D14A00895970 /* CourierReachabilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourierReachabilityTests.m; sourceTree = "<group>"; };
-		88C1E62E17A6DDAC00895970 /* CourierJsonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourierJsonTests.h; sourceTree = "<group>"; };
-		88C1E62F17A6DDAC00895970 /* CourierJsonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourierJsonTests.m; sourceTree = "<group>"; };
 		88C1E63B17A7490800895970 /* CRTestMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRTestMacros.h; sourceTree = "<group>"; };
+		88DCD9581834132400FBB87A /* CRTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTestHelper.h; sourceTree = "<group>"; };
+		88DCD9591834132400FBB87A /* CRTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTestHelper.m; sourceTree = "<group>"; };
+		88DCD95B1834136300FBB87A /* TestCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCounter.h; sourceTree = "<group>"; };
+		88DCD95C1834136300FBB87A /* TestCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCounter.m; sourceTree = "<group>"; };
 		DB01067D164C23F700AAAAEF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLResponse+Courier.h"; sourceTree = "<group>"; };
 		DB2FC63717D291DA00EDF9F0 /* NSURLResponse+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLResponse+Courier.m"; sourceTree = "<group>"; };
@@ -132,16 +68,11 @@
 		DB64C47F144F4BCD003D766A /* libCourier.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCourier.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB64C482144F4BCD003D766A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB64C486144F4BCD003D766A /* Courier-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Courier-Prefix.pch"; sourceTree = "<group>"; };
-		DB64C487144F4BCD003D766A /* Courier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Courier.h; sourceTree = "<group>"; };
-		DB64C488144F4BCD003D766A /* Courier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Courier.m; sourceTree = "<group>"; };
-		DB64C48F144F4BCD003D766A /* CourierTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourierTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB64C490144F4BCD003D766A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		DB64C49A144F4BCD003D766A /* CourierTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CourierTests-Info.plist"; sourceTree = "<group>"; };
 		DB64C49C144F4BCD003D766A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DB64C49E144F4BCD003D766A /* CourierTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourierTests.h; sourceTree = "<group>"; };
 		DB64C49F144F4BCD003D766A /* CourierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourierTests.m; sourceTree = "<group>"; };
-		DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRRequestOperation.h; sourceTree = "<group>"; };
-		DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRRequestOperation.m; sourceTree = "<group>"; };
 		DB6BABBB154F47F0004842D2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		DB6BABBC154F47F0004842D2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		DB6F42E317C021B4006CB621 /* Courier-ios7-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Courier-ios7-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,12 +82,8 @@
 		DB6F42FF17C02C0C006CB621 /* SampleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTest.m; sourceTree = "<group>"; };
 		DB7C53A81671736600099CBC /* CRResponseTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRResponseTests.h; sourceTree = "<group>"; };
 		DB7C53A91671736700099CBC /* CRResponseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRResponseTests.m; sourceTree = "<group>"; };
-		DB83D0F2144F932D00D94890 /* CRResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRResponse.h; sourceTree = "<group>"; };
-		DB83D0F3144F932D00D94890 /* CRResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRResponse.m; sourceTree = "<group>"; };
 		DB83D103144F9BC400D94890 /* NSString+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Courier.h"; sourceTree = "<group>"; };
 		DB83D104144F9BC400D94890 /* NSString+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Courier.m"; sourceTree = "<group>"; };
-		DB83D12B1450CC0100D94890 /* NSData+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Courier.h"; sourceTree = "<group>"; };
-		DB83D12C1450CC0100D94890 /* NSData+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Courier.m"; sourceTree = "<group>"; };
 		DB9DEFAF1573F9ED00E05274 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DBA2A86917EF8D67005E2D9F /* CRSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRSessionController.h; sourceTree = "<group>"; };
 		DBA2A86A17EF8D67005E2D9F /* CRSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRSessionController.m; sourceTree = "<group>"; };
@@ -168,7 +95,6 @@
 		DBCE847717F91CC9000511B6 /* CRTaskHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTaskHandler.h; sourceTree = "<group>"; };
 		DBCE847817F91CC9000511B6 /* CRTaskHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTaskHandler.m; sourceTree = "<group>"; };
 		DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		DBEEB567154F79620029003D /* Conductor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Conductor.xcodeproj; path = ../Conductor/Conductor.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,22 +105,6 @@
 				DB3A04B5160A7E4D00B833CA /* SystemConfiguration.framework in Frameworks */,
 				DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */,
 				DB3A04B3160A7E4400B833CA /* libz.dylib in Frameworks */,
-				DBEEB572154F796F0029003D /* libConductor.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DB64C48B144F4BCD003D766A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB487DBF17C019D400D189D3 /* XCTest.framework in Frameworks */,
-				DB01067E164C23F700AAAAEF /* CoreData.framework in Frameworks */,
-				DB9DEFB21573FA1400E05274 /* libz.dylib in Frameworks */,
-				DB9DEFB11573F9FF00E05274 /* SystemConfiguration.framework in Frameworks */,
-				DB9DEFB01573F9ED00E05274 /* UIKit.framework in Frameworks */,
-				DB64C494144F4BCD003D766A /* Foundation.framework in Frameworks */,
-				DB64C491144F4BCD003D766A /* SenTestingKit.framework in Frameworks */,
-				DB64C497144F4BCD003D766A /* libCourier.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +133,6 @@
 				DB6F42E717C021B4006CB621 /* Courier-ios7-tests */,
 				DB64C481144F4BCD003D766A /* Frameworks */,
 				DB64C480144F4BCD003D766A /* Products */,
-				DBEEB565154F79530029003D /* Vendors */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				DB64C47F144F4BCD003D766A /* libCourier.a */,
-				DB64C48F144F4BCD003D766A /* CourierTests.octest */,
 				DB6F42E317C021B4006CB621 /* Courier-ios7-tests.xctest */,
 			);
 			name = Products;
@@ -256,19 +164,19 @@
 		DB64C484144F4BCD003D766A /* Courier */ = {
 			isa = PBXGroup;
 			children = (
-				DBA2A86217EF8D00005E2D9F /* iOS 7 */,
-				DB64C487144F4BCD003D766A /* Courier.h */,
-				DB64C488144F4BCD003D766A /* Courier.m */,
-				883230DB176A41E700152201 /* CRRequestController.h */,
-				883230DC176A41E700152201 /* CRRequestController.m */,
-				DB64C4B7144F5C7C003D766A /* CRRequestOperation.h */,
-				DB64C4B8144F5C7C003D766A /* CRRequestOperation.m */,
-				8831EB8C17A2F5F500B6E1D7 /* CRRequestQueueController.h */,
-				8831EB8D17A2F5F500B6E1D7 /* CRRequestQueueController.m */,
-				DB83D0F2144F932D00D94890 /* CRResponse.h */,
-				DB83D0F3144F932D00D94890 /* CRResponse.m */,
-				DB83D12B1450CC0100D94890 /* NSData+Courier.h */,
-				DB83D12C1450CC0100D94890 /* NSData+Courier.m */,
+				DBA2A87117EF9A7B005E2D9F /* CourierSession.h */,
+				DBA2A86917EF8D67005E2D9F /* CRSessionController.h */,
+				DBA2A86A17EF8D67005E2D9F /* CRSessionController.m */,
+				DBCE847717F91CC9000511B6 /* CRTaskHandler.h */,
+				DBCE847817F91CC9000511B6 /* CRTaskHandler.m */,
+				DBC30B5816E047D600C795BA /* NSDictionary+Courier.h */,
+				DBC30B5916E047D600C795BA /* NSDictionary+Courier.m */,
+				8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */,
+				8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */,
+				DB83D103144F9BC400D94890 /* NSString+Courier.h */,
+				DB83D104144F9BC400D94890 /* NSString+Courier.m */,
+				DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */,
+				DB2FC63717D291DA00EDF9F0 /* NSURLResponse+Courier.m */,
 				DB6BABBB154F47F0004842D2 /* Reachability.h */,
 				DB6BABBC154F47F0004842D2 /* Reachability.m */,
 				DB64C485144F4BCD003D766A /* Supporting Files */,
@@ -288,12 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				DB6F42FF17C02C0C006CB621 /* SampleTest.m */,
-				88C1E62E17A6DDAC00895970 /* CourierJsonTests.h */,
-				88C1E62F17A6DDAC00895970 /* CourierJsonTests.m */,
-				8831EB8717A2F3DA00B6E1D7 /* CourierPingTest.h */,
-				8831EB8817A2F3DA00B6E1D7 /* CourierPingTest.m */,
-				88C1E62A17A6D14A00895970 /* CourierReachabilityTests.h */,
-				88C1E62B17A6D14A00895970 /* CourierReachabilityTests.m */,
 				88B0A12217B5B86400D49995 /* CourierRESTTests.h */,
 				88B0A12317B5B86400D49995 /* CourierRESTTests.m */,
 				DB64C49E144F4BCD003D766A /* CourierTests.h */,
@@ -319,7 +221,11 @@
 		DB6F42E717C021B4006CB621 /* Courier-ios7-tests */ = {
 			isa = PBXGroup;
 			children = (
+				88DCD95B1834136300FBB87A /* TestCounter.h */,
+				88DCD95C1834136300FBB87A /* TestCounter.m */,
 				DB487DBA17C0182300D189D3 /* CourierNSURLSessionTests.m */,
+				88DCD9581834132400FBB87A /* CRTestHelper.h */,
+				88DCD9591834132400FBB87A /* CRTestHelper.m */,
 				DB6F42E817C021B4006CB621 /* Supporting Files */,
 			);
 			path = "Courier-ios7-tests";
@@ -335,50 +241,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		DBA2A86217EF8D00005E2D9F /* iOS 7 */ = {
-			isa = PBXGroup;
-			children = (
-				DBA2A87117EF9A7B005E2D9F /* CourierSession.h */,
-				DBA2A86917EF8D67005E2D9F /* CRSessionController.h */,
-				DBA2A86A17EF8D67005E2D9F /* CRSessionController.m */,
-				DBCE847717F91CC9000511B6 /* CRTaskHandler.h */,
-				DBCE847817F91CC9000511B6 /* CRTaskHandler.m */,
-				DBC30B5816E047D600C795BA /* NSDictionary+Courier.h */,
-				DBC30B5916E047D600C795BA /* NSDictionary+Courier.m */,
-				8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */,
-				8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */,
-				DB83D103144F9BC400D94890 /* NSString+Courier.h */,
-				DB83D104144F9BC400D94890 /* NSString+Courier.m */,
-				DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */,
-				DB2FC63717D291DA00EDF9F0 /* NSURLResponse+Courier.m */,
-			);
-			name = "iOS 7";
-			sourceTree = "<group>";
-		};
 		DBB524121458E175006040C7 /* Sinatra */ = {
 			isa = PBXGroup;
 			children = (
 				DBB524131458EBA9006040C7 /* TestAPI.rb */,
 			);
 			name = Sinatra;
-			sourceTree = "<group>";
-		};
-		DBEEB565154F79530029003D /* Vendors */ = {
-			isa = PBXGroup;
-			children = (
-				DBEEB567154F79620029003D /* Conductor.xcodeproj */,
-			);
-			name = Vendors;
-			sourceTree = "<group>";
-		};
-		DBEEB568154F79620029003D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DBEEB56D154F79630029003D /* libConductor.a */,
-				DBEEB56F154F79630029003D /* ConductorTests.octest */,
-				DBC30B5F16E047D700C795BA /* ConductorApp.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,18 +256,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB64C4B9144F5C7C003D766A /* CRRequestOperation.h in Headers */,
-				DB83D0F4144F932D00D94890 /* CRResponse.h in Headers */,
 				DB83D105144F9BC400D94890 /* NSString+Courier.h in Headers */,
 				DBA2A86B17EF8D67005E2D9F /* CRSessionController.h in Headers */,
-				DB83D12D1450CC0100D94890 /* NSData+Courier.h in Headers */,
 				DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */,
 				DBC30B5A16E047D600C795BA /* NSDictionary+Courier.h in Headers */,
-				883230DD176A41E700152201 /* CRRequestController.h in Headers */,
 				8831EB8217A205B800B6E1D7 /* NSMutableURLRequest+Courier.h in Headers */,
 				DBA2A87217EF9AF0005E2D9F /* CourierSession.h in Headers */,
 				DB2FC63817D291DA00EDF9F0 /* NSURLResponse+Courier.h in Headers */,
-				8831EB8E17A2F5F500B6E1D7 /* CRRequestQueueController.h in Headers */,
 				DBCE847917F91CC9000511B6 /* CRTaskHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,31 +281,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				DBEEB571154F79680029003D /* PBXTargetDependency */,
 			);
 			name = Courier;
 			productName = Courier;
 			productReference = DB64C47F144F4BCD003D766A /* libCourier.a */;
 			productType = "com.apple.product-type.library.static";
-		};
-		DB64C48E144F4BCD003D766A /* CourierTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DB64C4A4144F4BCD003D766A /* Build configuration list for PBXNativeTarget "CourierTests" */;
-			buildPhases = (
-				DB64C48A144F4BCD003D766A /* Sources */,
-				DB64C48B144F4BCD003D766A /* Frameworks */,
-				DB64C48C144F4BCD003D766A /* Resources */,
-				DB64C48D144F4BCD003D766A /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DB64C496144F4BCD003D766A /* PBXTargetDependency */,
-			);
-			name = CourierTests;
-			productName = CourierTests;
-			productReference = DB64C48F144F4BCD003D766A /* CourierTests.octest */;
-			productType = "com.apple.product-type.bundle";
 		};
 		DB6F42E217C021B4006CB621 /* Courier-ios7-tests */ = {
 			isa = PBXNativeTarget;
@@ -486,54 +329,15 @@
 			mainGroup = DB64C472144F4BB0003D766A;
 			productRefGroup = DB64C480144F4BCD003D766A /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = DBEEB568154F79620029003D /* Products */;
-					ProjectRef = DBEEB567154F79620029003D /* Conductor.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				DB64C47E144F4BCD003D766A /* Courier */,
-				DB64C48E144F4BCD003D766A /* CourierTests */,
 				DB6F42E217C021B4006CB621 /* Courier-ios7-tests */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		DBC30B5F16E047D700C795BA /* ConductorApp.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = ConductorApp.app;
-			remoteRef = DBC30B5E16E047D700C795BA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DBEEB56D154F79630029003D /* libConductor.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libConductor.a;
-			remoteRef = DBEEB56C154F79630029003D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DBEEB56F154F79630029003D /* ConductorTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ConductorTests.octest;
-			remoteRef = DBEEB56E154F79630029003D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
-		DB64C48C144F4BCD003D766A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB64C49D144F4BCD003D766A /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DB6F42E117C021B4006CB621 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -544,51 +348,18 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		DB64C48D144F4BCD003D766A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		DB64C47B144F4BCD003D766A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB64C4BA144F5C7C003D766A /* CRRequestOperation.m in Sources */,
 				DBA2A86C17EF8D67005E2D9F /* CRSessionController.m in Sources */,
-				DB83D0F5144F932D00D94890 /* CRResponse.m in Sources */,
 				DB83D106144F9BC400D94890 /* NSString+Courier.m in Sources */,
 				DB2FC63917D291DA00EDF9F0 /* NSURLResponse+Courier.m in Sources */,
-				DB83D12E1450CC0100D94890 /* NSData+Courier.m in Sources */,
 				DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */,
 				DBCE847A17F91CC9000511B6 /* CRTaskHandler.m in Sources */,
 				DBC30B5B16E047D600C795BA /* NSDictionary+Courier.m in Sources */,
-				883230DE176A41E700152201 /* CRRequestController.m in Sources */,
 				8831EB8317A205B800B6E1D7 /* NSMutableURLRequest+Courier.m in Sources */,
-				8831EB8F17A2F5F500B6E1D7 /* CRRequestQueueController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DB64C48A144F4BCD003D766A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8831EB8917A2F3DA00B6E1D7 /* CourierPingTest.m in Sources */,
-				DB6F430017C02C0C006CB621 /* SampleTest.m in Sources */,
-				88C1E62C17A6D14A00895970 /* CourierReachabilityTests.m in Sources */,
-				88C1E63017A6DDAC00895970 /* CourierJsonTests.m in Sources */,
-				88B0A12417B5B86400D49995 /* CourierRESTTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,27 +367,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88DCD95A1834132400FBB87A /* CRTestHelper.m in Sources */,
 				DB6F42F717C021DA006CB621 /* CourierNSURLSessionTests.m in Sources */,
+				88DCD95D1834136300FBB87A /* TestCounter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DB64C496144F4BCD003D766A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DB64C47E144F4BCD003D766A /* Courier */;
-			targetProxy = DB64C495144F4BCD003D766A /* PBXContainerItemProxy */;
-		};
 		DB6F42F117C021B4006CB621 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DB64C47E144F4BCD003D766A /* Courier */;
 			targetProxy = DB6F42F017C021B4006CB621 /* PBXContainerItemProxy */;
-		};
-		DBEEB571154F79680029003D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Conductor;
-			targetProxy = DBEEB570154F79680029003D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -720,78 +483,6 @@
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(OBJROOT)/UninstalledProducts/include";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		DB64C4A5144F4BCD003D766A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Courier/Courier-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "CourierTests/CourierTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					XCTest,
-					"-ObjC",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/include/** $(BUILT_PRODUCTS_DIR)/include/Courier $(BUILT_PRODUCTS_DIR)/include/Conductor";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		DB64C4A6144F4BCD003D766A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Courier/Courier-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "CourierTests/CourierTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					XCTest,
-					"-ObjC",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/include/** $(BUILT_PRODUCTS_DIR)/include/Courier $(BUILT_PRODUCTS_DIR)/include/Conductor";
-				VALIDATE_PRODUCT = YES;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -906,15 +597,6 @@
 			buildConfigurations = (
 				DB64C4A2144F4BCD003D766A /* Debug */,
 				DB64C4A3144F4BCD003D766A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DB64C4A4144F4BCD003D766A /* Build configuration list for PBXNativeTarget "CourierTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DB64C4A5144F4BCD003D766A /* Debug */,
-				DB64C4A6144F4BCD003D766A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

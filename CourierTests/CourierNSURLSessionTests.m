@@ -11,7 +11,7 @@
 #import "NSMutableURLRequest+Courier.h"
 #import "CRTestMacros.h"
 
-#import "NSURLSessionTask+Courier.h"
+#import "TestCounter.h"
 
 @interface CourierNSURLSessionTests : XCTestCase <NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
 
@@ -39,58 +39,22 @@
                                                           delegate:self
                                                      delegateQueue:nil];
     
-    __block BOOL complete = NO;
     __block BOOL success = NO;
-    
+    TestCounter *counter = [TestCounter new];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithMethod:@"GET"
                                                                      path:@"http://localhost:9000/ping/200"];
     
     NSURLSessionTask *task = [session dataTaskWithRequest:request
                                         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                            complete = YES;
+                                            [counter subtract];
                                             success = [(NSHTTPURLResponse *)response statusCode] == 200;
                                         }];
     
     [task resume];
     
-    WAIT_ON_BOOL(complete);
+    [counter waitUntil:0 timeout:1.0];
     
     XCTAssertTrue(success, @"Should be a success");
-}
-
-- (void)testNSURLSessionDataTask
-{
-    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig
-                                                          delegate:self
-                                                     delegateQueue:nil];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithMethod:@"GET"
-                                                                     path:@"http://localhost:9000/ping/200"];
-    
-    NSURLSessionTask *task = [session dataTaskWithRequest:request];
-    [task resume];
-    
-    WAIT_ON_BOOL(task.response == nil);
-    
-    XCTAssertTrue(NO, @"Should be a success");
-}
-
-- (void)testTaskCategory
-{
-    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig
-                                                          delegate:self
-                                                     delegateQueue:nil];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithMethod:@"GET"
-                                                                     path:@"http://localhost:9000/ping/200"];
-    
-    NSURLSessionTask *task = [session dataTaskWithRequest:request];
-    
-    XCTAssertNotNil(task.taskIdentifierKey, @"Should not be nil");
 }
 
 #pragma mark - NSURLSessionDelegate
