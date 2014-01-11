@@ -31,11 +31,9 @@
 		DB83D106144F9BC400D94890 /* NSString+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D104144F9BC400D94890 /* NSString+Courier.m */; };
 		DBA2A86B17EF8D67005E2D9F /* CRSessionController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBA2A86917EF8D67005E2D9F /* CRSessionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBA2A86C17EF8D67005E2D9F /* CRSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA2A86A17EF8D67005E2D9F /* CRSessionController.m */; };
-		DBA2A87217EF9AF0005E2D9F /* CourierSession.h in Headers */ = {isa = PBXBuildFile; fileRef = DBA2A87117EF9A7B005E2D9F /* CourierSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBA2A87217EF9AF0005E2D9F /* Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DBA2A87117EF9A7B005E2D9F /* Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBC30B5A16E047D600C795BA /* NSDictionary+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DBC30B5816E047D600C795BA /* NSDictionary+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBC30B5B16E047D600C795BA /* NSDictionary+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC30B5916E047D600C795BA /* NSDictionary+Courier.m */; };
-		DBCE847917F91CC9000511B6 /* CRTaskHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCE847717F91CC9000511B6 /* CRTaskHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DBCE847A17F91CC9000511B6 /* CRTaskHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE847817F91CC9000511B6 /* CRTaskHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,13 +85,11 @@
 		DB9DEFAF1573F9ED00E05274 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DBA2A86917EF8D67005E2D9F /* CRSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRSessionController.h; sourceTree = "<group>"; };
 		DBA2A86A17EF8D67005E2D9F /* CRSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRSessionController.m; sourceTree = "<group>"; };
-		DBA2A87117EF9A7B005E2D9F /* CourierSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourierSession.h; sourceTree = "<group>"; };
+		DBA2A87117EF9A7B005E2D9F /* Courier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Courier.h; sourceTree = "<group>"; };
 		DBAAA636150FE761004C1532 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		DBB524131458EBA9006040C7 /* TestAPI.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = TestAPI.rb; path = Sinatra/TestAPI.rb; sourceTree = "<group>"; };
 		DBC30B5816E047D600C795BA /* NSDictionary+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Courier.h"; sourceTree = "<group>"; };
 		DBC30B5916E047D600C795BA /* NSDictionary+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Courier.m"; sourceTree = "<group>"; };
-		DBCE847717F91CC9000511B6 /* CRTaskHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTaskHandler.h; sourceTree = "<group>"; };
-		DBCE847817F91CC9000511B6 /* CRTaskHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTaskHandler.m; sourceTree = "<group>"; };
 		DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -164,11 +160,9 @@
 		DB64C484144F4BCD003D766A /* Courier */ = {
 			isa = PBXGroup;
 			children = (
-				DBA2A87117EF9A7B005E2D9F /* CourierSession.h */,
+				DBA2A87117EF9A7B005E2D9F /* Courier.h */,
 				DBA2A86917EF8D67005E2D9F /* CRSessionController.h */,
 				DBA2A86A17EF8D67005E2D9F /* CRSessionController.m */,
-				DBCE847717F91CC9000511B6 /* CRTaskHandler.h */,
-				DBCE847817F91CC9000511B6 /* CRTaskHandler.m */,
 				DBC30B5816E047D600C795BA /* NSDictionary+Courier.h */,
 				DBC30B5916E047D600C795BA /* NSDictionary+Courier.m */,
 				8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */,
@@ -261,9 +255,8 @@
 				DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */,
 				DBC30B5A16E047D600C795BA /* NSDictionary+Courier.h in Headers */,
 				8831EB8217A205B800B6E1D7 /* NSMutableURLRequest+Courier.h in Headers */,
-				DBA2A87217EF9AF0005E2D9F /* CourierSession.h in Headers */,
+				DBA2A87217EF9AF0005E2D9F /* Courier.h in Headers */,
 				DB2FC63817D291DA00EDF9F0 /* NSURLResponse+Courier.h in Headers */,
-				DBCE847917F91CC9000511B6 /* CRTaskHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +350,6 @@
 				DB83D106144F9BC400D94890 /* NSString+Courier.m in Sources */,
 				DB2FC63917D291DA00EDF9F0 /* NSURLResponse+Courier.m in Sources */,
 				DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */,
-				DBCE847A17F91CC9000511B6 /* CRTaskHandler.m in Sources */,
 				DBC30B5B16E047D600C795BA /* NSDictionary+Courier.m in Sources */,
 				8831EB8317A205B800B6E1D7 /* NSMutableURLRequest+Courier.m in Sources */,
 			);

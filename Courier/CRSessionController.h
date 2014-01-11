@@ -8,24 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
-@class CRTaskHandler;
+@protocol CRURLSessionDelegate <NSObject>
+
+- (void)sessionReceivedUnauthorizedResponse;
+
+@end
 
 NS_CLASS_AVAILABLE(10_9, 7_0)
 @interface CRSessionController : NSObject <NSURLSessionDataDelegate>
 
+@property (nonatomic, weak, readonly) id <CRURLSessionDelegate> controllerDelegate;
+
 /**
  The internal NSURLSession.
  */
-@property (nonatomic, readonly, strong) NSURLSession *session;
+@property (nonatomic, strong, readonly) NSURLSession *session;
 
-/**
- Task handlers
- */
-@property (nonatomic, readonly, strong) NSMutableDictionary *taskHandlers;
+@property (nonatomic, strong, readonly) NSURLSessionConfiguration *configuration;
 
-- (instancetype)initWithSession:(NSURLSession *)session;
++ (instancetype)controllerWithConfiguration:(NSURLSessionConfiguration *)configuration
+                                   delegate:(id <CRURLSessionDelegate>)delegate;
 
-- (NSURLSessionDataTask *)dataTaskForRequest:(NSURLRequest *)request
-                                 taskHandler:(CRTaskHandler *)handler;
+- (NSURLSessionTask *)dataTaskForRequest:(NSURLRequest *)request
+                       completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler;
 
 @end
