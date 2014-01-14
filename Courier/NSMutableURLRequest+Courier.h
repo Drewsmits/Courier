@@ -19,6 +19,12 @@ typedef enum {
 + (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                       path:(NSString *)path;
 
+/**
+ 
+ @note This will set the Content-Type header to the appropriate type, unless you
+ specify your own.
+ 
+ */
 + (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                       path:(NSString *)path
                                   encoding:(CR_URLRequestEncoding)encoding

@@ -12,7 +12,7 @@
 
 @interface CRSessionController ()
 
-@property (nonatomic, weak, readwrite) id <CRURLSessionDelegate> controllerDelegate;
+@property (nonatomic, weak, readwrite) id <CRURLSessionControllerDelegate> controllerDelegate;
 
 @property (nonatomic, readwrite, strong) NSURLSession *session;
 
@@ -20,12 +20,15 @@
 
 @implementation CRSessionController
 
-+ (instancetype)controllerWithConfiguration:(NSURLSessionConfiguration *)configuration
-                                   delegate:(id<CRURLSessionDelegate>)delegate
++ (instancetype)sessionControllerWithConfiguration:(NSURLSessionConfiguration *)configuration
+                                   delegate:(id <CRURLSessionControllerDelegate>)delegate
 {
     CRSessionController *controller = [[self alloc] init];
     controller.controllerDelegate = delegate;
-    controller.session = [NSURLSession sessionWithConfiguration:configuration];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    controller.session = session;
+    
     return controller;
 }
 

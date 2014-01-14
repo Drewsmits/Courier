@@ -15,12 +15,12 @@
 + (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                       path:(NSString *)path
 {
-  return [self requestWithMethod:method
-                            path:path
-                        encoding:CR_URLRequestEncodingUnknown
-                   URLParameters:nil
-              HTTPBodyParameters:nil
-                          header:nil];
+    return [self requestWithMethod:method
+                              path:path
+                          encoding:CR_URLRequestEncodingUnknown
+                     URLParameters:nil
+                HTTPBodyParameters:nil
+                            header:nil];
 }
 
 + (NSMutableURLRequest *)requestWithMethod:(NSString *)method
@@ -50,11 +50,11 @@
     // Append path with URL params, if present
     //
     if (parameters.count > 0) {
-      NSString *stringToAppend = [path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@";
-      NSString *newPath = [path stringByAppendingFormat:stringToAppend, [parameters asFormURLEncodedString]];
-      path = newPath;
+        NSString *stringToAppend = [path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@";
+        NSString *newPath = [path stringByAppendingFormat:stringToAppend, [parameters asFormURLEncodedString]];
+        path = newPath;
     }
-
+    
     self.URL = [NSURL URLWithString:path];
 }
 
@@ -68,19 +68,16 @@
     if (self.allHTTPHeaderFields[@"Content-Type"]) return;
     
     //
-    // Form URL encoding
+    // Set the content type
     //
     if (encoding == CR_URLFormURLParameterEncoding) {
-      NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-      NSString *type = [NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset];
-      [self addValue:type forHTTPHeaderField:@"Content-Type"];
-    }
-    
-    //
-    // JSON encoding
-    //
-    if (encoding == CR_URLJSONParameterEncoding) {
-      [self addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        // Form URL
+        NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+        NSString *type = [NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset];
+        [self addValue:type forHTTPHeaderField:@"Content-Type"];
+    } else if (encoding == CR_URLJSONParameterEncoding) {
+        // JSON
+        [self addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     }
 }
 
@@ -89,20 +86,19 @@
 - (void)setHTTPBodyDataWithParameters:(NSDictionary *)parameters
                              encoding:(CR_URLRequestEncoding)encoding
 {
-    NSData *bodyData;
+    if (!parameters) return;
     
-    //
-    // Form URL encoding
-    //
+    NSData *bodyData = nil;
+    
     if (encoding == CR_URLFormURLParameterEncoding) {
-      bodyData = [parameters asFormURLEncodedData];
-    }
-    
-    //
-    // JSON encoding
-    //
-    if (encoding == CR_URLJSONParameterEncoding) {
-      bodyData = [parameters asJSONData];
+        // Form URL
+        bodyData = [parameters asFormURLEncodedData];
+    } else if (encoding == CR_URLJSONParameterEncoding) {
+        // JSON
+        bodyData = [parameters asJSONData];
+    } else {
+        // Unknown encoding. Pass it through.
+        bodyData = [NSKeyedArchiver archivedDataWithRootObject:parameters];
     }
     
     [self setHTTPBody:bodyData];

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol CRURLSessionDelegate <NSObject>
+@protocol CRURLSessionControllerDelegate <NSObject>
 
 - (void)sessionReceivedUnauthorizedResponse;
 
@@ -17,7 +17,7 @@
 NS_CLASS_AVAILABLE(10_9, 7_0)
 @interface CRSessionController : NSObject <NSURLSessionDataDelegate>
 
-@property (nonatomic, weak, readonly) id <CRURLSessionDelegate> controllerDelegate;
+@property (nonatomic, weak, readonly) id <CRURLSessionControllerDelegate> controllerDelegate;
 
 /**
  The internal NSURLSession.
@@ -26,8 +26,8 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
 
 @property (nonatomic, strong, readonly) NSURLSessionConfiguration *configuration;
 
-+ (instancetype)controllerWithConfiguration:(NSURLSessionConfiguration *)configuration
-                                   delegate:(id <CRURLSessionDelegate>)delegate;
++ (instancetype)sessionControllerWithConfiguration:(NSURLSessionConfiguration *)configuration
+                                          delegate:(id <CRURLSessionControllerDelegate>)delegate;
 
 - (NSURLSessionTask *)dataTaskForRequest:(NSURLRequest *)request
                        completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler;

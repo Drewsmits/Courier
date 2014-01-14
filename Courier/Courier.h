@@ -16,6 +16,4 @@
 
 #import "CRSessionController.h"
 
-#import "CRTaskHandler.h"
-
 #endif
