@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8831EB8217A205B800B6E1D7 /* NSMutableURLRequest+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = 8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8831EB8317A205B800B6E1D7 /* NSMutableURLRequest+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */; };
+		888360651889AC7C004322BA /* CRSessionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 888360641889AC7C004322BA /* CRSessionControllerTests.m */; };
 		889B8974188477A90099C1A3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB487DBE17C019D400D189D3 /* XCTest.framework */; };
 		889B8975188477A90099C1A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C482144F4BCD003D766A /* Foundation.framework */; };
 		889B8976188477A90099C1A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9DEFAF1573F9ED00E05274 /* UIKit.framework */; };
@@ -20,20 +20,20 @@
 		889B89931884A9E20099C1A3 /* NSMutableURLRequestCourierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 889B89921884A9E20099C1A3 /* NSMutableURLRequestCourierTests.m */; };
 		889B89951884B73C0099C1A3 /* CRTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 889B89941884B73C0099C1A3 /* CRTestCase.m */; };
 		889B89981884BA7C0099C1A3 /* NSURLResponseCourierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 889B89971884BA7C0099C1A3 /* NSURLResponseCourierTests.m */; };
-		889B899A1884BE360099C1A3 /* CRSessionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 889B89991884BE360099C1A3 /* CRSessionControllerTests.m */; };
-		DB2FC63817D291DA00EDF9F0 /* NSURLResponse+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		889B8B101889ABC10099C1A3 /* Courier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DBA2A87117EF9A7B005E2D9F /* Courier.h */; };
+		889B8B111889ABC10099C1A3 /* CRSessionController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DBA2A86917EF8D67005E2D9F /* CRSessionController.h */; };
+		889B8B121889ABC10099C1A3 /* NSDictionary+Courier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DBC30B5816E047D600C795BA /* NSDictionary+Courier.h */; };
+		889B8B131889ABC10099C1A3 /* NSMutableURLRequest+Courier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */; };
+		889B8B141889ABC10099C1A3 /* NSString+Courier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB83D103144F9BC400D94890 /* NSString+Courier.h */; };
+		889B8B151889ABC10099C1A3 /* NSURLResponse+Courier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */; };
+		889B8B161889ABC10099C1A3 /* Reachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB6BABBB154F47F0004842D2 /* Reachability.h */; };
 		DB2FC63917D291DA00EDF9F0 /* NSURLResponse+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2FC63717D291DA00EDF9F0 /* NSURLResponse+Courier.m */; };
 		DB3A04B3160A7E4400B833CA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B2160A7E4400B833CA /* libz.dylib */; };
 		DB3A04B5160A7E4D00B833CA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */; };
 		DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C482144F4BCD003D766A /* Foundation.framework */; };
-		DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DB6BABBB154F47F0004842D2 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6BABBC154F47F0004842D2 /* Reachability.m */; };
-		DB83D105144F9BC400D94890 /* NSString+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DB83D103144F9BC400D94890 /* NSString+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB83D106144F9BC400D94890 /* NSString+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83D104144F9BC400D94890 /* NSString+Courier.m */; };
-		DBA2A86B17EF8D67005E2D9F /* CRSessionController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBA2A86917EF8D67005E2D9F /* CRSessionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBA2A86C17EF8D67005E2D9F /* CRSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA2A86A17EF8D67005E2D9F /* CRSessionController.m */; };
-		DBA2A87217EF9AF0005E2D9F /* Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DBA2A87117EF9A7B005E2D9F /* Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DBC30B5A16E047D600C795BA /* NSDictionary+Courier.h in Headers */ = {isa = PBXBuildFile; fileRef = DBC30B5816E047D600C795BA /* NSDictionary+Courier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBC30B5B16E047D600C795BA /* NSDictionary+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC30B5916E047D600C795BA /* NSDictionary+Courier.m */; };
 /* End PBXBuildFile section */
 
@@ -47,9 +47,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		889B8B0F1889AB9D0099C1A3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				889B8B101889ABC10099C1A3 /* Courier.h in CopyFiles */,
+				889B8B111889ABC10099C1A3 /* CRSessionController.h in CopyFiles */,
+				889B8B121889ABC10099C1A3 /* NSDictionary+Courier.h in CopyFiles */,
+				889B8B131889ABC10099C1A3 /* NSMutableURLRequest+Courier.h in CopyFiles */,
+				889B8B141889ABC10099C1A3 /* NSString+Courier.h in CopyFiles */,
+				889B8B151889ABC10099C1A3 /* NSURLResponse+Courier.h in CopyFiles */,
+				889B8B161889ABC10099C1A3 /* Reachability.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Courier.h"; sourceTree = "<group>"; };
 		8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+Courier.m"; sourceTree = "<group>"; };
+		888360641889AC7C004322BA /* CRSessionControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRSessionControllerTests.m; sourceTree = "<group>"; };
 		889B8973188477A80099C1A3 /* CourierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		889B8979188477A90099C1A3 /* CourierTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CourierTests-Info.plist"; sourceTree = "<group>"; };
 		889B897B188477A90099C1A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -60,7 +80,6 @@
 		889B89941884B73C0099C1A3 /* CRTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTestCase.m; sourceTree = "<group>"; };
 		889B89961884B7630099C1A3 /* CRTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRTestCase.h; sourceTree = "<group>"; };
 		889B89971884BA7C0099C1A3 /* NSURLResponseCourierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLResponseCourierTests.m; sourceTree = "<group>"; };
-		889B89991884BE360099C1A3 /* CRSessionControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRSessionControllerTests.m; sourceTree = "<group>"; };
 		DB01067D164C23F700AAAAEF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLResponse+Courier.h"; sourceTree = "<group>"; };
 		DB2FC63717D291DA00EDF9F0 /* NSURLResponse+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLResponse+Courier.m"; sourceTree = "<group>"; };
@@ -114,7 +133,7 @@
 		889B8977188477A90099C1A3 /* CourierTests */ = {
 			isa = PBXGroup;
 			children = (
-				889B89991884BE360099C1A3 /* CRSessionControllerTests.m */,
+				888360641889AC7C004322BA /* CRSessionControllerTests.m */,
 				889B89961884B7630099C1A3 /* CRTestCase.h */,
 				889B89941884B73C0099C1A3 /* CRTestCase.m */,
 				889B8985188477E10099C1A3 /* NSDictionaryCourierTests.m */,
@@ -202,23 +221,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		DB64C47D144F4BCD003D766A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB83D105144F9BC400D94890 /* NSString+Courier.h in Headers */,
-				DBA2A86B17EF8D67005E2D9F /* CRSessionController.h in Headers */,
-				DB6BABBD154F47F0004842D2 /* Reachability.h in Headers */,
-				DBC30B5A16E047D600C795BA /* NSDictionary+Courier.h in Headers */,
-				8831EB8217A205B800B6E1D7 /* NSMutableURLRequest+Courier.h in Headers */,
-				DBA2A87217EF9AF0005E2D9F /* Courier.h in Headers */,
-				DB2FC63817D291DA00EDF9F0 /* NSURLResponse+Courier.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		889B8972188477A80099C1A3 /* CourierTests */ = {
 			isa = PBXNativeTarget;
@@ -244,7 +246,7 @@
 			buildPhases = (
 				DB64C47B144F4BCD003D766A /* Sources */,
 				DB64C47C144F4BCD003D766A /* Frameworks */,
-				DB64C47D144F4BCD003D766A /* Headers */,
+				889B8B0F1889AB9D0099C1A3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -304,7 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				889B89981884BA7C0099C1A3 /* NSURLResponseCourierTests.m in Sources */,
-				889B899A1884BE360099C1A3 /* CRSessionControllerTests.m in Sources */,
+				888360651889AC7C004322BA /* CRSessionControllerTests.m in Sources */,
 				889B89951884B73C0099C1A3 /* CRTestCase.m in Sources */,
 				889B89931884A9E20099C1A3 /* NSMutableURLRequestCourierTests.m in Sources */,
 				889B8986188477E10099C1A3 /* NSDictionaryCourierTests.m in Sources */,
@@ -479,12 +481,9 @@
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRIVATE_HEADERS_FOLDER_PATH = include/Courier/Private;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = include/Courier;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "$(OBJROOT)/UninstalledProducts/include";
 			};
 			name = Debug;
 		};
@@ -509,12 +508,9 @@
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRIVATE_HEADERS_FOLDER_PATH = include/Courier/Private;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = include/Courier;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "$(OBJROOT)/UninstalledProducts/include";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

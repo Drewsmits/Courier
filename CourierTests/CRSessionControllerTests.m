@@ -24,7 +24,7 @@
 //
 //
 
-#import "CRTestCase.m"
+#import "CRTestCase.h"
 
 @interface CRSessionControllerTests : CRTestCase
 
