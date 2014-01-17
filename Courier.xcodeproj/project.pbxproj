@@ -76,9 +76,9 @@
 		DB83D103144F9BC400D94890 /* NSString+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Courier.h"; sourceTree = "<group>"; };
 		DB83D104144F9BC400D94890 /* NSString+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Courier.m"; sourceTree = "<group>"; };
 		DB9DEFAF1573F9ED00E05274 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		DBA2A86917EF8D67005E2D9F /* CRSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRSessionController.h; sourceTree = "<group>"; };
+		DBA2A86917EF8D67005E2D9F /* CRSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CRSessionController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		DBA2A86A17EF8D67005E2D9F /* CRSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRSessionController.m; sourceTree = "<group>"; };
-		DBA2A87117EF9A7B005E2D9F /* Courier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Courier.h; sourceTree = "<group>"; };
+		DBA2A87117EF9A7B005E2D9F /* Courier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Courier.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		DBAAA636150FE761004C1532 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		DBC30B5816E047D600C795BA /* NSDictionary+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Courier.h"; sourceTree = "<group>"; };
 		DBC30B5916E047D600C795BA /* NSDictionary+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Courier.m"; sourceTree = "<group>"; };
@@ -464,8 +464,6 @@
 				DSTROOT = /tmp/Courier.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Courier/Courier-Prefix.pch";
@@ -531,6 +529,7 @@
 				889B8984188477A90099C1A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB64C477144F4BB0003D766A /* Build configuration list for PBXProject "Courier" */ = {
 			isa = XCConfigurationList;
