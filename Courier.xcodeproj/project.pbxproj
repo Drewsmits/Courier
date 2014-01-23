@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8831EB8317A205B800B6E1D7 /* NSMutableURLRequest+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */; };
 		888360651889AC7C004322BA /* CRSessionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 888360641889AC7C004322BA /* CRSessionControllerTests.m */; };
+		888360791889F0DA004322BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9DEFAF1573F9ED00E05274 /* UIKit.framework */; };
 		889B8974188477A90099C1A3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB487DBE17C019D400D189D3 /* XCTest.framework */; };
 		889B8975188477A90099C1A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C482144F4BCD003D766A /* Foundation.framework */; };
 		889B8976188477A90099C1A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9DEFAF1573F9ED00E05274 /* UIKit.framework */; };
@@ -28,7 +29,6 @@
 		889B8B151889ABC10099C1A3 /* NSURLResponse+Courier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */; };
 		889B8B161889ABC10099C1A3 /* Reachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB6BABBB154F47F0004842D2 /* Reachability.h */; };
 		DB2FC63917D291DA00EDF9F0 /* NSURLResponse+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2FC63717D291DA00EDF9F0 /* NSURLResponse+Courier.m */; };
-		DB3A04B3160A7E4400B833CA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B2160A7E4400B833CA /* libz.dylib */; };
 		DB3A04B5160A7E4D00B833CA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */; };
 		DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB64C482144F4BCD003D766A /* Foundation.framework */; };
 		DB6BABBE154F47F0004842D2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6BABBC154F47F0004842D2 /* Reachability.m */; };
@@ -80,16 +80,13 @@
 		889B89941884B73C0099C1A3 /* CRTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTestCase.m; sourceTree = "<group>"; };
 		889B89961884B7630099C1A3 /* CRTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRTestCase.h; sourceTree = "<group>"; };
 		889B89971884BA7C0099C1A3 /* NSURLResponseCourierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLResponseCourierTests.m; sourceTree = "<group>"; };
-		DB01067D164C23F700AAAAEF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DB2FC63617D291DA00EDF9F0 /* NSURLResponse+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLResponse+Courier.h"; sourceTree = "<group>"; };
 		DB2FC63717D291DA00EDF9F0 /* NSURLResponse+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLResponse+Courier.m"; sourceTree = "<group>"; };
-		DB3A04B2160A7E4400B833CA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DB487DBE17C019D400D189D3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		DB64C47F144F4BCD003D766A /* libCourier.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCourier.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB64C482144F4BCD003D766A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB64C486144F4BCD003D766A /* Courier-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Courier-Prefix.pch"; sourceTree = "<group>"; };
-		DB64C490144F4BCD003D766A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		DB6BABBB154F47F0004842D2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		DB6BABBC154F47F0004842D2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		DB83D103144F9BC400D94890 /* NSString+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Courier.h"; sourceTree = "<group>"; };
@@ -98,10 +95,8 @@
 		DBA2A86917EF8D67005E2D9F /* CRSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CRSessionController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		DBA2A86A17EF8D67005E2D9F /* CRSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRSessionController.m; sourceTree = "<group>"; };
 		DBA2A87117EF9A7B005E2D9F /* Courier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Courier.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		DBAAA636150FE761004C1532 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		DBC30B5816E047D600C795BA /* NSDictionary+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Courier.h"; sourceTree = "<group>"; };
 		DBC30B5916E047D600C795BA /* NSDictionary+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Courier.m"; sourceTree = "<group>"; };
-		DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,9 +116,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				888360791889F0DA004322BA /* UIKit.framework in Frameworks */,
 				DB3A04B5160A7E4D00B833CA /* SystemConfiguration.framework in Frameworks */,
 				DB64C483144F4BCD003D766A /* Foundation.framework in Frameworks */,
-				DB3A04B3160A7E4400B833CA /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,14 +173,9 @@
 			isa = PBXGroup;
 			children = (
 				DB487DBE17C019D400D189D3 /* XCTest.framework */,
-				DB01067D164C23F700AAAAEF /* CoreData.framework */,
-				DB3A04B2160A7E4400B833CA /* libz.dylib */,
 				DB3A04B4160A7E4D00B833CA /* SystemConfiguration.framework */,
 				DB9DEFAF1573F9ED00E05274 /* UIKit.framework */,
-				DBAAA636150FE761004C1532 /* libz.dylib */,
-				DBD4214C15228B0A0046D4CE /* SystemConfiguration.framework */,
 				DB64C482144F4BCD003D766A /* Foundation.framework */,
-				DB64C490144F4BCD003D766A /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

@@ -29,6 +29,8 @@
 
 - (void)sessionReceivedUnauthorizedResponse;
 
+- (void)sessionReceivedUnreachableResponse;
+
 @end
 
 NS_CLASS_AVAILABLE(10_9, 7_0)
@@ -41,12 +43,17 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
  */
 @property (nonatomic, strong, readonly) NSURLSession *session;
 
+/**
+ The internal NSURLSessionConfiguration from the internal NSURLSession.
+ */
 @property (nonatomic, strong, readonly) NSURLSessionConfiguration *configuration;
 
 + (instancetype)sessionControllerWithConfiguration:(NSURLSessionConfiguration *)configuration
                                           delegate:(id <CRURLSessionControllerDelegate>)delegate;
 
-- (NSURLSessionTask *)dataTaskForRequest:(NSURLRequest *)request
-                       completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler;
+- (NSURLSessionDataTask *)dataTaskForRequest:(NSURLRequest *)request
+                           completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler;
+
+- (BOOL)isInternetReachable;
 
 @end

@@ -27,34 +27,72 @@
 
 #import "NSURLResponse+Courier.h"
 
-@interface CRSessionController ()
+#import "Reachability.h"
+
+@interface CRSessionController () <NSURLSessionDelegate>
 
 @property (nonatomic, weak, readwrite) id <CRURLSessionControllerDelegate> controllerDelegate;
 
-@property (nonatomic, readwrite, strong) NSURLSession *session;
+@property (nonatomic, strong, readwrite) NSURLSession *session;
+
+@property (nonatomic, strong) Reachability *reachabilityObject;
 
 @end
 
 @implementation CRSessionController
 
+- (void)dealloc
+{
+    [_session removeObserver:self forKeyPath:@"delegateQueue.operationCount"];
+}
+
 + (instancetype)sessionControllerWithConfiguration:(NSURLSessionConfiguration *)configuration
-                                   delegate:(id <CRURLSessionControllerDelegate>)delegate
+                                          delegate:(id <CRURLSessionControllerDelegate>)delegate
 {
     CRSessionController *controller = [[self alloc] init];
     controller.controllerDelegate = delegate;
     
+    //
+    // Internal session
+    //
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     controller.session = session;
+    
+    //
+    // Reachability
+    //
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    
+    __weak typeof(controller) weakSelf = controller;
+    [reachability setUnreachableBlock:^(Reachability * reachability){
+        CourierLogWarning(@"Network is unreachable!");
+        __strong typeof(controller) strongSelf = weakSelf;
+        [strongSelf.controllerDelegate sessionReceivedUnreachableResponse];
+    }];
+    
+    //
+    // Network activity
+    //
+    // Observe adding/removing operations to the delegate queue to show network
+    // activity.
+    //
+    [session addObserver:controller
+              forKeyPath:@"delegateQueue.operationCount"
+                 options:NSKeyValueObservingOptionNew context:nil];
     
     return controller;
 }
 
-- (NSURLSessionTask *)dataTaskForRequest:(NSURLRequest *)request
-                       completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler
+- (NSURLSessionDataTask *)dataTaskForRequest:(NSURLRequest *)request
+                           completionHandler:(void (^)(NSData *data,
+                                                       NSURLResponse *response,
+                                                       NSError *error))completionHandler
 {
-    NSURLSessionTask *task = [self.session dataTaskWithRequest:request
+    __weak typeof(self) weakSelf = self;
+    NSURLSessionDataTask *task = [_session dataTaskWithRequest:request
                                              completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                 [self handleResponse:response];
+                                                 __strong typeof(self) strongSelf = weakSelf;
+                                                 [strongSelf handleResponse:response];
                                                  if (completionHandler) completionHandler(data, response, error);
                                              }];
     return task;
@@ -62,9 +100,10 @@
 
 - (void)handleResponse:(NSURLResponse *)response
 {
+    CourierLogInfo(@"URL: %@, status code: %i", response.URL, response.statusCode);
     if (!response.success) {
         if (response.statusCode == 401) {
-            [self.controllerDelegate sessionReceivedUnauthorizedResponse];
+            [_controllerDelegate sessionReceivedUnauthorizedResponse];
         }
     }
 }
@@ -72,6 +111,26 @@
 - (NSURLSessionConfiguration *)configuration
 {
     return _session.configuration;
+}
+
+#pragma mark - API
+
+- (BOOL)isInternetReachable
+{
+    return _reachabilityObject.isReachable;
+}
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if ([keyPath isEqualToString:@"delegateQueue.operationCount"]
+        && [object isEqual:_session]) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = (_session.delegateQueue.operationCount > 0);
+    }
 }
 
 @end
