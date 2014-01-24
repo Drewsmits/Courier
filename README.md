@@ -34,13 +34,14 @@ NSMutableURLRequest *request = [NSMutableURLRequest requestWithMethod:@"POST"
 
 
 // Build a task
-NSURLSessionDataTask *task = [sessionController dataTaskForRequest:request completionHandler:^(NSData *data,
-                                                                                               NSURLResponse *response,
-                                                                                               NSError *error) {
-                                                                                 if (response.success) {
-                                                                                      // Hurrah!
-                                                                                 }
-                                                                             }];
+NSURLSessionDataTask *task = [sessionController dataTaskForRequest:request
+                                                 completionHandler:^(NSData *data,
+                                                                     NSURLResponse *response,
+                                                                     NSError *error) {
+                                                     if (response.success) {
+                                                         // Hurrah!
+                                                     }
+                                                 }];
 
 // Start task
 [task resume];
