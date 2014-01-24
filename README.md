@@ -50,3 +50,7 @@ NSURLSessionDataTask *task = [sessionController dataTaskForRequest:request
 [task resume];
 
 ```
+
+## Externals
+
+* [Reachability library](https://github.com/tonymillion/Reachability) was created and maintained by [Tony Million](https://github.com/tonymillion).
