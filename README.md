@@ -20,6 +20,9 @@ NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionCon
 // Add additional headers
 config.HTTPAdditionalHeaders = @{@"Accept" : @"application/json"};
 
+// Be a good API citizen and limit to 1 HTTP connection per host
+config.HTTPMaximumConnectionsPerHost = 1;
+
 // Build session controller
 CRSessionController *sessionController = [CRSessionController sessionControllerWithConfiguration:config 
                                                                                         delegate:controller];
