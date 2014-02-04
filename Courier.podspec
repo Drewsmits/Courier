@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Courier"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "A lightweight network layer built on NSURLSession."
   s.license      = 'MIT'
   s.author       = { 
