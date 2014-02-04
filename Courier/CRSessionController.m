@@ -25,6 +25,8 @@
 
 #import "CRSessionController.h"
 
+#import "CourierLog.h"
+
 #import "NSURLResponse+Courier.h"
 
 #import "Reachability.h"

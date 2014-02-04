@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8815655B18A0807D00E54D82 /* CourierLog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8815655A18A0803400E54D82 /* CourierLog.h */; };
 		8831EB8317A205B800B6E1D7 /* NSMutableURLRequest+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */; };
 		888360651889AC7C004322BA /* CRSessionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 888360641889AC7C004322BA /* CRSessionControllerTests.m */; };
 		888360791889F0DA004322BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9DEFAF1573F9ED00E05274 /* UIKit.framework */; };
@@ -54,6 +55,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8815655B18A0807D00E54D82 /* CourierLog.h in CopyFiles */,
 				889B8B101889ABC10099C1A3 /* Courier.h in CopyFiles */,
 				889B8B111889ABC10099C1A3 /* CRSessionController.h in CopyFiles */,
 				889B8B121889ABC10099C1A3 /* NSDictionary+Courier.h in CopyFiles */,
@@ -67,6 +69,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8815655A18A0803400E54D82 /* CourierLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourierLog.h; sourceTree = "<group>"; };
 		8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Courier.h"; sourceTree = "<group>"; };
 		8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+Courier.m"; sourceTree = "<group>"; };
 		888360641889AC7C004322BA /* CRSessionControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRSessionControllerTests.m; sourceTree = "<group>"; };
@@ -184,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				DBA2A87117EF9A7B005E2D9F /* Courier.h */,
+				8815655A18A0803400E54D82 /* CourierLog.h */,
 				DBA2A86917EF8D67005E2D9F /* CRSessionController.h */,
 				DBA2A86A17EF8D67005E2D9F /* CRSessionController.m */,
 				DBC30B5816E047D600C795BA /* NSDictionary+Courier.h */,
