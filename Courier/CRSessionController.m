@@ -25,6 +25,8 @@
 
 #import "CRSessionController.h"
 
+#import <UIKit/UIKit.h>
+
 #import "CourierLog.h"
 
 #import "NSURLResponse+Courier.h"
@@ -71,6 +73,8 @@
         __strong typeof(controller) strongSelf = weakSelf;
         [strongSelf.controllerDelegate sessionReceivedUnreachableResponse];
     }];
+    
+    controller.reachabilityObject = reachability;
     
     //
     // Network activity
