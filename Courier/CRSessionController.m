@@ -71,7 +71,7 @@
     [reachability setUnreachableBlock:^(Reachability * reachability){
         CourierLogWarning(@"Network is unreachable!");
         __strong typeof(controller) strongSelf = weakSelf;
-        [strongSelf.controllerDelegate sessionReceivedUnreachableResponse];
+        [strongSelf.controllerDelegate sessionReceivedUnreachableResponse:nil];
     }];
     
     controller.reachabilityObject = reachability;
@@ -109,7 +109,7 @@
     CourierLogInfo(@"URL: %@, status code: %i", response.URL, response.statusCode);
     if (!response.success) {
         if (response.statusCode == 401) {
-            [_controllerDelegate sessionReceivedUnauthorizedResponse];
+            [_controllerDelegate sessionReceivedUnauthorizedResponse:response];
         }
     }
 }

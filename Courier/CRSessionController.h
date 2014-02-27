@@ -27,9 +27,9 @@
 
 @protocol CRURLSessionControllerDelegate <NSObject>
 
-- (void)sessionReceivedUnauthorizedResponse;
+- (void)sessionReceivedUnauthorizedResponse:(NSURLResponse *)response;
 
-- (void)sessionReceivedUnreachableResponse;
+- (void)sessionReceivedUnreachableResponse:(NSURLResponse *)response;
 
 @end
 
