@@ -108,15 +108,9 @@
                                                        NSURLResponse *response,
                                                        NSError *error))completionHandler
 {
-    __weak typeof(self) weakSelf = self;
-    NSURLSessionDataTask *task = [_session dataTaskWithRequest:request
-                                             completionHandler:^(NSData *data,
-                                                                 NSURLResponse *response,
-                                                                 NSError *error) {
-                                                 __strong typeof(self) strongSelf = weakSelf;
-                                                 [strongSelf handleResponse:response];
-                                                 if (completionHandler) completionHandler(data, response, error);
-                                             }];
+    NSURLSessionDataTask *task = [self dataTaskForRequest:request
+                                                taskGroup:nil
+                                        completionHandler:completionHandler];
     return task;
 }
 
@@ -126,6 +120,8 @@
                                                        NSURLResponse *response,
                                                        NSError *error))completionHandler
 {
+    CourierLogInfo(@"Creating task for URL : %@", request.URL);
+
     //
     // Unique task token
     //

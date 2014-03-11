@@ -36,6 +36,10 @@
 
 @interface CRSessionController (UnitTests)
 
+@property (nonatomic, readonly) NSMutableDictionary *groups;
+
+@property (nonatomic, readonly) NSMutableDictionary *tasks;
+
 - (void)addTask:(NSURLSessionTask *)task
       withToken:(NSString *)token
         toGroup:(NSString *)group;
@@ -73,7 +77,15 @@
     return task;
 }
 
-#pragma mark - 
+#pragma mark - Config
+
+- (void)testSessionConfig
+{
+    XCTAssertNotNil(_sessionController.configuration,
+                    @"Should have a non nil configuration");
+}
+
+#pragma mark -
 
 - (void)testDataTaskForGroup
 {

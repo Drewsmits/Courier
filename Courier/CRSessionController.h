@@ -43,18 +43,20 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
  */
 @property (nonatomic, readonly) NSURLSession *session;
 
-@property (nonatomic, readonly) NSMutableDictionary *groups;
-
-@property (nonatomic, readonly) NSMutableDictionary *tasks;
-
 /**
- The internal NSURLSessionConfiguration from the internal NSURLSession.
+ A copy of the internal NSURLSessionConfiguration from the internal NSURLSession.
  */
 @property (nonatomic, readonly) NSURLSessionConfiguration *configuration;
 
+/**
+ Create a session controller with a delegate for 401 and unreachable callbacks.
+ */
 + (instancetype)sessionControllerWithConfiguration:(NSURLSessionConfiguration *)configuration
                                           delegate:(id <CRURLSessionControllerDelegate>)delegate;
 
+/**
+ Create an NSURLSessionDataTask for the given request.
+*/
 - (NSURLSessionDataTask *)dataTaskForRequest:(NSURLRequest *)request
                            completionHandler:(void (^)(NSData *data,
                                                        NSURLResponse *response,
@@ -69,16 +71,34 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
                                                        NSURLResponse *response,
                                                        NSError *error))completionHandler;
 
+/**
+ Calls -suspend on all tasks in a given group.
+ */
 - (void)suspendTasksInGroup:(NSString *)group;
 
+/**
+ Calls -resume on all tasks in a given group.
+ */
 - (void)resumeTasksInGroup:(NSString *)group;
 
+/**
+ Calls -cancel on all tasks in a given group.
+ */
 - (void)cancelTasksInGroup:(NSString *)group;
 
+/**
+ Calls -suspend on all tasks tracked by this controller
+ */
 - (void)suspendAllTasks;
 
+/**
+ Calls -resume on all tasks tracked by this controller
+ */
 - (void)resumeAllTasks;
 
+/**
+ Calls -cancel on all tasks tracked by this controller
+ */
 - (void)cancelAllTasks;
 
 /**
