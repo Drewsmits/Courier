@@ -33,11 +33,17 @@
 
 #import "Reachability.h"
 
-@interface CRSessionController () <NSURLSessionDelegate>
+#define kCRSessionControllerGenericTaskGroup @"kCRSessionControllerGenericTaskGroup"
 
-@property (nonatomic, weak, readwrite) id <CRURLSessionControllerDelegate> controllerDelegate;
+@interface CRSessionController ()
 
-@property (nonatomic, strong, readwrite) NSURLSession *session;
+@property (nonatomic, weak) id <CRURLSessionControllerDelegate> controllerDelegate;
+
+@property (nonatomic, strong) NSURLSession *session;
+
+@property (nonatomic, strong) NSMutableDictionary *groups;
+
+@property (nonatomic, strong) NSMutableDictionary *tasks;
 
 @property (nonatomic, strong) Reachability *reachabilityObject;
 
@@ -62,6 +68,12 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     controller.session = session;
     
+    //
+    // Keep track of tasks
+    //
+    controller.groups = [NSMutableDictionary dictionary];
+    controller.tasks  = [NSMutableDictionary dictionary];
+
     //
     // Reachability
     //
@@ -89,6 +101,8 @@
     return controller;
 }
 
+#pragma mark - Task
+
 - (NSURLSessionDataTask *)dataTaskForRequest:(NSURLRequest *)request
                            completionHandler:(void (^)(NSData *data,
                                                        NSURLResponse *response,
@@ -96,11 +110,37 @@
 {
     __weak typeof(self) weakSelf = self;
     NSURLSessionDataTask *task = [_session dataTaskWithRequest:request
-                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                             completionHandler:^(NSData *data,
+                                                                 NSURLResponse *response,
+                                                                 NSError *error) {
                                                  __strong typeof(self) strongSelf = weakSelf;
                                                  [strongSelf handleResponse:response];
                                                  if (completionHandler) completionHandler(data, response, error);
                                              }];
+    return task;
+}
+
+- (NSURLSessionDataTask *)dataTaskForRequest:(NSURLRequest *)request
+                                   taskGroup:(NSString *)group
+                           completionHandler:(void (^)(NSData *data,
+                                                       NSURLResponse *response,
+                                                       NSError *error))completionHandler
+{
+    __weak typeof(self) weakSelf = self;
+    NSURLSessionDataTask *task = [_session dataTaskWithRequest:request
+                                             completionHandler:^(NSData *data,
+                                                                 NSURLResponse *response,
+                                                                 NSError *error) {
+                                                 __strong typeof(self) strongSelf = weakSelf;
+                                                 [strongSelf handleResponse:response];
+                                                 [strongSelf removeTask:task fromGroup:group];
+                                                 if (completionHandler) completionHandler(data, response, error);
+                                             }];
+    //
+    // Keep track of the task
+    //
+    [self addTask:task toGroup:group];
+    
     return task;
 }
 
@@ -119,7 +159,120 @@
     return _session.configuration;
 }
 
-#pragma mark - API
+#pragma mark - Task Management
+
+- (void)addTask:(NSURLSessionTask *)task
+        toGroup:(NSString *)group
+{
+    if (!task) return;
+    if (!group || group.length == 0) {
+        group = kCRSessionControllerGenericTaskGroup;
+    }
+    
+    CourierLogInfo(@"Adding task to group : %@", group);
+    
+    //
+    // Groups
+    //
+    NSMutableArray *tasks = [_groups valueForKey:group];
+    if (!tasks) {
+        tasks = [NSMutableArray array];
+        [_groups setObject:tasks forKey:group];
+    }
+    [tasks addObject:task];
+}
+
+- (void)removeTask:(NSURLSessionTask *)task
+         fromGroup:(NSString *)group
+{
+    if (!task) return;
+    if (!group || group.length == 0) {
+        group = kCRSessionControllerGenericTaskGroup;
+    }
+    
+    CourierLogInfo(@"Removing task from group : %@", group);
+    
+    //
+    // Get the tasks
+    //
+    NSMutableArray *tasks = [_groups objectForKey:group];
+    
+    //
+    // Remove the task
+    //
+    [tasks removeObject:task];
+    
+    //
+    // If empty, remove tasks array
+    //
+    if (tasks.count == 0) {
+        [_groups removeObjectForKey:group];
+    }
+}
+
+#pragma mark - Task State Management
+
+- (void)suspendTasksInGroup:(NSString *)group
+{
+    CourierLogInfo(@"Suspend tasks in group : %@", group);
+    NSArray *tasks = [_groups valueForKey:group];
+    for (NSURLSessionTask *task in tasks) {
+        [task suspend];
+    }
+}
+
+- (void)resumeTasksInGroup:(NSString *)group
+{
+    CourierLogInfo(@"Resume tasks in group : %@", group);
+    NSArray *tasks = [_groups valueForKey:group];
+    for (NSURLSessionTask *task in tasks) {
+        [task resume];
+    }
+}
+
+- (void)cancelTasksInGroup:(NSString *)group
+{
+    CourierLogInfo(@"Canceling tasks in group : %@", group);
+    NSArray *tasks = [_groups valueForKey:group];
+    for (NSURLSessionTask *task in tasks) {
+        [task cancel];
+    }
+}
+
+- (void)suspendAllTasks
+{
+    CourierLogInfo(@"Suspend all tasks");
+    __weak typeof(self) weakSelf = self;
+    [_groups enumerateKeysAndObjectsUsingBlock:^(NSString *groupName,
+                                                 NSArray *tasks,
+                                                 BOOL *stop) {
+        [weakSelf suspendTasksInGroup:groupName];
+    }];
+}
+
+- (void)resumeAllTasks
+{
+    CourierLogInfo(@"Resume all tasks");
+    __weak typeof(self) weakSelf = self;
+    [_groups enumerateKeysAndObjectsUsingBlock:^(NSString *groupName,
+                                                 NSArray *tasks,
+                                                 BOOL *stop) {
+        [weakSelf resumeTasksInGroup:groupName];
+    }];
+}
+
+- (void)cancelAllTasks
+{
+    CourierLogInfo(@"Cancel all tasks");
+    __weak typeof(self) weakSelf = self;
+    [_groups enumerateKeysAndObjectsUsingBlock:^(NSString *groupName,
+                                                 NSArray *tasks,
+                                                 BOOL *stop) {
+        [weakSelf cancelTasksInGroup:groupName];
+    }];
+}
+
+#pragma mark - Reachability
 
 - (BOOL)isInternetReachable
 {
@@ -133,6 +286,8 @@
                         change:(NSDictionary *)change
                        context:(void *)context
 {
+    // Observer changes to the NSURLSession delegateQueue operation count.
+    // This provides global control of the network activity indicator
     if ([keyPath isEqualToString:@"delegateQueue.operationCount"]
         && [object isEqual:_session]) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = (_session.delegateQueue.operationCount > 0);

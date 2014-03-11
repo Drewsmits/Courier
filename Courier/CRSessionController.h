@@ -36,24 +36,52 @@
 NS_CLASS_AVAILABLE(10_9, 7_0)
 @interface CRSessionController : NSObject <NSURLSessionDataDelegate>
 
-@property (nonatomic, weak, readonly) id <CRURLSessionControllerDelegate> controllerDelegate;
+@property (nonatomic, readonly) id <CRURLSessionControllerDelegate> controllerDelegate;
 
 /**
  The internal NSURLSession.
  */
-@property (nonatomic, strong, readonly) NSURLSession *session;
+@property (nonatomic, readonly) NSURLSession *session;
+
+@property (nonatomic, readonly) NSMutableDictionary *groups;
 
 /**
  The internal NSURLSessionConfiguration from the internal NSURLSession.
  */
-@property (nonatomic, strong, readonly) NSURLSessionConfiguration *configuration;
+@property (nonatomic, readonly) NSURLSessionConfiguration *configuration;
 
 + (instancetype)sessionControllerWithConfiguration:(NSURLSessionConfiguration *)configuration
                                           delegate:(id <CRURLSessionControllerDelegate>)delegate;
 
 - (NSURLSessionDataTask *)dataTaskForRequest:(NSURLRequest *)request
-                           completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler;
+                           completionHandler:(void (^)(NSData *data,
+                                                       NSURLResponse *response,
+                                                       NSError *error))completionHandler;
+/**
+ Create an NSURLSessionDataTask for the given request and add it to the specified
+ non-nil task group. If task group is nil, task will be added to generic group.
+ */
+- (NSURLSessionDataTask *)dataTaskForRequest:(NSURLRequest *)request
+                                   taskGroup:(NSString *)group
+                           completionHandler:(void (^)(NSData *data,
+                                                       NSURLResponse *response,
+                                                       NSError *error))completionHandler;
 
+- (void)suspendTasksInGroup:(NSString *)group;
+
+- (void)resumeTasksInGroup:(NSString *)group;
+
+- (void)cancelTasksInGroup:(NSString *)group;
+
+- (void)suspendAllTasks;
+
+- (void)resumeAllTasks;
+
+- (void)cancelAllTasks;
+
+/**
+ Returns YES if any internet connection is reachable.
+ */
 - (BOOL)isInternetReachable;
 
 @end
