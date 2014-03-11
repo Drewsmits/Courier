@@ -126,6 +126,14 @@
                                                        NSURLResponse *response,
                                                        NSError *error))completionHandler
 {
+    //
+    // Unique task token
+    //
+    NSString *token = [self uniqueToken];
+    
+    //
+    // Create Task
+    //
     __weak typeof(self) weakSelf = self;
     NSURLSessionDataTask *task = [_session dataTaskWithRequest:request
                                              completionHandler:^(NSData *data,
@@ -133,13 +141,15 @@
                                                                  NSError *error) {
                                                  __strong typeof(self) strongSelf = weakSelf;
                                                  [strongSelf handleResponse:response];
-                                                 [strongSelf removeTask:task fromGroup:group];
+                                                 [strongSelf removeTaskWithToken:token];
                                                  if (completionHandler) completionHandler(data, response, error);
                                              }];
     //
     // Keep track of the task
     //
-    [self addTask:task toGroup:group];
+    [self addTask:task
+        withToken:token
+          toGroup:group];
     
     return task;
 }
@@ -161,7 +171,13 @@
 
 #pragma mark - Task Management
 
+- (NSString *)uniqueToken
+{
+    return [[NSProcessInfo processInfo] globallyUniqueString];
+}
+
 - (void)addTask:(NSURLSessionTask *)task
+      withToken:(NSString *)token
         toGroup:(NSString *)group
 {
     if (!task) return;
@@ -174,12 +190,36 @@
     //
     // Groups
     //
-    NSMutableArray *tasks = [_groups valueForKey:group];
+    NSMutableArray *tasks = [_groups objectForKey:group];
     if (!tasks) {
         tasks = [NSMutableArray array];
         [_groups setObject:tasks forKey:group];
     }
     [tasks addObject:task];
+    
+    //
+    // Tasks
+    //
+    NSMutableDictionary *taskDict = [_tasks objectForKey:group];
+    if (!taskDict) {
+        taskDict = [NSMutableDictionary dictionary];
+        [_tasks setObject:taskDict forKey:token];
+    }
+    taskDict[@"task"] = task;
+    taskDict[@"group"] = group;
+}
+
+- (void)removeTaskWithToken:(NSString *)token
+{
+    NSDictionary     *taskDict = [_tasks objectForKey:token];
+    NSString         *group    = taskDict[@"group"];
+    NSURLSessionTask *task     = taskDict[@"task"];
+    
+    // Remove from tasks
+    [_tasks removeObjectForKey:token];
+    
+    // Remove from groups
+    [self removeTask:task fromGroup:group];
 }
 
 - (void)removeTask:(NSURLSessionTask *)task

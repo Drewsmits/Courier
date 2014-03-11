@@ -31,9 +31,13 @@
 #define kTestGroupName @"kBurritoCrew"
 #define kTestGroup2Name @"kTacoCrew"
 
+#define kTestTaskToken @"aToken"
+#define kTestTask2Token @"bToken"
+
 @interface CRSessionController (UnitTests)
 
 - (void)addTask:(NSURLSessionTask *)task
+      withToken:(NSString *)token
         toGroup:(NSString *)group;
 
 - (void)removeTask:(NSURLSessionTask *)task
@@ -76,19 +80,36 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];
 
     __block BOOL finished = NO;
-//    NSURLSessionDataTask *task = [_sessionController dataTaskForRequest:request
-//                                                              taskGroup:kTestGroupName
-//                                                      completionHandler:^(NSData *data,
-//                                                                          NSURLResponse *response,
-//                                                                          NSError *error) {
-////                                                          finished = YES;
-//                                                      }];
-    NSURLSessionDataTask *task = [_sessionController.session dataTaskWithRequest:request];
+    NSURLSessionDataTask *task = [_sessionController dataTaskForRequest:request
+                                                              taskGroup:kTestGroupName
+                                                      completionHandler:^(NSData *data,
+                                                                          NSURLResponse *response,
+                                                                          NSError *error) {
+                                                          finished = YES;
+                                                      }];
+    
+    // check group
+    NSArray *tasks = [_sessionController.groups valueForKey:kTestGroupName];
+    XCTAssertEqualObjects([tasks firstObject],
+                          task,
+                          @"Should be the same task");
+    
+    // Check tasks
+    XCTAssertEqual(_sessionController.tasks.count,
+                   1U,
+                   @"Should have one task");
+    
+    id key = [[_sessionController.tasks allKeys] firstObject];
+    NSDictionary *object = [_sessionController.tasks objectForKey:key];
+    XCTAssertEqualObjects(object[@"group"],
+                          kTestGroupName,
+                          @"Should have correc group name");
+    XCTAssertEqualObjects(object[@"task"],
+                          task,
+                          @"Should be the same task");
+    
     [task resume];
     
-    NSArray *tasks = [_sessionController.groups valueForKey:kTestGroupName];
-    XCTAssertEqualObjects([tasks firstObject], task, @"Should be the same task");
-
     //
     // Wait until finished
     //
@@ -97,9 +118,14 @@
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:loopUntil];
     }
     
-    XCTAssertEqual(_sessionController.taskGroups.count,
+    XCTAssertEqual(_sessionController.groups.count,
                    0U,
                    @"Should have no task groups after completion");
+    
+    XCTAssertEqual(_sessionController.tasks.count,
+                   0U,
+                   @"Should have no tasks after completion");
+
 }
 
 #pragma mark - Task Management
@@ -110,7 +136,9 @@
     XCTAssertNil(tasks, @"Should not have a task array for group");
     
     NSURLSessionTask *task = [NSURLSessionTask new];
-    [_sessionController addTask:task toGroup:kTestGroupName];
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:kTestGroupName];
     
     tasks = [_sessionController.groups valueForKey:kTestGroupName];
     
@@ -122,7 +150,9 @@
 - (void)testAddNilTask
 {
     NSURLSessionTask *task;
-    [_sessionController addTask:task toGroup:kTestGroupName];
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:kTestGroupName];
     NSArray *tasks = [_sessionController.groups valueForKey:kTestGroupName];
     XCTAssertNil(tasks, @"Should not have a task array for group");
 }
@@ -130,9 +160,11 @@
 - (void)testAddTaskToNilGroup
 {
     NSURLSessionTask *task = [NSURLSessionTask new];
-    [_sessionController addTask:task toGroup:nil];
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:nil];
     
-    XCTAssertEqual(_sessionController.taskGroups.count,
+    XCTAssertEqual(_sessionController.groups.count,
                    1U,
                    @"Should have one task group");
     
@@ -145,9 +177,11 @@
 - (void)testAddTaskToEmptyStringGroup
 {
     NSURLSessionTask *task = [NSURLSessionTask new];
-    [_sessionController addTask:task toGroup:@""];
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:@""];
     
-    XCTAssertEqual(_sessionController.taskGroups.count,
+    XCTAssertEqual(_sessionController.groups.count,
                    1U,
                    @"Should have one task group");
     
@@ -160,13 +194,15 @@
 {
     // Add task first
     NSURLSessionTask *task = [NSURLSessionTask new];
-    [_sessionController addTask:task toGroup:kTestGroupName];
-
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:kTestGroupName];
+    
     // Remove task
     [_sessionController removeTask:task
                          fromGroup:kTestGroupName];
     
-    XCTAssertEqual(_sessionController.taskGroups.count,
+    XCTAssertEqual(_sessionController.groups.count,
                    0U,
                    @"Should not have task group for tasks when empty");
 }
@@ -174,13 +210,15 @@
 - (void)testRemoveTaskFromNilGroup
 {
     NSURLSessionTask *task = [NSURLSessionTask new];
-    [_sessionController addTask:task toGroup:nil];
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:nil];
     
     // Remove task
     [_sessionController removeTask:task
                          fromGroup:nil];
     
-    XCTAssertEqual(_sessionController.taskGroups.count,
+    XCTAssertEqual(_sessionController.groups.count,
                    0U,
                    @"Should not have task group for tasks when empty");
 }
@@ -192,11 +230,15 @@
     // Add task first
     NSURLSessionTask *task = [self googleTask];
     [task resume];
-    [_sessionController addTask:task toGroup:kTestGroupName];
-
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:kTestGroupName];
+    
     // Add task first
     NSURLSessionTask *task2 = [NSURLSessionTask new];
-    [_sessionController addTask:task2 toGroup:kTestGroup2Name];
+    [_sessionController addTask:task
+                      withToken:kTestTask2Token
+                        toGroup:kTestGroup2Name];
     
     [_sessionController suspendTasksInGroup:kTestGroupName];
     
@@ -212,7 +254,9 @@
 - (void)testResumeTasksInGroup
 {
     NSURLSessionTask *task = [self googleTask];
-    [_sessionController addTask:task toGroup:kTestGroupName];
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:kTestGroupName];
     
     XCTAssertEqual(task.state,
                    NSURLSessionTaskStateSuspended,
@@ -228,8 +272,10 @@
 - (void)testCancelTasksInGroup
 {
     NSURLSessionTask *task = [self googleTask];
-    [_sessionController addTask:task toGroup:kTestGroupName];
-
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:kTestGroupName];
+    
     [_sessionController cancelTasksInGroup:kTestGroupName];
     
     XCTAssertEqual(task.state,
@@ -241,12 +287,16 @@
 {
     NSURLSessionTask *task = [self googleTask];
     [task resume];
-    [_sessionController addTask:task toGroup:kTestGroupName];
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:kTestGroupName];
     
     // Add task first
     NSURLSessionTask *task2 = [self googleTask];
     [task2 resume];
-    [_sessionController addTask:task2 toGroup:kTestGroup2Name];
+    [_sessionController addTask:task2
+                      withToken:kTestTask2Token
+                        toGroup:kTestGroup2Name];
 
     [_sessionController suspendAllTasks];
     
@@ -263,11 +313,15 @@
 - (void)testResumeAllTasks
 {
     NSURLSessionTask *task = [self googleTask];
-    [_sessionController addTask:task toGroup:kTestGroupName];
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:kTestGroupName];
     
     // Add task first
     NSURLSessionTask *task2 = [self googleTask];
-    [_sessionController addTask:task2 toGroup:kTestGroup2Name];
+    [_sessionController addTask:task2
+                      withToken:kTestTask2Token
+                        toGroup:kTestGroup2Name];
     
     [_sessionController resumeAllTasks];
     
@@ -284,11 +338,15 @@
 - (void)testCancelAllTasks
 {
     NSURLSessionTask *task = [self googleTask];
-    [_sessionController addTask:task toGroup:kTestGroupName];
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:kTestGroupName];
     
     // Add task first
     NSURLSessionTask *task2 = [self googleTask];
-    [_sessionController addTask:task2 toGroup:kTestGroup2Name];
+    [_sessionController addTask:task2
+                      withToken:kTestTask2Token
+                        toGroup:kTestGroup2Name];
 
     [_sessionController cancelAllTasks];
     

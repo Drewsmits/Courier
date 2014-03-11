@@ -45,6 +45,8 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
 
 @property (nonatomic, readonly) NSMutableDictionary *groups;
 
+@property (nonatomic, readonly) NSMutableDictionary *tasks;
+
 /**
  The internal NSURLSessionConfiguration from the internal NSURLSession.
  */
