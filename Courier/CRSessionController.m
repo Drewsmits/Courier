@@ -37,7 +37,7 @@
 
 @interface CRSessionController ()
 
-@property (nonatomic, weak) id <CRURLSessionControllerDelegate> controllerDelegate;
+@property (nonatomic, weak, readwrite) id <CRURLSessionControllerDelegate> controllerDelegate;
 
 @property (nonatomic, strong) NSURLSession *session;
 
@@ -152,7 +152,7 @@
 
 - (void)handleResponse:(NSURLResponse *)response
 {
-    CourierLogInfo(@"URL: %@, status code: %i", response.URL, response.statusCode);
+    CourierLogInfo(@"URL: %@, status code: %li", response.URL, (long)response.statusCode);
     if (!response.success) {
         if (response.statusCode == 401) {
             [_controllerDelegate sessionReceivedUnauthorizedResponse:response];

@@ -36,7 +36,7 @@
 NS_CLASS_AVAILABLE(10_9, 7_0)
 @interface CRSessionController : NSObject <NSURLSessionDataDelegate>
 
-@property (nonatomic, readonly) id <CRURLSessionControllerDelegate> controllerDelegate;
+@property (nonatomic, weak, readonly) id <CRURLSessionControllerDelegate> controllerDelegate;
 
 /**
  The internal NSURLSession.
