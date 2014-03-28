@@ -47,14 +47,11 @@
 
 @property (nonatomic, strong) Reachability *reachabilityObject;
 
+@property (nonatomic, assign) NSUInteger busyCount;
+
 @end
 
 @implementation CRSessionController
-
-- (void)dealloc
-{
-    [_session removeObserver:self forKeyPath:@"delegateQueue.operationCount"];
-}
 
 + (instancetype)sessionControllerWithConfiguration:(NSURLSessionConfiguration *)configuration
                                           delegate:(id <CRURLSessionControllerDelegate>)delegate
@@ -87,16 +84,6 @@
     }];
     
     controller.reachabilityObject = reachability;
-    
-    //
-    // Network activity
-    //
-    // Observe adding/removing operations to the delegate queue to show network
-    // activity.
-    //
-    [session addObserver:controller
-              forKeyPath:@"delegateQueue.operationCount"
-                 options:NSKeyValueObservingOptionNew context:nil];
     
     return controller;
 }
@@ -203,6 +190,14 @@
     }
     taskDict[@"task"] = task;
     taskDict[@"group"] = group;
+    
+    //
+    // Observe task state for network activity indicator
+    //
+    [task addObserver:self
+           forKeyPath:@"state"
+              options:NSKeyValueObservingOptionNew
+              context:nil];
 }
 
 - (void)removeTaskWithToken:(NSString *)token
@@ -216,6 +211,12 @@
     
     // Remove from groups
     [self removeTask:task fromGroup:group];
+    
+    //
+    // Stop observing task state
+    //
+    [task removeObserver:self
+              forKeyPath:@"state"];
 }
 
 - (void)removeTask:(NSURLSessionTask *)task
@@ -322,11 +323,32 @@
                         change:(NSDictionary *)change
                        context:(void *)context
 {
-    // Observer changes to the NSURLSession delegateQueue operation count.
-    // This provides global control of the network activity indicator
-    if ([keyPath isEqualToString:@"delegateQueue.operationCount"]
-        && [object isEqual:_session]) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = (_session.delegateQueue.operationCount > 0);
+    //
+    // Task state observing
+    //
+    if ([keyPath isEqualToString:@"state"]) {
+        NSURLSessionTask *task = (NSURLSessionTask *)object;
+        switch (task.state) {
+            case NSURLSessionTaskStateRunning:
+                self.busyCount += 1;
+                break;
+            case NSURLSessionTaskStateSuspended:
+                self.busyCount -= 1;
+                break;
+            case NSURLSessionTaskStateCanceling:
+                // noop
+                break;
+            case NSURLSessionTaskStateCompleted:
+                self.busyCount -= 1;
+                break;
+            default:
+                break;
+        }
+        if (self.busyCount > 1) return;
+        BOOL busy = self.busyCount > 0;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = busy;
+        });
     }
 }
 
