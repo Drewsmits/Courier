@@ -53,7 +53,12 @@
     [request setHTTPMethod:method];
     [request setHTTPBodyDataWithParameters:httpBodyParameters encoding:encoding];
     [request setAllHTTPHeaderFields:header];
-    [request addHeaderContentTypeForEncoding:encoding];
+    
+    // Only add content type if there are body params. Play! filters seems to
+    // have an issue with setting Content-Type header but not provide a body.
+    if (httpBodyParameters && httpBodyParameters.count > 0) {
+        [request addHeaderContentTypeForEncoding:encoding];
+    }
     
     return request;
 }
@@ -83,7 +88,9 @@
     // Bail if content type is already set
     //
     if (self.allHTTPHeaderFields[@"Content-Type"]) return;
-    
+
+//  image request, @"image/tiff,image/jpeg,image/gif,image/png,image/ico,image/x-icon,image/bmp,image/x-bmp,image/x-xbitmap,image/x-win-bitmap"
+
     //
     // Set the content type
     //
@@ -94,7 +101,7 @@
         [self addValue:type forHTTPHeaderField:@"Content-Type"];
     } else if (encoding == CR_URLJSONParameterEncoding) {
         // JSON
-        [self addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [self addValue:@"application/json,text/json,text/javascript" forHTTPHeaderField:@"Content-Type"];
     }
 }
 

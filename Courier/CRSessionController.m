@@ -316,6 +316,14 @@
     return _reachabilityObject.isReachable;
 }
 
+// TODO: Log requests
+//- (void)logRequests
+//{
+//    for (NSURLSessionTask *task in _tasks) {
+//        task.originalRequest.URL;
+//    }
+//}
+
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
