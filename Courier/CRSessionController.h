@@ -25,13 +25,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol CRURLSessionControllerDelegate <NSObject>
-
-- (void)sessionReceivedUnauthorizedResponse:(NSURLResponse *)response;
-
-- (void)sessionReceivedUnreachableResponse:(NSURLResponse *)response;
-
-@end
+@protocol CRURLSessionControllerDelegate;
 
 NS_CLASS_AVAILABLE(10_9, 7_0)
 @interface CRSessionController : NSObject <NSURLSessionDataDelegate>
@@ -105,5 +99,37 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
  Returns YES if any internet connection is reachable.
  */
 - (BOOL)isInternetReachable;
+
+@end
+
+@protocol CRURLSessionControllerDelegate <NSObject>
+
+/**
+ *  Delegates implement this method to handle 401 responses.
+ *
+ *  @param response The response from an HTTP request
+ */
+- (void)sessionReceivedUnauthorizedResponse:(NSURLResponse *)response;
+
+/**
+ *  Delegates implement this method to handle an unreachable response. This occurs
+ *  when the reachability status changes or when a response returns with an 
+ *  unreachable status.
+ *
+ *  @param response The response from an HTTP request
+ */
+- (void)sessionReceivedUnreachableResponse:(NSURLResponse *)response;
+
+@optional
+
+/**
+ *  Delegates implement this method to have an additional hook into handling HTTP
+ *  request responses.
+ *
+ *  @param controller The controller responsible for the request
+ *  @param response   The response from an HTTP request
+ */
+- (void)sessionController:(CRSessionController *)controller
+       didRecieveResponse:(NSURLResponse *)response;
 
 @end

@@ -140,6 +140,17 @@
 - (void)handleResponse:(NSURLResponse *)response
 {
     CourierLogInfo(@"URL: %@, status code: %li", response.URL, (long)response.statusCode);
+    
+    //
+    // Pass through response to delegate
+    //
+    if ([self.controllerDelegate respondsToSelector:@selector(sessionController:didRecieveResponse:)]) {
+        [self.controllerDelegate sessionController:self didRecieveResponse:response];
+    }
+    
+    //
+    // Simple hook to respond to 401 responses
+    //
     if (!response.success) {
         if (response.statusCode == 401) {
             [_controllerDelegate sessionReceivedUnauthorizedResponse:response];
@@ -171,7 +182,7 @@
     CourierLogInfo(@"Adding task to group : %@", group);
     
     //
-    // Groups
+    // Add task to Groups
     //
     NSMutableArray *tasks = [_groups objectForKey:group];
     if (!tasks) {
@@ -181,7 +192,7 @@
     [tasks addObject:task];
     
     //
-    // Tasks
+    // Add task to reverse map Tasks
     //
     NSMutableDictionary *taskDict = [_tasks objectForKey:group];
     if (!taskDict) {
