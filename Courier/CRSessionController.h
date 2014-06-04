@@ -54,6 +54,7 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
 - (NSURLSessionDataTask *)dataTaskForRequest:(NSURLRequest *)request
                            completionHandler:(void (^)(NSData *data,
                                                        NSURLResponse *response,
+                                                       BOOL cachedResponse,
                                                        NSError *error))completionHandler;
 /**
  Create an NSURLSessionDataTask for the given request and add it to the specified
@@ -63,37 +64,8 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
                                    taskGroup:(NSString *)group
                            completionHandler:(void (^)(NSData *data,
                                                        NSURLResponse *response,
+                                                       BOOL cachedResponse,
                                                        NSError *error))completionHandler;
-
-/**
- Calls -suspend on all tasks in a given group.
- */
-- (void)suspendTasksInGroup:(NSString *)group;
-
-/**
- Calls -resume on all tasks in a given group.
- */
-- (void)resumeTasksInGroup:(NSString *)group;
-
-/**
- Calls -cancel on all tasks in a given group.
- */
-- (void)cancelTasksInGroup:(NSString *)group;
-
-/**
- Calls -suspend on all tasks tracked by this controller
- */
-- (void)suspendAllTasks;
-
-/**
- Calls -resume on all tasks tracked by this controller
- */
-- (void)resumeAllTasks;
-
-/**
- Calls -cancel on all tasks tracked by this controller
- */
-- (void)cancelAllTasks;
 
 /**
  Returns YES if any internet connection is reachable.
@@ -131,5 +103,45 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
  */
 - (void)sessionController:(CRSessionController *)controller
        didRecieveResponse:(NSURLResponse *)response;
+
+@end
+
+@interface CRSessionController (TaskManagement)
+
+/**
+ Calls -suspend on all tasks in a given group.
+ */
+- (void)suspendTasksInGroup:(NSString *)group;
+
+/**
+ Calls -resume on all tasks in a given group.
+ */
+- (void)resumeTasksInGroup:(NSString *)group;
+
+/**
+ Calls -cancel on all tasks in a given group.
+ */
+- (void)cancelTasksInGroup:(NSString *)group;
+
+/**
+ Calls -suspend on all tasks tracked by this controller
+ */
+- (void)suspendAllTasks;
+
+/**
+ Calls -resume on all tasks tracked by this controller
+ */
+- (void)resumeAllTasks;
+
+/**
+ Calls -cancel on all tasks tracked by this controller
+ */
+- (void)cancelAllTasks;
+
+@end
+
+@interface CRSessionController (Debug)
+
+- (void)logRequests;
 
 @end

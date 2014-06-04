@@ -88,11 +88,12 @@
     return controller;
 }
 
-#pragma mark - Task
+#pragma mark - Task creation
 
 - (NSURLSessionDataTask *)dataTaskForRequest:(NSURLRequest *)request
                            completionHandler:(void (^)(NSData *data,
                                                        NSURLResponse *response,
+                                                       BOOL cachedResponse,
                                                        NSError *error))completionHandler
 {
     NSURLSessionDataTask *task = [self dataTaskForRequest:request
@@ -105,14 +106,22 @@
                                    taskGroup:(NSString *)group
                            completionHandler:(void (^)(NSData *data,
                                                        NSURLResponse *response,
+                                                       BOOL cachedResponse,
                                                        NSError *error))completionHandler
 {
     CourierLogInfo(@"Creating task for URL : %@", request.URL);
-
+    
     //
     // Unique task token
     //
     NSString *token = [self uniqueToken];
+    
+    //
+    // Check for cached response. Pass this into the completion and allow the task
+    // to pass through the normal delegate queue flow.
+    //
+    NSURLCache *urlCache = _session.configuration.URLCache;
+    BOOL cachedResponse = urlCache && [urlCache cachedResponseForRequest:request];
     
     //
     // Create Task
@@ -125,8 +134,12 @@
                                                  __strong typeof(self) strongSelf = weakSelf;
                                                  [strongSelf handleResponse:response];
                                                  [strongSelf removeTaskWithToken:token];
-                                                 if (completionHandler) completionHandler(data, response, error);
+                                                 if (completionHandler) completionHandler(data,
+                                                                                          response,
+                                                                                          cachedResponse,
+                                                                                          error);
                                              }];
+    
     //
     // Keep track of the task
     //
@@ -139,22 +152,23 @@
 
 - (void)handleResponse:(NSURLResponse *)response
 {
-    CourierLogInfo(@"URL: %@, status code: %li", response.URL, (long)response.statusCode);
+    CourierLogInfo(@"URL: %@, status code: %li",
+                   response.URL,
+                   (long)response.statusCode);
     
     //
     // Pass through response to delegate
     //
     if ([self.controllerDelegate respondsToSelector:@selector(sessionController:didRecieveResponse:)]) {
-        [self.controllerDelegate sessionController:self didRecieveResponse:response];
+        [self.controllerDelegate sessionController:self
+                                didRecieveResponse:response];
     }
     
     //
     // Simple hook to respond to 401 responses
     //
-    if (!response.success) {
-        if (response.statusCode == 401) {
-            [_controllerDelegate sessionReceivedUnauthorizedResponse:response];
-        }
+    if (response.statusCode == 401) {
+        [_controllerDelegate sessionReceivedUnauthorizedResponse:response];
     }
 }
 
@@ -163,7 +177,7 @@
     return _session.configuration;
 }
 
-#pragma mark - Task Management
+#pragma mark - Add/Remove Tasks
 
 - (NSString *)uniqueToken
 {
@@ -178,37 +192,38 @@
     if (!group || group.length == 0) {
         group = kCRSessionControllerGenericTaskGroup;
     }
-    
-    CourierLogInfo(@"Adding task to group : %@", group);
-    
-    //
-    // Add task to Groups
-    //
-    NSMutableArray *tasks = [_groups objectForKey:group];
-    if (!tasks) {
-        tasks = [NSMutableArray array];
+    @synchronized (self) {
+        CourierLogInfo(@"Adding task to group : %@", group);
+        
+        //
+        // Add task to Groups
+        //
+        NSMutableArray *tasks = [_groups objectForKey:group];
+        if (!tasks) {
+            tasks = [NSMutableArray array];
+        }
+        [tasks addObject:task];
         [_groups setObject:tasks forKey:group];
-    }
-    [tasks addObject:task];
-    
-    //
-    // Add task to reverse map Tasks
-    //
-    NSMutableDictionary *taskDict = [_tasks objectForKey:group];
-    if (!taskDict) {
-        taskDict = [NSMutableDictionary dictionary];
+        
+        //
+        // Add task to reverse map Tasks
+        //
+        NSMutableDictionary *taskDict = [_tasks objectForKey:group];
+        if (!taskDict) {
+            taskDict = [NSMutableDictionary dictionary];
+        }
+        taskDict[@"task"] = task;
+        taskDict[@"group"] = group;
         [_tasks setObject:taskDict forKey:token];
+        
+        //
+        // Observe task state for network activity indicator
+        //
+        [task addObserver:self
+               forKeyPath:@"state"
+                  options:NSKeyValueObservingOptionNew
+                  context:nil];
     }
-    taskDict[@"task"] = task;
-    taskDict[@"group"] = group;
-    
-    //
-    // Observe task state for network activity indicator
-    //
-    [task addObserver:self
-           forKeyPath:@"state"
-              options:NSKeyValueObservingOptionNew
-              context:nil];
 }
 
 - (void)removeTaskWithToken:(NSString *)token
@@ -217,48 +232,88 @@
     NSString         *group    = taskDict[@"group"];
     NSURLSessionTask *task     = taskDict[@"task"];
     
-    // Remove from tasks
-    [_tasks removeObjectForKey:token];
-    
-    // Remove from groups
-    [self removeTask:task fromGroup:group];
-    
-    //
-    // Stop observing task state
-    //
-    [task removeObserver:self
-              forKeyPath:@"state"];
-}
-
-- (void)removeTask:(NSURLSessionTask *)task
-         fromGroup:(NSString *)group
-{
     if (!task) return;
     if (!group || group.length == 0) {
         group = kCRSessionControllerGenericTaskGroup;
     }
     
-    CourierLogInfo(@"Removing task from group : %@", group);
-    
-    //
-    // Get the tasks
-    //
-    NSMutableArray *tasks = [_groups objectForKey:group];
-    
-    //
-    // Remove the task
-    //
-    [tasks removeObject:task];
-    
-    //
-    // If empty, remove tasks array
-    //
-    if (tasks.count == 0) {
-        [_groups removeObjectForKey:group];
+    @synchronized (self) {
+        CourierLogInfo(@"Removing task for URL: %@ in group: %@",
+                       task.currentRequest.URL,
+                       group);
+        
+        //
+        // Get the tasks
+        //
+        NSMutableArray *groupTasks = [_groups objectForKey:group];
+        
+        //
+        // Remove the task
+        //
+        [_tasks removeObjectForKey:token];
+        [groupTasks removeObject:task];
+        
+        //
+        // If empty, remove tasks array
+        //
+        if (groupTasks.count == 0) {
+            [_groups removeObjectForKey:group];
+        }
+        
+        //
+        // Stop observing task state
+        //
+        [task removeObserver:self
+                  forKeyPath:@"state"];
     }
 }
 
-#pragma mark - Task State Management
+#pragma mark - Reachability
+
+- (BOOL)isInternetReachable
+{
+    return _reachabilityObject.isReachable;
+}
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    //
+    // Task state observing
+    //
+    if ([keyPath isEqualToString:@"state"]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSURLSessionTask *task = (NSURLSessionTask *)object;
+            switch (task.state) {
+                case NSURLSessionTaskStateRunning:
+                    self.busyCount += 1;
+                    break;
+                case NSURLSessionTaskStateSuspended:
+                    self.busyCount -= 1;
+                    break;
+                case NSURLSessionTaskStateCanceling:
+                    // noop
+                    break;
+                case NSURLSessionTaskStateCompleted:
+                    self.busyCount -= 1;
+                    break;
+                default:
+                    break;
+            }
+            if (self.busyCount > 1) return;
+            BOOL busy = self.busyCount > 0;
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = busy;
+        });
+    }
+}
+
+@end
+
+@implementation CRSessionController (TaskManagement)
 
 - (void)suspendTasksInGroup:(NSString *)group
 {
@@ -320,54 +375,16 @@
     }];
 }
 
-#pragma mark - Reachability
+@end
 
-- (BOOL)isInternetReachable
+@implementation CRSessionController (Debug)
+
+- (void)logRequests
 {
-    return _reachabilityObject.isReachable;
-}
-
-// TODO: Log requests
-//- (void)logRequests
-//{
-//    for (NSURLSessionTask *task in _tasks) {
-//        task.originalRequest.URL;
-//    }
-//}
-
-#pragma mark - KVO
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context
-{
-    //
-    // Task state observing
-    //
-    if ([keyPath isEqualToString:@"state"]) {
-        NSURLSessionTask *task = (NSURLSessionTask *)object;
-        switch (task.state) {
-            case NSURLSessionTaskStateRunning:
-                self.busyCount += 1;
-                break;
-            case NSURLSessionTaskStateSuspended:
-                self.busyCount -= 1;
-                break;
-            case NSURLSessionTaskStateCanceling:
-                // noop
-                break;
-            case NSURLSessionTaskStateCompleted:
-                self.busyCount -= 1;
-                break;
-            default:
-                break;
-        }
-        if (self.busyCount > 1) return;
-        BOOL busy = self.busyCount > 0;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = busy;
-        });
+    CourierLogInfo(@"Log current tasks:");
+    for (NSURLSessionTask *task in _tasks) {
+        NSString *description = [NSString stringWithFormat:@"task: %@\n URL: %@\nMethod: %@", task, task.currentRequest.URL, task.currentRequest.HTTPMethod];
+        CourierLogInfo(@"%@", description);
     }
 }
 

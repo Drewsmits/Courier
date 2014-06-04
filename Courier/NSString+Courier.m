@@ -29,13 +29,13 @@
 
 @implementation NSString (Courier)
 
-- (NSString *)urlEncodedString
+- (NSString *)cou_urlEncodedString
 {
-	return [self urlEncodedStringWithEncoding:NSUTF8StringEncoding];
+	return [self cou_urlEncodedStringWithEncoding:NSUTF8StringEncoding];
 }
 
 // See http://github.com/pokeb/asi-http-request/raw/master/Classes/ASIFormDataRequest.m
-- (NSString *)urlEncodedStringWithEncoding:(NSStringEncoding)encoding
+- (NSString *)cou_urlEncodedStringWithEncoding:(NSStringEncoding)encoding
 {
 	NSString *urlEncodedString = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                                                                                        (__bridge CFStringRef)self,

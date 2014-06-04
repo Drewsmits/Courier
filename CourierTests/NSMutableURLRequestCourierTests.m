@@ -32,8 +32,8 @@
 // Declare private methods as public for tests
 @interface NSMutableURLRequest (CourierTests)
 - (void)setURLPath:(NSString *)path withParameters:(NSDictionary *)parameters;
-- (void)addHeaderContentTypeForEncoding:(CR_URLRequestEncoding)encoding;
-- (void)setHTTPBodyDataWithParameters:(NSDictionary *)parameters encoding:(CR_URLRequestEncoding)encoding;
+- (void)addHeaderContentTypeForEncoding:(CRURLRequestEncoding)encoding;
+- (void)setHTTPBodyDataWithParameters:(NSDictionary *)parameters encoding:(CRURLRequestEncoding)encoding;
 @end
 
 @interface NSMutableURLRequestCourierTests : CRTestCase
@@ -60,7 +60,7 @@
 {
     NSString *path = @"http://business.com/api/v1?param=value";
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithMethod:@"GET"
+    NSMutableURLRequest *request = [NSMutableURLRequest cou_requestWithMethod:@"GET"
                                                                      path:path];
     
     XCTAssertNotNil(request.URL, @"Request should have a URL");
@@ -75,12 +75,12 @@
     NSDictionary *bodyParams = @{@"key1" : @"value1", @"key2" : @"value2"};
     NSDictionary *header = @{@"Header-Key" : @"Value"};
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithMethod:@"GET"
-                                                                     path:path
-                                                                 encoding:CR_URLJSONParameterEncoding
-                                                            URLParameters:urlParams
-                                                       HTTPBodyParameters:bodyParams
-                                                                   header:header];
+    NSMutableURLRequest *request = [NSMutableURLRequest cou_requestWithMethod:@"GET"
+                                                                         path:path
+                                                                     encoding:CRURLJSONParameterEncoding
+                                                                URLParameters:urlParams
+                                                           HTTPBodyParameters:bodyParams
+                                                                       header:header];
     
     XCTAssertNotNil(request.URL, @"Request should have a URL");
     XCTAssertEqualObjects(request.HTTPMethod, @"GET", @"Request should have the correct HTTPmethod");
@@ -88,7 +88,7 @@
     
     NSMutableDictionary *expectedHeader = [NSMutableDictionary dictionary];
     [expectedHeader addEntriesFromDictionary:header];
-    expectedHeader[@"Content-Type"] = @"application/json";
+    expectedHeader[@"Content-Type"] = @"application/json,text/json,text/javascript";
     
     XCTAssertEqualObjects(request.allHTTPHeaderFields, expectedHeader, @"Request should have the correct header");
 }
@@ -117,7 +117,7 @@
     
     [request setURLPath:path withParameters:params];
     
-    NSString *expectedPath = [NSString stringWithFormat:@"%@%@", path, @"?key2=value2&key1=value1"];
+    NSString *expectedPath = [NSString stringWithFormat:@"%@%@", path, @"?key1=value1&key2=value2"];
     
     XCTAssertEqualObjects(request.URL,
                           [NSURL URLWithString:expectedPath],
@@ -134,7 +134,7 @@
     
     [request setURLPath:path withParameters:params];
     
-    NSString *expectedPath = [NSString stringWithFormat:@"%@%@", path, @"&key2=value2&key1=value1"];
+    NSString *expectedPath = [NSString stringWithFormat:@"%@%@", path, @"&key1=value1&key2=value2"];
     
     XCTAssertEqualObjects(request.URL,
                           [NSURL URLWithString:expectedPath],
@@ -148,7 +148,7 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request addValue:@"application/custom-content-type" forHTTPHeaderField:@"Content-Type"];
     
-    [request addHeaderContentTypeForEncoding:CR_URLFormURLParameterEncoding];
+    [request addHeaderContentTypeForEncoding:CRURLFormURLParameterEncoding];
     
     XCTAssertEqualObjects(request.allHTTPHeaderFields[@"Content-Type"],
                           @"application/custom-content-type",
@@ -159,7 +159,7 @@
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
 
-    [request addHeaderContentTypeForEncoding:CR_URLRequestEncodingUnknown];
+    [request addHeaderContentTypeForEncoding:CRURLRequestEncodingUnknown];
     
     XCTAssertNil(request.allHTTPHeaderFields[@"Content-Type"],
                  @"Request should not have a Content-Type header");
@@ -169,7 +169,7 @@
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     
-    [request addHeaderContentTypeForEncoding:CR_URLFormURLParameterEncoding];
+    [request addHeaderContentTypeForEncoding:CRURLFormURLParameterEncoding];
     
     XCTAssertEqualObjects(request.allHTTPHeaderFields[@"Content-Type"],
                           @"application/x-www-form-urlencoded; charset=utf-8",
@@ -180,10 +180,10 @@
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     
-    [request addHeaderContentTypeForEncoding:CR_URLJSONParameterEncoding];
+    [request addHeaderContentTypeForEncoding:CRURLJSONParameterEncoding];
     
     XCTAssertEqualObjects(request.allHTTPHeaderFields[@"Content-Type"],
-                          @"application/json",
+                          @"application/json,text/json,text/javascript",
                           @"Request should have correct content type");
 }
 
@@ -198,7 +198,7 @@
     
     [request setURLPath:path withParameters:params];
     
-    [request setHTTPBodyDataWithParameters:params encoding:CR_URLRequestEncodingUnknown];
+    [request setHTTPBodyDataWithParameters:params encoding:CRURLRequestEncodingUnknown];
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:params];
     
@@ -216,9 +216,9 @@
     
     [request setURLPath:path withParameters:params];
     
-    [request setHTTPBodyDataWithParameters:params encoding:CR_URLFormURLParameterEncoding];
+    [request setHTTPBodyDataWithParameters:params encoding:CRURLFormURLParameterEncoding];
     
-    NSData *data = [params asFormURLEncodedData];
+    NSData *data = [params cou_asFormURLEncodedData];
     
     XCTAssertEqualObjects(request.HTTPBody,
                           data,
@@ -234,9 +234,9 @@
     
     [request setURLPath:path withParameters:params];
     
-    [request setHTTPBodyDataWithParameters:params encoding:CR_URLJSONParameterEncoding];
+    [request setHTTPBodyDataWithParameters:params encoding:CRURLJSONParameterEncoding];
     
-    NSData *data = [params asJSONData];
+    NSData *data = [params cou_asJSONData];
     
     XCTAssertEqualObjects(request.HTTPBody,
                           data,

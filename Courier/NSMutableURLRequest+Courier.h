@@ -26,15 +26,15 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-  CR_URLRequestEncodingUnknown,
-  CR_URLFormURLParameterEncoding,
-  CR_URLJSONParameterEncoding,
-} CR_URLRequestEncoding;
+    CRURLRequestEncodingUnknown,
+    CRURLFormURLParameterEncoding,
+    CRURLJSONParameterEncoding,
+} CRURLRequestEncoding;
 
 @interface NSMutableURLRequest (Courier)
 
-+ (NSMutableURLRequest *)requestWithMethod:(NSString *)method
-                                      path:(NSString *)path;
++ (NSMutableURLRequest *)cou_requestWithMethod:(NSString *)method
+                                          path:(NSString *)path;
 
 /**
  
@@ -42,11 +42,11 @@ typedef enum {
  specify your own.
  
  */
-+ (NSMutableURLRequest *)requestWithMethod:(NSString *)method
-                                      path:(NSString *)path
-                                  encoding:(CR_URLRequestEncoding)encoding
-                             URLParameters:(NSDictionary *)urlParameters
-                        HTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                                    header:(NSDictionary *)header;
++ (NSMutableURLRequest *)cou_requestWithMethod:(NSString *)method
+                                          path:(NSString *)path
+                                      encoding:(CRURLRequestEncoding)encoding
+                                 URLParameters:(NSDictionary *)urlParameters
+                            HTTPBodyParameters:(NSDictionary *)httpBodyParameters
+                                        header:(NSDictionary *)header;
 
 @end

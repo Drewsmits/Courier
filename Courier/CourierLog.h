@@ -12,7 +12,7 @@
 // Comment out to silence logs
 #define COURIER_LOG 1
 
-#if defined(DEBUG) && defined(COURIER_LOG)
+#if DEBUG && COURIER_LOG
     #define CourierLogInfo(...) NSLog(@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
     #define CourierLogWarning(...) NSLog(@"\n!!!!\n%s %@\n!!!!\n", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
 #else

@@ -44,8 +44,7 @@
       withToken:(NSString *)token
         toGroup:(NSString *)group;
 
-- (void)removeTask:(NSURLSessionTask *)task
-         fromGroup:(NSString *)group;
+- (void)removeTaskWithToken:(NSString *)token;
 
 @end
 
@@ -96,6 +95,7 @@
                                                               taskGroup:kTestGroupName
                                                       completionHandler:^(NSData *data,
                                                                           NSURLResponse *response,
+                                                                          BOOL cachedResponse,
                                                                           NSError *error) {
                                                           finished = YES;
                                                       }];
@@ -211,8 +211,7 @@
                         toGroup:kTestGroupName];
     
     // Remove task
-    [_sessionController removeTask:task
-                         fromGroup:kTestGroupName];
+    [_sessionController removeTaskWithToken:kTestTaskToken];
     
     XCTAssertEqual(_sessionController.groups.count,
                    0U,
@@ -227,8 +226,7 @@
                         toGroup:nil];
     
     // Remove task
-    [_sessionController removeTask:task
-                         fromGroup:nil];
+    [_sessionController removeTaskWithToken:kTestTaskToken];
     
     XCTAssertEqual(_sessionController.groups.count,
                    0U,

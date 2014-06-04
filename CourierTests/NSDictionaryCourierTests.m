@@ -50,17 +50,17 @@
 {
     NSDictionary *params = @{@"key1" : @"value1", @"key2" : @"value2"};
 
-    NSString *jsonParams = [params asJSONString];
+    NSString *jsonParams = [params cou_asJSONString];
     
     XCTAssertEqualObjects(jsonParams,
-                          @"{\"key2\":\"value2\",\"key1\":\"value1\"}",
+                          @"{\"key1\":\"value1\",\"key2\":\"value2\"}",
                           @"Should be a correctly formatted JSON string");
 }
 
 - (void)testAsJSONData
 {
     NSDictionary *params = @{@"key1" : @"value1", @"key2" : @"value2"};
-    NSData *jsonData = [params asJSONData];
+    NSData *jsonData = [params cou_asJSONData];
 
     NSData *expectedData = [NSJSONSerialization dataWithJSONObject:params
                                                            options:0
@@ -73,7 +73,7 @@
 {
     NSDictionary *params = @{@"key1" : @"value1", @"key2" : @"value2"};
 
-    NSData *data = [params asFormURLEncodedData];
+    NSData *data = [params cou_asFormURLEncodedData];
     
     NSString *dataString = [[NSString alloc] initWithData:data
                                                  encoding:NSUTF8StringEncoding];
@@ -81,7 +81,7 @@
     XCTAssertNotNil(dataString, @"Should properly format form URL string as UTF8 string encoded data");
 
     XCTAssertEqualObjects(dataString,
-                          @"key2=value2&key1=value1",
+                          @"key1=value1&key2=value2",
                           @"Should properly format as form URL encoded string");
 
 }
@@ -90,10 +90,10 @@
 {
     NSDictionary *params = @{@"key1" : @"value1", @"key2" : @"value2"};
     
-    NSString *string = [params asFormURLEncodedString];
+    NSString *string = [params cou_asFormURLEncodedString];
     
     XCTAssertEqualObjects(string,
-                          @"key2=value2&key1=value1",
+                          @"key1=value1&key2=value2",
                           @"Should properly format as form URL encoded string");
 }
 

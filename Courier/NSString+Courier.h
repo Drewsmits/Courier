@@ -28,8 +28,8 @@
 
 @interface NSString (Courier)
 
-- (NSString *)urlEncodedString;
+- (NSString *)cou_urlEncodedString;
 
-- (NSString *)urlEncodedStringWithEncoding:(NSStringEncoding)encoding;
+- (NSString *)cou_urlEncodedStringWithEncoding:(NSStringEncoding)encoding;
 
 @end

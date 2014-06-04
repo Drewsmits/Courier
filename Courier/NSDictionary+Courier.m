@@ -30,14 +30,14 @@
 
 #pragma mark - application/json
 
-- (NSString *)asJSONString
+- (NSString *)cou_asJSONString
 {
-    NSData *jsonData = [self asJSONData];
+    NSData *jsonData = [self cou_asJSONData];
     if (!jsonData) return nil;
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];    
 }
 
-- (NSData *)asJSONData
+- (NSData *)cou_asJSONData
 {
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
@@ -51,13 +51,13 @@
 
 #pragma mark - application/x-www-form-urlencoded
 
-- (NSString *)asFormURLEncodedString
+- (NSString *)cou_asFormURLEncodedString
 {
     __block NSMutableArray *mutableParameterComponents = [NSMutableArray array];
     
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        NSString *encodedKey   = [[key description] urlEncodedStringWithEncoding:NSUTF8StringEncoding];
-        NSString *encodedValue = [[obj description] urlEncodedStringWithEncoding:NSUTF8StringEncoding];
+        NSString *encodedKey   = [[key description] cou_urlEncodedStringWithEncoding:NSUTF8StringEncoding];
+        NSString *encodedValue = [[obj description] cou_urlEncodedStringWithEncoding:NSUTF8StringEncoding];
         NSString *component    = [NSString stringWithFormat:@"%@=%@", encodedKey, encodedValue];
         [mutableParameterComponents addObject:component];
     }];
@@ -67,9 +67,9 @@
     return andJoinedString;
 }
 
-- (NSData *)asFormURLEncodedData
+- (NSData *)cou_asFormURLEncodedData
 {
-    NSString *andJoinedString = [self asFormURLEncodedString];
+    NSString *andJoinedString = [self cou_asFormURLEncodedString];
     return [andJoinedString dataUsingEncoding:NSUTF8StringEncoding];
 }
 

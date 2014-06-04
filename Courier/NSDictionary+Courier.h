@@ -30,21 +30,21 @@
 /**
  * NSUTF8StringEncoding encoded JSON string
  */
-- (NSString *)asJSONString;
+- (NSString *)cou_asJSONString;
 
 /**
  * NSJSONSerialization representation
  */
-- (NSData *)asJSONData;
+- (NSData *)cou_asJSONData;
 
 /**
  * & joined form URL encoded string as NSData
  */
-- (NSData *)asFormURLEncodedData;
+- (NSData *)cou_asFormURLEncodedData;
 
 /**
  * Returns URL formated query string, "key1=value1&key2=value2..."
  */
-- (NSString *)asFormURLEncodedString;
+- (NSString *)cou_asFormURLEncodedString;
 
 @end

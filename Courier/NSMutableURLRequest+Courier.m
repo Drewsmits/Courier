@@ -29,23 +29,23 @@
 
 @implementation NSMutableURLRequest (Courier)
 
-+ (NSMutableURLRequest *)requestWithMethod:(NSString *)method
++ (NSMutableURLRequest *)cou_requestWithMethod:(NSString *)method
                                       path:(NSString *)path
 {
-    return [self requestWithMethod:method
+    return [self cou_requestWithMethod:method
                               path:path
-                          encoding:CR_URLRequestEncodingUnknown
+                          encoding:CRURLRequestEncodingUnknown
                      URLParameters:nil
                 HTTPBodyParameters:nil
                             header:nil];
 }
 
-+ (NSMutableURLRequest *)requestWithMethod:(NSString *)method
-                                      path:(NSString *)path
-                                  encoding:(CR_URLRequestEncoding)encoding
-                             URLParameters:(NSDictionary *)urlParameters
-                        HTTPBodyParameters:(NSDictionary *)httpBodyParameters
-                                    header:(NSDictionary *)header
++ (NSMutableURLRequest *)cou_requestWithMethod:(NSString *)method
+                                          path:(NSString *)path
+                                      encoding:(CRURLRequestEncoding)encoding
+                                 URLParameters:(NSDictionary *)urlParameters
+                            HTTPBodyParameters:(NSDictionary *)httpBodyParameters
+                                        header:(NSDictionary *)header
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     
@@ -73,7 +73,7 @@
     //
     if (parameters.count > 0) {
         NSString *stringToAppend = [path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@";
-        NSString *newPath = [path stringByAppendingFormat:stringToAppend, [parameters asFormURLEncodedString]];
+        NSString *newPath = [path stringByAppendingFormat:stringToAppend, [parameters cou_asFormURLEncodedString]];
         path = newPath;
     }
     
@@ -82,7 +82,7 @@
 
 #pragma mark - Header
 
-- (void)addHeaderContentTypeForEncoding:(CR_URLRequestEncoding)encoding
+- (void)addHeaderContentTypeForEncoding:(CRURLRequestEncoding)encoding
 {
     //
     // Bail if content type is already set
@@ -94,12 +94,12 @@
     //
     // Set the content type
     //
-    if (encoding == CR_URLFormURLParameterEncoding) {
+    if (encoding == CRURLFormURLParameterEncoding) {
         // Form URL
         NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
         NSString *type = [NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset];
         [self addValue:type forHTTPHeaderField:@"Content-Type"];
-    } else if (encoding == CR_URLJSONParameterEncoding) {
+    } else if (encoding == CRURLJSONParameterEncoding) {
         // JSON
         [self addValue:@"application/json,text/json,text/javascript" forHTTPHeaderField:@"Content-Type"];
     }
@@ -108,18 +108,18 @@
 #pragma mark - Body
 
 - (void)setHTTPBodyDataWithParameters:(NSDictionary *)parameters
-                             encoding:(CR_URLRequestEncoding)encoding
+                             encoding:(CRURLRequestEncoding)encoding
 {
     if (!parameters) return;
     
     NSData *bodyData = nil;
     
-    if (encoding == CR_URLFormURLParameterEncoding) {
+    if (encoding == CRURLFormURLParameterEncoding) {
         // Form URL
-        bodyData = [parameters asFormURLEncodedData];
-    } else if (encoding == CR_URLJSONParameterEncoding) {
+        bodyData = [parameters cou_asFormURLEncodedData];
+    } else if (encoding == CRURLJSONParameterEncoding) {
         // JSON
-        bodyData = [parameters asJSONData];
+        bodyData = [parameters cou_asJSONData];
     } else {
         // Unknown encoding. Pass it through.
         bodyData = [NSKeyedArchiver archivedDataWithRootObject:parameters];

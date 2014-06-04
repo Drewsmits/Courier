@@ -51,35 +51,35 @@
     //
     // :/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`
     //
-    XCTAssertEqualObjects([@":" urlEncodedString]  , @"%3A", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"/" urlEncodedString]  , @"%2F", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"?" urlEncodedString]  , @"%3F", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"#" urlEncodedString]  , @"%23", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"[" urlEncodedString]  , @"%5B", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"]" urlEncodedString]  , @"%5D", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"@" urlEncodedString]  , @"%40", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"!" urlEncodedString]  , @"%21", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"$" urlEncodedString]  , @"%24", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@" " urlEncodedString]  , @"%20", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"&" urlEncodedString]  , @"%26", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"'" urlEncodedString]  , @"%27", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"(" urlEncodedString]  , @"%28", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@")" urlEncodedString]  , @"%29", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"*" urlEncodedString]  , @"%2A", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"+" urlEncodedString]  , @"%2B", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"," urlEncodedString]  , @"%2C", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@";" urlEncodedString]  , @"%3B", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"=" urlEncodedString]  , @"%3D", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"\"" urlEncodedString] , @"%22", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"<" urlEncodedString]  , @"%3C", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@">" urlEncodedString]  , @"%3E", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"%" urlEncodedString]  , @"%25", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"{" urlEncodedString]  , @"%7B", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"}" urlEncodedString]  , @"%7D", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"|" urlEncodedString]  , @"%7C", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"\\" urlEncodedString] , @"%5C", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"^" urlEncodedString]  , @"%5E", @"Should be encoded correctly");
-    XCTAssertEqualObjects([@"~" urlEncodedString]  , @"%7E", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@":" cou_urlEncodedString]  , @"%3A", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"/" cou_urlEncodedString]  , @"%2F", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"?" cou_urlEncodedString]  , @"%3F", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"#" cou_urlEncodedString]  , @"%23", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"[" cou_urlEncodedString]  , @"%5B", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"]" cou_urlEncodedString]  , @"%5D", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"@" cou_urlEncodedString]  , @"%40", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"!" cou_urlEncodedString]  , @"%21", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"$" cou_urlEncodedString]  , @"%24", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@" " cou_urlEncodedString]  , @"%20", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"&" cou_urlEncodedString]  , @"%26", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"'" cou_urlEncodedString]  , @"%27", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"(" cou_urlEncodedString]  , @"%28", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@")" cou_urlEncodedString]  , @"%29", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"*" cou_urlEncodedString]  , @"%2A", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"+" cou_urlEncodedString]  , @"%2B", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"," cou_urlEncodedString]  , @"%2C", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@";" cou_urlEncodedString]  , @"%3B", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"=" cou_urlEncodedString]  , @"%3D", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"\"" cou_urlEncodedString] , @"%22", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"<" cou_urlEncodedString]  , @"%3C", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@">" cou_urlEncodedString]  , @"%3E", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"%" cou_urlEncodedString]  , @"%25", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"{" cou_urlEncodedString]  , @"%7B", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"}" cou_urlEncodedString]  , @"%7D", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"|" cou_urlEncodedString]  , @"%7C", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"\\" cou_urlEncodedString] , @"%5C", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"^" cou_urlEncodedString]  , @"%5E", @"Should be encoded correctly");
+    XCTAssertEqualObjects([@"~" cou_urlEncodedString]  , @"%7E", @"Should be encoded correctly");
 }
 
 @end
