@@ -27,12 +27,33 @@
 #import "CRTestCase.h"
 
 #import "CRSessionController.h"
+#import "CRURLProtocol.h"
 
 #define kTestGroupName @"kBurritoCrew"
 #define kTestGroup2Name @"kTacoCrew"
 
 #define kTestTaskToken @"aToken"
 #define kTestTask2Token @"bToken"
+
+@interface CRSessionControllerTestsDelegate : NSObject <CRURLSessionControllerDelegate>
+
+@property (nonatomic, assign) BOOL didRecieveUnauthorizedResponse;
+
+@end
+
+@implementation CRSessionControllerTestsDelegate
+
+- (void)sessionReceivedUnauthorizedResponse:(NSURLResponse *)response
+{
+    _didRecieveUnauthorizedResponse = YES;
+}
+
+- (void)sessionReceivedUnreachableResponse:(NSURLResponse *)response
+{
+    
+}
+
+@end
 
 @interface CRSessionController (UnitTests)
 
@@ -59,13 +80,14 @@
 - (void)setUp
 {
     [super setUp];
-    _sessionController = [CRSessionController sessionControllerWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+    [CRURLProtocol resetGlobalSettings];
+    _sessionController = [CRSessionController sessionControllerWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]
                                                                         delegate:nil];
 }
 
 - (void)tearDown
 {
-    // Put teardown code here; it will be run once, after the last test case.
+    [CRURLProtocol resetGlobalSettings];
     [super tearDown];
 }
 
@@ -282,6 +304,7 @@
 - (void)testCancelTasksInGroup
 {
     NSURLSessionTask *task = [self googleTask];
+    
     [_sessionController addTask:task
                       withToken:kTestTaskToken
                         toGroup:kTestGroupName];
@@ -366,11 +389,103 @@
     XCTAssertTrue(result,
                   @"Task should be canceled or completed");
     
-    result = task.state == NSURLSessionTaskStateCanceling
-             || task.state == NSURLSessionTaskStateCompleted;
+    result = task2.state == NSURLSessionTaskStateCanceling
+             || task2.state == NSURLSessionTaskStateCompleted;
     
     XCTAssertTrue(result,
                   @"Task should be canceled or completed");
+}
+
+#pragma mark - 401
+
+- (void)test401Response
+{
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    [config setProtocolClasses:@[[CRURLProtocol class]]];
+    [CRURLProtocol setGlobalResponseStatusCode:401];
+    
+    CRSessionControllerTestsDelegate *testDelegate = [CRSessionControllerTestsDelegate new];
+    CRSessionController *sessionController = [CRSessionController sessionControllerWithConfiguration:config
+                                                                                            delegate:testDelegate];
+
+
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];
+    __block NSUInteger count = 1;
+    NSURLSessionTask *task = [sessionController dataTaskForRequest:request
+                                                 completionHandler:^(NSData *data,
+                                                                     NSURLResponse *response,
+                                                                     BOOL cachedResponse,
+                                                                     NSError *error) {
+                                                     count--;
+                                                 }];
+    [task resume];
+    
+    //
+    // Wait until finished
+    //
+    NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:0.1];
+    while (count > 0) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:loopUntil];
+    }
+    
+    XCTAssertTrue(testDelegate.didRecieveUnauthorizedResponse, @"Delegate should recieve a 401 response");
+}
+
+#pragma mark - Cache
+
+- (void)testCachedResponse
+{
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://drewsmits.com/wp-content/uploads/2013/04/logo.png"]];
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    [config setProtocolClasses:@[[CRURLProtocol class]]];
+    
+    [CRURLProtocol setGlobalCacheStoragePolicy:NSURLCacheStorageAllowed];
+    [CRURLProtocol setGlobalResponseData:[@"dummyData" dataUsingEncoding:NSUTF8StringEncoding]];
+
+    CRSessionController *sessionController = [CRSessionController sessionControllerWithConfiguration:config
+                                                                                            delegate:nil];
+    
+    __block NSUInteger count = 1;
+    __block BOOL taskOneCached = NO;
+    NSURLSessionDataTask *task = [sessionController dataTaskForRequest:request
+                                                     completionHandler:^(NSData *data,
+                                                                         NSURLResponse *response,
+                                                                         BOOL cachedResponse,
+                                                                         NSError *error) {
+                                                         taskOneCached = cachedResponse;
+                                                         count--;
+                                                     }];
+    [task resume];
+    
+    NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:1.0];
+    while (count > 0) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:loopUntil];
+    }
+    
+    count++;
+    __block BOOL taskTwoCached = NO;
+    NSURLSessionDataTask *cachedTask = [sessionController dataTaskForRequest:request
+                                                           completionHandler:^(NSData *data,
+                                                                               NSURLResponse *response,
+                                                                               BOOL cachedResponse,
+                                                                               NSError *error) {
+                                                               taskTwoCached = cachedResponse;
+                                                               count--;
+                                                           }];
+    [cachedTask resume];
+    
+    //
+    // Wait until finished
+    //
+    while (count > 0) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:loopUntil];
+    }
+    
+    XCTAssertFalse(taskOneCached, @"Response should not be cached");
+    XCTAssertTrue(taskTwoCached, @"Response should be cached");
 }
 
 @end

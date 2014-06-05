@@ -142,6 +142,9 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
 
 @interface CRSessionController (Debug)
 
+/**
+ *  Pretty prints all the current requests both queued and executing
+ */
 - (void)logRequests;
 
 @end

@@ -26,7 +26,7 @@
 
 #import "CRTestCase.h"
 
-extern void __gcov_flush(void);
+//extern void __gcov_flush(void);
 
 @implementation CRTestCase
 
@@ -38,7 +38,7 @@ extern void __gcov_flush(void);
 - (void)tearDown
 {
     [super tearDown];
-    __gcov_flush();
+//    __gcov_flush();
 }
 
 @end

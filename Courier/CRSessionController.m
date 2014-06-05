@@ -122,7 +122,7 @@
     //
     NSURLCache *urlCache = _session.configuration.URLCache;
     BOOL cachedResponse = urlCache && [urlCache cachedResponseForRequest:request];
-    
+        
     //
     // Create Task
     //
@@ -159,9 +159,9 @@
     //
     // Pass through response to delegate
     //
-    if ([self.controllerDelegate respondsToSelector:@selector(sessionController:didRecieveResponse:)]) {
-        [self.controllerDelegate sessionController:self
-                                didRecieveResponse:response];
+    if ([_controllerDelegate respondsToSelector:@selector(sessionController:didRecieveResponse:)]) {
+        [_controllerDelegate sessionController:self
+                            didRecieveResponse:response];
     }
     
     //

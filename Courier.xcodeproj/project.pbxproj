@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8815655B18A0807D00E54D82 /* CourierLog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8815655A18A0803400E54D82 /* CourierLog.h */; };
 		8831EB8317A205B800B6E1D7 /* NSMutableURLRequest+Courier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */; };
+		887304FD1940D6C700DE799B /* CRURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 887304FC1940D6C700DE799B /* CRURLProtocol.m */; };
 		888360651889AC7C004322BA /* CRSessionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 888360641889AC7C004322BA /* CRSessionControllerTests.m */; };
 		888360791889F0DA004322BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9DEFAF1573F9ED00E05274 /* UIKit.framework */; };
 		889B8974188477A90099C1A3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB487DBE17C019D400D189D3 /* XCTest.framework */; };
@@ -72,6 +73,8 @@
 		8815655A18A0803400E54D82 /* CourierLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourierLog.h; sourceTree = "<group>"; };
 		8831EB8017A205B800B6E1D7 /* NSMutableURLRequest+Courier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Courier.h"; sourceTree = "<group>"; };
 		8831EB8117A205B800B6E1D7 /* NSMutableURLRequest+Courier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+Courier.m"; sourceTree = "<group>"; };
+		887304FB1940D6C700DE799B /* CRURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRURLProtocol.h; sourceTree = "<group>"; };
+		887304FC1940D6C700DE799B /* CRURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRURLProtocol.m; sourceTree = "<group>"; };
 		888360641889AC7C004322BA /* CRSessionControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRSessionControllerTests.m; sourceTree = "<group>"; };
 		889B8973188477A80099C1A3 /* CourierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		889B8979188477A90099C1A3 /* CourierTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CourierTests-Info.plist"; sourceTree = "<group>"; };
@@ -128,9 +131,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		887304FA1940D6A400DE799B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				887304FB1940D6C700DE799B /* CRURLProtocol.h */,
+				887304FC1940D6C700DE799B /* CRURLProtocol.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		889B8977188477A90099C1A3 /* CourierTests */ = {
 			isa = PBXGroup;
 			children = (
+				887304FA1940D6A400DE799B /* Helpers */,
 				888360641889AC7C004322BA /* CRSessionControllerTests.m */,
 				889B89961884B7630099C1A3 /* CRTestCase.h */,
 				889B89941884B73C0099C1A3 /* CRTestCase.m */,
@@ -301,6 +314,7 @@
 			files = (
 				889B89981884BA7C0099C1A3 /* NSURLResponseCourierTests.m in Sources */,
 				888360651889AC7C004322BA /* CRSessionControllerTests.m in Sources */,
+				887304FD1940D6C700DE799B /* CRURLProtocol.m in Sources */,
 				889B89951884B73C0099C1A3 /* CRTestCase.m in Sources */,
 				889B89931884A9E20099C1A3 /* NSMutableURLRequestCourierTests.m in Sources */,
 				889B8986188477E10099C1A3 /* NSDictionaryCourierTests.m in Sources */,
