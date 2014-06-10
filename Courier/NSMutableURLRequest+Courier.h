@@ -29,6 +29,7 @@ typedef enum {
     CRURLRequestEncodingUnknown,
     CRURLFormURLParameterEncoding,
     CRURLJSONParameterEncoding,
+    CRURLImageEncoding,
 } CRURLRequestEncoding;
 
 @interface NSMutableURLRequest (Courier)

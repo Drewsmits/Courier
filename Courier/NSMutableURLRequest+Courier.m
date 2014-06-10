@@ -89,8 +89,6 @@
     //
     if (self.allHTTPHeaderFields[@"Content-Type"]) return;
 
-//  image request, @"image/tiff,image/jpeg,image/gif,image/png,image/ico,image/x-icon,image/bmp,image/x-bmp,image/x-xbitmap,image/x-win-bitmap"
-
     //
     // Set the content type
     //
@@ -102,6 +100,9 @@
     } else if (encoding == CRURLJSONParameterEncoding) {
         // JSON
         [self addValue:@"application/json,text/json,text/javascript" forHTTPHeaderField:@"Content-Type"];
+    } else if (encoding == CRURLImageEncoding) {
+        [self addValue:@"image/tiff,image/jpeg,image/gif,image/png,image/ico,image/x-icon,image/bmp,image/x-bmp,image/x-xbitmap,image/x-win-bitmap"
+    forHTTPHeaderField:@"Content-Type"];
     }
 }
 
