@@ -383,7 +383,7 @@
 {
     CourierLogInfo(@"Log current tasks:");
     for (NSURLSessionTask *task in _tasks) {
-        NSString *description = [NSString stringWithFormat:@"task: %@\n URL: %@\nMethod: %@", task, task.currentRequest.URL, task.currentRequest.HTTPMethod];
+        __unused NSString *description = [NSString stringWithFormat:@"task: %@\n URL: %@\nMethod: %@", task, task.currentRequest.URL, task.currentRequest.HTTPMethod];
         CourierLogInfo(@"%@", description);
     }
 }
