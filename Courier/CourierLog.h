@@ -9,8 +9,7 @@
 #ifndef Courier_CourierLog_h
 #define Courier_CourierLog_h
 
-// Comment out to silence logs
-#define COURIER_LOG 1
+#define COURIER_LOG 0
 
 #if DEBUG && COURIER_LOG
     #define CourierLogInfo(...) NSLog(@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
