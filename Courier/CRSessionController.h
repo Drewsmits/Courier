@@ -109,6 +109,24 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
 @interface CRSessionController (TaskManagement)
 
 /**
+ *  Returns the task, if any, associated with the task ID
+ *
+ *  @param taskId The task ID, called from task.taskIdentifier.
+ *
+ *  @return The task associated with the taskIdentifier
+ */
+- (NSURLSessionTask *)taskWithIdentifier:(NSUInteger)taskIdentifier;
+
+/**
+ *  A quick way to find out if you have a task with the given identifier.
+ *
+ *  @param taskIdentifier The task identifier, from task.taskIdentifier
+ *
+ *  @return Returns YES if the controller has a task with the given taskIdentifier.
+ */
+- (BOOL)hasTaskWithIdentifier:(NSUInteger)taskIdentifier;
+
+/**
  Calls -suspend on all tasks in a given group.
  */
 - (void)suspendTasksInGroup:(NSString *)group;

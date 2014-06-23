@@ -41,12 +41,29 @@
 
 @property (nonatomic, strong) NSURLSession *session;
 
+/**
+ *  The keys are the group names, and the values are arrays of associated tasks
+ */
 @property (nonatomic, strong) NSMutableDictionary *groups;
 
-@property (nonatomic, strong) NSMutableDictionary *tasks;
+/**
+ *  The keys are a unique string, the values are a dictionary with the task object
+ *  and associated group.
+ */
+@property (nonatomic, strong) NSMutableDictionary *tasksByToken;
+
+/**
+ *  The keys are the task IDs, and the values are the associated task object
+ */
+@property (nonatomic, strong) NSMutableDictionary *tasksByIdentifier;
 
 @property (nonatomic, strong) Reachability *reachabilityObject;
 
+/**
+ *  This count is used to determine if the status of the applications
+ *  networkActivityIndicatorVisible. Each task that is added the count is incremented,
+ *  then decremented with the task is finished.
+ */
 @property (nonatomic, assign) NSUInteger busyCount;
 
 @end
@@ -68,8 +85,9 @@
     //
     // Keep track of tasks
     //
-    controller.groups = [NSMutableDictionary dictionary];
-    controller.tasks  = [NSMutableDictionary dictionary];
+    controller.groups            = [NSMutableDictionary dictionary];
+    controller.tasksByToken      = [NSMutableDictionary dictionary];
+    controller.tasksByIdentifier = [NSMutableDictionary dictionary];
 
     //
     // Reachability
@@ -206,15 +224,22 @@
         [_groups setObject:tasks forKey:group];
         
         //
-        // Add task to reverse map Tasks
+        // Add task to Tasks by token
         //
-        NSMutableDictionary *taskDict = [_tasks objectForKey:group];
+        NSMutableDictionary *taskDict = [_tasksByToken objectForKey:group];
         if (!taskDict) {
             taskDict = [NSMutableDictionary dictionary];
         }
         taskDict[@"task"] = task;
         taskDict[@"group"] = group;
-        [_tasks setObject:taskDict forKey:token];
+        [_tasksByToken setObject:taskDict
+                          forKey:token];
+        
+        //
+        // Add task to tasks by id
+        //
+        [_tasksByIdentifier setObject:task
+                               forKey:@(task.taskIdentifier)];
         
         //
         // Observe task state for network activity indicator
@@ -228,7 +253,7 @@
 
 - (void)removeTaskWithToken:(NSString *)token
 {
-    NSDictionary     *taskDict = [_tasks objectForKey:token];
+    NSDictionary     *taskDict = [_tasksByToken objectForKey:token];
     NSString         *group    = taskDict[@"group"];
     NSURLSessionTask *task     = taskDict[@"task"];
     
@@ -250,7 +275,8 @@
         //
         // Remove the task
         //
-        [_tasks removeObjectForKey:token];
+        [_tasksByToken removeObjectForKey:token];
+        [_tasksByIdentifier removeObjectForKey:@(task.taskIdentifier)];
         [groupTasks removeObject:task];
         
         //
@@ -293,13 +319,17 @@
                     self.busyCount += 1;
                     break;
                 case NSURLSessionTaskStateSuspended:
-                    self.busyCount -= 1;
+                    if (self.busyCount > 0) {
+                        self.busyCount -= 1;
+                    }
                     break;
                 case NSURLSessionTaskStateCanceling:
                     // noop
                     break;
                 case NSURLSessionTaskStateCompleted:
-                    self.busyCount -= 1;
+                    if (self.busyCount > 0) {
+                        self.busyCount -= 1;
+                    }
                     break;
                 default:
                     break;
@@ -314,6 +344,16 @@
 @end
 
 @implementation CRSessionController (TaskManagement)
+
+- (NSURLSessionTask *)taskWithIdentifier:(NSUInteger)taskIdentifier
+{
+    return [_tasksByIdentifier objectForKey:@(taskIdentifier)];
+}
+
+- (BOOL)hasTaskWithIdentifier:(NSUInteger)taskIdentifier
+{
+    return [_tasksByIdentifier objectForKey:@(taskIdentifier)] != nil;
+}
 
 - (void)suspendTasksInGroup:(NSString *)group
 {
@@ -382,7 +422,7 @@
 - (void)logRequests
 {
     CourierLogInfo(@"Log current tasks:");
-    for (NSURLSessionTask *task in _tasks) {
+    for (NSURLSessionTask *task in _tasksByToken) {
         __unused NSString *description = [NSString stringWithFormat:@"task: %@\n URL: %@\nMethod: %@", task, task.currentRequest.URL, task.currentRequest.HTTPMethod];
         CourierLogInfo(@"%@", description);
     }

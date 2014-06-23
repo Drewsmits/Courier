@@ -59,7 +59,9 @@
 
 @property (nonatomic, readonly) NSMutableDictionary *groups;
 
-@property (nonatomic, readonly) NSMutableDictionary *tasks;
+@property (nonatomic, readonly) NSMutableDictionary *tasksByToken;
+
+@property (nonatomic, readonly) NSMutableDictionary *tasksByIdentifier;
 
 - (void)addTask:(NSURLSessionTask *)task
       withToken:(NSString *)token
@@ -129,12 +131,12 @@
                           @"Should be the same task");
     
     // Check tasks
-    XCTAssertEqual(_sessionController.tasks.count,
+    XCTAssertEqual(_sessionController.tasksByToken.count,
                    1U,
                    @"Should have one task");
     
-    id key = [[_sessionController.tasks allKeys] firstObject];
-    NSDictionary *object = [_sessionController.tasks objectForKey:key];
+    id key = [[_sessionController.tasksByToken allKeys] firstObject];
+    NSDictionary *object = [_sessionController.tasksByToken objectForKey:key];
     XCTAssertEqualObjects(object[@"group"],
                           kTestGroupName,
                           @"Should have correc group name");
@@ -156,10 +158,13 @@
                    0U,
                    @"Should have no task groups after completion");
     
-    XCTAssertEqual(_sessionController.tasks.count,
+    XCTAssertEqual(_sessionController.tasksByToken.count,
                    0U,
                    @"Should have no tasks after completion");
-
+    
+    XCTAssertEqual(_sessionController.tasksByIdentifier.count,
+                   0U,
+                   @"Should have no tasks after completion");
 }
 
 #pragma mark - Task Management
@@ -179,6 +184,13 @@
     XCTAssertNotNil(tasks, @"Should have a task array for group");
     XCTAssertEqual(tasks.count, 1U, @"Should have one task for group");
     XCTAssertEqualObjects([tasks firstObject], task, @"Should be the same task");
+    
+    XCTAssertNotNil(_sessionController.tasksByToken, @"Should have a tasks by token dictionary");
+    XCTAssertEqual(_sessionController.tasksByToken.count, 1U, @"Should have one task for group");
+
+    XCTAssertNotNil(_sessionController.tasksByIdentifier, @"Should have a tasks by token dictionary");
+    XCTAssertEqual(_sessionController.tasksByIdentifier.count, 1U, @"Should have one task for group");
+    XCTAssertNotNil([_sessionController.tasksByIdentifier objectForKey:@(task.taskIdentifier)], @"Should have a task for task identifier");
 }
 
 - (void)testAddNilTask
@@ -189,6 +201,8 @@
                         toGroup:kTestGroupName];
     NSArray *tasks = [_sessionController.groups valueForKey:kTestGroupName];
     XCTAssertNil(tasks, @"Should not have a task array for group");
+    XCTAssertEqual(_sessionController.tasksByToken.count, 0U, @"Should have one task for group");
+    XCTAssertEqual(_sessionController.tasksByIdentifier.count, 0U, @"Should have one task for group");
 }
 
 - (void)testAddTaskToNilGroup
@@ -206,6 +220,8 @@
    
     XCTAssertNotNil(tasks,
                     @"Should have a generic task group");
+    XCTAssertEqual(_sessionController.tasksByToken.count, 1U, @"Should have one task for group");
+    XCTAssertEqual(_sessionController.tasksByIdentifier.count, 1U, @"Should have one task for group");
 }
 
 - (void)testAddTaskToEmptyStringGroup
@@ -238,6 +254,14 @@
     XCTAssertEqual(_sessionController.groups.count,
                    0U,
                    @"Should not have task group for tasks when empty");
+    
+    XCTAssertEqual(_sessionController.tasksByToken.count,
+                   0U,
+                   @"Should not have any tasks by token when empty");
+    
+    XCTAssertEqual(_sessionController.tasksByIdentifier.count,
+                   0U,
+                   @"Should not have any tasks by identifier when empty");
 }
 
 - (void)testRemoveTaskFromNilGroup
@@ -253,6 +277,35 @@
     XCTAssertEqual(_sessionController.groups.count,
                    0U,
                    @"Should not have task group for tasks when empty");
+}
+
+- (void)testTaskWithIdentifier
+{
+    NSURLSessionTask *task = [NSURLSessionTask new];
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:nil];
+
+    NSURLSessionTask *shouldBeTask = [_sessionController taskWithIdentifier:task.taskIdentifier];
+    XCTAssertEqualObjects(shouldBeTask, task, @"Tasks should be the same");
+    
+    [_sessionController removeTaskWithToken:kTestTaskToken];
+
+    XCTAssertNil([_sessionController taskWithIdentifier:task.taskIdentifier], @"Should not have a task with task identifier");
+}
+
+- (void)testHasTaskWithIdentifier
+{
+    NSURLSessionTask *task = [NSURLSessionTask new];
+    [_sessionController addTask:task
+                      withToken:kTestTaskToken
+                        toGroup:nil];
+    
+    XCTAssertTrue([_sessionController hasTaskWithIdentifier:task.taskIdentifier], @"Should have task with identifier");
+    
+    [_sessionController removeTaskWithToken:kTestTaskToken];
+
+    XCTAssertFalse([_sessionController hasTaskWithIdentifier:task.taskIdentifier], @"Should not have task with identifier");
 }
 
 #pragma mark - State Management
