@@ -150,6 +150,7 @@
                                                                  NSURLResponse *response,
                                                                  NSError *error) {
                                                  __strong typeof(self) strongSelf = weakSelf;
+                                                 [strongSelf logResponse:response data:data error:error];
                                                  [strongSelf handleResponse:response];
                                                  [strongSelf removeTaskWithToken:token];
                                                  if (completionHandler) completionHandler(data,
@@ -166,6 +167,31 @@
           toGroup:group];
     
     return task;
+}
+
+- (void)logResponse:(NSURLResponse *)response
+               data:(NSData *)data
+              error:(NSError *)error
+{
+#if DEBUG && COURIER_LOG
+    NSMutableString *logString = [NSMutableString string];
+    
+    [logString appendString:@"\n########################################"];
+    [logString appendFormat:@"\nResponse: %@", response];
+    
+    NSString *encodingName = response.textEncodingName;
+    NSString *dataString = nil;
+    if (encodingName) {
+        NSStringEncoding encodingType = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)encodingName));
+        dataString =  [[NSString alloc] initWithData:data encoding:encodingType];
+    }
+    
+    [logString appendFormat:@"\nData: %@", dataString];
+    [logString appendFormat:@"\nError: %@", error];
+    [logString appendString:@"\n########################################"];
+    
+    NSLog(@"%@", logString);
+#endif
 }
 
 - (void)handleResponse:(NSURLResponse *)response

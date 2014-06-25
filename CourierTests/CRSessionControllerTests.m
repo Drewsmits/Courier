@@ -69,6 +69,10 @@
 
 - (void)removeTaskWithToken:(NSString *)token;
 
+- (void)logResponse:(NSURLResponse *)response
+               data:(NSData *)data
+              error:(NSError *)error;
+
 @end
 
 @interface CRSessionControllerTests : CRTestCase
