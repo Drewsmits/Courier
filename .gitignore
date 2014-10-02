@@ -17,42 +17,12 @@ DerivedData
 *.hmap
 
 #CocoaPods
-Pods
+Pods/*
+Podfile.lock
+Courier.xcworkspace/*
 
 # Ignore all dotfiles...
 .*
 # except for .gitignore
 !.gitignore
 
-# Ignore Play! working directory #
-db
-eclipse
-lib
-log
-logs
-modules
-precompiled
-project/project
-project/target
-target
-tmp
-test-result
-server.pid
-*.iml
-*.eml
-
-logs
-project/project
-project/target
-target
-tmp
-.history
-dist
-/.idea
-/*.iml
-/out
-/.idea_modules
-/.classpath
-/.project
-/RUNNING_PID
-/.settings

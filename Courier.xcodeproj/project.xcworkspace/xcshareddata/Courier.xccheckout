@@ -12,7 +12,7 @@
 	<dict>
 		<key>1F371DBB-2DFC-488D-88B2-4E7B1598CDC4</key>
 		<string>ssh://github.com/Drewsmits/Conductor.git</string>
-		<key>4F5C8581-9EAD-4B55-AF2F-0FF2E7AF7602</key>
+		<key>42936AFBAF2C56BADE64D01CF9417A41B06B1AE2</key>
 		<string>ssh://github.com/Drewsmits/Courier.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
@@ -21,15 +21,15 @@
 	<dict>
 		<key>1F371DBB-2DFC-488D-88B2-4E7B1598CDC4</key>
 		<string>../../../Conductor</string>
-		<key>4F5C8581-9EAD-4B55-AF2F-0FF2E7AF7602</key>
+		<key>42936AFBAF2C56BADE64D01CF9417A41B06B1AE2</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/Drewsmits/Courier.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>4F5C8581-9EAD-4B55-AF2F-0FF2E7AF7602</string>
+	<string>42936AFBAF2C56BADE64D01CF9417A41B06B1AE2</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -44,7 +44,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>4F5C8581-9EAD-4B55-AF2F-0FF2E7AF7602</string>
+			<string>42936AFBAF2C56BADE64D01CF9417A41B06B1AE2</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Courier</string>
 		</dict>

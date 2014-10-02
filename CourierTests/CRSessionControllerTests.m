@@ -28,6 +28,9 @@
 
 #import "CRSessionController.h"
 #import "CRURLProtocol.h"
+#import "CRAsyncTestHelpers.h"
+
+#import <OHHTTPStubs/OHHTTPStubs.h>
 
 #define kTestGroupName @"kBurritoCrew"
 #define kTestGroup2Name @"kTacoCrew"
@@ -89,11 +92,15 @@
     [CRURLProtocol resetGlobalSettings];
     _sessionController = [CRSessionController sessionControllerWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]
                                                                         delegate:nil];
+    
+    [OHHTTPStubs removeAllStubs];
+    [[NSURLSessionConfiguration ephemeralSessionConfiguration].URLCache removeAllCachedResponses];
 }
 
 - (void)tearDown
 {
     [CRURLProtocol resetGlobalSettings];
+    [OHHTTPStubs removeAllStubs];
     [super tearDown];
 }
 
@@ -458,8 +465,17 @@
 - (void)test401Response
 {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-    [config setProtocolClasses:@[[CRURLProtocol class]]];
-    [CRURLProtocol setGlobalResponseStatusCode:401];
+    
+    //
+    // Stub 401 responses
+    //
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return YES;
+    } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
+        return [OHHTTPStubsResponse responseWithData:nil
+                                          statusCode:401
+                                             headers:nil];
+    }];
     
     CRSessionControllerTestsDelegate *testDelegate = [CRSessionControllerTestsDelegate new];
     CRSessionController *sessionController = [CRSessionController sessionControllerWithConfiguration:config
@@ -495,51 +511,48 @@
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://drewsmits.com/wp-content/uploads/2013/04/logo.png"]];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    [config setProtocolClasses:@[[CRURLProtocol class]]];
+    [config.URLCache removeAllCachedResponses];
     
-    [CRURLProtocol setGlobalCacheStoragePolicy:NSURLCacheStorageAllowed];
-    [CRURLProtocol setGlobalResponseData:[@"dummyData" dataUsingEncoding:NSUTF8StringEncoding]];
+    //
+    // Stub 401 responses
+    //
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return YES;
+    } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
+        return [OHHTTPStubsResponse responseWithData:[@"dummyData" dataUsingEncoding:NSUTF8StringEncoding]
+                                          statusCode:200
+                                             headers:nil];
+    }];
 
     CRSessionController *sessionController = [CRSessionController sessionControllerWithConfiguration:config
                                                                                             delegate:nil];
     
-    __block NSUInteger count = 1;
     __block BOOL taskOneCached = NO;
-    NSURLSessionDataTask *task = [sessionController dataTaskForRequest:request
-                                                     completionHandler:^(NSData *data,
-                                                                         NSURLResponse *response,
-                                                                         BOOL cachedResponse,
-                                                                         NSError *error) {
-                                                         taskOneCached = cachedResponse;
-                                                         count--;
-                                                     }];
-    [task resume];
     
-    NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:1.0];
-    while (count > 0) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:loopUntil];
-    }
+    runInMainLoopUntilDone(^(BOOL *done) {
+        NSURLSessionDataTask *task = [sessionController dataTaskForRequest:request
+                                                         completionHandler:^(NSData *data,
+                                                                             NSURLResponse *response,
+                                                                             BOOL cachedResponse,
+                                                                             NSError *error) {
+                                                             taskOneCached = cachedResponse;
+                                                             *done = YES;
+                                                         }];
+        [task resume];
+    });
     
-    count++;
     __block BOOL taskTwoCached = NO;
-    NSURLSessionDataTask *cachedTask = [sessionController dataTaskForRequest:request
-                                                           completionHandler:^(NSData *data,
-                                                                               NSURLResponse *response,
-                                                                               BOOL cachedResponse,
-                                                                               NSError *error) {
-                                                               taskTwoCached = cachedResponse;
-                                                               count--;
-                                                           }];
-    [cachedTask resume];
-    
-    //
-    // Wait until finished
-    //
-    while (count > 0) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:loopUntil];
-    }
+    runInMainLoopUntilDone(^(BOOL *done) {
+        NSURLSessionDataTask *cachedTask = [sessionController dataTaskForRequest:request
+                                                               completionHandler:^(NSData *data,
+                                                                                   NSURLResponse *response,
+                                                                                   BOOL cachedResponse,
+                                                                                   NSError *error) {
+                                                                   taskTwoCached = cachedResponse;
+                                                                   *done = YES;
+                                                               }];
+        [cachedTask resume];
+    });
     
     XCTAssertFalse(taskOneCached, @"Response should not be cached");
     XCTAssertTrue(taskTwoCached, @"Response should be cached");
