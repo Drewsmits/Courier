@@ -27,12 +27,12 @@
 
 @implementation NSURLResponse (Courier)
 
-- (NSInteger)statusCode
+- (NSInteger)cou_statusCode
 {
     return [(NSHTTPURLResponse *)self statusCode];
 }
 
-- (BOOL)success
+- (BOOL)cou_success
 {
     NSInteger statusCode = [(NSHTTPURLResponse *)self statusCode];
     return (statusCode >= 200 && statusCode < 300);
