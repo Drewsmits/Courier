@@ -25,17 +25,26 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol CRURLSessionControllerDelegate;
+#if TARGET_OS_IOS
+#import <Reachability/Reachability.h>
+#endif
 
+/**
+ The CRSessionController wraps around an NSURLSession. Use this class to create and managed tasks. For
+ instance, you can group tasks by name and bulk cancel said group.
+ */
 NS_CLASS_AVAILABLE(10_9, 7_0)
-@interface CRSessionController : NSObject <NSURLSessionDataDelegate>
-
-@property (nonatomic, weak, readonly) id <CRURLSessionControllerDelegate> controllerDelegate;
+@interface CRSessionController : NSObject
 
 /**
  The internal NSURLSession.
  */
-@property (nonatomic, readonly) NSURLSession *session;
+@property (nonatomic, readonly, strong) NSURLSession *session;
+
+/**
+ The NSOperationQueue on which the NSURLSessions delegate callbacks are run.
+ */
+@property (nonatomic, readonly, strong) NSOperationQueue *sessionDelegateOperationQueue;
 
 /**
  A copy of the internal NSURLSessionConfiguration from the internal NSURLSession.
@@ -43,13 +52,20 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
 @property (nonatomic, readonly) NSURLSessionConfiguration *configuration;
 
 /**
- Create a session controller with a delegate for 401 and unreachable callbacks.
+ Create a session controller with the given NSURLSessionConfiguration. Note that once a configuration
+ is passed in, it is immutable.
  */
-+ (instancetype)sessionControllerWithConfiguration:(NSURLSessionConfiguration *)configuration
-                                          delegate:(id <CRURLSessionControllerDelegate>)delegate;
+- (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
 
 /**
- Create an NSURLSessionDataTask for the given request.
+ Create a session controller with the given NSURLSessionConfiguration. Note that once a configuration
+ is passed in, it is immutable.
+ */
++ (instancetype)sessionControllerWithConfiguration:(NSURLSessionConfiguration *)configuration;
+
+/**
+ Create an NSURLSessionDataTask for the given request. The completion handler will run regardless of
+ whether or not the task succeeds or not.
 */
 - (NSURLSessionDataTask *)dataTaskForRequest:(NSURLRequest *)request
                            completionHandler:(void (^)(NSData *data,
@@ -68,41 +84,29 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
                                                        NSError *error))completionHandler;
 
 /**
- Returns YES if any internet connection is reachable.
+ Adds an NSURLSessionTaskDelegate to the given task. Right now, just the HTTPRedirect call and 
+ authentication challenge is passed through to the delegate, but future work will pass through 
+ all callbacks.
+ 
+ @param delegate The delegate that will respond to NSURLSessionTaskDelegate callbacks
+ @param task The task to use the delegate with.
  */
-- (BOOL)isInternetReachable;
-
-@end
-
-@protocol CRURLSessionControllerDelegate <NSObject>
+- (void)addNSURLSessionTaskDelegate:(id <NSURLSessionTaskDelegate>)delegate
+                            forTask:(NSURLSessionTask *)task;
 
 /**
- *  Delegates implement this method to handle 401 responses.
- *
- *  @param response The response from an HTTP request
+ Removes the delegate. At this point, the delegate will no longer respond to callbacks.
+
+ @param delegate The delegate to remove.
  */
-- (void)sessionReceivedUnauthorizedResponse:(NSURLResponse *)response;
+- (void)removeNSURLSessionTaskDelegate:(id <NSURLSessionTaskDelegate>)delegate;
 
 /**
- *  Delegates implement this method to handle an unreachable response. This occurs
- *  when the reachability status changes or when a response returns with an 
- *  unreachable status.
- *
- *  @param response The response from an HTTP request
- */
-- (void)sessionReceivedUnreachableResponse:(NSURLResponse *)response;
+ @returns The delegate specified in addNSURLSessionTaskDelegate:forTask: by the task parameter.
 
-@optional
-
-/**
- *  Delegates implement this method to have an additional hook into handling HTTP
- *  request responses.
- *
- *  @param controller The controller responsible for the request
- *  @param response   The response from an HTTP request
+ @param task The NSURLSessionTask to retrieve the delegate for.
  */
-- (void)sessionController:(CRSessionController *)controller
-       didRecieveResponse:(NSURLResponse *)response;
+- (id <NSURLSessionTaskDelegate>)NSURLSessionTaskDelegateForTask:(NSURLSessionTask *)task;
 
 @end
 
@@ -125,6 +129,14 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
  *  @return Returns YES if the controller has a task with the given taskIdentifier.
  */
 - (BOOL)hasTaskWithIdentifier:(NSUInteger)taskIdentifier;
+
+/**
+ @returns YES if the task group has any task with the state.
+ @param group The name of the task group.
+ @param state The state of the NSURLSessionTask to test against.
+ */
+- (BOOL)hasTasksInGroup:(NSString *)group
+              withState:(NSURLSessionTaskState)state;
 
 /**
  Calls -suspend on all tasks in a given group.
@@ -155,6 +167,35 @@ NS_CLASS_AVAILABLE(10_9, 7_0)
  Calls -cancel on all tasks tracked by this controller
  */
 - (void)cancelAllTasks;
+
+@end
+
+@interface CRSessionController (Reachability)
+
+/**
+ Returns YES if any internet connection is reachable.
+ */
+- (BOOL)isInternetReachable;
+
+/**
+ Starts monitoring for reachability changes. If there is a change, the reachability status block will
+ be called. Alternatively, you can listen for the kReachabilityChangedNotification NSNotification.
+ */
+- (void)startReachabilityMonitoring;
+
+/**
+ Stops reachability monitoring. Changes in reachability will no longer call the reachability status
+ change block, or fire off the kReachabilityChangedNotification NSNotification.
+ */
+- (void)stopReachabilityMonitoring;
+
+#if TARGET_OS_IOS
+/**
+ Sets a block that will run every time the network reachability status changes.
+ @param block The block to call when the network status changes.
+ */
+- (void)setReachabilityStatusChangeBlock:(void (^)(NetworkStatus status))block;
+#endif
 
 @end
 

@@ -28,8 +28,14 @@
 
 @interface NSURLResponse (Courier)
 
-@property (readonly) NSInteger statusCode;
+/**
+ @returns The HTTP status code for the response.
+ */
+@property (readonly) NSInteger cou_statusCode;
 
-- (BOOL)success;
+/**
+ @returns YES if the response was successful, checking the HTTP status code for 2xx.
+ */
+- (BOOL)cou_success;
 
 @end
